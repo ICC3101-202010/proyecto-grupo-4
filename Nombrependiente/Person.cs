@@ -15,8 +15,10 @@ namespace Spotflix
         private string country;
         private string city;
         private string street;
-        private string postalCode;//Compuesto de ints        
+        private string postalCode;//Compuesto de ints
+        private string password;
 
+        public string Password { get => password; set => password = value; }
         protected string Name { get => name; set => name = value; }
         protected string Lastname { get => lastname; set => lastname = value; }
         protected int Age { get => age; set => age = value; }

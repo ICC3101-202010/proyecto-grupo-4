@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    public class Song : MediaFile
+    public class Song : MediaFile, IGo
     {
-        private string artist;
-        private string album;
-        private bool expliciT;
-        private int currentSecond;
+        protected string artist;
+        protected string album;
+        protected bool expliciT;
+        protected int currentSecond;
 
         public Song(string artist, string album, bool expliciT, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image)
         {
@@ -56,7 +56,23 @@ namespace Spotflix
         //Setters and getters
         public Song Downnload(Song song)
         {
+            Console.WriteLine("Guardando canción");
             return song; 
+        }
+
+        public void Gofowards(int seconds)
+        {
+            Console.WriteLine($"Adelantando la canción {seconds} segundos");
+        }
+
+        public void GoBackwards(int seconds)
+        {
+            Console.WriteLine($"Retrocediendo la canción {seconds} segundos");
+        }
+
+        public void ChangeQuality(string quality)
+        {
+            Console.WriteLine($"Cambiando la calidad de la canción a: {quality}");
         }
     }
 }

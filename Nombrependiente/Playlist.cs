@@ -6,44 +6,42 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    public class Playlist : IOrderPlaylist
+    public class Playlist : Song, IOrderPlaylist
     {
         private int numberSongs;
         List<Song> songs = new List<Song>();
-        public int ArtistSearch(List<string> artists)
+
+        public Playlist(int numberSongs, List<Song> songs, string artist, string album, bool expliciT, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image) : base(artist, album, expliciT, currentSecond, length, fileSize, name, gender, year, category, numberOfReproductions, rankings, mediaId, relations, qualification, quality, dimension, image)
         {
-            int count  =  0;
-            foreach (Song song in songs)
-            {
-                foreach (string artist in artists)
-                {
-                    if (song.Artist == artist)
-                    {
-                        count+=1;
-                    }
-                }
-            }
-            return count;
+            this.numberSongs  =  numberSongs;
+            this.songs = songs;
+            this.artist = artist;
+            this.album = album;
+            this.expliciT = expliciT;
+            this.currentSecond = currentSecond;
+            this.length = length;
+            this.fileSize = fileSize;
+            this.name = name;
+            this.gender = gender;
+            this.year = year;
+            this.category = category;
+            this.numberOfReproductions = numberOfReproductions;
+            this.rankings = rankings;
+            this.mediaId = mediaId;
+            this.relations = relations;
+            this.qualification = qualification;
+            this.quality = quality;
+            this.dimension = dimension;
+            this.image = image;
         }
-        public int GenderSearch(List<string> genders)
-        {
-            int count = 0;
-            foreach (Song song in songs)
-            {
-                foreach (string gender in genders)
-                {
-                    if (song.Gender == gender)
-                    {
-                        count += 1;
-                    }
-                }
-            }
-            return count;
-        }
+
+        public int NumberSongs { get => numberSongs; set => numberSongs = value; }
+        public List<Song> Songs { get => songs; set => songs = value; }
+
 
         public void Mixture (int seconds)
         {
-            //FALTA
+            Console.WriteLine($"Mezclando la cnación {seconds} segundos");
         }
 
         public void Add(Song song)
@@ -56,12 +54,16 @@ namespace Spotflix
                     counter +=  1;
                 }
             }
-            if (counter == 0) songs.Add(song);
+            if (counter == 0)
+            {
+                songs.Add(song);
+                Console.WriteLine($"Se ha agregado la canción {song.Name}");
+            }
             else
             {
                 Console.WriteLine("La canción ya se encuentra en su playList. ¿Desea agregarla de todas formas?\nOpción 1: Sí\nOpción 2: No");
                 string answer = Console.ReadLine();
-                if (answer == "1" || answer ==  "Sí") songs.Add(song);
+                if (answer == "1" || answer == "Sí") Songs.Add(song);
             }
         }
         
@@ -71,17 +73,18 @@ namespace Spotflix
             {
                 if (s == song)
                 {
-                    songs.Remove(song);
+                    Songs.Remove(song);
+                    Console.WriteLine($"Se ha eliminado la canción {song.Name}");
                 }
             }
         }
-        public void Next()
+        public void Next() //Falta hacer este método
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Pasando a la siguiente canción");
         }
 
-        public void OrderAlphabet()        {
-
+        public void OrderAlphabet()        
+        {
             List<string> names = new List<string>();
             List<Song> newSongs = new List<Song>();
             foreach (Song song in songs)
@@ -100,11 +103,13 @@ namespace Spotflix
                     }
                 }
             }
-            songs = newSongs;        }
+            Songs = newSongs;
+            Console.WriteLine("Se ha ordenado su playlist de acuerdo a los nombres de las canciones");
+        }
 
         public void OrderByLength()
         {
-              List<int> lenghts = new List<int>();
+            List<int> lenghts = new List<int>();
             List<Song> newSongs = new List<Song>();
             foreach (Song song in songs)
             {
@@ -123,17 +128,18 @@ namespace Spotflix
                 }
             }
             songs = newSongs;
-      }
-
-
-        public void OrderPlaylist(MediaFile mediaFile, int posicion)
-        {
-            throw new NotImplementedException();
+            Console.WriteLine("Se ha ordenado su playlist de acuerdo al largo de las canciones");
         }
 
-        public void Previous()
+        public void OrderPlaylist(MediaFile mediaFile, int posicion)//Falta hacer este método
         {
-            throw new NotImplementedException();
+            //Dictionary<int,Song> newEpisodes = new Dictionary<int,Song>();
+            Console.WriteLine("Ordenando de acuerdo a los parámetros entregados");
+        }
+
+        public void Previous() //Falta hacer este método
+        {
+            Console.WriteLine("Pasando al video anterior");
         }
 
     }

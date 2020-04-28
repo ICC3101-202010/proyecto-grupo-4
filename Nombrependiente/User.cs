@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    public class User:Person //Falta considerar fin de subscripcion y pagos mensuales
+    public class User  :  Person //Falta considerar fin de subscripcion y pagos mensuales
     {
         private int userID;
         private string gmail;
         private string nickname;
-        private string password;
         private string membershipType;
         private bool premiunSongs;
         private bool premiunVideo;
@@ -20,8 +19,11 @@ namespace Spotflix
         private List<Video> likedVideos = new List<Video>();
         private List<MediaFile> queue = new List<MediaFile>();
         private int screenNumber;
-        public User(int userID, string gmail, string nickname, string password, string membershipType,bool premiunSongs,bool premiunVideo,List<Song> likedSongs,
-            List<Video> likedvideos,List<MediaFile> queue, int screenNumber,string name, string lastName, int age, string country,string city,string street, string postalCode)
+        private List<Playlist> likedPlaylist = new List<Playlist>();
+
+
+        public User(int userID, string gmail, string nickname, string password, string membershipType,  bool premiunSongs,  bool premiunVideo,  List<Song> likedSongs,
+            List<Video> likedvideos,  List<MediaFile> queue, int screenNumber,  string name, string lastName, int age, string country,  string city,  string street, string postalCode)
         {
             this.userID = userID;
             this.Gmail = gmail;
@@ -46,7 +48,6 @@ namespace Spotflix
         public int UserID { get => userID; set => userID = value; }
         public string Gmail { get => gmail; set => gmail = value; }
         public string Nickname { get => nickname; set => nickname = value; }
-        public string Password { get => password; set => password = value; }
         public string MembershipType { get => membershipType; set => membershipType = value; }
         public bool PremiunSongs { get => premiunSongs; set => premiunSongs = value; }
         public bool PremiunVideo { get => premiunVideo; set => premiunVideo = value; }
@@ -54,16 +55,75 @@ namespace Spotflix
         public List<Video> LikedVideos { get => likedVideos; set => likedVideos = value; }
         public List<MediaFile> Queue { get => queue; set => queue = value; }
         public int ScreenNumber { get => screenNumber; set => screenNumber = value; }
+        public List<Playlist> LikedPlaylist { get => likedPlaylist; set => likedPlaylist = value; }
 
-        public void AddToFavorite(MediaFile mediaFile)
+        public void AddToFavorite(Song song) //listo
         {
+            if (LikedSongs.Count() == 0)
+            {
+                LikedSongs.Append(song);
+            }
+            else
+            {
+                foreach (Song i in LikedSongs)
+                {
+                    if (song.Artist == i.Artist && song.Name == i.Name)
+                    {
 
+                    }
+                    else
+                    {
+                        LikedSongs.Append(song);
+                    }
+                }
+            }
         }
-        public Playlist FavoritePlaylist() 
+
+        public void AddToFavorite(Video video) // listo
+        {
+            if (LikedVideos.Count() == 0)
+            {
+                LikedVideos.Append(video);
+            }
+            else
+            {
+                foreach (Video i in LikedVideos)
+                {
+                    if (video.Actors == i.Actors && video.Name == i.Name)
+                    {
+
+                    }
+                    else
+                    {
+                        LikedVideos.Append(video);
+                    }
+                }
+            }
+        }
+
+
+        public Playlist FavoritePlaylist() //falta
         {
             throw new NotImplementedException();
         }
 
+        public void Follow()
+        {
+            MediaPlayer.Follow();
+        }
+        public void Close()
+        {
+            MediaPlayer.Close();
+        }
+        public void DownloadSong()
+        {
+            MediaPlayer.DownloadSong();
+        }
+        public void AddFile()
+        {
+            MediaPlayer.AddFile();
+        }
 
     }
+    
 }

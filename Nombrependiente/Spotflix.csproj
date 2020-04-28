@@ -46,7 +46,6 @@
     <Compile Include="Album.cs" />
     <Compile Include="IGo.cs" />
     <Compile Include="IOrderPlaylist.cs" />
-    <Compile Include="IPlay.cs" />
     <Compile Include="JustDance.cs" />
     <Compile Include="Karaoke.cs" />
     <Compile Include="Lesson.cs" />
