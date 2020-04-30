@@ -178,6 +178,14 @@ namespace Spotflix
         Console.WriteLine($"Se han encontrado {count} canciones de ese artista");
         return count;
     }
+
+    public Song Downnload(Song song) //Método no listo
+    {
+            
+        //client.DownloadFile("http://example.com/file/song/a.mpeg", "a.mpeg");
+        Console.WriteLine("Guardando canción");
+        return song;
+     }
     */
 
 }

@@ -1,4 +1,4 @@
-﻿namespace Nombrependiente
+﻿namespace Spotflix
 {
     partial class Form1
     {

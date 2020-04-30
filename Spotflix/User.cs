@@ -23,7 +23,7 @@ namespace Spotflix
 
 
         public User(int userID, string gmail, string nickname, string password, string membershipType,  bool premiunSongs,  bool premiunVideo,  List<Song> likedSongs,
-            List<Video> likedvideos,  List<MediaFile> queue, int screenNumber,  string name, string lastName, int age, string country,  string city,  string street, string postalCode)
+            List<Video> likedvideos,  List<MediaFile> queue, int screenNumber,  string name, string lastName, int age, string country,  string city,  string street, int postalCode)
         {
             this.userID = userID;
             this.Gmail = gmail;
@@ -119,11 +119,15 @@ namespace Spotflix
         {
             MediaPlayer.DownloadSong();
         }
-        public void AddFile()
+        public void AddFile(Song song)
+        {
+            MediaPlayer.AddFile();
+        }
+        public void AddFile(Video video)
         {
             MediaPlayer.AddFile();
         }
         */
     }
-    
+
 }

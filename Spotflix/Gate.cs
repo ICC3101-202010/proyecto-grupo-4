@@ -9,7 +9,7 @@ namespace Spotflix
     public class Gate
     {
         private static List<User> users = new List<User>();
-        private static List<Manager> managers = new List<Manager>();
+        private static List<Admin> managers = new List<Admin>();
         private static List<int> states = new List<int>(); //State es el segundo donde el usuario cuyo index corresponde al de su int quedo
         public static bool SingUser(User user)//listo
         {
@@ -34,14 +34,14 @@ namespace Spotflix
             users.Add(user);
             return true;
         }
-        public static bool SingAdmin(Manager manager) //Listo
+        public static bool SingAdmin(Admin manager) //Listo
         {
             if (managers.Count() == 0)
             {
                 managers.Append(manager);
                 return true;
             }
-            foreach (Manager manager_T in managers)
+            foreach (Admin manager_T in managers)
             {
                 if (manager_T.Code == manager.Code)
                 {
@@ -77,7 +77,7 @@ namespace Spotflix
                 Console.WriteLine("No hay ningun administrador registrado\n");
                 return false;
             }
-            foreach (Manager manager in managers)
+            foreach (Admin manager in managers)
             {
                 if (manager.Code == code && manager.Password == password)
                 {

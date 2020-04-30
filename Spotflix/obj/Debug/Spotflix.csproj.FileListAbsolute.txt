@@ -12,3 +12,17 @@ C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\Interop.W
 C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\AxInterop.WMPLib.dll
 C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Nombrependiente.exe
 C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Nombrependiente.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe.config
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.Form1.resources
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb

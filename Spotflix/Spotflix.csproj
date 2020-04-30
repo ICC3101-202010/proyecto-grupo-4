@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
     <Compile Include="Album.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -58,7 +59,6 @@
     <Compile Include="JustDance.cs" />
     <Compile Include="Karaoke.cs" />
     <Compile Include="Lesson.cs" />
-    <Compile Include="Manager.cs" />
     <Compile Include="MediaPlayer.cs" />
     <Compile Include="MediaFile.cs" />
     <Compile Include="Playlist.cs" />
@@ -67,6 +67,7 @@
     <Compile Include="Series.cs" />
     <Compile Include="Song.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Teacher.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Video.cs" />
   </ItemGroup>

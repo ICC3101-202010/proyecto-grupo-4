@@ -11,9 +11,9 @@ namespace Spotflix
         protected string artist;
         protected string album;
         protected bool expliciT;
-        protected int currentSecond;
 
-        public Song(string artist, string album, bool expliciT, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image)
+        //Constructor
+        public Song(string artist, string album, bool expliciT, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image, string route)
         {
             this.artist = artist;
             this.album = album;
@@ -33,44 +33,28 @@ namespace Spotflix
             this.quality = quality;
             this.dimension = dimension;
             this.image = image;
+            this.route = route;
         }
-        //Constructor
+
+        //Setters and getters
         public string Artist { get => artist; set => artist = value; }
         public string Album { get => album; set => album = value; }
         public bool ExpliciT { get => expliciT; set => expliciT = value; }
-        public int CurrentSecond { get => currentSecond; set => currentSecond = value; }
-        public int Length { get => length; set => length = value; }
-        public int FileSize { get => fileSize; set => fileSize = value; }
-        public string Name { get => name; set => name = value; }
-        public string Gender { get => gender; set => gender = value; }
-        public int Year { get => year; set => year = value; }
-        public string Category { get => category; set => category = value; }
-        public int NumberOfReproductions { get => numberOfReproductions; set => numberOfReproductions = value; }
-        public List<int> Rankings { get => rankings; set => rankings = value; }
-        public int MediaId { get => mediaId; set => mediaId = value; }
-        public string Relations { get => relations; set => relations = value; }
-        public List<int> Qualification { get => qualification; set => qualification = value; }
-        public string Quality { get => quality; set => quality = value; }
-        public string Dimension { get => dimension; set => dimension = value; }
-        public object Image { get => image; set => image = value; }
-        //Setters and getters
-        public Song Downnload(Song song)
-        {
-            Console.WriteLine("Guardando canción");
-            return song; 
-        }
 
-        public void Gofowards(int seconds)
+
+        //Métodos herdados de IGo
+
+        public void Gofowards(int seconds) //Método no listo
         {
             Console.WriteLine($"Adelantando la canción {seconds} segundos");
         }
 
-        public void GoBackwards(int seconds)
+        public void GoBackwards(int seconds) //Método no listo
         {
             Console.WriteLine($"Retrocediendo la canción {seconds} segundos");
         }
 
-        public void ChangeQuality(string quality)
+        public void ChangeQuality(string quality) //Método no listo
         {
             Console.WriteLine($"Cambiando la calidad de la canción a: {quality}");
         }

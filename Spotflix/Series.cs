@@ -6,39 +6,22 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    class Series_Videos:Video, IOrderPlaylist 
+    class Series
     {
         private int nofVideos;
+        private string serieName;
         private List<Video> videos = new List<Video>();
-        public Series_Videos(int nofVideos, List<Video> videos, List<string> actors, int ageFilter, string director, string synopsis, string studio, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image) : base(actors, ageFilter, director, synopsis, studio, currentSecond, length, fileSize, name, gender, year, category, numberOfReproductions, rankings, mediaId, relations, qualification, quality, dimension, image)
+        public Series(int nofVideos, List<Video> videos, string serieName )
         {
             this.nofVideos = nofVideos;
             this.videos = videos;
-            this.actors = actors;
-            this.ageFilter = ageFilter;
-            this.director = director;
-            this.synopsis = synopsis;
-            this.studio = studio;
-            this.currentSecond = currentSecond;
-            this.length = length;
-            this.fileSize = fileSize;
-            this.name = name;
-            this.gender = gender;
-            this.year = year;
-            this.category = category;
-            this.numberOfReproductions = numberOfReproductions;
-            this.rankings = rankings;
-            this.mediaId = mediaId;
-            this.relations = relations;
-            this.qualification = qualification;
-            this.quality = quality;
-            this.dimension = dimension;
-            this.image = image;
+            this.serieName = serieName;
         }
         public int NofVideos { get => nofVideos; set => nofVideos = value; }
         public List<Video> Episodes { get => videos; set => videos = value; }
+        public string SerieName { get => serieName; set => serieName = value; }
 
-        public void Add(Video video)
+        public void Add(Video video) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
         {
             int counter = 0;
             foreach (Video v in videos)
@@ -51,80 +34,26 @@ namespace Spotflix
             if (counter == 0)
             {
                 videos.Add(video);
-                Console.WriteLine($"Se ha agregado el video {video.Name}");
+                Console.WriteLine($"Se ha agregado el video {video.Name} a la serie {serieName}");
             }
             else
             {
-                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarlo de todas formas?\nOpción 1: Sí\nOpción 2: No");
+                Console.WriteLine("El video ya es parte de la serie. ¿Desea agregarlo de todas formas?\nOpción 1: Sí\nOpción 2: No");
                 string answer = Console.ReadLine();
                 if (answer == "1" || answer == "Sí") videos.Add(video);
             }
         }
 
-        public void Delete(Video video)
+        public void Delete(Video video) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
         {
             foreach (Video v in videos)
             {
                 if (v == video)
                 {
                     videos.Remove(video);
-                    Console.WriteLine($"Se ha eliminado la canción {video.Name}");
+                    Console.WriteLine($"Se ha eliminado el video {video.Name} de la serie {serieName}");
                 }
             }
         }
-
-        public void OrderAlphabet(bool up)
-        {
-            List<string> names = new List<string>();
-            List<Video> newVideos = new List<Video>();
-            foreach (Video video in videos)
-            {
-                names.Add(video.Name);
-            }
-            names.Sort();
-
-            foreach (Video video in videos)
-            {
-                foreach (string name in names)
-                {
-                    if (video.Name == name)
-                    {
-                        newVideos.Add(video);
-                    }
-                }
-            }
-            videos = newVideos;
-            Console.WriteLine("Videos ordenados de forma correcta según su nombre.");
-        }
-
-        public void OrderByLength(bool up)
-        {
-            List<int> lenghts = new List<int>();
-            List<Video> newVideos = new List<Video>();
-            foreach (Video video in videos)
-            {
-                lenghts.Add(video.Length);
-            }
-            lenghts.Sort();
-
-            foreach (Video video in videos)
-            {
-                foreach (int lenght in lenghts)
-                {
-                    if (video.Length == lenght)
-                    {
-                        newVideos.Add(video);
-                    }
-                }
-            }
-            videos = newVideos;
-        }
-
-        public void OrderByDate(bool up) //Falta hacer este método
-        {
-            //Dictionary<int,Video> newEpisodes = new Dictionary<int,Video>();
-            Console.WriteLine("Ordenando de acuerdo a los parámetros entregados");
-        }
-
     }
 }

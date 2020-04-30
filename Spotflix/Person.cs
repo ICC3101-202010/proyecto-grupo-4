@@ -9,23 +9,23 @@ namespace Spotflix
 {
     public abstract class Person
     {
-        private string name;
-        private string lastname;
-        private int age;
-        private string country;
-        private string city;
-        private string street;
-        private string postalCode;//Compuesto de ints
-        private string password;
+        protected string name;
+        protected string lastname;
+        protected int age;
+        protected string country;
+        protected string city;
+        protected string street;
+        protected int postalCode;
+        protected string password;
 
         public string Password { get => password; set => password = value; }
-        protected string Name { get => name; set => name = value; }
-        protected string Lastname { get => lastname; set => lastname = value; }
-        protected int Age { get => age; set => age = value; }
-        protected string Country { get => country; set => country = value; }
-        protected string City { get => city; set => city = value; }
-        protected string Street { get => street; set => street = value; }
-        protected string PostalCode { get => postalCode; set => postalCode = value; }
+        public string Name { get => name; set => name = value; }
+        public string Lastname { get => lastname; set => lastname = value; }
+        public int Age { get => age; set => age = value; }
+        public string Country { get => country; set => country = value; }
+        public string City { get => city; set => city = value; }
+        public string Street { get => street; set => street = value; }
+        public int PostalCode { get => postalCode; set => postalCode = value; }
 
 
         protected virtual void AddImage() { }//Pendiente
