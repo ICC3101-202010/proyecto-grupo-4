@@ -73,12 +73,7 @@ namespace Spotflix
             }
         }
 
-        public void Next() //Falta hacer este método
-        {
-            Console.WriteLine("Pasando al siguiente video");
-        }
-
-        public void OrderAlphabet()
+        public void OrderAlphabet(bool up)
         {
             List<string> names = new List<string>();
             List<Video> newVideos = new List<Video>();
@@ -102,7 +97,7 @@ namespace Spotflix
             Console.WriteLine("Videos ordenados de forma correcta según su nombre.");
         }
 
-        public void OrderByLength()
+        public void OrderByLength(bool up)
         {
             List<int> lenghts = new List<int>();
             List<Video> newVideos = new List<Video>();
@@ -125,15 +120,11 @@ namespace Spotflix
             videos = newVideos;
         }
 
-        public void OrderPlaylist(MediaFile mediaFile, int position) //Falta hacer este método
+        public void OrderByDate(bool up) //Falta hacer este método
         {
             //Dictionary<int,Video> newEpisodes = new Dictionary<int,Video>();
             Console.WriteLine("Ordenando de acuerdo a los parámetros entregados");
         }
 
-        public void Previous() //Falta hacer este método
-        {
-            Console.WriteLine("Pasando al video anterior");
-        }
     }
 }

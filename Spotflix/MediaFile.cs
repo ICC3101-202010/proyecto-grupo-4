@@ -22,6 +22,9 @@ namespace Spotflix
         protected List<int> qualification = new List<int>();
         protected string quality;
         protected string dimension;
-        protected object image; 
+        protected object image;
+        protected string route;
+
+        public string Route { get => route; set => route = value; }
     }
 }

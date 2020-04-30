@@ -8,10 +8,9 @@ namespace Spotflix
 {
     interface IOrderPlaylist
     {
-        void OrderPlaylist(MediaFile mediaFile, int position);
-        void OrderByLength();
-        void OrderAlphabet();
-        void Next();
-        void Previous(); 
+        void OrderByDate(bool up);
+        void OrderByLength(bool up);
+        void OrderAlphabet(bool up);
+
     }
 }

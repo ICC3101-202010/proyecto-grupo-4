@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Spotflix
 {
@@ -11,114 +12,29 @@ namespace Spotflix
         private static List<Song> songs = new List<Song>();
         private static List<Video> videos = new List<Video>();
         private static List<Lesson> lessons = new List<Lesson>();
-        private static List<User> users = new List<User>();
-        private static List<Manager> managers = new List<Manager>();
-        private static List<int> states = new List<int>(); //State es el segundo donde el usuario cuyo index corresponde al de su int quedo
-        public static List<Song> Songs { get => songs; set => songs = value; }
-        public static List<Video> Videos { get => videos; set => videos = value; }
-        public static List<Lesson> Lessons { get => lessons; set => lessons = value; }
-        public static List<User> Users { get => users; set => users = value; }
-        public static List<Manager> Managers { get => managers; set => managers = value; }
-        public static List<int> States { get => states; set => states = value; }
+        private static SoundPlayer player = new SoundPlayer();
 
-        public static bool SingUser(User user)//listo
+        public static void play(MediaFile mediaFile)
         {
-            if (users.Count() == 0)
-            {
-                users.Append(user);
-                return true;
-            }
-            foreach (User user_T in Users)
-            {
-                if (user_T.Nickname == user.Nickname)
-                {
-                    Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", user.Nickname);
-                    return false;
-                }
-                else if (user_T.Gmail == user.Gmail)
-                {
-                    Console.WriteLine("El Email {0} ya esta en uso\n", user.Gmail);
-                    return false;
-                }
-            }
-            users.Add(user);
-            return true;
-        }
-        public static bool SingAdmin(Manager manager) //Listo
-        {
-            if (managers.Count()==0)
-            {
-                managers.Append(manager);
-                return true;
-            }
-            foreach (Manager manager_T in managers)
-            {
-                if (manager_T.Code == manager.Code)
-                {
-                    Console.WriteLine("El Administrador con este codigo ya existe\n");
-                    return false;
-                }
-            }
-            managers.Add(manager);
-            return true;
             
-        }
-        public static bool LogAsUser(string email_nickname, string password) //listo
-        {
-            if (users.Count()==0)
-            {
-                Console.WriteLine("No existen usuarios registrados\n");
-                return false;
-            }
-            foreach (User user in Users)
-            {
-                if ((user.Nickname==email_nickname||user.Gmail==email_nickname) && user.Password==password)
-                {
-                    return true;
-                }
-            }
-            Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
-            return false;
-        }
-        public static bool LogAsAdmin(int code, string password) //listo
-        {
-            if (managers.Count()==0)
-            {
-                Console.WriteLine("No hay ningun administrador registrado\n");
-                return false;
-            }
-            foreach (Manager manager in managers)
-            {
-                if (manager.Code==code&&manager.Password==password)
-                {
-                    return true;
-                }
-            }
-            Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
-            return false;
-        }
-        public static void SaveInfo() //Pendiente
-        {
-            Console.WriteLine("Este metodo se supone que guarda el tiempo en el que el usuario cerro (Deberia escuchar a un evento de close)\n");
-        }
-        public static void Loadinfo() //Pendiente
-        {
-            Console.WriteLine("Este metodo se supone que carga el tiempo donde el usuario termino cerrando la cancion/video (Deberia escuchar a un evento de Log in as User)\n");
         }
         public static void CreateRecommendedList()
         {
             Console.WriteLine("Metodo muy dificil pa pensarlo ahora\n");
         }
 
-        public static void Play(Song song)
+        public static void Play()
         {
-            foreach (Song song_T in songs)
+            Console.WriteLine("Este metodo reproduce una cancion\n");
+            player.SoundLocation = @"C:\Users\jick\Music\Listas de reproducción\Ed Sheeran - Stay With Me";
+            player.PlaySync();
+            /*foreach (Song song_T in songs)
             {
                 if (song.MediaId == song_T.MediaId)
                 {
                     Console.WriteLine("Este metodo reproduce una cancion\n");
                 }
-            }  
+            }  */
         }
         public static void Play(Video video)
         {
@@ -127,6 +43,7 @@ namespace Spotflix
                 if (video.MediaId == video_T.MediaId)
                 {
                     Console.WriteLine("Este metodo reproduce un video\n");
+                    
                 }
             }
         }
@@ -222,7 +139,7 @@ namespace Spotflix
             throw new NotImplementedException();
         }
 
-        public static void Follow(MediaPlayer mediaplayer)
+        public static void Follow()
         {
             throw new NotImplementedException();
         }

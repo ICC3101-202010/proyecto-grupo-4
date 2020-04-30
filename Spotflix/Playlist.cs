@@ -83,7 +83,7 @@ namespace Spotflix
             Console.WriteLine("Pasando a la siguiente canción");
         }
 
-        public void OrderAlphabet()        
+        public void OrderAlphabet(bool up)        
         {
             List<string> names = new List<string>();
             List<Song> newSongs = new List<Song>();
@@ -107,7 +107,7 @@ namespace Spotflix
             Console.WriteLine("Se ha ordenado su playlist de acuerdo a los nombres de las canciones");
         }
 
-        public void OrderByLength()
+        public void OrderByLength(bool up)
         {
             List<int> lenghts = new List<int>();
             List<Song> newSongs = new List<Song>();
@@ -131,7 +131,7 @@ namespace Spotflix
             Console.WriteLine("Se ha ordenado su playlist de acuerdo al largo de las canciones");
         }
 
-        public void OrderPlaylist(MediaFile mediaFile, int posicion)//Falta hacer este método
+        public void OrderByDate(bool up)//Falta hacer este método
         {
             //Dictionary<int,Song> newEpisodes = new Dictionary<int,Song>();
             Console.WriteLine("Ordenando de acuerdo a los parámetros entregados");

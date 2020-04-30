@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    class JustDance : Video, IOrderPlaylist
+    class Karaoke : Video, IOrderPlaylist
     {
         private int nofVideos;
         private List<Video> episodes = new List<Video>();
-
-        public JustDance(int nofVideos, List<Video> episodes, List<string> actors, int ageFilter, string director, string synopsis, string studio, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image) : base(actors, ageFilter, director, synopsis, studio, currentSecond, length, fileSize, name, gender, year, category, numberOfReproductions, rankings, mediaId, relations, qualification, quality, dimension, image)
+        public Karaoke(int nofVideos, List<Video> episodes, List<string> actors, int ageFilter, string director, string synopsis, string studio, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image) : base(actors, ageFilter, director, synopsis, studio, currentSecond, length, fileSize, name, gender, year, category, numberOfReproductions, rankings, mediaId, relations, qualification, quality, dimension, image)
         {
             this.nofVideos = nofVideos;
-            this.episodes  =  episodes;
+            this.episodes = episodes;
             this.actors = actors;
             this.ageFilter = ageFilter;
             this.director = director;
@@ -36,6 +35,7 @@ namespace Spotflix
             this.dimension = dimension;
             this.image = image;
         }
+
         public int NofVideos { get => nofVideos; set => nofVideos = value; }
         public List<Video> Episodes { get => episodes; set => episodes = value; }
 
@@ -44,7 +44,7 @@ namespace Spotflix
             Console.WriteLine("Pasando al siguiente video");
         }
 
-        public void OrderAlphabet()
+        public void OrderAlphabet(bool up)
         {
             List<string> names = new List<string>();
             List<Video> newEpisodes = new List<Video>();
@@ -64,11 +64,11 @@ namespace Spotflix
                     }
                 }
             }
-            episodes = newEpisodes;
+            episodes=newEpisodes;
             Console.WriteLine("Videos de karaoke ordenados de forma correcta según su nombre.");
         }
 
-        public void OrderByLength()
+        public void OrderByLength(bool up)
         {
             List<int> lenghts = new List<int>();
             List<Video> newEpisodes = new List<Video>();
@@ -91,7 +91,7 @@ namespace Spotflix
             episodes = newEpisodes;
         }
 
-        public void OrderPlaylist(MediaFile mediaFile, int position) //Falta hacer este método
+        public void OrderByDate(bool up) //Falta hacer este método
         {
             //Dictionary<int,Video> newEpisodes = new Dictionary<int,Video>();
             Console.WriteLine("Ordenando de acuerdo a los parámetros entregados");
@@ -101,6 +101,5 @@ namespace Spotflix
         {
             Console.WriteLine("Pasando al video anterior");
         }
-
     }
 }

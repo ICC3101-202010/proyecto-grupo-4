@@ -1,0 +1,14 @@
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Nombrependiente.Form1.resources
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\Nombrependiente.exe.config
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\Nombrependiente.exe
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\Nombrependiente.pdb
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Nombrependiente.exe
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Nombrependiente\obj\Debug\Nombrependiente.pdb

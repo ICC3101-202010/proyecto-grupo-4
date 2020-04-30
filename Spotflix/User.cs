@@ -111,7 +111,7 @@ namespace Spotflix
         {
             MediaPlayer.Follow();
         }
-        public void Close()
+        /*public void Close()
         {
             MediaPlayer.Close();
         }
@@ -123,7 +123,7 @@ namespace Spotflix
         {
             MediaPlayer.AddFile();
         }
-
+        */
     }
     
 }
