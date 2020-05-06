@@ -12,7 +12,8 @@ namespace Spotflix
         private static List<Song> songs = new List<Song>();
         private static List<Video> videos = new List<Video>();
         private static List<Lesson> lessons = new List<Lesson>();
-        private static SoundPlayer player = new SoundPlayer();
+        private static List<Playlist> playlists = new List<Playlist>();
+        private static List<Series> series = new List<Series>();
 
         public static void play(MediaFile mediaFile)
         {
@@ -23,31 +24,16 @@ namespace Spotflix
             Console.WriteLine("Metodo muy dificil pa pensarlo ahora\n");
         }
 
-        public static void Play()
+        public static void Play(Song song)
         {
-            Console.WriteLine("Este metodo reproduce una cancion\n");
-            player.SoundLocation = @"C:\Users\jick\Music\Listas de reproducción\Ed Sheeran - Stay With Me";
-            player.PlaySync();
-            /*foreach (Song song_T in songs)
-            {
-                if (song.MediaId == song_T.MediaId)
-                {
-                    Console.WriteLine("Este metodo reproduce una cancion\n");
-                }
-            }  */
+            System.Diagnostics.Process.Start(song.Route);
         }
         public static void Play(Video video)
         {
-            foreach (Video video_T in videos)
-            {
-                if (video.MediaId == video_T.MediaId)
-                {
-                    Console.WriteLine("Este metodo reproduce un video\n");
-                    
-                }
-            }
+            System.Diagnostics.Process.Start(video.Route);
         }
 
+        //Pendiente
         public static void Stop(Song song)
         {
             foreach (Song song_T in songs)
@@ -59,7 +45,7 @@ namespace Spotflix
             }
             
         }
-
+        //Pendiente
         public static void Stop(Video video)
         {
             foreach (Video video_T in videos)
@@ -71,6 +57,7 @@ namespace Spotflix
             }
             
         }
+        //Pendiente
         public static void Pause(Song song)
         {
             foreach (Song song_T in songs)
@@ -81,6 +68,7 @@ namespace Spotflix
                 }
             }
         }
+        //Pendiente
         public static void Pause(Video video)
         {
             foreach (Video video_T in videos)

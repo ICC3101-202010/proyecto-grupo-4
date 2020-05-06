@@ -42,8 +42,7 @@ namespace Spotflix
         public bool ExpliciT { get => expliciT; set => expliciT = value; }
 
 
-        //Métodos herdados de IGo
-
+        //Métodos herdados de IGo 
         public void Gofowards(int seconds) //Método no listo
         {
             Console.WriteLine($"Adelantando la canción {seconds} segundos");

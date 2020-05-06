@@ -16,14 +16,19 @@ namespace Spotflix
 
 
 
-        public Playlist(int numberSongs, List<Song> songs, int numberVideos, List<Video> videos, string playlistName) 
+        public Playlist(int numberSongs, List<Song> songs, string playlistName) 
         {
             this.numberSongs  =  numberSongs;
             this.songs = songs;
+            this.playlistName = playlistName;
+        }
+        public Playlist(int numberVideos, List<Video> videos, string playlistName)
+        {
             this.numberVideos = numberVideos;
             this.videos = videos;
             this.playlistName = playlistName;
         }
+
 
         public int NumberSongs { get => numberSongs; set => numberSongs = value; }
         public List<Song> Songs { get => songs; set => songs = value; }

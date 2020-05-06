@@ -42,5 +42,6 @@ namespace Spotflix
         public string Quality { get => quality; set => quality = value; }
         public string Dimension { get => dimension; set => dimension = value; }
         public object Image { get => image; set => image = value; }
+        
     }
 }

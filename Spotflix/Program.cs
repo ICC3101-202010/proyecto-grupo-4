@@ -10,7 +10,7 @@ namespace Spotflix
     {
         static void Main(string[] args)
         {
-            MediaPlayer.Play();
+           
         }
     }
 }
