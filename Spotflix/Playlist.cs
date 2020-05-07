@@ -8,31 +8,25 @@ namespace Spotflix
 {
     public class Playlist : IOrderPlaylist
     {
-        private int numberSongs;
         List<Song> songs = new List<Song>();
-        private int numberVideos;
         List<Video> videos = new List<Video>();
         private string playlistName;
 
 
 
-        public Playlist(int numberSongs, List<Song> songs, string playlistName) 
+        public Playlist(List<Song> songs, string playlistName) 
         {
-            this.numberSongs  =  numberSongs;
             this.songs = songs;
             this.playlistName = playlistName;
         }
-        public Playlist(int numberVideos, List<Video> videos, string playlistName)
+        public Playlist(List<Video> videos, string playlistName)
         {
-            this.numberVideos = numberVideos;
             this.videos = videos;
             this.playlistName = playlistName;
         }
 
 
-        public int NumberSongs { get => numberSongs; set => numberSongs = value; }
         public List<Song> Songs { get => songs; set => songs = value; }
-        public int NumberVideos { get => numberVideos; set => numberVideos = value; }
         public List<Video> Videos { get => videos; set => videos = value; }
         public string PlaylistName { get => playlistName; set => playlistName = value; }
 

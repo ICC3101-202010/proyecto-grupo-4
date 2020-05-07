@@ -89,12 +89,108 @@ namespace Spotflix
 
         public static void CreatePlaylist(List<Song> songs)
         {
-            throw new NotImplementedException();
+            List<Song> tempsongs = new List<Song>();
+            bool checker = true;
+            foreach (Song song in songs)
+            {
+                Console.WriteLine("{0}: {1}\n",songs.IndexOf(song)+1,song.Name);
+            }
+            while (checker)
+            {
+                Console.WriteLine("Seleccione las canciones que desea anadir en el siguiente formato: 1,2,3,4,5\n Ingrese 0 para dejar de añadir canciones\n");
+                string aux = Console.ReadLine();
+                string[] words = aux.Split(',');
+                if (aux=="0")
+                {
+                    checker = false;
+                    if (tempsongs.Count()!=0)
+                    {
+                        Console.WriteLine("Que nombre tendra la playlist?\n");
+                        string name = Console.ReadLine();
+                        playlists.Add(new Playlist(tempsongs, name));
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se selecciono ninguna cancion, no se creara la playlist\n");
+                        break;
+                    }
+                }
+                if (((aux.Length + 1) / 2) != words.Length)
+                {
+                    int index = 0;
+                    foreach (String letter in words)
+                    {
+                        try
+                        {
+                            index=Int32.Parse(letter);
+                            index++;
+                            tempsongs.Add(songs[index]);
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Formato invalido");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Formato invalido");
+                }
+            }
         }
 
         public static void CreatePlaylist(List<Video> videos)
         {
-            throw new NotImplementedException();
+            List<Video> tempvideo = new List<Video>();
+            bool checker = true;
+            foreach (Video video in videos)
+            {
+                Console.WriteLine("{0}: {1}\n", videos.IndexOf(video) + 1, video.Name);
+            }
+            while (checker)
+            {
+                Console.WriteLine("Seleccione los videos que desea anadir en el siguiente formato: 1,2,3,4,5\n Ingrese 0 para dejar de añadir videos\n");
+                string aux = Console.ReadLine();
+                string[] words = aux.Split(',');
+                if (aux == "0")
+                {
+                    checker = false;
+                    if (tempvideo.Count() != 0)
+                    {
+                        Console.WriteLine("Que nombre tendra la playlist?\n");
+                        string name = Console.ReadLine();
+                        playlists.Add(new Playlist(tempvideo, name));
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se selecciono ninguna cancion, no se creara la playlist\n");
+                        break;
+                    }
+                }
+                if (((aux.Length + 1) / 2) != words.Length)
+                {
+                    int index = 0;
+                    foreach (String letter in words)
+                    {
+                        try
+                        {
+                            index = Int32.Parse(letter);
+                            index++;
+                            tempvideo.Add(videos[index]);
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Formato invalido");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Formato invalido");
+                }
+            }
         }
 
         public static void AddToQueue(MediaFile mediafile)
