@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using System.Runtime.InteropServices;
 
 namespace Spotflix
 {
@@ -80,13 +81,41 @@ namespace Spotflix
             }
         }
 
-
-
-        public static MediaFile Search(List<string> filters, bool condition)
+        /*public static MediaFile Search(string filter)
         {
-            throw new NotImplementedException();
-        }
+            string switcher = "0";
+            string stopper = "7";
+            while (switcher!=stopper)
+            {
+                Console.WriteLine("Desea buscar por:\n\t(1)Videos\n\t(2)Canciones\n\t(3)Series\n\t(4)Playlist\n\t(5)salir de la busqueda\n");
+                switcher = Console.ReadLine();
+                string[] aux=filter.Split(' ');
+                switch (switcher)
+                {
+                    case "1":
+                        foreach (Video video in videos)
+                        {
+                            if (video.)
+                            {
 
+                            }
+                        }
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+        }
+        */
         public static void CreatePlaylist(List<Song> songs)
         {
             List<Song> tempsongs = new List<Song>();

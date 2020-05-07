@@ -17,7 +17,6 @@ namespace Spotflix
         private bool premiunVideo;
         private List<Song> likedSongs = new List<Song>();
         private List<Video> likedVideos = new List<Video>();
-        private List<MediaFile> queue = new List<MediaFile>();
         private int screenNumber;
         private List<Playlist> likedPlaylist = new List<Playlist>();
 
@@ -46,7 +45,6 @@ namespace Spotflix
         public bool PremiunVideo { get => premiunVideo; set => premiunVideo = value; }
         public List<Song> LikedSongs { get => likedSongs; set => likedSongs = value; }
         public List<Video> LikedVideos { get => likedVideos; set => likedVideos = value; }
-        public List<MediaFile> Queue { get => queue; set => queue = value; }
         public int ScreenNumber { get => screenNumber; set => screenNumber = value; }
         public List<Playlist> LikedPlaylist { get => likedPlaylist; set => likedPlaylist = value; }
 
