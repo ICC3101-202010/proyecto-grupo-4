@@ -59,7 +59,16 @@ namespace Spotflix
                         int code = rnds.Next(10000, 100000);
                         Admin a1 = new Admin(code);
                         Gate.SingAdmin(a1);
+                        Console.WriteLine("Desea tener un curso sobre alguna materia?\n");
+                        string mat = Console.ReadLine();
+                        if (mat.ToLower() == "si")
+                        {
+                            Console.WriteLine("Diga el nombre del curso\n");
+                            string cur = Console.ReadLine();
+                            Teacher t1 = new Teacher(code, cur, a, b, c, d, e, f, g, h);
+                        }
                     }
+
                 }
                 if (answer.ToLower() == "b")
                 {
