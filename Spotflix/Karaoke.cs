@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    class Karaoke
+    class Karaoke : Song
     {
         private int nofVideos;
         private List<Video> videos = new List<Video>();
 
-        public Karaoke(int nofVideos, List<Video> videos)
+
+        public Karaoke(int nofVideos, List<Video> videos,string artist, string album, bool expliciT, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image, string route) : base(artist, album, expliciT, currentSecond, length, fileSize, name, gender, year, category, numberOfReproductions, rankings, mediaId, relations, qualification, quality, dimension, image, route)
         {
             this.nofVideos = nofVideos;
             this.videos = videos;
         }
+
         public void Add(Video video) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
         {
             int counter = 0;

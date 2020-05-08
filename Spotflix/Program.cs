@@ -8,38 +8,45 @@ namespace Spotflix
 {
     public class Program
     {
-        static void Main(string[] args)
-        {         
-            while (true)
+        static void Main(string[] args)     
+        {
+            string switcher = "0";
+            string stopper = "7";
+
+            while (switcher != stopper)
             {
+                Console.WriteLine("Si desea:\n\t(1)Registrarse\n\t(2)Iniciar Sesion\n\t(5)salir de la busqueda\n");
+                switcher = Console.ReadLine();
                 Console.WriteLine("\nSi desdea registrarse presione a\n");
                 Console.WriteLine("Si desea iniciar sesion presione b\n");
-
-                Console.WriteLine("\nSi desea cerrar el programa presione z\n");
-                string answer = Console.ReadLine();
-
-                if (answer.ToLower()=="a")
+                switch (switcher)
                 {
-                    Console.WriteLine("\nIngrese su nombre\n ");
-                    string a = Console.ReadLine();
-                    Console.WriteLine("\nIngrese su apellido\n ");
-                    string b = Console.ReadLine();
-                    Console.WriteLine("\nIngrese su edad\n ");
-                    string C = Console.ReadLine();
-                    int c = Convert.ToInt32(C);
-                    Console.WriteLine("\nIngrese su pais de origen\n ");
-                    string d = Console.ReadLine();
-                    Console.WriteLine("\nIngrese su ciudad de origen\n ");
-                    string e = Console.ReadLine();
-                    Console.WriteLine("\nIngrese su calle\n ");
-                    string f = Console.ReadLine();
-                    Console.WriteLine("\nIngrese su código postal\n ");
-                    string G = Console.ReadLine();
-                    int g = Convert.ToInt32(G);
-                    Console.WriteLine("\nIngrese su contraseña\n ");
-                    string h = Console.ReadLine();
-                    Console.WriteLine("\n¿Desea ser user o admin?\n");
-                    string res = Console.ReadLine();
+
+                    Console.WriteLine("\nSi desea cerrar el programa presione z\n");
+                    string answer = Console.ReadLine();
+
+                    if (answer.ToLower() == "a")
+                    {
+                        Console.WriteLine("\nIngrese su nombre\n ");
+                        string a = Console.ReadLine();
+                        Console.WriteLine("\nIngrese su apellido\n ");
+                        string b = Console.ReadLine();
+                        Console.WriteLine("\nIngrese su edad\n ");
+                        string C = Console.ReadLine();
+                        int c = Convert.ToInt32(C);
+                        Console.WriteLine("\nIngrese su pais de origen\n ");
+                        string d = Console.ReadLine();
+                        Console.WriteLine("\nIngrese su ciudad de origen\n ");
+                        string e = Console.ReadLine();
+                        Console.WriteLine("\nIngrese su calle\n ");
+                        string f = Console.ReadLine();
+                        Console.WriteLine("\nIngrese su código postal\n ");
+                        string G = Console.ReadLine();
+                        int g = Convert.ToInt32(G);
+                        Console.WriteLine("\nIngrese su contraseña\n ");
+                        string h = Console.ReadLine();
+                        Console.WriteLine("\n¿Desea ser user o admin?\n");
+                        string res = Console.ReadLine();
                     if (res.ToLower() == "user")
                     {
                         Console.WriteLine("\nIngrese su Gmail\n");
@@ -49,7 +56,7 @@ namespace Spotflix
                         Console.WriteLine("\n¿Desea utilizar el programa gratiuto o pagado?\n");
                         string member = Console.ReadLine();
                         Random rnds = new Random();
-                        int nume = rnds.Next(1,1000);
+                        int nume = rnds.Next(1, 1000);
                         User u1 = new User(nume, gm, nic, h, member, a, b, c, d, e, f, g);
                         Gate.SingUser(u1);
                     }
@@ -69,34 +76,40 @@ namespace Spotflix
                         }
                     }
 
-                }
-                if (answer.ToLower() == "b")
-                {
-                    Console.WriteLine("Si es admin ingrese ad, si es user ingrese us\n");
-                    string o = Console.ReadLine();
-                    if (o.ToLower() == "us")
-                    {
-                        Console.WriteLine("Ingrese su nombre de usuario o Gmail\n");
-                        string n = Console.ReadLine();
-                        Console.WriteLine("Ingrese su contraseña\n");
-                        string p = Console.ReadLine();
-                        Gate.LogAsUser(n, p);
-                    }
-                    if (o.ToLower() == "ad")
-                    {
-                        Console.WriteLine("Ingrese su codigo de admin\n");
-                        string NN = Console.ReadLine();
-                        int nn = Convert.ToInt32(NN);
-                        Console.WriteLine("Ingrese su contraseña\n");
-                        string pp = Console.ReadLine();
-                        Gate.LogAsAdmin(nn, pp);
-                    }
-                }
 
-                if (answer.ToLower()=="z")
-                {
-                    break;
+                    if (answer.ToLower() == "b")
+                    {
+                        Console.WriteLine("Si es admin ingrese ad, si es user ingrese us\n");
+                        string o = Console.ReadLine();
+                        if (o.ToLower() == "us")
+                        {
+                            Console.WriteLine("Ingrese su nombre de usuario o Gmail\n");
+                            string n = Console.ReadLine();
+                            Console.WriteLine("Ingrese su contraseña\n");
+                            string p = Console.ReadLine();
+                            Gate.LogAsUser(n, p);
+                        }
+                        if (o.ToLower() == "ad")
+                        {
+                            Console.WriteLine("Ingrese su codigo de admin\n");
+                            string NN = Console.ReadLine();
+                            int nn = Convert.ToInt32(NN);
+                            Console.WriteLine("Ingrese su contraseña\n");
+                            string pp = Console.ReadLine();
+                            Gate.LogAsAdmin(nn, pp);
+                        }
+
+
+                        if (answer.ToLower() == "z")
+                        {
+                            finn = false;
+                        }
+
+                    }
+
                 }
+            
+            
             }
         }
     }

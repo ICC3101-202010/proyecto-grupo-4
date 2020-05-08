@@ -16,6 +16,8 @@ namespace Spotflix
         private static List<Playlist> playlists = new List<Playlist>();
         private static List<Series> series = new List<Series>();
 
+        public static List<Song> Songs { get => songs; set => songs = value; }
+
         public static void play(MediaFile mediaFile)
         {
             
@@ -27,7 +29,7 @@ namespace Spotflix
 
         public static void Play(Song song)
         {
-            System.Diagnostics.Process.Start(song.Route);
+           System.Diagnostics.Process.Start(song.Route);
         }
         public static void Play(Video video)
         {
@@ -37,7 +39,7 @@ namespace Spotflix
         //Pendiente
         public static void Stop(Song song)
         {
-            foreach (Song song_T in songs)
+            foreach (Song song_T in Songs)
             {
                 if (song.MediaId == song_T.MediaId)
                 {
@@ -61,7 +63,7 @@ namespace Spotflix
         //Pendiente
         public static void Pause(Song song)
         {
-            foreach (Song song_T in songs)
+            foreach (Song song_T in Songs)
             {
                 if (song.MediaId == song_T.MediaId)
                 {
@@ -80,8 +82,8 @@ namespace Spotflix
                 }
             }
         }
-
-        /*public static MediaFile Search(string filter)
+        /*
+        public static MediaFile Search(string filter)
         {
             string switcher = "0";
             string stopper = "7";
@@ -95,10 +97,7 @@ namespace Spotflix
                     case "1":
                         foreach (Video video in videos)
                         {
-                            if (video.)
-                            {
 
-                            }
                         }
                         break;
                     case "2":
@@ -108,8 +107,9 @@ namespace Spotflix
                     case "4":
                         break;
                     case "5":
-                        break;
+                        break;           
                     default:
+                        Console.WriteLine("Ingrese una opcion valida");
                         break;
                 }
             }

@@ -50,7 +50,6 @@
     <Compile Include="Gate.cs" />
     <Compile Include="IGo.cs" />
     <Compile Include="IOrderPlaylist.cs" />
-    <Compile Include="JustDance.cs" />
     <Compile Include="Karaoke.cs" />
     <Compile Include="Lesson.cs" />
     <Compile Include="MediaPlayer.cs" />

@@ -102,6 +102,7 @@ namespace Spotflix
         {
             MediaPlayer.Follow();
         }
+
         /*public void Close()
         {
             MediaPlayer.Close();

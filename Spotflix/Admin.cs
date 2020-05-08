@@ -12,12 +12,17 @@ namespace Spotflix
     {
 
         private int code;
-        public void Import(MediaFile mediafile) { } 
-        public void Remove(MediaFile mediafile) { }
 
         public Admin(int code) { this.code = code; }
         public int Code { get => code; set => code = value; }
+        public void Import(Song song) 
+        {
+            foreach(Song i in MediaPlayer.Songs)
+        } 
+        public void Remove(MediaFile mediafile) 
+        {
 
+        }
 
     }
 }
