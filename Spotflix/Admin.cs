@@ -18,8 +18,8 @@ namespace Spotflix
 
         public Admin(int code) { this.code = code; }
         public int Code { get => code; set => code = value; }
-        private IWavePlayer waveOut;
-        private Mp3FileReader mp3FileReader;
+        //private IWavePlayer waveOut;
+        //private Mp3FileReader mp3FileReader;
 
         /*
         private IWavePlayer waveOut;
@@ -43,8 +43,8 @@ namespace Spotflix
         public Admin()
         {
             //aqui deberiamos poder guardar la cancion, esto es de prueba, no funciona
-            InitializeComponent();
-            music.URL = "musica.mp3";
+            //InitializeComponent();
+            //music.URL = "musica.mp3";
         }
 
 
@@ -57,13 +57,13 @@ namespace Spotflix
             }
             foreach (Song i in mediaPlayer.Songs)
             {
-                if (i.name == song.name && i.artist == song.artist)
+                if (i.Name == song.Name && i.Artist == song.Artist)
                 {
                     Console.WriteLine("Esa cancion ya existe\n");
                 }
                 else
                 {
-                    mediaPlayer.Song.Append(song);
+                    mediaPlayer.Songs.Append(song);
                 }
 
             }
@@ -77,13 +77,13 @@ namespace Spotflix
             }
             foreach (Video i in mediaPlayer.Videos)
             {
-                if (i.name == video.name && i.director == video.director)
+                if (i.Name == video.Name && i.Director == video.Director)
                 {
                     Console.WriteLine("Ese video ya existe\n");
                 }
                 else
                 {
-                    mediaPlayer.Video.Append(video);
+                    mediaPlayer.Videos.Append(video);
                 }
 
             }
@@ -97,9 +97,9 @@ namespace Spotflix
             }
             foreach (Song i in mediaPlayer.Songs)
             {
-                if (i.name == song.name && i.artist == song.artist)
+                if (i.Name == song.Name && i.Artist == song.Artist)
                 {
-                    mediaPlayer.Song.Remove(song);                    
+                    mediaPlayer.Songs.Remove(song);                    
                 }
                 else
                 {
@@ -116,9 +116,9 @@ namespace Spotflix
             }
             foreach (Video i in mediaPlayer.Videos)
             {
-                if (i.name == video.name && i.director == video.director)
+                if (i.Name == video.Name && i.Director == video.Director)
                 {
-                    mediaPlayer.Video.Remove(video);
+                    mediaPlayer.Videos.Remove(video);
                 }
                 else
                 {

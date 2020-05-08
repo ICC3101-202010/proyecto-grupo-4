@@ -21,71 +21,6 @@ namespace Spotflix
         public  List<Video> Videos { get => videos; set => videos = value; }
         public List<Teacher> Teachers1 { get => Teachers; set => Teachers = value; }
 
-        //Creo el evento Add Song
-        public delegate void AddSongHandler(object source, AddSongArgs args);
-        public event AddSongHandler AddSong;
-
-        protected virtual void OnAddSong(MediaFile mediaFile)
-        {
-            // Verifica si hay alguien suscrito al evento
-            if (AddSong != null)
-            {
-                // Engatilla el evento
-                AddSong(this, new AddSongArgs()  {Mediafile  = mediaFile  });
-            }
-        }
-
-        public void AddSong()
-        {
-            // Pedimos todos los datos necesarios
-            Console.Write("Bienvenido! Ingrese el artista de la canción: ");
-            string artist = Console.ReadLine();
-            Console.Write("Álbum: ");
-            string album = Console.ReadLine();
-            Console.Write("Explicit: ");
-            bool expliciT = Convert.ToBoolean(Console.ReadLine());
-            Console.Write("Nombre: ");
-            string name = Console.ReadLine();
-            Console.Write("Género: ");
-            string gender = Console.ReadLine();
-            Console.Write("Year: ");
-            int year = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Route: ");
-            string route = Console.ReadLine();
-            Console.WriteLine("¿Dese agregar imagen?\nOpcion 1: Si\nOpcion 2:No");
-            string answer = Console.ReadLine();
-            if (answer=="1"|| answer == "Si")
-            {
-                Console.WriteLine("Cargue la imagen");
-                object image Console.ReadLine();
-            }
-
- 
-
-        }
-
-
-
-
-        /*
-            // Intenta agregar el usuario a la bdd. Si retorna null, se registro correctamente,
-            // sino, retorna un string de error, que es el que se muestra al usuario
-            string result = Data.AddUser(new List<string>()
-                {usr, email, psswd, verificationLink, Convert.ToString(DateTime.Now), number});
-            if (result == null)
-            {
-                // Disparamos el evento
-                OnRegistered(usr, psswd, verificationlink: verificationLink, email: email);
-            }
-            else
-            {
-                // Mostramos el error
-                Console.WriteLine("[!] ERROR: " + result + "\n");
-            }
-        }
-
-        */
-
         public  void CreateRecommendedList()
         {
             Console.WriteLine("Metodo muy dificil pa pensarlo ahora\n");
@@ -108,7 +43,7 @@ namespace Spotflix
         public void Pause(Song song) { }//Pendiente
 
         public void Pause(Video video) { }//Pendiente
-     
+     /*
         public MediaFile Search(string filter)
         {
             string switcher = "0";
@@ -213,7 +148,7 @@ namespace Spotflix
                 }
             }
             
-        }
+        }*/
         
         public  void CreatePlaylist(List<Song> songs)
         {
