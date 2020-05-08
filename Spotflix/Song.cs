@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,27 +12,18 @@ namespace Spotflix
         protected string artist;
         protected string album;
         protected bool expliciT;
+        protected new object image = null;
 
         //Constructor
-        public Song(string artist, string album, bool expliciT, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image, string route)
+        public Song(string artist, string album, bool expliciT, string name, string gender, int year,  int mediaId,  object image, string route)
         {
             this.artist = artist;
             this.album = album;
             this.expliciT = expliciT;
-            this.currentSecond = currentSecond;
-            this.length = length;
-            this.fileSize = fileSize;
             this.name = name;
             this.gender = gender;
             this.year = year;
-            this.category = category;
-            this.numberOfReproductions = numberOfReproductions;
-            this.rankings = rankings;
             this.mediaId = mediaId;
-            this.relations = relations;
-            this.qualification = qualification;
-            this.quality = quality;
-            this.dimension = dimension;
             this.image = image;
             this.route = route;
         }

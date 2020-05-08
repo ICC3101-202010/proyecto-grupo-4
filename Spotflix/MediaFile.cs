@@ -14,7 +14,6 @@ namespace Spotflix
         protected string name;
         protected string gender;
         protected int year;
-        protected string category;
         protected int numberOfReproductions;
         protected List<int> rankings = new List<int>(); //Ranking en el que se encuentre
         protected int mediaId;
@@ -33,7 +32,6 @@ namespace Spotflix
         public string Name { get => name; set => name = value; }
         public string Gender { get => gender; set => gender = value; }
         public int Year { get => year; set => year = value; }
-        public string Category { get => category; set => category = value; }
         public int NumberOfReproductions { get => numberOfReproductions; set => numberOfReproductions = value; }
         public List<int> Rankings { get => rankings; set => rankings = value; }
         public int MediaId { get => mediaId; set => mediaId = value; }

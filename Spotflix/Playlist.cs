@@ -30,6 +30,11 @@ namespace Spotflix
         public List<Video> Videos { get => videos; set => videos = value; }
         public string PlaylistName { get => playlistName; set => playlistName = value; }
 
+        public void AddSong()
+        {
+
+        }
+
         public void Mixture (int seconds, string mediaFile) //Método no listo
         {
             if (mediaFile== "song")

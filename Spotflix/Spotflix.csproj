@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSongArgs.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="Album.cs" />
     <Compile Include="Gate.cs" />

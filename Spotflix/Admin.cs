@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WMPLib;
 
 
 
@@ -12,16 +14,117 @@ namespace Spotflix
     {
 
         private int code;
+        WindowsMediaPlayer music = new WindowsMediaPlayer();
 
         public Admin(int code) { this.code = code; }
         public int Code { get => code; set => code = value; }
-        public void Import(Song song) 
-        {
-            foreach(Song i in MediaPlayer.Songs)
-        } 
-        public void Remove(MediaFile mediafile) 
-        {
+        private IWavePlayer waveOut;
+        private Mp3FileReader mp3FileReader;
 
+        /*
+        private IWavePlayer waveOut;
+        private Mp3FileReader mp3FileReader;
+        private void PlayMp3()
+        {
+            this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
+            this.mp3FileReader = new Mp3FileReader("myfile.mp3");
+            this.waveOut.Init(mp3FileReader);
+            this.waveOut.Play();
+            this.waveOut.PlaybackStopped += OnPlaybackStopped;
+        }
+
+        private void OnPlaybackStopped(object sender, EventArgs e)
+        {
+            this.waveOut.Dispose();
+            this.mp3FileReader.Dispose();
+        }
+        */
+
+        public Admin()
+        {
+            //aqui deberiamos poder guardar la cancion, esto es de prueba, no funciona
+            InitializeComponent();
+            music.URL = "musica.mp3";
+        }
+
+
+        public void Import(Song song,MediaPlayer mediaPlayer) 
+        {
+            //aqui deberiamos poder importar una cancion
+            if (mediaPlayer.Songs.Count() == 0)
+            {
+               mediaPlayer.Songs.Append(song);  
+            }
+            foreach (Song i in mediaPlayer.Songs)
+            {
+                if (i.name == song.name && i.artist == song.artist)
+                {
+                    Console.WriteLine("Esa cancion ya existe\n");
+                }
+                else
+                {
+                    mediaPlayer.Song.Append(song);
+                }
+
+            }
+        }
+        public void Import(Video video,MediaPlayer mediaPlayer)
+        {
+            //aqui deberiamos poder importar una cancion
+            if (mediaPlayer.Videos.Count() == 0)
+            {
+                mediaPlayer.Videos.Append(video);
+            }
+            foreach (Video i in mediaPlayer.Videos)
+            {
+                if (i.name == video.name && i.director == video.director)
+                {
+                    Console.WriteLine("Ese video ya existe\n");
+                }
+                else
+                {
+                    mediaPlayer.Video.Append(video);
+                }
+
+            }
+        }
+        public void Remove(Song song,MediaPlayer mediaPlayer) 
+        {
+            //aqui deberiamos poder importar una cancion
+            if (mediaPlayer.Songs.Count() == 0)
+            {
+                Console.WriteLine("No hay canciones para eliminar\n");
+            }
+            foreach (Song i in mediaPlayer.Songs)
+            {
+                if (i.name == song.name && i.artist == song.artist)
+                {
+                    mediaPlayer.Song.Remove(song);                    
+                }
+                else
+                {
+                    Console.WriteLine("Esa cancion no existe\n");
+                }
+            }
+        }
+        public void Remove(Video video,MediaPlayer mediaPlayer)
+        {
+            //aqui deberiamos poder importar una cancion
+            if (mediaPlayer.Videos.Count() == 0)
+            {
+                Console.WriteLine("No hay videos para eliminar\n");
+            }
+            foreach (Video i in mediaPlayer.Videos)
+            {
+                if (i.name == video.name && i.director == video.director)
+                {
+                    mediaPlayer.Video.Remove(video);
+                }
+                else
+                {
+                    Console.WriteLine("Ese video no existe\n");
+                }
+            }
         }
 
     }

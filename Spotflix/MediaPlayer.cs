@@ -8,82 +8,108 @@ using System.Runtime.InteropServices;
 
 namespace Spotflix
 {
-    public static class MediaPlayer
+    public class MediaPlayer
     {
-        private static List<Song> songs = new List<Song>();
-        private static List<Video> videos = new List<Video>();
-        private static List<Lesson> lessons = new List<Lesson>();
-        private static List<Playlist> playlists = new List<Playlist>();
-        private static List<Series> series = new List<Series>();
+        private List<Song> songs = new List<Song>();
+        private List<Video> videos = new List<Video>();
+        private List<Lesson> lessons = new List<Lesson>();
+        private List<Playlist> playlists = new List<Playlist>();
+        private List<Series> series = new List<Series>();
+        private List<Teacher> Teachers = new List<Teacher>();
 
-        public static List<Song> Songs { get => songs; set => songs = value; }
+        public  List<Song> Songs { get => songs; set => songs = value; }
+        public  List<Video> Videos { get => videos; set => videos = value; }
+        public List<Teacher> Teachers1 { get => Teachers; set => Teachers = value; }
 
-        public static void play(MediaFile mediaFile)
+        //Creo el evento Add Song
+        public delegate void AddSongHandler(object source, AddSongArgs args);
+        public event AddSongHandler AddSong;
+
+        protected virtual void OnAddSong(MediaFile mediaFile)
         {
-            
+            // Verifica si hay alguien suscrito al evento
+            if (AddSong != null)
+            {
+                // Engatilla el evento
+                AddSong(this, new AddSongArgs()  {Mediafile  = mediaFile  });
+            }
         }
-        public static void CreateRecommendedList()
+
+        public void AddSong()
+        {
+            // Pedimos todos los datos necesarios
+            Console.Write("Bienvenido! Ingrese el artista de la canción: ");
+            string artist = Console.ReadLine();
+            Console.Write("Álbum: ");
+            string album = Console.ReadLine();
+            Console.Write("Explicit: ");
+            bool expliciT = Convert.ToBoolean(Console.ReadLine());
+            Console.Write("Nombre: ");
+            string name = Console.ReadLine();
+            Console.Write("Género: ");
+            string gender = Console.ReadLine();
+            Console.Write("Year: ");
+            int year = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Route: ");
+            string route = Console.ReadLine();
+            Console.WriteLine("¿Dese agregar imagen?\nOpcion 1: Si\nOpcion 2:No");
+            string answer = Console.ReadLine();
+            if (answer=="1"|| answer == "Si")
+            {
+                Console.WriteLine("Cargue la imagen");
+                object image Console.ReadLine();
+            }
+
+ 
+
+        }
+
+
+
+
+        /*
+            // Intenta agregar el usuario a la bdd. Si retorna null, se registro correctamente,
+            // sino, retorna un string de error, que es el que se muestra al usuario
+            string result = Data.AddUser(new List<string>()
+                {usr, email, psswd, verificationLink, Convert.ToString(DateTime.Now), number});
+            if (result == null)
+            {
+                // Disparamos el evento
+                OnRegistered(usr, psswd, verificationlink: verificationLink, email: email);
+            }
+            else
+            {
+                // Mostramos el error
+                Console.WriteLine("[!] ERROR: " + result + "\n");
+            }
+        }
+
+        */
+
+        public  void CreateRecommendedList()
         {
             Console.WriteLine("Metodo muy dificil pa pensarlo ahora\n");
         }
 
-        public static void Play(Song song)
+        public  void Play(Song song)// Listo
         {
            System.Diagnostics.Process.Start(song.Route);
         }
-        public static void Play(Video video)
+        public  void Play(Video video) //Listo
         {
             System.Diagnostics.Process.Start(video.Route);
         }
         
         //Pendiente
-        public static void Stop(Song song)
-        {
-            foreach (Song song_T in Songs)
-            {
-                if (song.MediaId == song_T.MediaId)
-                {
-                    Console.WriteLine("Este metodo para las canciones y las parte desde 0\n");
-                }
-            }
-            
-        }
+        public  void Stop(Song song) { }//Pendiente
         //Pendiente
-        public static void Stop(Video video)
-        {
-            foreach (Video video_T in videos)
-            {
-                if (video.MediaId == video_T.MediaId)
-                {
-                    Console.WriteLine("Este metodo para los videos y las parte desde 0\n");
-                }
-            }
-            
-        }
-        //Pendiente
-        public static void Pause(Song song)
-        {
-            foreach (Song song_T in Songs)
-            {
-                if (song.MediaId == song_T.MediaId)
-                {
-                    Console.WriteLine("Este metodo le pone pausa a las canciones\n");
-                }
-            }
-        }
-        //Pendiente
-        public static void Pause(Video video)
-        {
-            foreach (Video video_T in videos)
-            {
-                if (video.MediaId == video_T.MediaId)
-                {
-                    Console.WriteLine("Este metodo le pone pausa a los videos\n");
-                }
-            }
-        }
-        /*
-        public static MediaFile Search(string filter)
+        public  void Stop(Video video) { }//Pendiente
+
+        public void Pause(Song song) { }//Pendiente
+
+        public void Pause(Video video) { }//Pendiente
+     
+        public MediaFile Search(string filter)
         {
             string switcher = "0";
             string stopper = "7";
@@ -91,16 +117,89 @@ namespace Spotflix
             {
                 Console.WriteLine("Desea buscar por:\n\t(1)Videos\n\t(2)Canciones\n\t(3)Series\n\t(4)Playlist\n\t(5)salir de la busqueda\n");
                 switcher = Console.ReadLine();
-                string[] aux=filter.Split(' ');
+                string[] filters = null;
+                try
+                {
+                    filters = filter.Split(' ');
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Formato de filtro no aceptado");
+                    continue;
+                }
                 switch (switcher)
                 {
                     case "1":
-                        foreach (Video video in videos)
+                        List<Video> catchs = new List<Video>();
+                        foreach (string words in filters)
                         {
-
+                            foreach (Video video in this.Videos)
+                            {
+                                if (video.Name==words&& (!(this.Videos.Contains(video))))
+                                {
+                                    catchs.Add(video);
+                                }
+                                if (video.Gender==words&& (!(this.Videos.Contains(video))))
+                                {
+                                    catchs.Add(video);
+                                }
+                                if (video.Studio==words&& (!(this.Videos.Contains(video))))
+                                {
+                                    catchs.Add(video);
+                                }
+                                if (video.Director == words && (!(this.Videos.Contains(video))))
+                                {
+                                    catchs.Add(video);
+                                }
+                                foreach (string actor in video.Actors)
+                                {
+                                    if (actor == words && (!(this.Videos.Contains(video))))
+                                    {
+                                        catchs.Add(video);
+                                    }
+                                }
+                            }
+                        }
+                        if (catchs.Count() != 0)
+                        {
+                            foreach (Video video in catchs)
+                            {
+                                Console.WriteLine("{0}{1}\n",catchs.IndexOf(video), video.Name);
+                            }
                         }
                         break;
                     case "2":
+                        List<Song> catchsSongs = new List<Song>();
+                        foreach (string words in filters)
+                        {
+                            foreach (Song song in this.Songs)
+                            {
+                                if (song.Name == words && (!(this.Songs.Contains(song))))
+                                {
+                                    catchsSongs.Add(song);
+                                }
+                                if (song.Gender == words && (!(this.Songs.Contains(song))))
+                                {
+                                    catchsSongs.Add(song);
+                                }
+                                if (song.Artist == words && (!(this.song.Contains(song))))
+                                {
+                                    catchsSongs.Add(song);
+                                }
+                                if (song.Album == words && (!(this.song.Contains(song))))
+                                {
+                                    catchsSongs.Add(song);
+                                }
+
+                            }
+                        }
+                        if (catchsSongs.Count() != 0)
+                        {
+                            foreach (Song song in catchs)
+                            {
+                                Console.WriteLine("{0}{1}\n", catchs.IndexOf(song), song.Name);
+                            }
+                        }
                         break;
                     case "3":
                         break;
@@ -115,12 +214,12 @@ namespace Spotflix
             }
             
         }
-        */
-        public static void CreatePlaylist(List<Song> songs)
+        
+        public  void CreatePlaylist(List<Song> songs)
         {
             List<Song> tempsongs = new List<Song>();
             bool checker = true;
-            foreach (Song song in songs)
+            foreach (Song song in this.Songs)
             {
                 Console.WriteLine("{0}: {1}\n",songs.IndexOf(song)+1,song.Name);
             }
@@ -167,13 +266,13 @@ namespace Spotflix
                     Console.WriteLine("Formato invalido");
                 }
             }
-        }
+        }//Listo
 
-        public static void CreatePlaylist(List<Video> videos)
+        public  void CreatePlaylist(List<Video> videos)
         {
             List<Video> tempvideo = new List<Video>();
             bool checker = true;
-            foreach (Video video in videos)
+            foreach (Video video in this.Videos)
             {
                 Console.WriteLine("{0}: {1}\n", videos.IndexOf(video) + 1, video.Name);
             }
@@ -220,39 +319,39 @@ namespace Spotflix
                     Console.WriteLine("Formato invalido");
                 }
             }
-        }
+        }//Listo
 
-        public static void AddToQueue(MediaFile mediafile)
+        public  void AddToQueue(MediaFile mediafile)
         {
             throw new NotImplementedException();
         }
 
-        public static void Qualify(int qualification)
+        public  void Qualify(int qualification)
         {
             throw new NotImplementedException();
         }
 
-        public static double GetQualification()
+        public  double GetQualification()
         {
             throw new NotImplementedException();
         }
 
-        public static object[] GetMetadata(MediaFile mediafile)
+        public  object[] GetMetadata(MediaFile mediafile)
         {
             throw new NotImplementedException();
         }
 
-        public static List<string> GetPlataformInformation()
+        public  List<string> GetPlataformInformation()
         {
             throw new NotImplementedException();
         }
 
-        public static List<string> GetIntrinsicInformation()
+        public  List<string> GetIntrinsicInformation()
         {
             throw new NotImplementedException();
         }
 
-        public static void Follow()
+        public  void Follow()
         {
             throw new NotImplementedException();
         }

@@ -13,23 +13,22 @@ namespace Spotflix
         protected int ageFilter;
         protected string director;
         protected string synopsis;
-        protected string studio;
+        private string studio;
         protected List<string> actors = new List<string>();
 
-        public Video(List<string> actors, int ageFilter, string director, string synopsis, string studio, int currentSecond, int length, int fileSize, string name, string gender, int year, string category, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image, string route)
+        public Video(List<string> actors, int ageFilter, string director, string synopsis, string studio, int currentSecond, int length, int fileSize, string name, string gender, int year, int numberOfReproductions, List<int> rankings, int mediaId, string relations, List<int> qualification, string quality, string dimension, object image, string route)
         {
             this.actors = actors;
             this.ageFilter = ageFilter;
             this.director = director;
             this.synopsis = synopsis;
-            this.studio  = studio;
+            this.Studio  = studio;
             this.currentSecond = currentSecond;
             this.length = length;
             this.fileSize = fileSize;
             this.name = name;
             this.gender = gender;
             this.year = year;
-            this.category = category;
             this.numberOfReproductions = numberOfReproductions;
             this.rankings = rankings;
             this.mediaId = mediaId;
@@ -42,10 +41,10 @@ namespace Spotflix
         }
 
         public List<string> Actors { get => actors; set => actors = value; }
-        protected int AgeFilter { get => ageFilter; set => ageFilter = value; }
-        protected string Director { get => director; set => director = value; }
-        protected string Synopsis { get => synopsis; set => synopsis = value; }
-        protected string Studio { get => studio; set => studio = value; }
+        public int AgeFilter { get => ageFilter; set => ageFilter = value; }
+        public string Director { get => director; set => director = value; }
+        public string Synopsis { get => synopsis; set => synopsis = value; }
+        public string Studio { get => studio; set => studio = value; }
 
         //Métodos herdados de IGo
 

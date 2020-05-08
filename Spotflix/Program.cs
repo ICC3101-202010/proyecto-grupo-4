@@ -10,6 +10,9 @@ namespace Spotflix
     {
         static void Main(string[] args)     
         {
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            int num = 1;
+            int code = 1000;
             string switcher = "0";
             string stopper = "7";
 
@@ -17,16 +20,10 @@ namespace Spotflix
             {
                 Console.WriteLine("Si desea:\n\t(1)Registrarse\n\t(2)Iniciar Sesion\n\t(5)salir de la busqueda\n");
                 switcher = Console.ReadLine();
-                Console.WriteLine("\nSi desdea registrarse presione a\n");
-                Console.WriteLine("Si desea iniciar sesion presione b\n");
+
                 switch (switcher)
                 {
-
-                    Console.WriteLine("\nSi desea cerrar el programa presione z\n");
-                    string answer = Console.ReadLine();
-
-                    if (answer.ToLower() == "a")
-                    {
+                    case "1":
                         Console.WriteLine("\nIngrese su nombre\n ");
                         string a = Console.ReadLine();
                         Console.WriteLine("\nIngrese su apellido\n ");
@@ -47,38 +44,36 @@ namespace Spotflix
                         string h = Console.ReadLine();
                         Console.WriteLine("\n¿Desea ser user o admin?\n");
                         string res = Console.ReadLine();
-                    if (res.ToLower() == "user")
-                    {
-                        Console.WriteLine("\nIngrese su Gmail\n");
-                        string gm = Console.ReadLine();
-                        Console.WriteLine("\nIngrese su nombre de usuario\n");
-                        string nic = Console.ReadLine();
-                        Console.WriteLine("\n¿Desea utilizar el programa gratiuto o pagado?\n");
-                        string member = Console.ReadLine();
-                        Random rnds = new Random();
-                        int nume = rnds.Next(1, 1000);
-                        User u1 = new User(nume, gm, nic, h, member, a, b, c, d, e, f, g);
-                        Gate.SingUser(u1);
-                    }
-                    if (res.ToLower() == "admin")
-                    {
-                        Random rnds = new Random();
-                        int code = rnds.Next(10000, 100000);
-                        Admin a1 = new Admin(code);
-                        Gate.SingAdmin(a1);
-                        Console.WriteLine("Desea tener un curso sobre alguna materia?\n");
-                        string mat = Console.ReadLine();
-                        if (mat.ToLower() == "si")
+                        if (res.ToLower() == "user")
                         {
-                            Console.WriteLine("Diga el nombre del curso\n");
-                            string cur = Console.ReadLine();
-                            Teacher t1 = new Teacher(code, cur, a, b, c, d, e, f, g, h);
+                            Console.WriteLine("\nIngrese su Gmail\n");
+                            string gm = Console.ReadLine();
+                            Console.WriteLine("\nIngrese su nombre de usuario\n");
+                            string nic = Console.ReadLine();
+                            Console.WriteLine("\n¿Desea utilizar el programa gratiuto o pagado?\n");
+                            string member = Console.ReadLine();
+
+                            User u1 = new User(num, gm, nic, h, member, a, b, c, d, e, f, g);
+                            Gate.SingUser(u1);
+                            num++;
                         }
-                    }
-
-
-                    if (answer.ToLower() == "b")
-                    {
+                        if (res.ToLower() == "admin")
+                        {
+                            Admin a1 = new Admin(code);
+                            Gate.SingAdmin(a1);
+                            Console.WriteLine("Desea tener un curso sobre alguna materia?\n");
+                            string mat = Console.ReadLine();
+                            if (mat.ToLower() == "si")
+                            {
+                                Console.WriteLine("Diga el nombre del curso\n");
+                                string cur = Console.ReadLine();
+                                Teacher t1 = new Teacher(code, cur, a, b, c, d, e, f, g, h);
+                                Gate.SingAdmin(t1);
+                                code++;
+                            }
+                        }
+                        break;
+                    case "2":                   
                         Console.WriteLine("Si es admin ingrese ad, si es user ingrese us\n");
                         string o = Console.ReadLine();
                         if (o.ToLower() == "us")
@@ -98,19 +93,23 @@ namespace Spotflix
                             string pp = Console.ReadLine();
                             Gate.LogAsAdmin(nn, pp);
                         }
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
 
-
-                        if (answer.ToLower() == "z")
-                        {
-                            finn = false;
-                        }
-
-                    }
-
+                default:
+                        Console.WriteLine("Ingrese una opcion valida");
+                break;
                 }
-            
-            
+
             }
+            
+            
+            
         }
     }
 }
