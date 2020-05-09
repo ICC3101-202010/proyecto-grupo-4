@@ -33,7 +33,7 @@ namespace Spotflix
                 {
                     case "1": //Registrarse
                         string register = "0";
-                        Console.WriteLine("Si desea:\n\t(1)Registrarse como usuario\n\t(2)Registrarse como administrador\n\tregistrarse como profesor\n");
+                        Console.WriteLine("Si desea:\n\t(1)Registrarse como usuario\n\t(2)Registrarse como administrador\n\t(3)Registrarse como profesor\n");
                         register = Console.ReadLine();
                         switch (register)
                         {
@@ -155,7 +155,6 @@ namespace Spotflix
                                     string n = Console.ReadLine();
                                     Console.WriteLine("Ingrese su contraseña\n");
                                     string p = Console.ReadLine();
-                                    Gate.LogAsUser(n, p);
                                     if (Gate.LogAsUser(n, p))
                                     {
                                         string switcherusr = "0";
@@ -167,7 +166,7 @@ namespace Spotflix
 
                                             switch (switcherusr)
                                             {
-                                                case "1": //buscar y reproducir videos
+                                                /*case "1": //buscar y reproducir videos
                                                     mediaPlayer.Search("1");
                                                     int variable1 = mediaPlayer.Search("1");
                                                     if (variable1 == -1) break;
@@ -206,7 +205,7 @@ namespace Spotflix
                                                         mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
-                                                    break;
+                                                    break;*/
                                                 case "5": //mostrar los videos
                                                     mediaPlayer.ShowVideos();
                                                     break;
@@ -231,7 +230,7 @@ namespace Spotflix
                                                     mediaPlayer.CreatePlaylistV();
                                                     break;
                                                 case "17": //añadir a la cola
-                                                    mediaPlayer.AddToQueue(mediaPlayer.Song);
+                                                    mediaPlayer.AddToQueue();
                                                     break;
                                                 case "18": //seguir a otras personas
                                                     mediaPlayer.Follow();
@@ -265,7 +264,7 @@ namespace Spotflix
 
                                             switch (switcherad)
                                             {
-                                                case "1": //busca video
+                                                /*case "1": //busca video
                                                     mediaPlayer.Search("1");
                                                     int variable1 = mediaPlayer.Search("1");
                                                     if (variable1 == -1) break;
@@ -304,7 +303,7 @@ namespace Spotflix
                                                         mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
-                                                    break;
+                                                    break;*/
                                                 case "5": //mostrar videos
                                                     mediaPlayer.ShowVideos();
                                                     break;
@@ -316,7 +315,7 @@ namespace Spotflix
                                                     break;
                                                 case "8": //mostrar playlist
                                                     mediaPlayer.ShowPlaylists();
-                                                    break;
+                                                    break;/*
                                                 case "9": //importar cancion
                                                     admin.Import(song, mediaPlayer);
                                                     break;
@@ -330,7 +329,7 @@ namespace Spotflix
                                                     admin.Remove(video, mediaPlayer);
                                                     break;
                                                 case "13": //descargar
-                                                    mediaPlayer.Download();
+                                                    mediaPlayer.Download();*/
                                                     break;
                                                 case "14": //crear playlist de canciones
                                                     mediaPlayer.CreatePlaylistS();
@@ -339,7 +338,7 @@ namespace Spotflix
                                                     mediaPlayer.CreatePlaylistV();
                                                     break;
                                                 case "16": //añadir a la cola
-                                                    mediaPlayer.AddToQueue(mediaPlayer.Songs);
+                                                    mediaPlayer.AddToQueue();
                                                     break;
                                                 case "17": //seguir usuarios
                                                     mediaPlayer.Follow();
@@ -374,7 +373,7 @@ namespace Spotflix
 
                                             switch (switcherad)
                                             {
-                                                case "1": //buscar y reproducir videos
+                                                /*case "1": //buscar y reproducir videos
                                                     mediaPlayer.Search("1");
                                                     int variable1 = mediaPlayer.Search("1");
                                                     if (variable1 == -1) break;
@@ -413,7 +412,7 @@ namespace Spotflix
                                                         mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
-                                                    break;
+                                                    break;*/
                                                 case "5": //mostrar videos
                                                     mediaPlayer.ShowVideos();
                                                     break;
@@ -425,7 +424,7 @@ namespace Spotflix
                                                     break;
                                                 case "8": //mostrar playlist
                                                     mediaPlayer.ShowPlaylists();
-                                                    break;
+                                                    break;/*
                                                 case "9": //importar canciones
                                                     admin.Import(song, mediaPlayer);
                                                     break;
@@ -446,7 +445,7 @@ namespace Spotflix
                                                     break;
                                                 case "15": //eliminar archivos de curso
                                                     teacher.Delete(MediaFile, course);
-                                                    break;
+                                                    break;*/
                                                 case "16": //crear playlist de canciones
                                                     mediaPlayer.CreatePlaylistS();
                                                     break;
@@ -454,7 +453,7 @@ namespace Spotflix
                                                     mediaPlayer.CreatePlaylistV();
                                                     break;
                                                 case "18": //añadir a la fila
-                                                    mediaPlayer.AddToQueue(mediaPlayer.Songs);
+                                                    mediaPlayer.AddToQueue();
                                                     break;
                                                 case "19": //seguir usuarios
                                                     mediaPlayer.Follow();
@@ -483,17 +482,17 @@ namespace Spotflix
                     case "4":
                         break;
                     case "5":
-                        break;
+                        break; 
 
                 default:
-                        Console.WriteLine("Ingrese una opcion valida");
+                        Console.WriteLine("Ingrese una opción valida");
                 break;
                 }
+                break;
 
             }
             
-            
-            
         }
     }
+   
 }

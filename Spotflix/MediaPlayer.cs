@@ -872,7 +872,7 @@ namespace Spotflix
             }
         }//Listo
 
-        public void AddToQueue(MediaFile mediafile)
+        public void AddToQueue()
         {
             throw new NotImplementedException();
         }

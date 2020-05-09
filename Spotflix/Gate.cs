@@ -105,15 +105,18 @@ namespace Spotflix
                 Console.WriteLine("No existen usuarios registrados\n");
                 return false;
             }
-            foreach (User user in users)
+            else
             {
-                if ((user.Nickname == email_nickname || user.Gmail == email_nickname) && user.Password == password)
+                foreach (User user in users)
                 {
-                    return true;
+                    if ((user.Nickname == email_nickname || user.Gmail == email_nickname) && user.Password == password)
+                    {
+                        return true;
+                    }
                 }
+                Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
+                return false;
             }
-            Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
-            return false;
         }
         public static bool LogAsAdmin(string code, string password) //listo
         {
