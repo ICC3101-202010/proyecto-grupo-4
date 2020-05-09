@@ -45,25 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSongArgs.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="Album.cs" />
     <Compile Include="Gate.cs" />
     <Compile Include="IGo.cs" />
-    <Compile Include="IOrderPlaylist.cs" />
     <Compile Include="Karaoke.cs" />
+    <Compile Include="KaraokeEventArgs.cs" />
     <Compile Include="Lesson.cs" />
     <Compile Include="MediaPlayer.cs" />
     <Compile Include="MediaFile.cs" />
+    <Compile Include="OrderByAEventArgs.cs" />
+    <Compile Include="OrderByEventArgs.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Series.cs" />
     <Compile Include="Song.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="SongEventArgs.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Video.cs" />
+    <Compile Include="VideoEventArgs.cs" />
+    <Compile Include="VideoSerieEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

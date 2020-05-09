@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    public class AddSongArgs: EventArgs 
+    public class VideoEventArgs : EventArgs
     {
-        public MediaFile Mediafile { get; set; }
+        public Video Video { get; set; }
+        public Playlist PlayList { get; set; }
     }
 }

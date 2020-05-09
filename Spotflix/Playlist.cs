@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    public class Playlist : IOrderPlaylist
+    public class Playlist 
     {
         List<Song> songs = new List<Song>();
         List<Video> videos = new List<Video>();
         private string playlistName;
-
 
 
         public Playlist(List<Song> songs, string playlistName) 
@@ -19,10 +18,10 @@ namespace Spotflix
             this.songs = songs;
             this.playlistName = playlistName;
         }
-        public Playlist(List<Video> videos, string playlistName)
+        public Playlist(List<Video> videos,string playlistName)
         {
-            this.videos = videos;
             this.playlistName = playlistName;
+            this.videos = videos;
         }
 
 
@@ -30,12 +29,8 @@ namespace Spotflix
         public List<Video> Videos { get => videos; set => videos = value; }
         public string PlaylistName { get => playlistName; set => playlistName = value; }
 
-        public void AddSong()
-        {
-
-        }
-
-        public void Mixture (int seconds, string mediaFile) //Método no listo
+        //Este método lo vamos a hacer bien para la próxima entrega. Cuanto le queden seconds segundos a una, empiezo a reproducir la otra
+        public void Mixture (int seconds, string mediaFile) 
         {
             if (mediaFile== "song")
             {
@@ -47,20 +42,20 @@ namespace Spotflix
             }
         }
 
-        public void AddSong(Song song)
+        public void OnAddSong(object source, SongEventArgs so)
         {
             int counter = 0;
-            foreach (Song s in songs)
+            foreach (Song s in so.PlayList.songs)
             {
-                if (song==s)
+                if (so.Song==s)
                 {
                     counter +=  1;
                 }
             }
             if (counter == 0)
             {
-                songs.Add(song);
-                Console.WriteLine($"Se ha agregado la canción {song.Name} a su Playlist {playlistName}");
+                so.PlayList.songs.Add(so.Song);
+                Console.WriteLine($"Se ha agregado la canción {so.Song.Name} a su Playlist {so.PlayList.PlaylistName}");
             }
             else
             {
@@ -68,197 +63,214 @@ namespace Spotflix
                 string answer = Console.ReadLine();
                 if (answer == "1" || answer == "Sí")
                 {
-                    songs.Add(song);
-                    Console.WriteLine($"Se ha agregado la canción {song.Name} a su Playlist {playlistName}");
+                    so.PlayList.songs.Add(so.Song);
+                    Console.WriteLine($"Se ha agregado la canción {so.Song.Name} a su Playlist {so.PlayList.PlaylistName}");
                 }
             }
         }
         
-        public void DeleteSong (Song song)
+        public void OnDeleteSong (object source, SongEventArgs so)
         {
-            foreach (Song s in songs)
+            int count = 0;
+            foreach (Song s in so.PlayList.songs)
             {
-                if (s == song)
+                if (s == so.Song)
                 {
-                    songs.Remove(song);
-                    Console.WriteLine($"Se ha eliminado la canción {song.Name} de su Playlist {playlistName}");
+                    count += 1;
+                    
                 }
             }
+            if (count != 0)
+            {
+                so.PlayList.songs.Remove(so.Song);
+                Console.WriteLine($"Se ha eliminado la canción {so.Song.Name} de su Playlist {so.PlayList.playlistName}");
+            }
+            else Console.WriteLine("La canción no se encontraba en su PlayList.");
         }
 
-        public void AddVideo(Video video)
+        public void OnAddVideo(object source, VideoEventArgs so)
         {
             int counter = 0;
-            foreach (Video v in videos)
+            foreach (Video v in so.PlayList.videos)
             {
-                if (video == v)
+                if (so.Video == v)
                 {
                     counter += 1;
                 }
             }
             if (counter == 0)
             {
-                videos.Add(video);
-                Console.WriteLine($"Se ha agregado el video {video.Name} a su Playlist {playlistName}");
+                so.PlayList.videos.Add(so.Video);
+                Console.WriteLine($"Se ha agregado el video {so.Video.Name} a su Playlist {so.PlayList.PlaylistName}");
             }
             else
             {
-                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarlo de todas formas?\nOpción 1: Sí\nOpción 2: No");
+                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarla de todas formas?\nOpción 1: Sí\nOpción 2: No");
                 string answer = Console.ReadLine();
                 if (answer == "1" || answer == "Sí")
                 {
-                    videos.Add(video);
-                    Console.WriteLine($"Se ha agregado el video {video.Name} a su Playlist {playlistName}");
+                    so.PlayList.videos.Add(so.Video);
+                    Console.WriteLine($"Se ha agregado el video {so.Video.Name} a su Playlist {so.PlayList.PlaylistName}");
                 }
             }
         }
 
-        public void DeleteVideo(Video video)
+        public void OnDeleteVideo(object source, VideoEventArgs so)
         {
-            foreach (Video v in videos)
+            int counter = 0;
+            foreach (Video v in so.PlayList.videos)
             {
-                if (v == video)
+                if (v == so.Video)
                 {
-                    videos.Remove(video);
-                    Console.WriteLine($"Se ha eliminado el video {video.Name} de su Playlist {playlistName}");
+                    counter += 1;
                 }
             }
+            if (counter != 0)
+            {
+                so.PlayList.videos.Remove(so.Video);
+                Console.WriteLine($"Se ha eliminado el video {so.Video.Name} de su Playlist {so.PlayList.playlistName}");
+            }
+            else Console.WriteLine("El video no se encontraba en su PlayList");
         }
 
-        public void OrderByAlphabet(bool up, string mediaFile)
+        public void OnOrderBy(object source,  OrderByEventArgs o)
         {
-            if (mediaFile=="song")
+            if (o.Option == "Alphabet")
             {
-                if (songs.Count != 0)
+                if (o.MediaFile == "song")
                 {
-                    if (up)
+                    if (o.PlayList.Songs.Count != 0)
                     {
-                        this.songs = songs.OrderBy(song => song.Name).ToList();
+                        if (o.Up)
+                        {
+                            this.songs = o.PlayList.songs.OrderBy(song => song.Name).ToList();
+                        }
+                        else
+                        {
+                            this.songs = o.PlayList.songs.OrderByDescending(song => song.Name).ToList();
+                        }
+                    }
+                    else Console.WriteLine("No se han encontrado canciones");
+                }
+                else if (o.MediaFile == "video")
+                {
+                    if (o.PlayList.Videos.Count != 0)
+                    {
+                        if (o.Up)
+                        {
+                            this.videos = o.PlayList.videos.OrderBy(video => video.Name).ToList();
+                        }
+                        else
+                        {
+                            this.videos = o.PlayList.videos.OrderByDescending(video => video.Name).ToList();
+                        }
+                    }
+                    else Console.WriteLine("No se han encontrado videos");
+                }
+
+            }
+            else if (o.Option == "Date")
+            {
+                if (o.MediaFile == "song")
+                {
+                    if (o.PlayList.Songs.Count != 0)
+                    {
+                        if (o.Up)
+                        {
+                            this.songs = o.PlayList.songs.OrderBy(song => song.Year).ToList();
+                        }
+                        else
+                        {
+                            this.songs = o.PlayList.songs.OrderByDescending(song => song.Year).ToList();
+                        }
+                    }
+                    else Console.WriteLine("No se han encontrado canciones");
+                }
+                else if (o.MediaFile == "video")
+                {
+                    if (o.PlayList.Videos.Count != 0)
+                    {
+                        if (o.Up)
+                        {
+                            this.videos = o.PlayList.videos.OrderBy(video => video.Year).ToList();
+                        }
+                        else
+                        {
+                            this.videos = o.PlayList.videos.OrderByDescending(video => video.Year).ToList();
+                        }
+                    }
+                    else Console.WriteLine("No se han encontrado videos");
+
+                }
+            }
+            else if (o.Option == "Length")
+            {
+                if (o.MediaFile == "song")
+                {
+                    if (o.PlayList.Songs.Count != 0)
+                    {
+                        if (o.Up)
+                        {
+                            this.songs = o.PlayList.songs.OrderBy(song => song.Length).ToList();
+                        }
+                        else
+                        {
+                            this.songs = o.PlayList.songs.OrderByDescending(song => song.Length).ToList();
+                        }
+                    }
+                    else Console.WriteLine("No se han encontrado canciones");
+                }
+                else if (o.MediaFile == "video")
+                {
+                    if (o.PlayList.Videos.Count != 0)
+                    {
+                        if (o.Up)
+                        {
+                            this.videos = o.PlayList.videos.OrderBy(video => video.Length).ToList();
+                        }
+                        else
+                        {
+                            this.videos = o.PlayList.videos.OrderByDescending(video => video.Length).ToList();
+                        }
+                    }
+                    else Console.WriteLine("No se han encontrado videos");
+                }
+            } 
+            else if (o.Option == "Qualification")
+            {
+
+            }
+            if (o.MediaFile == "song")
+            {
+                if (o.PlayList.Songs.Count != 0)
+                {
+                    if (o.Up)
+                    {
+                        this.songs = o.PlayList.songs.OrderBy(song => song.Qualification).ToList();
                     }
                     else
                     {
-                        this.songs = songs.OrderByDescending(song => song.Name).ToList();
+                        this.songs = o.PlayList.songs.OrderByDescending(song => song.Qualification).ToList();
                     }
                 }
                 else Console.WriteLine("No se han encontrado canciones");
             }
-            else if (mediaFile=="video")
+            else if (o.MediaFile == "video")
             {
-                if (videos.Count != 0)
+                if (o.PlayList.Videos.Count != 0)
                 {
-                    if (up)
+                    if (o.Up)
                     {
-                        this.videos = videos.OrderBy(video => video.Name).ToList();
+                        this.videos = o.PlayList.videos.OrderBy(video => video.Qualification).ToList();
                     }
                     else
                     {
-                        this.videos = videos.OrderByDescending(video => video.Name).ToList();
+                        this.videos = o.PlayList.videos.OrderByDescending(video => video.Qualification).ToList();
                     }
                 }
                 else Console.WriteLine("No se han encontrado videos");
             }
-        }
 
-        public void OrderByDate(bool up, string mediaFile)
-        {
-            if (mediaFile == "song")
-            {
-                if (songs.Count != 0)
-                {
-                    if (up)
-                    {
-                        this.songs = songs.OrderBy(song => song.Year).ToList();
-                    }
-                    else
-                    {
-                        this.songs = songs.OrderByDescending(song => song.Year).ToList();
-                    }
-                }
-                else Console.WriteLine("No se han encontrado canciones");
-            }
-            else if (mediaFile =="video")
-            {
-                if (videos.Count != 0)
-                {
-                    if (up)
-                    {
-                        this.videos = videos.OrderBy(video => video.Year).ToList();
-                    }
-                    else
-                    {
-                        this.videos = videos.OrderByDescending(video => video.Year).ToList();
-                    }
-                }
-                else Console.WriteLine("No se han encontrado videos");
-            }
-        }
-
-        public void OrderByLength(bool up, string mediaFile)
-        {
-            if (mediaFile == "song")
-            {
-                if (songs.Count != 0)
-                {
-                    if (up)
-                    {
-                        this.songs = songs.OrderBy(song => song.Length).ToList();
-                    }
-                    else
-                    {
-                        this.songs = songs.OrderByDescending(song => song.Length).ToList();
-                    }
-                }
-                else Console.WriteLine("No se han encontrado canciones");
-            }
-            else if (mediaFile == "video")
-            {
-                if (videos.Count != 0)
-                {
-                    if (up)
-                    {
-                        this.videos = videos.OrderBy(video => video.Length).ToList();
-                    }
-                    else
-                    {
-                        this.videos = videos.OrderByDescending(video => video.Length).ToList();
-                    }
-                }
-                else Console.WriteLine("No se han encontrado videos");
-            }
-        }
-
-        public void OrderByQualification(bool up, string mediaFile)
-        {
-            if (mediaFile == "song")
-            {
-                if (songs.Count != 0)
-                {
-                    if (up)
-                    {
-                        this.songs = songs.OrderBy(song => song.Qualification).ToList();
-                    }
-                    else
-                    {
-                        this.songs = songs.OrderByDescending(song => song.Qualification).ToList();
-                    }
-                }
-                else Console.WriteLine("No se han encontrado canciones");
-            }
-            else if (mediaFile == "video")
-            {
-                if (videos.Count != 0)
-                {
-                    if (up)
-                    {
-                        this.videos = videos.OrderBy(video => video.Qualification).ToList();
-                    }
-                    else
-                    {
-                        this.videos = videos.OrderByDescending(video => video.Qualification).ToList();
-                    }
-                }
-                else Console.WriteLine("No se han encontrado videos");
-            }
         }
     }
 }

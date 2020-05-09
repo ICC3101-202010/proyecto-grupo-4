@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    class Album : IOrderPlaylist
+    public class Album 
     {
         private string name;
         private List<string> artists = new List<string>();
@@ -26,74 +26,71 @@ namespace Spotflix
         public int NumberSongs { get => numberSongs; set => numberSongs = value; }
         public List<Song> Songs { get => songs; set => songs = value; }
 
-        public void OrderByAlphabet(bool up, string mediaFile)
+        public void OnOrderByA(object source, OrderByAEventArgs a)
         {
-            if (artists.Count() != 0 && songs.Count != 0)
+            if (a.Option == "Alphabet")
             {
-                if (up)
+                if (a.Album.Songs.Count != 0)
                 {
-                    this.songs = songs.OrderBy(song => song.Name).ToList();
+                    if (a.Up)
+                    {
+                        this.songs = a.Album.songs.OrderBy(song => song.Name).ToList();
+                    }
+                    else
+                    {
+                        this.songs = a.Album.songs.OrderByDescending(song => song.Name).ToList();
+                    }
                 }
-                else
-                {
-                    this.songs = songs.OrderByDescending(song => song.Name).ToList();
-                }
+                else Console.WriteLine("No se han encontrado canciones");
+
             }
-            else Console.WriteLine("No se han encontrado artistas o canciones");
-        }
-
-
-        public void OrderByDate(bool up, string mediaFile)
-        {
-            if (artists.Count() != 0 && songs.Count != 0)
+            else if (a.Option == "Date")
             {
-                if (up)
+
+                if (a.Album.Songs.Count != 0)
                 {
-                    this.songs = songs.OrderBy(song => song.Year).ToList();
+                    if (a.Up)
+                    {
+                        this.songs = a.Album.songs.OrderBy(song => song.Year).ToList();
+                    }
+                    else
+                    {
+                        this.songs = a.Album.songs.OrderByDescending(song => song.Year).ToList();
+                    }
                 }
-                else
-                {
-                    this.songs = songs.OrderByDescending(song => song.Year).ToList();
-                }
+                else Console.WriteLine("No se han encontrado canciones");
             }
-            else Console.WriteLine("No se han encontrado artistas o canciones");
-        }
-
-        
-
-        public void OrderByLength(bool up, string mediaFile)
-        {
-            if (artists.Count() != 0 && songs.Count != 0)
+            else if (a.Option == "Length")
             {
-                if (up)
+                if (a.Album.Songs.Count != 0)
                 {
-                    this.songs = songs.OrderBy(song => song.Length).ToList();
+                    if (a.Up)
+                    {
+                        this.songs = a.Album.songs.OrderBy(song => song.Length).ToList();
+                    }
+                    else
+                    {
+                        this.songs = a.Album.songs.OrderByDescending(song => song.Length).ToList();
+                    }
                 }
-                else
-                {
-                    this.songs = songs.OrderByDescending(song => song.Length).ToList();
-                }
+                else Console.WriteLine("No se han encontrado canciones");
             }
-            else Console.WriteLine("No se han encontrado artistas o canciones");
-        }
 
-        
-
-        public void OrderByQualification(bool up, string mediaFile)
-        {
-            if (artists.Count() != 0 && songs.Count != 0)
+            else if (a.Option == "Qualification")
             {
-                if (up)
+                if (a.Album.Songs.Count != 0)
                 {
-                    this.songs = songs.OrderBy(song => song.Qualification).ToList();
+                    if (a.Up)
+                    {
+                        this.songs = a.Album.songs.OrderBy(song => song.Qualification).ToList();
+                    }
+                    else
+                    {
+                        this.songs = a.Album.songs.OrderByDescending(song => song.Qualification).ToList();
+                    }
                 }
-                else
-                {
-                    this.songs = songs.OrderByDescending(song => song.Qualification).ToList();
-                }
-            }
-            else Console.WriteLine("No se han encontrao artistas o canciones");
+                else Console.WriteLine("No se han encontrado canciones");
+            }    
         }
-    
     }
 }
