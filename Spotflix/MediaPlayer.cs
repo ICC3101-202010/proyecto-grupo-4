@@ -600,7 +600,8 @@ namespace Spotflix
             }
         }
         //Shows listos
-        /*public int Search(string switcher)
+        /*
+        public int Search(string switcher)
         {
             string stopper = "7";
             int choice = 0;
@@ -763,7 +764,8 @@ namespace Spotflix
                 }
             }
 
-        }*/
+        }
+        */
         public void CreatePlaylistS()
         {
             List<Song> tempsongs = new List<Song>();

@@ -12,66 +12,91 @@ namespace Spotflix
         private static List<Admin> managers = new List<Admin>();
         private static List<Teacher> teachers = new List<Teacher>();
         private static List<int> states = new List<int>(); //State es el segundo donde el usuario cuyo index corresponde al de su int quedo
-        public static bool SingUser(User user)//listo
+        public static bool checkUsername(string userName)
         {
             if (users.Count() == 0)
             {
-                users.Append(user);
                 return true;
             }
-            foreach (User user_T in users)
+            else
             {
-                if (user_T.Nickname == user.Nickname)
+                foreach (User user_T in users)
                 {
-                    Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", user.Nickname);
-                    return false;
-                }
-                else if (user_T.Gmail == user.Gmail)
-                {
-                    Console.WriteLine("El Email {0} ya esta en uso\n", user.Gmail);
-                    return false;
+                    if (user_T.Nickname == userName)
+                    {
+                        Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
             }
-            users.Add(user);
             return true;
-        }
-        public static bool SingAdmin(Admin manager) //Listo
+        }//True si es valido False si ya existe
+        public static bool checkGmail(string gmail)
+        {
+            if (users.Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                foreach (User user_T in users)
+                {
+                    if (user_T.Gmail == gmail)
+                    {
+                        Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }//True si es valido False si ya existe
+        public static bool checkCodeA(string code)
         {
             if (managers.Count() == 0)
             {
-                managers.Append(manager);
                 return true;
             }
             foreach (Admin manager_T in managers)
             {
-                if (manager_T.Code == manager.Code)
+                if (manager_T.Code == code)
                 {
                     Console.WriteLine("El Administrador con este codigo ya existe\n");
                     return false;
                 }
             }
-            managers.Add(manager);
             return true;
-
-        }
-        public static bool SingTeacher(Teacher teacher)
+        }//True si es valido False si ya existe
+        public static bool checkCodeP(string code)
         {
             if (teachers.Count() == 0)
             {
-                teachers.Append(teacher);
                 return true;
             }
             foreach (Teacher teacher_T in teachers)
             {
-                if (teacher_T.Code == teacher.Code)
+                if (teacher_T.Code == code)
                 {
                     Console.WriteLine("El Profesor con este codigo ya existe\n");
                     return false;
                 }
             }
-            teachers.Add(teacher);
             return true;
-
+        }
+        public static void SingUser(User user)//listo
+        {
+            users.Add(user);
+        }
+        public static void SingAdmin(Admin manager) //Listo
+        {
+            managers.Add(manager);
+        }
+        public static void SingTeacher(Teacher teacher)
+        {
+           teachers.Add(teacher);
         }
         public static bool LogAsUser(string email_nickname, string password) //listo
         {
@@ -90,7 +115,7 @@ namespace Spotflix
             Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
             return false;
         }
-        public static bool LogAsAdmin(int code, string password) //listo
+        public static bool LogAsAdmin(string code, string password) //listo
         {
             if (managers.Count() == 0)
             {
@@ -107,7 +132,7 @@ namespace Spotflix
             Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
             return false;
         }
-        public static bool LogAsTeacher(int code, string password) //listo
+        public static bool LogAsTeacher(string code, string password) //listo
         {
             if (teachers.Count() == 0)
             {

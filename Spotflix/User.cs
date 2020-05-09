@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    public class User  :  Person //Falta considerar fin de subscripcion y pagos mensuales
+    public class User : Person //Falta considerar fin de subscripcion y pagos mensuales
     {
         private int userID;
         private string gmail;
@@ -21,7 +21,7 @@ namespace Spotflix
         private List<Playlist> likedPlaylist = new List<Playlist>();
 
 
-        public User(int userID, string gmail, string nickname, string password, string name, string lastName, int age, string country,  string city,  string street, int postalCode)
+        public User(int userID, string gmail, string nickname, string password, string name, string lastName, int age, string country, string city, string street, string postalCode)
         {
             this.userID = userID;
             this.Gmail = gmail;
@@ -96,29 +96,28 @@ namespace Spotflix
         {
             throw new NotImplementedException();
         }
-        
-       /* public void Follow()
-        {
-            MediaPlayer.Follow();
-        }
 
-        public void Close()
-        {
-            MediaPlayer.Close();
-        }
-        public void DownloadSong()
-        {
-            MediaPlayer.DownloadSong();
-        }
-        public void AddFile(Song song)
-        {
-            MediaPlayer.AddFile();
-        }
-        public void AddFile(Video video)
-        {
-            MediaPlayer.AddFile();
-        }
-        */
+        /* public void Follow()
+         {
+             MediaPlayer.Follow();
+         }
+         public void Close()
+         {
+             MediaPlayer.Close();
+         }
+         public void DownloadSong()
+         {
+             MediaPlayer.DownloadSong();
+         }
+         public void AddFile(Song song)
+         {
+             MediaPlayer.AddFile();
+         }
+         public void AddFile(Video video)
+         {
+             MediaPlayer.AddFile();
+         }
+         */
     }
 
 }

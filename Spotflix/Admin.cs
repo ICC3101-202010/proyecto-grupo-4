@@ -13,11 +13,11 @@ namespace Spotflix
     public class Admin : Person
     {
 
-        private int code;
+        private string code;
         WindowsMediaPlayer music = new WindowsMediaPlayer();
 
-        public Admin(int code) { this.code = code; }
-        public int Code { get => code; set => code = value; }
+        public Admin(string code) { this.code = code; }
+        public string Code { get => code; set => code = value; }
         //private IWavePlayer waveOut;
         //private Mp3FileReader mp3FileReader;
 

@@ -15,7 +15,7 @@ namespace Spotflix
         protected string country;
         protected string city;
         protected string street;
-        protected int postalCode;
+        protected string postalCode;
         protected string password;
 
         public string Password { get => password; set => password = value; }
@@ -25,7 +25,7 @@ namespace Spotflix
         public string Country { get => country; set => country = value; }
         public string City { get => city; set => city = value; }
         public string Street { get => street; set => street = value; }
-        public int PostalCode { get => postalCode; set => postalCode = value; }
+        public string PostalCode { get => postalCode; set => postalCode = value; }
 
 
         protected virtual void AddImage() { }//Pendiente
