@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
-    class Series
+    public class Series
     {
         private int nofVideos;
         private string serieName;

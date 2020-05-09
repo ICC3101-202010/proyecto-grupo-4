@@ -25,7 +25,7 @@ namespace Spotflix
         }
         public string Course { get => course; set => course = value; }
         public int Code { get => code; set => code = value; }
-
+        public Teacher() { }
         public void Import(MediaFile mediafile) { }
         public void Remove(MediaFile mediafile) { }
     }

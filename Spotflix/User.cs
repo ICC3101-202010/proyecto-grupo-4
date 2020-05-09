@@ -21,13 +21,12 @@ namespace Spotflix
         private List<Playlist> likedPlaylist = new List<Playlist>();
 
 
-        public User(int userID, string gmail, string nickname, string password, string membershipType, string name, string lastName, int age, string country,  string city,  string street, int postalCode)
+        public User(int userID, string gmail, string nickname, string password, string name, string lastName, int age, string country,  string city,  string street, int postalCode)
         {
             this.userID = userID;
             this.Gmail = gmail;
             this.Nickname = nickname;
             this.Password = password;
-            this.MembershipType = membershipType;
             this.Name = name;
             this.Lastname = lastName;
             this.Age = age;
@@ -97,13 +96,13 @@ namespace Spotflix
         {
             throw new NotImplementedException();
         }
-
-        public void Follow()
+        
+       /* public void Follow()
         {
             MediaPlayer.Follow();
         }
 
-        /*public void Close()
+        public void Close()
         {
             MediaPlayer.Close();
         }
