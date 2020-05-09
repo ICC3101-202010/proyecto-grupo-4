@@ -67,6 +67,7 @@ namespace Spotflix
                     Console.WriteLine("El Administrador con este codigo ya existe\n");
                     return false;
                 }
+
             }
             return true;
         }//True si es valido False si ya existe
@@ -89,20 +90,23 @@ namespace Spotflix
         public static void SingUser(User user)//listo
         {
             users.Add(user);
+            Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static void SingAdmin(Admin manager) //Listo
         {
             managers.Add(manager);
+            Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static void SingTeacher(Teacher teacher)
         {
            teachers.Add(teacher);
+            Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static bool LogAsUser(string email_nickname, string password) //listo
         {
             if (users.Count() == 0)
             {
-                Console.WriteLine("No existen usuarios registrados\n");
+                Console.WriteLine("No existen usuarios registrado con esas caracteristicas\n");
                 return false;
             }
             else
@@ -122,12 +126,12 @@ namespace Spotflix
         {
             if (managers.Count() == 0)
             {
-                Console.WriteLine("No hay ningun administrador registrado\n");
+                Console.WriteLine("No hay ningun administrador registrado con esas caracteristicas\n");
                 return false;
             }
             foreach (Admin manager in managers)
             {
-                if (manager.Code == code && manager.Password == password)
+                if (manager.Code == code && manager.Pass == password)
                 {
                     return true;
                 }
@@ -139,12 +143,12 @@ namespace Spotflix
         {
             if (teachers.Count() == 0)
             {
-                Console.WriteLine("No hay ningun profesor registrado\n");
+                Console.WriteLine("No hay ningun profesor registrado con esas caracteristicas\n");
                 return false;
             }
             foreach (Teacher teacher in teachers)
             {
-                if (teacher.Code == code && teacher.Password == password)
+                if (teacher.Code == code && teacher.Passw == password)
                 {
                     return true;
                 }

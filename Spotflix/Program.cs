@@ -18,15 +18,31 @@ namespace Spotflix
             MediaPlayer mediaPlayer = new MediaPlayer();
             Admin admin = new Admin();
             Teacher teacher = new Teacher();
+            List<Video> vid = new List<Video>();
+            List<Song> son = new List<Song>();
+            Series serie = new Series(0,vid,"");
+            Playlist play = new Playlist(son,"");
+            Karaoke karaoke = new Karaoke("","","",true,"","",0,0,"","");
+
+            mediaPlayer.AddVideoSerie += serie.OnAddVideoSerie;
+            mediaPlayer.DeleteVideoSerie += serie.OnDeleteVideoSerie;
+            mediaPlayer.AddSong += play.OnAddSong;
+            mediaPlayer.DeleteSong += play.OnDeleteSong;
+            mediaPlayer.AddVideo += play.OnAddVideo;
+            mediaPlayer.DeleteVideo += play.OnDeleteVideo;
+            mediaPlayer.OrderBy += play.OnOrderBy;
+            mediaPlayer.AddKaraoke += karaoke.OnAddKaraoke;
+            mediaPlayer.DeleteKaraoke += karaoke.OnDeleteKaraoke;
+
+
 
             int num = 1;
-            int code = 1000;
             string switcher = "0";
             string stopper = "7";
 
             while (switcher != stopper)
             {
-                Console.WriteLine("Si desea:\n\t(1)Registrarse\n\t(2)Iniciar Sesion\n\t(5)Salir de la busqueda\n");
+                Console.WriteLine("Si desea:\n\t(1)Registrarse\n\t(2)Iniciar Sesion\n\t(7)Salir de la busqueda\n");
                 switcher = Console.ReadLine();
 
                 switch (switcher)
@@ -37,25 +53,7 @@ namespace Spotflix
                         register = Console.ReadLine();
                         switch (register)
                         {
-                            case "1":
-                                bool nickcheck = false;
-                                bool mailcheck = false;
-                                string nickName = "";
-                                string gmail = "";
-                                while (!mailcheck)
-                                {
-                                    Console.WriteLine("\nIngrese su Gmail\n");
-                                    gmail = Console.ReadLine();
-                                    mailcheck = Gate.checkGmail(gmail);
-                                }
-                                while (!nickcheck)
-                                {
-                                    Console.WriteLine("\nIngrese su nombre de usuario\n");
-                                    nickName = Console.ReadLine();
-                                    nickcheck = Gate.checkUsername(nickName);
-                                }
-                                Console.WriteLine("\nIngrese su contraseña\n ");
-                                string passWord = Console.ReadLine();
+                            case "1": //usuario
                                 Console.WriteLine("\nIngrese su nombre\n ");
                                 string name = Console.ReadLine();
                                 Console.WriteLine("\nIngrese su apellido\n ");
@@ -86,6 +84,24 @@ namespace Spotflix
                                 string street = Console.ReadLine();
                                 Console.WriteLine("\nIngrese su código postal\n ");
                                 string postalCode = Console.ReadLine();
+                                bool nickcheck = false;
+                                bool mailcheck = false;
+                                string nickName = "";
+                                string gmail = "";
+                                while (!mailcheck)
+                                {
+                                    Console.WriteLine("\nIngrese su Gmail\n");
+                                    gmail = Console.ReadLine();
+                                    mailcheck = Gate.checkGmail(gmail);
+                                }
+                                while (!nickcheck)
+                                {
+                                    Console.WriteLine("\nIngrese su nombre de usuario\n");
+                                    nickName = Console.ReadLine();
+                                    nickcheck = Gate.checkUsername(nickName);
+                                }
+                                Console.WriteLine("\nIngrese su contraseña\n ");
+                                string passWord = Console.ReadLine();
                                 if (nickcheck && mailcheck)
                                 {
                                     User u1 = new User(num, gmail, nickName, passWord, name, lastName, age, country, city, street, postalCode);
@@ -93,20 +109,17 @@ namespace Spotflix
                                 }
                                 num++;
                                 break;
-                            case "2":
+                            case "2": //administrador
                                 Console.WriteLine("Ingrese el codigo para registrarse como admin");
                                 string key = Console.ReadLine();
+                                Console.WriteLine("Ingrese la contraseña\n");
+                                string contra = Console.ReadLine();
                                 if (key == "123")
                                 {
                                     if (Gate.checkCodeA(key))
                                     {
-                                        Admin a1 = new Admin(key);
+                                        Admin a1 = new Admin(key,contra);
                                         Gate.SingAdmin(a1);
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Volviendo al menu...");
-                                        Thread.Sleep(1000);
                                     }
                                 }
                                 else
@@ -120,11 +133,13 @@ namespace Spotflix
                                 string key_T = Console.ReadLine();
                                 Console.WriteLine("Ingrese el curso que desea tener\n");
                                 string curso = Console.ReadLine();
+                                Console.WriteLine("Ingrese la contraseña\n");
+                                string pas = Console.ReadLine();
                                 if (key_T == "321")
                                 {
                                     if (Gate.checkCodeP(key_T))
                                     {
-                                        Teacher t1 = new Teacher(key_T, curso);
+                                        Teacher t1 = new Teacher(key_T, curso, pas);
                                         Gate.SingTeacher(t1);
                                     }
 
@@ -146,11 +161,12 @@ namespace Spotflix
                         string stopper2 = "4";
                         while (switcher2 != stopper2)
                         {
-                            Console.WriteLine("Ingrese:\n\t(1)Para usuario\n\t(2)Para administrador\n\t(3)Para profesor\n\t(4)Para salir\n");
+                            Console.WriteLine("Iniciar sesion:\n\t(1)Para usuario\n\t(2)Para administrador\n\t(3)Para profesor\n\t(4)Atras\n");
                             switcher2 = Console.ReadLine();
                             switch (switcher2)
                             {
                                 case "1": //usuario
+                                  
                                     Console.WriteLine("Ingrese su nombre de usuario o Gmail\n");
                                     string n = Console.ReadLine();
                                     Console.WriteLine("Ingrese su contraseña\n");
@@ -161,12 +177,12 @@ namespace Spotflix
                                         string stopperusr = "20";
                                         while (switcherusr != stopperusr)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Convertirse en Premium\n\t(15)Hacer una PlayList de canciones\n\t(16)Hacer una PlayList de videos\n\t(17)Añadir a la cola\n\t(18)Seguir a otro usuario\n\t(19)salir de la busqueda\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Convertirse en Premium\n\t(15)Hacer una PlayList de canciones\n\t(16)Hacer una PlayList de videos\n\t(17)Añadir a la cola\n\t(18)Seguir a otro usuario\n\t(20)Atras\n");
                                             switcherusr = Console.ReadLine();
 
                                             switch (switcherusr)
                                             {
-                                                /*case "1": //buscar y reproducir videos
+                                                case "1": //buscar y reproducir videos
                                                     mediaPlayer.Search("1");
                                                     int variable1 = mediaPlayer.Search("1");
                                                     if (variable1 == -1) break;
@@ -205,7 +221,7 @@ namespace Spotflix
                                                         mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
-                                                    break;*/
+                                                    break;
                                                 case "5": //mostrar los videos
                                                     mediaPlayer.ShowVideos();
                                                     break;
@@ -238,6 +254,8 @@ namespace Spotflix
 
                                                 case "19":
                                                     break;
+                                                case "20":
+                                                    break;
 
                                                 default:
                                                     Console.WriteLine("Ingrese una opcion valida");
@@ -252,19 +270,19 @@ namespace Spotflix
                                     string nn = Console.ReadLine();
                                     Console.WriteLine("Ingrese su contraseña\n");
                                     string pp = Console.ReadLine();
-                                    Gate.LogAsAdmin(nn, pp);
+                                    //Gate.LogAsAdmin(nn, pp);
                                     if (Gate.LogAsAdmin(nn, pp))
                                     {
                                         string switcherad = "0";
                                         string stopperad = "20";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover cacnion\n\t(12)Remover video\n\t(13)Descargar cancion/video\n\t(14)Hacer una PlayList de canciones\n\t(15)Hacer una PlayList de videos\n\t(16)Añadir a la cola\n\t(17)Seguir a otro usuario\n\t(19)salir de la busqueda\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover cacnion\n\t(12)Remover video\n\t(13)Descargar cancion/video\n\t(14)Hacer una PlayList de canciones\n\t(15)Hacer una PlayList de videos\n\t(16)Añadir a la cola\n\t(17)Seguir a otro usuario\n\t(20)Atras\n");
                                             switcherad = Console.ReadLine();
 
                                             switch (switcherad)
                                             {
-                                                /*case "1": //busca video
+                                                case "1": //busca video
                                                     mediaPlayer.Search("1");
                                                     int variable1 = mediaPlayer.Search("1");
                                                     if (variable1 == -1) break;
@@ -303,7 +321,7 @@ namespace Spotflix
                                                         mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
-                                                    break;*/
+                                                    break;
                                                 case "5": //mostrar videos
                                                     mediaPlayer.ShowVideos();
                                                     break;
@@ -329,8 +347,8 @@ namespace Spotflix
                                                     admin.Remove(video, mediaPlayer);
                                                     break;
                                                 case "13": //descargar
-                                                    mediaPlayer.Download();*/
-                                                    break;
+                                                    mediaPlayer.Download();
+                                                    break;*/
                                                 case "14": //crear playlist de canciones
                                                     mediaPlayer.CreatePlaylistS();
                                                     break;
@@ -345,6 +363,8 @@ namespace Spotflix
                                                     break;
 
                                                 case "19":
+                                                    break;
+                                                case "20":
                                                     break;
 
                                                 default:
@@ -361,19 +381,19 @@ namespace Spotflix
                                     string mm = Console.ReadLine();
                                     Console.WriteLine("Ingrese su contraseña\n");
                                     string ññ = Console.ReadLine();
-                                    Gate.LogAsTeacher(mm, ññ);
+                                    //Gate.LogAsTeacher(mm, ññ);
                                     if (Gate.LogAsTeacher(mm, ññ))
                                     {
                                         string switcherad = "0";
                                         string stopperad = "21";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover canciion\n\t(12)Remover video\n\t(13)Descargar cancion/video\n\t(14)Añadir archivo a curso\n\t(15)Eliminar archivos del curso\n\t(16)Hacer una PlayList de canciones\n\t(17)Hacer una PlayList de videos\n\t(18)Añadir a la cola\n\t(19)Seguir a otro usuario\n\t(20)salir de la busqueda\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover canciion\n\t(12)Remover video\n\t(13)Descargar cancion/video\n\t(14)Añadir archivo a curso\n\t(15)Eliminar archivos del curso\n\t(16)Hacer una PlayList de canciones\n\t(17)Hacer una PlayList de videos\n\t(18)Añadir a la cola\n\t(19)Seguir a otro usuario\n\t(21)Atras\n");
                                             switcherad = Console.ReadLine();
 
                                             switch (switcherad)
                                             {
-                                                /*case "1": //buscar y reproducir videos
+                                                case "1": //buscar y reproducir videos
                                                     mediaPlayer.Search("1");
                                                     int variable1 = mediaPlayer.Search("1");
                                                     if (variable1 == -1) break;
@@ -412,7 +432,7 @@ namespace Spotflix
                                                         mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
-                                                    break;*/
+                                                    break;
                                                 case "5": //mostrar videos
                                                     mediaPlayer.ShowVideos();
                                                     break;
@@ -461,6 +481,8 @@ namespace Spotflix
 
                                                 case "20":
                                                     break;
+                                                case "21":
+                                                    break;
 
                                                 default:
                                                     Console.WriteLine("Ingrese una opcion valida");
@@ -486,9 +508,9 @@ namespace Spotflix
 
                 default:
                         Console.WriteLine("Ingrese una opción valida");
-                break;
+                        break;
                 }
-                break;
+                
 
             }
             

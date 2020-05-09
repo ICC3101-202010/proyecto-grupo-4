@@ -14,10 +14,12 @@ namespace Spotflix
     {
 
         private string code;
+        private string pass;
         WindowsMediaPlayer music = new WindowsMediaPlayer();
 
-        public Admin(string code) { this.code = code; }
+        public Admin(string code, string pass) { this.code = code; this.pass = pass; }
         public string Code { get => code; set => code = value; }
+        public string Pass { get => pass; set => pass = value; }
         //private IWavePlayer waveOut;
         //private Mp3FileReader mp3FileReader;
 

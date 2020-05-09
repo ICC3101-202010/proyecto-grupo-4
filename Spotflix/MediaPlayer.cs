@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Spotflix
 {
@@ -600,172 +601,277 @@ namespace Spotflix
             }
         }
         //Shows listos
-        /*
         public int Search(string switcher)
         {
-            string stopper = "7";
             int choice = 0;
-            while (choice != -1)
+            Console.WriteLine("Ingrese la busqueda del archivo a reproducir o -1 para salir\n");
+            string filter = Console.ReadLine().ToLower();
+            if (filter == "-1")
             {
-                Console.WriteLine("Ingrese la busqueda del archivo a reproducir\n");
-                string filter = Console.ReadLine().ToLower();
-                if (filter == "-1")
-                {
+                return -1;
+            }
+            switch (switcher)
+            {
+                case "1":
+                    if (this.Videos.Count == 0)
+                    {
+                        Console.WriteLine("No se encontaron videos\n");
+                        return -1;
+                    }
+                    List<Video> catchs = new List<Video>();
+                    foreach (Video video in this.Videos)
+                    {
+                        if (video.Name.ToLower().Contains(filter) && (!(catchs.Contains(video))))
+                        {
+                            catchs.Add(video);
+                        }
+                        if (video.Gender.ToLower().Contains(filter) && (!(catchs.Contains(video))))
+                        {
+                            catchs.Add(video);
+                        }
+                        if (video.Studio.ToLower().Contains(filter) && (!(catchs.Contains(video))))
+                        {
+                            catchs.Add(video);
+                        }
+                        if (video.Director.ToLower().Contains(filter) && (!(catchs.Contains(video))))
+                        {
+                            catchs.Add(video);
+                        }
+                        foreach (string actor in video.Actors)
+                        {
+                            if (actor.ToLower().Contains(filter) && (!(catchs.Contains(video))))
+                            {
+                                catchs.Add(video);
+                            }
+                        }
+                    }
+                    if (catchs.Count() != 0)
+                    {
+                        foreach (Video video in catchs)
+                        {
+                            Console.WriteLine("{0}{1}\n", catchs.IndexOf(video) + 1, video.Name);
+                        }
+                        while (choice != -1)
+                        {
+                            while (choice == 0)
+                            {
+                                try
+                                {
+                                    choice = int.Parse(Console.ReadLine());
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Ingrese un numero para seleccionar\n");
+                                }
+                            }
+                            try
+                            {
+                                return this.Videos.IndexOf(catchs[choice - 1]);
+                            }
+                            catch (ArgumentOutOfRangeException)
+                            {
+                                if (choice == -1)
+                                {
+                                    return choice;
+                                }
+                                Console.WriteLine("Seleccione un video dentro del rango o ingrese -1 para salir\n");
+                                choice = 0;
+                            }
+                        }
+
+                    }
+                    Console.WriteLine("No se encontraron coincidencias, volviendo al menu...\n");
+                    Thread.Sleep(1000);
                     return -1;
-                }
-                switch (switcher)
-                {
-                    case "1":
-                        if (this.Videos.Count == 0)
+                case "2":
+                    if (this.Songs.Count() == 0)
+                    {
+                        Console.WriteLine("No se encontaron canciones\n");
+                        return -1;
+                    }
+                    List<Song> catchsSongs = new List<Song>();
+                    foreach (Song song in this.Songs)
+                    {
+                        if (song.Name.ToLower().Contains(filter) && (!(catchsSongs.Contains(song))))
                         {
-                            Console.WriteLine("No se encontaron videos\n");
-                            return -1;
+                            catchsSongs.Add(song);
                         }
-                        List<Video> catchs = new List<Video>();
-                        foreach (Video video in this.Videos)
+                        if (song.Gender.ToLower().Contains(filter) && (!(catchsSongs.Contains(song))))
                         {
-                            if (video.Name.ToLower() == filter && (!(this.Videos.Contains(video))))
-                            {
-                                catchs.Add(video);
-                            }
-                            if (video.Gender.ToLower() == filter && (!(this.Videos.Contains(video))))
-                            {
-                                catchs.Add(video);
-                            }
-                            if (video.Studio.ToLower() == filter && (!(this.Videos.Contains(video))))
-                            {
-                                catchs.Add(video);
-                            }
-                            if (video.Director.ToLower() == filter && (!(this.Videos.Contains(video))))
-                            {
-                                catchs.Add(video);
-                            }
-                            foreach (string actor in video.Actors)
-                            {
-                                if (actor.ToLower() == filter && (!(this.Videos.Contains(video))))
-                                {
-                                    catchs.Add(video);
-                                }
-                            }
+                            catchsSongs.Add(song);
                         }
-                        if (catchs.Count() != 0)
+                        if (song.Artist.ToLower().Contains(filter) && (!(catchsSongs.Contains(song))))
                         {
-                            foreach (Video video in catchs)
+                            catchsSongs.Add(song);
+                        }
+                        if (song.Album.ToLower().Contains(filter) && (!(catchsSongs.Contains(song))))
+                        {
+                            catchsSongs.Add(song);
+                        }
+
+                    }
+                    if (catchsSongs.Count() != 0)
+                    {
+                        foreach (Song song in catchsSongs)
+                        {
+                            Console.WriteLine("{0}{1}\n", catchsSongs.IndexOf(song) + 1, song.Name);
+                        }
+                        while (choice != -1)
+                        {
+                            while (choice == 0)
                             {
-                                Console.WriteLine("{0}{1}\n", catchs.IndexOf(video) + 1, video.Name);
-                            }
-                            while (choice != -1)
-                            {
-                                while (choice == 0)
-                                {
-                                    try
-                                    {
-                                        choice = int.Parse(Console.ReadLine());
-                                    }
-                                    catch (FormatException)
-                                    {
-                                        Console.WriteLine("Ingrese un numero para seleccionar\n");
-                                    }
-                                }
                                 try
+                                {
+                                    choice = int.Parse(Console.ReadLine());
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Ingrese un numero para seleccionar\n");
+                                }
+                            }
+                            try
+                            {
+                                return this.Songs.IndexOf(catchsSongs[choice - 1]);
+                            }
+                            catch (ArgumentOutOfRangeException)
+                            {
+                                if (choice == -1)
+                                {
+                                    return choice;
+                                }
+                                Console.WriteLine("Seleccione una cancion dentro del rango o ingrese -1 para salir\n");
+                                choice = 0;
+                            }
+                        }
+                    }
+                    Console.WriteLine("No se encontraron coincidencias, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    return -1;
+                case "3":
+                    if (this.Series.Count == 0)
+                    {
+                        Console.WriteLine("No se encontaron series\n");
+                        return -1;
+                    }
+                    List<Series> catchsSeries = new List<Series>();
+                    foreach (Series serie in this.Series)
+                    {
+                        if (serie.SerieName.ToLower().Contains(filter) && (!(catchsSeries.Contains(serie))))
+                        {
+                            catchsSeries.Add(serie);
+                        }
+                        foreach (Video video in serie.Episodes)
+                        {
+                            if (video.Name.ToLower().Contains(filter) && (!(catchsSeries.Contains(serie))))
+                            {
+                                catchsSeries.Add(serie);
+                            }
+                        }
+                    }
+                    if (catchsSeries.Count() != 0)
+                    {
+                        foreach (Series serie in catchsSeries)
+                        {
+                            Console.WriteLine("{0}{1}\n", catchsSeries.IndexOf(serie) + 1, serie.SerieName);
+                        }
+                        while (choice != -1)
+                        {
+                            while (choice == 0)
+                            {
+                                try
+                                {
+                                    choice = int.Parse(Console.ReadLine());
+                                }
+                                catch (FormatException)
+                                {
+                                    Console.WriteLine("Ingrese un numero para seleccionar\n");
+                                }
+                            }
+                            try
+                            {
+                                return this.Series.IndexOf(catchsSeries[choice - 1]);
+                            }
+                            catch (ArgumentOutOfRangeException)
+                            {
+                                if (choice == -1)
                                 {
                                     return choice - 1;
                                 }
-                                catch (ArgumentOutOfRangeException)
-                                {
-                                    if (choice == -1)
-                                    {
-                                        return choice;
-                                    }
-                                    Console.WriteLine("Seleccione un video dentro del rango o ingrese -1 para salir\n");
-                                    choice = 0;
-                                }
+                                Console.WriteLine("Seleccione una serie dentro del rango o ingrese -1 para salir\n");
+                                choice = 0;
                             }
+                        }
 
-                        }
-                        else
+                    }
+                    Console.WriteLine("No se encontraron coincidencias, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    return -1;
+                case "4":
+                    if (this.Playlists.Count == 0)
+                    {
+                        Console.WriteLine("No se encontaron playlists\n");
+                        return -1;
+                    }
+                    List<Playlist> catchsPlaylists = new List<Playlist>();
+                    foreach (Playlist playlist in this.Playlists)
+                    {
+                        if (playlist.PlaylistName.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist))))
                         {
-                            Console.WriteLine("No se encontraron coincidencias pruebe otra busqueda o ingrese -1 para salir\n");
+                            catchsPlaylists.Add(playlist);
                         }
-                        break;
-                    case "2":
-                        if (this.Songs.Count() == 0)
+                        foreach (Song song in playlist.Songs)
                         {
-                            Console.WriteLine("No se encontaron canciones\n");
-                            return -1;
+                            if (song.Name.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist))))
+                            {
+                                catchsPlaylists.Add(playlist);
+                            }
                         }
-                        List<Song> catchsSongs = new List<Song>();
-                        foreach (Song song in this.Songs)
+                    }
+                    if (catchsPlaylists.Count() != 0)
+                    {
+                        foreach (Playlist playlist in catchsPlaylists)
                         {
-                            if (song.Name.ToLower() == filter && (!(this.Songs.Contains(song))))
-                            {
-                                catchsSongs.Add(song);
-                            }
-                            if (song.Gender.ToLower() == filter && (!(this.Songs.Contains(song))))
-                            {
-                                catchsSongs.Add(song);
-                            }
-                            if (song.Artist.ToLower() == filter && (!(this.Songs.Contains(song))))
-                            {
-                                catchsSongs.Add(song);
-                            }
-                            if (song.Album.ToLower() == filter && (!(this.Songs.Contains(song))))
-                            {
-                                catchsSongs.Add(song);
-                            }
-
+                            Console.WriteLine("{0}{1}\n", catchsPlaylists.IndexOf(playlist) + 1, playlist.PlaylistName);
                         }
-                        if (catchsSongs.Count() != 0)
+                        while (choice != -1)
                         {
-                            foreach (Song song in catchsSongs)
+                            while (choice == 0)
                             {
-                                Console.WriteLine("{0}{1}\n", catchsSongs.IndexOf(song), song.Name);
-                            }
-                            while (choice != -1)
-                            {
-                                while (choice == 0)
-                                {
-                                    try
-                                    {
-                                        choice = int.Parse(Console.ReadLine());
-                                    }
-                                    catch (FormatException)
-                                    {
-                                        Console.WriteLine("Ingrese un numero para seleccionar\n");
-                                    }
-                                }
                                 try
                                 {
-                                    return choice - 1;
+                                    choice = int.Parse(Console.ReadLine());
                                 }
-                                catch (ArgumentOutOfRangeException)
+                                catch (FormatException)
                                 {
-                                    if (choice == -1)
-                                    {
-                                        return choice;
-                                    }
-                                    Console.WriteLine("Seleccione una cancion dentro del rango o ingrese -1 para salir\n");
-                                    choice = 0;
+                                    Console.WriteLine("Ingrese un numero para seleccionar\n");
                                 }
                             }
+                            try
+                            {
+                                return this.Playlists.IndexOf(catchsPlaylists[choice - 1]);
+                            }
+                            catch (ArgumentOutOfRangeException)
+                            {
+                                if (choice == -1)
+                                {
+                                    return choice;
+                                }
+                                Console.WriteLine("Seleccione una playlist dentro del rango o ingrese -1 para salir\n");
+                                choice = 0;
+                            }
                         }
-                        else
-                        {
-                            Console.WriteLine("No se encontraron coincidencias pruebe otra busqueda o ingrese -1 para salir\n");
-                        }
-                        break;
-                    case "3":
 
-                        break;
-                    case "4":
-                        break;
-                    default:
-                        break;
-                }
+                    }
+                    Console.WriteLine("No se encontraron coincidencias, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    return -1;
+                default:
+                    Console.WriteLine("Opcion invalida, volviendo al menu...");
+                    Thread.Sleep(1000);
+                    return -1;
             }
 
         }
-        */
         public void CreatePlaylistS()
         {
             List<Song> tempsongs = new List<Song>();
