@@ -23,7 +23,8 @@ namespace Spotflix
         protected string dimension;
         protected object image;
         protected string route;
-        protected int currentSecond;
+        protected int currentSecond=0;
+        private int likes = 0;
 
         public string Route { get => route; set => route = value; }
         protected int CurrentSecond { get => currentSecond; set => currentSecond = value; }
@@ -40,6 +41,6 @@ namespace Spotflix
         public string Quality { get => quality; set => quality = value; }
         public string Dimension { get => dimension; set => dimension = value; }
         public object Image { get => image; set => image = value; }
-        
+        public int Likes { get => likes; set => likes = value; }
     }
 }

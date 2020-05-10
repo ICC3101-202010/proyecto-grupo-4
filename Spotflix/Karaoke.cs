@@ -10,7 +10,7 @@ namespace Spotflix
     {
         private object lyrics;
 
-        public Karaoke(object lyrics, string artist, string album, bool expliciT, string name, string gender, int year, int mediaId, object image, string route) : base(artist, album, expliciT, name, gender, year, mediaId, image, route)
+        public Karaoke(object lyrics, string artist, string album, bool expliciT, string name, string gender, int year, int mediaId, object image, string route) : base(artist, album, expliciT, name, gender, year, image, route)
         {
             this.lyrics = lyrics;
         }

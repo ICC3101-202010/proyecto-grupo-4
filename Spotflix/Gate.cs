@@ -159,6 +159,7 @@ namespace Spotflix
             Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
             return false;
         }
+
         public void ChangePassword()
         {
             Console.WriteLine("Ingresa tu nombre de usuario: ");

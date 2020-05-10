@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace Spotflix
 {
-    public class MediaPlayer
+    public class MediaPlayer 
     {
         private List<Song> songs = new List<Song>();
         private List<Video> videos = new List<Video>();
@@ -353,7 +353,24 @@ namespace Spotflix
         public void Play(Video video) //Listo
         {
             System.Diagnostics.Process.Start(video.Route);
+            Thread.Sleep(video.Length);
         }
+        public void Play(Series serie)
+        {
+            foreach (Video video in serie.Episodes)
+            {
+                System.Diagnostics.Process.Start(video.Route);
+                Thread.Sleep(video.Length);
+            }
+        }//Listo
+        public void Play(Playlist playlist)
+        {
+            foreach (Song song in playlist.Songs)
+            {
+                System.Diagnostics.Process.Start(song.Route);
+                Thread.Sleep(song.Length);
+            }
+        }//Listo
 
         //Pendiente
         public void Stop(Song song) { }//Pendiente
@@ -405,7 +422,7 @@ namespace Spotflix
                 Console.WriteLine("No se encontraron videos");
                 return null;
             }
-        }
+        }//Listo
         public Song ShowSongs()
         {
             int choice = 0;
@@ -447,7 +464,7 @@ namespace Spotflix
                 Console.WriteLine("No se encontraron canciones");
                 return null;
             }
-        }
+        }//Listo
         public Playlist ShowPlaylists()
         {
             int choice = 0;
@@ -489,7 +506,7 @@ namespace Spotflix
                 Console.WriteLine("No se encontraron playlists");
                 return null;
             }
-        }
+        }//Listo
         public Series ShowSeries()
         {
             int choice = 0;
@@ -531,7 +548,7 @@ namespace Spotflix
                 Console.WriteLine("No se encontraron playlists");
                 return null;
             }
-        }
+        }//Listo
         //Shows listos
         public int Search(string switcher)
         {
@@ -803,7 +820,7 @@ namespace Spotflix
                     return -1;
             }
 
-        }
+        }//Listo
         public void CreatePlaylistS()
         {
             List<Song> tempsongs = new List<Song>();
@@ -910,83 +927,127 @@ namespace Spotflix
             }
         }//Listo
 
-        public void AddToQueue()
+        public void AddToQueue()//Pendeinte
         {
             throw new NotImplementedException();
         }
 
-        public void Qualify(int qualification)
+        public void Qualify(Song song)
         {
-            throw new NotImplementedException();
-        }
-
-        public double GetQualification()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object[] GetMetadata(MediaFile mediafile)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetPlataformInformation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<string> GetIntrinsicInformation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Follow()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-
-    /*public int GenderSearch(List<string> genders)
-    {
-        int count = 0;
-        foreach (Song song in Songs)
-        {
-            foreach (string gender in genders)
+            Console.WriteLine("Ingrese la calificacion que desea darle a la cancion {0} entre 1 y 5\n",song.Name);
+            try
             {
-                if (song.Gender == gender)
+                int q= int.Parse(Console.ReadLine());
+                if (q>=1 && q<=5)
                 {
-                    count += 1;
+                    song.Qualification.Add(q);
+                }
+                else
+                {
+                    Console.WriteLine("Calificacion invalida, volviendo al menu...");
+                    Thread.Sleep(1000);
                 }
             }
-        }
-        Console.WriteLine($"Se han encontrado {count} canciones de ese género");
-        return count;
-    }
-    public int ArtistSearch(List<string> artists)
-    {
-        int count = 0;
-        foreach (Song song in Songs)
-        {
-            foreach (string artist in artists)
+            catch (FormatException)
             {
-                if (song.Artist == artist)
-                {
-                    count += 1;
-                }
+                Console.WriteLine("Calificacion invalida, volviendo al menu...");
+                Thread.Sleep(1000);
             }
         }
-        Console.WriteLine($"Se han encontrado {count} canciones de ese artista");
-        return count;
-    }
+        public void Qualify(Video video)
+        {
+            Console.WriteLine("Ingrese la calificacion que desea darle al video {0} entre 1 y 5\n", video.Name);
+            try
+            {
+                int q = int.Parse(Console.ReadLine());
+                if (q >= 1 && q <= 5)
+                {
+                    video.Qualification.Add(q);
+                }
+                else
+                {
+                    Console.WriteLine("Calificacion invalida, volviendo al menu...");
+                    Thread.Sleep(1000);
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Calificacion invalida, volviendo al menu...");
+                Thread.Sleep(1000);
+            }
+        }
 
-    public Song Downnload(Song song) //Método no listo
-    {
-            
-        //client.DownloadFile("http://example.com/file/song/a.mpeg", "a.mpeg");
-        Console.WriteLine("Guardando canción");
-        return song;
-     }
-    */
+        public double GetQualification(Video video)//listo
+        {
+            return video.Qualification.Average();
+        }
+        public double GetQualification(Song song)//listo
+        {
+            return song.Qualification.Average();
+        }
+
+        public void GetMetadata(Song song)
+        {
+            Console.WriteLine("{0}\n", song.Name);
+            Console.WriteLine("\t El artista de la cancion solicitada es: {0}\n", song.Artist);
+            Console.WriteLine("\t El album de la cancion solicitada es: {0}\n", song.Album);
+            Console.WriteLine("\t El genero de la cancion solicitada es: {0}\n", song.Gender);
+            Console.WriteLine("\t El año de la cancion solicitada es: {0}\n", song.Year);
+        }//Listo
+        public void GetMetadata(Video video)
+        {
+            Console.WriteLine("{0}\n",video.Name);
+            Console.WriteLine("\t Los actores en el video solicitado son:\n\t ");
+            foreach (string actor in video.Actors)
+            {
+                Console.WriteLine("{0}\t",actor);
+            }
+            Console.WriteLine("\n\tEl director del video solicitado es:{0}\n",video.Director);
+            Console.WriteLine("El estudio del video solicitado es:{0}\n", video.Studio);
+            Console.WriteLine("\t El genero del video solicitado es: {0}\n", video.Gender);
+            Console.WriteLine("\t El año del video solicitado es: {0}\n", video.Year);
+
+        }//listo
+        public void GetInstrinsicInformation(Video video)
+        {
+            Console.WriteLine("{0}\n", video.Name);
+            Console.WriteLine("\tLa duracion del video solicitado es{0}\n", video.Length);
+            Console.WriteLine("\tEl tamaño del video solictado es:{0}\n", video.FileSize);
+        }//listo
+
+        public void GetInstrinsicInformation(Song song)
+        {
+            Console.WriteLine("{0}\n",song.Name);
+            Console.WriteLine("\tLa duracion de la cancion solicitada es{0}\n",song.Length);
+            Console.WriteLine("\tEl tamaño de la cancion solictada es:{0}\n",song.FileSize);
+        }//listo
+
+        public void GetPlataformInformation(Video video)
+        {
+            Console.WriteLine("{0}\n", video.Name);
+            Console.WriteLine("\tEl numero de reproducciones del video solicitado es:{0}\n", video.NumberOfReproductions);
+            Console.WriteLine("\tLa cantidad de likes del video solicitado es:{0}\n",video.Likes);
+            Console.WriteLine("\tLa calificacion que posee el video solicitado es:{0}\n",this.GetQualification(video));
+        }//listo
+        public void GetPlataformInformation(Song song)
+        {
+            Console.WriteLine("{0}\n", song.Name);
+            Console.WriteLine("\tEl numero de reproducciones de la cancion solicitada es:{0}\n", song.NumberOfReproductions);
+            Console.WriteLine("\tLa cantidad de likes de la cancion solicitada es:{0}\n", song.Likes);
+            Console.WriteLine("\tLa calificacion que posee la cancion solicitada es:{0\n}", this.GetQualification(song));
+        }//listo
+
+        public void Follow()//pendiente
+        {
+            throw new NotImplementedException();
+        }
+        public void Download(Song song)//listo
+        {
+            string destination = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+            string source = song.Route;
+            System.IO.File.Copy(source, destination, true);
+
+        }
+    }
 
 }

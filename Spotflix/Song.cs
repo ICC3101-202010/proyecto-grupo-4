@@ -15,7 +15,7 @@ namespace Spotflix
         protected new object image = null;
 
         //Constructor
-        public Song(string artist, string album, bool expliciT, string name, string gender, int year,  int mediaId,  object image, string route)
+        public Song(string artist, string album, bool expliciT, string name, string gender, int year,  object image, string route)
         {
             this.artist = artist;
             this.album = album;
@@ -23,7 +23,6 @@ namespace Spotflix
             this.name = name;
             this.gender = gender;
             this.year = year;
-            this.mediaId = mediaId;
             this.image = image;
             this.route = route;
         }

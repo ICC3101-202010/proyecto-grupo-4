@@ -1,18 +1,169 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using WMPLib;
-using System.Globalization;
-using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Spotflix
 {
     public class Program
     {
+        //Metodos Serializar:
+        static private void SaveUser(List<User> users)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoUsuarios.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, users);
+            stream.Close();
+        }
+        static private List<User> LoadUser()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoUsuarios.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<User> users = (List<User>)formatter.Deserialize(stream);
+            stream.Close();
+            return users;
+        }
+        static private void SaveAdmin(List<Admin> managers)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoAdministradores.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, managers);
+            stream.Close();
+        }
+        static private List<Admin> LoadAdmin()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoAdministradores.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Admin> managers = (List<Admin>)formatter.Deserialize(stream);
+            stream.Close();
+            return managers;
+        }
+        static private void SaveTeacher(List<Teacher> teachers)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivosProfesores.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, teachers);
+            stream.Close();
+        }
+        static private List<Teacher> LoadTeacher()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoProfesores.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Teacher> teachers = (List<Teacher>)formatter.Deserialize(stream);
+            stream.Close();
+            return teachers;
+        }
+        static private void SaveSong(List<Song> Songs)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoCanciones.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Songs);
+            stream.Close();
+        }
+        static private List<Song> LoadSong()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoCanciones.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Song> Songs = (List<Song>)formatter.Deserialize(stream);
+            stream.Close();
+            return Songs;
+        }
+        static private void SaveVideo(List<Video> Videos)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoVideos.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Videos);
+            stream.Close();
+        }
+        static private List<Video> LoadVideo()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoVideos.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Video> Videos = (List<Video>)formatter.Deserialize(stream);
+            stream.Close();
+            return Videos;
+        }
+        static private void SaveLesson(List<Lesson> Lessons)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoClases.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Lessons);
+            stream.Close();
+        }
+        static private List<Lesson> LoadLesson()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoClases.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Lesson> Lessons = (List<Lesson>)formatter.Deserialize(stream);
+            stream.Close();
+            return Lessons;
+        }
+        static private void SavePlaylist(List<Playlist> Playlists)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoPlaylist.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Playlists);
+            stream.Close();
+        }
+        static private List<Playlist> LoadPlaylist()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoPlaylist.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Playlist> PLaylists = (List<Playlist>)formatter.Deserialize(stream);
+            stream.Close();
+            return PLaylists;
+        }
+        static private void SaveSerie(List<Series> Series)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoSeries.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Series);
+            stream.Close();
+        }
+        static private List<Series> LoadSerie()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoSeries.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Series> Series = (List<Series>)formatter.Deserialize(stream);
+            stream.Close();
+            return Series;
+        }
+        static private void SaveKaraoke(List<Karaoke> Karaokes)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoKaraoke.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Karaokes);
+            stream.Close();
+        }
+        static private List<Karaoke> LoadKaraoke()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoKaraoke.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Karaoke> Karaokes = (List<Karaoke>)formatter.Deserialize(stream);
+            stream.Close();
+            return Karaokes;
+        }
+        static private void SaveAlbum(List<Album> Albums)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoAlbum.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, Albums);
+            stream.Close();
+        }
+        static private List<Album> LoadAlbum()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoAlbum.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Album> Albums = (List<Album>)formatter.Deserialize(stream);
+            stream.Close();
+            return Albums;
+        }
+
+        //MAIN
         static void Main(string[] args)
         {
             MediaPlayer mediaPlayer = new MediaPlayer();
@@ -21,9 +172,23 @@ namespace Spotflix
             Teacher teacher = new Teacher();
             List<Video> vid = new List<Video>();
             List<Song> son = new List<Song>();
-            Series serie = new Series(0, vid, "");
-            Playlist play = new Playlist(son, "");
-            Karaoke karaoke = new Karaoke("", "", "", true, "", "", 0, 0, "", "");
+            
+            Playlist play = new Playlist();
+            Album album = new Album();
+            
+            //CARGAR TODO
+            /*
+            List<User> users = LoadUser();
+            List<Admin> admins = LoadAdmin();
+            List<Teacher> teachers = LoadTeacher();
+            List<Song> songs = LoadSong();
+            List<Video> videos = LoadVideo();
+            List<Lesson> lessons = LoadLesson();
+            List<Playlist> playlists = LoadPlaylist();
+            List<Series> series = LoadSerie();
+            List<Karaoke> karaokes = LoadKaraoke();
+            List<Album> albums = LoadAlbum();
+            */
 
             mediaPlayer.AddVideoSerie += admin.OnAddVideoSerie;
             mediaPlayer.DeleteVideoSerie += admin.OnDeleteVideoSerie;
@@ -32,13 +197,12 @@ namespace Spotflix
             mediaPlayer.AddVideo += user.OnAddVideo;
             mediaPlayer.DeleteVideo += user.OnDeleteVideo;
             mediaPlayer.OrderBy += play.OnOrderBy;
-            
-
+            mediaPlayer.OrderByA += album.OnOrderByA;
 
 
             int num = 1;
             string switcher = "0";
-            string stopper = "7";
+            string stopper = "8";
 
             while (switcher != stopper)
             {
@@ -188,7 +352,7 @@ namespace Spotflix
                                                     if (variable1 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.Videos[variable1].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Videos[variable1]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -198,7 +362,7 @@ namespace Spotflix
                                                     if (variable2 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.songs[variable2].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Songs[variable2]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -208,7 +372,7 @@ namespace Spotflix
                                                     if (variable3 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.series[variable3].Route);
+                                                        //mediaPlayer.Play(mediaPlayer.Series[variable3]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -218,7 +382,7 @@ namespace Spotflix
                                                     if (variable4 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
+                                                        //mediaPlayer.Play(mediaPlayer.Playlists[variable4]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -277,7 +441,7 @@ namespace Spotflix
                                         string stopperad = "20";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover cacnion\n\t(12)Remover video\n\t(13)Descargar cancion/video\n\t(14)Hacer una PlayList de canciones\n\t(15)Hacer una PlayList de videos\n\t(16)Añadir a la cola\n\t(17)Seguir a otro usuario\n\t(20)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover cacnion\n\t(12)Remover video\n\t(13)Descargar cancion\n\t(14)Descargar video\n\t(15)Hacer una PlayList de canciones\n\t(16)Hacer una PlayList de videos\n\t(17)Añadir a la cola\n\t(18)Seguir a otro usuario\n\t(20)Atras\n");
                                             switcherad = Console.ReadLine();
 
                                             switch (switcherad)
@@ -288,7 +452,7 @@ namespace Spotflix
                                                     if (variable1 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.videos[variable1].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Videos[variable1]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -298,7 +462,7 @@ namespace Spotflix
                                                     if (variable2 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.songs[variable2].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Songs[variable2]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -308,7 +472,7 @@ namespace Spotflix
                                                     if (variable3 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.series[variable3].Route);
+                                                        //mediaPlayer.Play(mediaPlayer.Series[variable3]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -318,7 +482,7 @@ namespace Spotflix
                                                     if (variable4 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
+                                                        //mediaPlayer.Play(mediaPlayer.Playlists[variable4]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -333,32 +497,35 @@ namespace Spotflix
                                                     break;
                                                 case "8": //mostrar playlist
                                                     mediaPlayer.ShowPlaylists();
-                                                    break;/*
+                                                    break;
                                                 case "9": //importar cancion
-                                                    admin.Import(song, mediaPlayer);
-                                                    break;
+                                                    //admin.ImportSong(mediaPlayer);
+                                                    break; /*
                                                 case "10": //importar video
-                                                    admin.Import(video, mediaPlayer);
+                                                    admin.Import(mediaPlayer);
                                                     break;
-                                                case "11": //remover cancion
-                                                    admin.Remove(song, mediaPlayer);
+                                                case "11": //emover cancion
+                                                    admin.Remove(mediaPlayer);
                                                     break;
                                                 case "12": //remover video
-                                                    admin.Remove(video, mediaPlayer);
+                                                    admin.Remove(mediaPlayer);
                                                     break;
-                                                case "13": //descargar
-                                                    mediaPlayer.Download();
+                                                case "13": //descargar canciones
+                                                    mediaPlayer.Download(mediaPlayer);
+                                                    break;
+                                                case "14": //descarga video
+                                                    mediaPlayer.Download(mediaPlayer);
                                                     break;*/
-                                                case "14": //crear playlist de canciones
+                                                case "15": //crear playlist de canciones
                                                     mediaPlayer.CreatePlaylistS();
                                                     break;
-                                                case "15": //crear playlist de videos
+                                                case "16": //crear playlist de videos
                                                     mediaPlayer.CreatePlaylistV();
                                                     break;
-                                                case "16": //añadir a la cola
+                                                case "17": //añadir a la cola
                                                     mediaPlayer.AddToQueue();
                                                     break;
-                                                case "17": //seguir usuarios
+                                                case "18": //seguir usuarios
                                                     mediaPlayer.Follow();
                                                     break;
 
@@ -388,7 +555,7 @@ namespace Spotflix
                                         string stopperad = "21";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover canciion\n\t(12)Remover video\n\t(13)Descargar cancion/video\n\t(14)Añadir archivo a curso\n\t(15)Eliminar archivos del curso\n\t(16)Hacer una PlayList de canciones\n\t(17)Hacer una PlayList de videos\n\t(18)Añadir a la cola\n\t(19)Seguir a otro usuario\n\t(21)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Buscar por videos\n\t(2)Buscar por canciones\n\t(3)Buscar por series\n\t(4)Buscar por playlist\n\t(5)Reproducir por videos\n\t(6)Reproducir por cancion\n\t(7)Reproducir por series\n\t(8)Reproducir por playlist\n\t(9)Importar cancion\n\t(10)Importar video\n\t(11)Remover canciion\n\t(12)Remover video\n\t(13)Descargar cancion\n\t(14)Descargar video\n\t(15)Añadir archivo a curso\n\t(16)Eliminar archivos del curso\n\t(17)Hacer una PlayList de canciones\n\t(18)Hacer una PlayList de videos\n\t(19)Añadir a la cola\n\t(20)Seguir a otro usuario\n\t(21)Atras\n");
                                             switcherad = Console.ReadLine();
 
                                             switch (switcherad)
@@ -399,7 +566,7 @@ namespace Spotflix
                                                     if (variable1 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.video[variable1].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Videos[variable1]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -409,7 +576,7 @@ namespace Spotflix
                                                     if (variable2 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.songs[variable2].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Songs[variable2]);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -419,7 +586,7 @@ namespace Spotflix
                                                     if (variable3 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.series[variable3].Route);
+                                                        //mediaPlayer.Play(mediaPlayer.series[variable3].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -429,7 +596,7 @@ namespace Spotflix
                                                     if (variable4 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
+                                                        //mediaPlayer.Play(mediaPlayer.playlists[variable4].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
@@ -446,41 +613,42 @@ namespace Spotflix
                                                     mediaPlayer.ShowPlaylists();
                                                     break;/*
                                                 case "9": //importar canciones
-                                                    admin.Import(song, mediaPlayer);
+                                                    admin.Import(mediaPlayer);
                                                     break;
                                                 case "10": //importar videos
-                                                    admin.Import(video, mediaPlayer);
+                                                    admin.Import(mediaPlayer);
                                                     break;
                                                 case "11": //remover canciones
-                                                    admin.Remove(song, mediaPlayer);
+                                                    admin.Remove(mediaPlayer);
                                                     break;
                                                 case "12": //remover videos
-                                                    admin.Remove(video, mediaPlayer);
+                                                    admin.Remove(mediaPlayer);
                                                     break;
-                                                case "13": //descargar
-                                                    mediaPlayer.Download();
+                                                case "13": //descargar cancion 
+                                                    mediaPlayer.Download(mediaPlayer);
                                                     break;
-                                                case "14": //añadir archivos al curso 
+                                                case "14": //descargar video
+                                                    mediaPlayer.Dowload(mediaPlayer);
+                                                    break;
+                                                case "15": //añadir archivos al curso 
                                                     teacher.Add(MediaFile,course);
                                                     break;
-                                                case "15": //eliminar archivos de curso
+                                                case "16": //eliminar archivos de curso
                                                     teacher.Delete(MediaFile, course);
                                                     break;*/
-                                                case "16": //crear playlist de canciones
+                                                case "17": //crear playlist de canciones
                                                     mediaPlayer.CreatePlaylistS();
                                                     break;
-                                                case "17": //crear playlist de videos
+                                                case "18": //crear playlist de videos
                                                     mediaPlayer.CreatePlaylistV();
                                                     break;
-                                                case "18": //añadir a la fila
+                                                case "19": //añadir a la fila
                                                     mediaPlayer.AddToQueue();
                                                     break;
-                                                case "19": //seguir usuarios
+                                                case "20": //seguir usuarios
                                                     mediaPlayer.Follow();
                                                     break;
 
-                                                case "20":
-                                                    break;
                                                 case "21":
                                                     break;
 
@@ -503,7 +671,22 @@ namespace Spotflix
                         break;
                     case "4":
                         break;
-                    case "5":
+                    case "5": //Salir
+                        break;
+                    case "7":
+                        /*
+                        SaveUser(users);
+                        SaveAdmin(admins);
+                        SaveTeacher(teachers);
+                        SaveSong(songs);
+                        SaveVideo(videos);
+                        SaveLesson(lessons);
+                        SavePlaylist(playlists);
+                        SaveSerie(series);
+                        SaveKaraoke(karaokes);
+                        SaveAlbum(albums);
+                        */
+                        switcher = "8";
                         break;
 
                     default:
@@ -511,7 +694,8 @@ namespace Spotflix
                         break;
                 }
 
-
+                //Aqui
+                //break;
             }
 
         }
