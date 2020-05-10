@@ -17,7 +17,7 @@ namespace Spotflix
         private List<Lesson> lessons = new List<Lesson>();
         private List<Playlist> playlists = new List<Playlist>();
         private List<Series> series = new List<Series>();
-        private List<Teacher> teachers = new List<Teacher>();
+        private List<Artist> artists = new List<Artist>();
         private List<Karaoke> karaokes = new List<Karaoke>();
         private List<Album> albums = new List<Album>();
 
@@ -26,7 +26,7 @@ namespace Spotflix
         public List<Lesson> Lessons { get => lessons; set => lessons = value; }
         public List<Playlist> Playlists { get => playlists; set => playlists = value; }
         public List<Series> Series { get => series; set => series = value; }
-        public List<Teacher> Teachers { get => teachers; set => teachers = value; }
+        public List<Artist> Artists { get => artists; set => artists = value; }
         public List<Karaoke> Karaokes { get => karaokes; set => karaokes = value; }
         public List<Album> Albums { get => albums; set => albums = value; }
 

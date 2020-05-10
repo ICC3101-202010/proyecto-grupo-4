@@ -55,10 +55,27 @@ namespace Spotflix
         {
             int count = 0;
             int count2 = 0;
+            int count3 = 0;
+            Artist artist;
+            string name;
+            List<Song> songsa = new List<Song>();
+            List<Video> videosa = new List<Video>();
+
             //aqui deberiamos poder importar una cancion
             if (mediaPlayer.Songs.Count() == 0)
             {
                 mediaPlayer.Songs.Add(song);
+                foreach (Artist a in mediaPlayer.Artists)
+                {
+                    if (a.Name == song.Artist) count3++;
+                }
+                if (count3 ==0)
+                {
+                    name = song.Artist;
+                    songsa.Add(song);
+                    artist = new Artist(songsa, videosa, name);
+                    mediaPlayer.Artists.Add(artist);
+                }
             }
             else
             {
@@ -72,6 +89,17 @@ namespace Spotflix
                 if (count == 0)
                 {
                     mediaPlayer.Songs.Add(song);
+                    foreach (Artist a in mediaPlayer.Artists)
+                    {
+                        if (a.Name == song.Artist) count3++;
+                    }
+                    if (count3 == 0)
+                    {
+                        name = song.Artist;
+                        songsa.Add(song);
+                        artist = new Artist(songsa, videosa, name);
+                        mediaPlayer.Artists.Add(artist);
+                    }
                     foreach (Album a in mediaPlayer.Albums)
                     {
                         if (a.Name == song.Album)
@@ -99,10 +127,38 @@ namespace Spotflix
         public void Import(Video video, MediaPlayer mediaPlayer)
         {
             int count = 0;
+            int count3 = 0;
+            Artist artist;
+            string name;
+            List<Song> songsa = new List<Song>();
+            List<Video> videosa = new List<Video>();
             //aqui deberiamos poder importar un video
             if (mediaPlayer.Videos.Count() == 0)
             {
                 mediaPlayer.Videos.Add(video);
+                foreach (Artist a in mediaPlayer.Artists)
+                {
+                    if (a.Name == video.Director) count3++;
+                }
+                if (count3 == 0)
+                {
+                    name = video.Director;
+                    videosa.Add(video);
+                    artist = new Artist(songsa, videosa, name);
+                    mediaPlayer.Artists.Add(artist);
+                }
+                foreach (string actor in video.Actors)
+                {
+                    int count2 = 0;
+                    foreach (Artist a in mediaPlayer.Artists)
+                    {
+                        if (a.Name == actor) count2++;
+                    }
+                    name = actor;
+                    videosa.Add(video);
+                    artist = new Artist(songsa, videosa, name);
+                    if (count2 == 0) mediaPlayer.Artists.Add(artist);
+                }
             }
             else
             {
@@ -114,9 +170,34 @@ namespace Spotflix
                     }
 
                 }
-                if (count == 0) mediaPlayer.Videos.Add(video);
+                if (count == 0)
+                {
+                    mediaPlayer.Videos.Add(video);
+                    foreach (Artist a in mediaPlayer.Artists)
+                    {
+                        if (a.Name == video.Director) count3++;
+                    }
+                    if (count3 == 0)
+                    {
+                        name = video.Director;
+                        videosa.Add(video);
+                        artist = new Artist(songsa, videosa, name);
+                        mediaPlayer.Artists.Add(artist);
+                    }
+                    foreach (string actor in video.Actors)
+                    {
+                        int count2 = 0;
+                        foreach (Artist a in mediaPlayer.Artists)
+                        {
+                            if (a.Name == actor) count2++;
+                        }
+                        name = actor;
+                        videosa.Add(video);
+                        artist = new Artist(songsa, videosa, name);
+                        if (count2 == 0) mediaPlayer.Artists.Add(artist);
+                    }
+                }
                 else Console.WriteLine("Ese video ya existe");
-
             }
         }
         public void Import(Karaoke karaoke, MediaPlayer mediaPlayer)
@@ -170,6 +251,7 @@ namespace Spotflix
         public void Remove(Song song, MediaPlayer mediaPlayer)
         {
             int count = 0;
+            int count2 = 0;
             //aqui deberiamos poder remover una cancion
             if (mediaPlayer.Songs.Count() == 0)
             {
@@ -193,7 +275,14 @@ namespace Spotflix
 
                             }
                         }
-                       
+                    }
+                    if (i.Artist == song.Artist) count2++;
+                }
+                if (count2 == 1)
+                {
+                    foreach (Artist a in mediaPlayer.Artists)
+                    {
+                        if (a.Name == song.Artist) mediaPlayer.Artists.Remove(a);
                     }
                 }
                 if (count == 0) Console.WriteLine("Esa cancion no existe\n");
@@ -202,10 +291,10 @@ namespace Spotflix
         }
 
 
-
         public void Remove(Video video, MediaPlayer mediaPlayer)
         {
             int count = 0;
+            int count2 = 0;
             //aqui deberiamos poder remover un video
             if (mediaPlayer.Videos.Count() == 0)
             {
@@ -220,10 +309,31 @@ namespace Spotflix
                         mediaPlayer.Videos.Remove(video);
                         count++;
                     }
+                    if (i.Director == video.Director) count2++;
+
+                }
+                foreach (Artist a in mediaPlayer.Artists)
+                {
+                    int count3 = 0;
+                    foreach (Video i in mediaPlayer.Videos)
+                    {
+                        foreach (string actor in i.Actors)
+                        {
+                            if (actor == a.Name) count3++;
+                        }
+                    }
+                    if (count3 == 1) mediaPlayer.Artists.Remove(a);
+                }
+                if (count2 == 1)
+                {
+                    foreach (Artist a in mediaPlayer.Artists)
+                    {
+                        if (a.Name == video.Director) mediaPlayer.Artists.Remove(a);
+                    }
                 }
                 if (count == 0) Console.WriteLine("Ese video no existe\n");
+                
             }
-
         }
 
         public void Remove(Karaoke karaoke, MediaPlayer mediaPlayer)

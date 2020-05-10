@@ -159,6 +159,35 @@ namespace Spotflix
             Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
             return false;
         }
+        public void ChangePassword()
+        {
+            Console.WriteLine("Ingresa tu nombre de usuario: ");
+            string usr = Console.ReadLine();
+            Console.WriteLine("Ingresa tu contrasena: ");
+            string pswd = Console.ReadLine();
+            bool result = LogAsUser(usr, pswd);
+            if (result == true)
+            {
+                Console.Write("Ingrese la nueva contrasena: ");
+                string newPsswd = Console.ReadLine();
+                ChangePassword(usr, newPsswd);
+            }
+            else
+            {
+                // Mostramos el error
+                Console.WriteLine("[!] ERROR: " + result + "\n");
+            }
+        }
+        public void ChangePassword(string usr, string newpsswd)
+        {
+            foreach (User user in users)
+            {
+                if (user.Nickname == usr)
+                {
+                    user.Password = newpsswd;
+                }
+            }
+        }
 
         //Metodos Serializar:
         static private void SaveUser(List<User> users)
