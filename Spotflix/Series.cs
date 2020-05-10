@@ -21,23 +21,6 @@ namespace Spotflix
         public int NofVideos { get => nofVideos; set => nofVideos = value; }
         public List<Video> Episodes { get => episodes; set => episodes = value; }
         public string SerieName { get => serieName; set => serieName = value; }
-
-
-
-
-        public void OnAddVideoSerie(object source, VideoSerieEventArgs v) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
-        {
-            
-            v.Serie.episodes.Add(v.Video);
-            Console.WriteLine($"Se ha agregado el video {v.Video.Name} a la serie {v.Serie.SerieName}");
-            
-        }
-
-        public void OnDeleteVideoSerie(object source, VideoSerieEventArgs v) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
-        {
-
-            v.Serie.episodes.Remove(v.Video);
-            Console.WriteLine($"Se ha eliminado el video {v.Video.Name} a la serie {v.Serie.SerieName}");
-        }
+        
     }
 }

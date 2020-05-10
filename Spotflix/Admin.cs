@@ -10,6 +10,7 @@ using WMPLib;
 
 namespace Spotflix
 {
+    [Serializable]
     public class Admin : Person
     {
 
@@ -50,84 +51,243 @@ namespace Spotflix
         }
 
 
-        public void Import(Song song,MediaPlayer mediaPlayer) 
+        public void Import(Song song, MediaPlayer mediaPlayer)
         {
+            int count = 0;
+            int count2 = 0;
             //aqui deberiamos poder importar una cancion
             if (mediaPlayer.Songs.Count() == 0)
             {
-               mediaPlayer.Songs.Append(song);  
+                mediaPlayer.Songs.Append(song);
             }
-            foreach (Song i in mediaPlayer.Songs)
+            else
             {
-                if (i.Name == song.Name && i.Artist == song.Artist)
+                foreach (Song i in mediaPlayer.Songs)
                 {
-                    Console.WriteLine("Esa cancion ya existe\n");
+                    if (i.Name == song.Name && i.Artist == song.Artist)
+                    {
+                        count++;
+                    }
                 }
-                else
+                if (count == 0)
                 {
                     mediaPlayer.Songs.Append(song);
-                }
+                    foreach (Album a in mediaPlayer.Albums)
+                    {
+                        if (a.Name == song.Album)
+                        {
+                            count2++; 
+                            a.Songs.Append(song);
+                            if (a.Artists.Contains(song.Artist)==false) a.Artists.Append(song.Artist);
+                            a.NumberSongs += 1;
 
+                        }
+                    }
+                    if (count2 == 0)
+                    {
+                        List<string> artists = new List<string>();
+                        artists.Append(song.Artist);
+                        List<Song> songs = new List<Song>();
+                        songs.Append(song);
+                        Album al = new Album(song.Album, artists,  1, songs);
+                    }
+                }
+                else Console.WriteLine("Esa canción ya existe");
             }
         }
-        public void Import(Video video,MediaPlayer mediaPlayer)
+        public void Import(Video video, MediaPlayer mediaPlayer)
         {
-            //aqui deberiamos poder importar una cancion
+            int count = 0;
+            //aqui deberiamos poder importar un video
             if (mediaPlayer.Videos.Count() == 0)
             {
                 mediaPlayer.Videos.Append(video);
             }
-            foreach (Video i in mediaPlayer.Videos)
+            else
             {
-                if (i.Name == video.Name && i.Director == video.Director)
+                foreach (Video i in mediaPlayer.Videos)
                 {
-                    Console.WriteLine("Ese video ya existe\n");
+                    if (i.Name == video.Name && i.Director == video.Director)
+                    {
+                        count++;
+                    }
+
                 }
-                else
-                {
-                    mediaPlayer.Videos.Append(video);
-                }
+                if (count == 0) mediaPlayer.Videos.Append(video);
+                else Console.WriteLine("Ese video ya existe");
 
             }
         }
-        public void Remove(Song song,MediaPlayer mediaPlayer) 
+        public void Import(Karaoke karaoke, MediaPlayer mediaPlayer)
         {
-            //aqui deberiamos poder importar una cancion
+            int count = 0;
+            //aqui deberiamos poder importar una karaoke (cnación + letra)
+            if (mediaPlayer.Karaokes.Count() == 0)
+            {
+                mediaPlayer.Karaokes.Append(karaoke);
+            }
+            else
+            {
+                foreach (Karaoke i in mediaPlayer.Karaokes)
+                {
+                    if (i.Name == karaoke.Name && i.Artist == karaoke.Artist)
+                    {
+                        count++;
+                    }
+                }
+                if (count == 0) mediaPlayer.Karaokes.Append(karaoke);
+                else Console.WriteLine("Ese karaoke ya existe");
+
+            }
+
+        }
+
+        public void ImportSerie(MediaPlayer mediaPlayer, string seriename)
+        {
+            Series serie = new Series(0, null, seriename);
+            //Aqui deberiamos poder importar una serie (solo nombre, videos se agregan despues)
+            int count = 0;
+            if (mediaPlayer.Series.Count() == 0)
+            {
+                mediaPlayer.Series.Append(serie);
+            }
+            else
+            {
+                foreach (Series i in mediaPlayer.Series)
+                {
+                    if (i.SerieName == seriename)
+                    {
+                        count++;
+                    }
+
+                }
+                if (count == 0) mediaPlayer.Series.Append(serie);
+                else Console.WriteLine("Esa serie ya existe\n");
+            }
+        }
+
+        public void Remove(Song song, MediaPlayer mediaPlayer)
+        {
+            int count = 0;
+            //aqui deberiamos poder remover una cancion
             if (mediaPlayer.Songs.Count() == 0)
             {
                 Console.WriteLine("No hay canciones para eliminar\n");
             }
-            foreach (Song i in mediaPlayer.Songs)
+            else
             {
-                if (i.Name == song.Name && i.Artist == song.Artist)
+                foreach (Song i in mediaPlayer.Songs)
                 {
-                    mediaPlayer.Songs.Remove(song);                    
+                    if (i.Name == song.Name && i.Artist == song.Artist)
+                    {
+                        mediaPlayer.Songs.Remove(song);
+                        count++;
+                        foreach (Album a in mediaPlayer.Albums)
+                        {
+                            if (a.Name == song.Album)
+                            {
+                                a.Songs.Remove(song);
+                                if (a.Artists.IndexOf(song.Artist) == 1) a.Artists.Remove(song.Artist);
+                                a.NumberSongs -= 1;
+
+                            }
+                        }
+                       
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Esa cancion no existe\n");
-                }
+                if (count == 0) Console.WriteLine("Esa cancion no existe\n");
             }
+
         }
-        public void Remove(Video video,MediaPlayer mediaPlayer)
+
+
+
+        public void Remove(Video video, MediaPlayer mediaPlayer)
         {
-            //aqui deberiamos poder importar una cancion
+            int count = 0;
+            //aqui deberiamos poder remover un video
             if (mediaPlayer.Videos.Count() == 0)
             {
                 Console.WriteLine("No hay videos para eliminar\n");
             }
-            foreach (Video i in mediaPlayer.Videos)
+            else
             {
-                if (i.Name == video.Name && i.Director == video.Director)
+                foreach (Video i in mediaPlayer.Videos)
                 {
-                    mediaPlayer.Videos.Remove(video);
+                    if (i.Name == video.Name && i.Director == video.Director)
+                    {
+                        mediaPlayer.Videos.Remove(video);
+                        count++;
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Ese video no existe\n");
-                }
+                if (count == 0) Console.WriteLine("Ese video no existe\n");
             }
+
         }
+
+        public void Remove(Karaoke karaoke, MediaPlayer mediaPlayer)
+        {
+            int count = 0;
+            //aqui deberiamos poder remover un karaoke
+            if (mediaPlayer.Karaokes.Count() == 0)
+            {
+                Console.WriteLine("No hay karaokes para eliminar\n");
+            }
+            else
+            {
+                foreach (Karaoke i in mediaPlayer.Karaokes)
+                {
+                    if (i.Name == karaoke.Name && i.Artist == karaoke.Artist)
+                    {
+                        mediaPlayer.Karaokes.Remove(karaoke);
+                        count++;
+                    }
+
+                }
+                if (count == 0) Console.WriteLine("Ese karaoke no existe\n");
+
+            }
+
+        }
+
+
+        public void RemoveSerie(MediaPlayer mediaPlayer, string seriename)
+        {
+            int count = 0;
+            //aqui deberiamos poder remover un karaoke
+            if (mediaPlayer.Series.Count() == 0)
+            {
+                Console.WriteLine("No hay series para eliminar\n");
+            }
+            else
+            {
+                foreach (Series i in mediaPlayer.Series)
+                {
+                    if (i.SerieName == seriename)
+                    {
+                        mediaPlayer.Series.Remove(i);
+                        count++;
+                    }
+                }
+                if (count == 0) Console.WriteLine("Esa serie no existe\n");
+            }
+
+        }
+        public void OnAddVideoSerie(object source, VideoSerieEventArgs v) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
+        {
+
+            v.Serie.Episodes.Add(v.Video);
+            Console.WriteLine($"Se ha agregado el video {v.Video.Name} a la serie {v.Serie.SerieName}");
+
+        }
+
+        public void OnDeleteVideoSerie(object source, VideoSerieEventArgs v) //No se si esto tiene que ir acá porque el administrador lo debería manejar nomas
+        {
+
+            v.Serie.Episodes.Remove(v.Video);
+            Console.WriteLine($"Se ha eliminado el video {v.Video.Name} a la serie {v.Serie.SerieName}");
+        }
+
 
     }
 }

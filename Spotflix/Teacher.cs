@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
+    [Serializable]
     public class Teacher : Person
     {
         private string course;

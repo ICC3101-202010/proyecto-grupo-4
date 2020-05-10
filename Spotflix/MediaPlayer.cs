@@ -56,7 +56,7 @@ namespace Spotflix
             }
         }
 
-        public void SearchSerie (string option, string serieName, string videoName)
+        public void VideoSerieStarter(string option, string serieName, string videoName)
         {
             Series serie = null;
             Video video = null;
@@ -65,7 +65,7 @@ namespace Spotflix
             {
                 foreach (Video v in s.Episodes)
                 {
-                    if (s.SerieName==serieName && v.Name==videoName)
+                    if (s.SerieName == serieName && v.Name == videoName)
                     {
                         count += 1;
                         serie = s;
@@ -105,7 +105,7 @@ namespace Spotflix
             if (AddSong != null)
             {
                 // Engatilla el evento
-                AddSong(this, new SongEventArgs() { Song = song, PlayList = playList});
+                AddSong(this, new SongEventArgs() { Song = song, PlayList = playList });
             }
         }
 
@@ -118,11 +118,11 @@ namespace Spotflix
             if (DeleteSong != null)
             {
                 // Engatilla el evento
-                DeleteSong(this, new SongEventArgs() { Song = song, PlayList = playList});
+                DeleteSong(this, new SongEventArgs() { Song = song, PlayList = playList });
             }
         }
 
-        public void SearchSong(string name, string namePlayList, string what)
+        public void SongStarter(string name, string namePlayList, string what)
         {
             int counterp = 0;
             Playlist newPlaylist = null;
@@ -156,13 +156,13 @@ namespace Spotflix
                 {
                     OnDeleteSong(newSong, newPlaylist);
                 }
-                
+
             }
-            else if (counter ==0)
+            else if (counter == 0)
             {
                 Console.WriteLine("La canción ingresada no existe en la base de datos");
             }
-            else if(counter != 0 && counterp == 0)
+            else if (counter != 0 && counterp == 0)
             {
                 if (what == "agregar")
                 {
@@ -175,7 +175,7 @@ namespace Spotflix
                         OnAddSong(newSong, newPlaylist);
                     }
                 }
-                else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");     
+                else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");
             }
         }
 
@@ -205,7 +205,7 @@ namespace Spotflix
             }
         }
 
-        public void SearchVideo(string name, string namePlayList, string what)
+        public void VideoStarter(string name, string namePlayList, string what)
         {
             int counterp = 0;
             Playlist newPlaylist = null;
@@ -271,17 +271,17 @@ namespace Spotflix
             if (OrderBy != null)
             {
                 // Engatilla el evento
-                OrderBy(this, new OrderByEventArgs() { Up = up, PlayList = playList , MediaFile= mediaFile, Option=option});
+                OrderBy(this, new OrderByEventArgs() { Up = up, PlayList = playList, MediaFile = mediaFile, Option = option });
             }
         }
 
-        public void SearchPlayList (string mediaFile, string playListName, bool up, string option)
+        public void PlayListStarter(string mediaFile, string playListName, bool up, string option)
         {
             Playlist newPlayList = null;
             int count = 0;
             foreach (Playlist p in playlists)
             {
-               
+
                 if (p.PlaylistName == playListName)
                 {
                     count += 1;
@@ -303,7 +303,7 @@ namespace Spotflix
                 }
             }
         }
-        
+
         //Creo el evento OrderByA
         public delegate void OrderByAHandler(object source, OrderByAEventArgs args);
         public event OrderByAHandler OrderByA;
@@ -313,21 +313,21 @@ namespace Spotflix
             if (OrderByA != null)
             {
                 // Engatilla el evento
-                OrderByA(this, new OrderByAEventArgs() { Up = up, Album = album,  Option = option });
+                OrderByA(this, new OrderByAEventArgs() { Up = up, Album = album, Option = option });
             }
         }
 
-        public void SearchAlbum(string albumName, bool up, string option)
+        public void AlbumStarter(string albumName, bool up, string option)
         {
             Album newAlbum = null;
             int count = 0;
-            foreach (Album a in albums)
+            foreach (Song a in songs)
             {
 
-                if (a.Name == albumName)
+                if (a.Album == albumName)
                 {
                     count += 1;
-                    newAlbum =a;
+                    newAlbum.Songs.Add(a);
                 }
             }
             if (count != 0)
@@ -337,74 +337,6 @@ namespace Spotflix
             else
             {
                 Console.WriteLine("El Album no existe.");
-            }
-        }
-        //Creo el evento Add Karaoke
-        public delegate void AddKarokeHandler(object source, KaraokeEventArgs args);
-        public event AddKarokeHandler AddKaraoke;
-        protected virtual void OnAddKaraoke(Karaoke karaoke)
-        {
-            // Verifica si hay alguien suscrito al evento
-            if (AddKaraoke != null)
-            {
-                // Engatilla el evento
-                AddKaraoke(this, new KaraokeEventArgs() { Karaoke = karaoke });
-            }
-        }
-
-        //Creo el evento Delete Karaoke
-        public delegate void DeleteKarokeHandler(object source, KaraokeEventArgs args);
-        public event DeleteKarokeHandler DeleteKaraoke;
-        protected virtual void OnDeleteKaraoke(Karaoke karaoke)
-        {
-            // Verifica si hay alguien suscrito al evento
-            if (DeleteKaraoke != null)
-            {
-                // Engatilla el evento
-                DeleteKaraoke(this, new KaraokeEventArgs() { Karaoke=karaoke});
-            }
-        }
-
-        public void SearchKaraoke (Song song, object lyric, string option )
-        {
-            Karaoke newKaraoke;
-            int count = 0;
-            if (option == "Add")
-            {
-                foreach (Song s in karaokes)
-                {
-                    if (s == song)
-                    {
-                        count += 1;
-                    }
-                }
-
-                if (count == 0)
-                {
-                    newKaraoke = new Karaoke(lyric, song.Artist, song.Album, song.ExpliciT, song.Name, song.Gender, song.Year, song.MediaId, song.Image, song.Route);
-                    karaokes.Add(newKaraoke);
-                    OnAddKaraoke(newKaraoke);
-                }
-                else Console.WriteLine("La canción de Karaoke ya existe");
-
-            }
-            else if (option == "Delete")
-            {
-                foreach (Song s in karaokes)
-                {
-                    if (s == song)
-                    {
-                        count += 1;
-                    }
-                }
-
-                if (count != 0)
-                {
-                    newKaraoke = new Karaoke(lyric, song.Artist, song.Album, song.ExpliciT, song.Name, song.Gender, song.Year, song.MediaId, song.Image, song.Route);
-                    karaokes.Remove(newKaraoke);
-                    OnDeleteKaraoke(newKaraoke);
-                }
-                else Console.WriteLine("La canción de Karaoke no existe");
             }
         }
 
