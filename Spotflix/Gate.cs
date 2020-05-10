@@ -38,7 +38,7 @@ namespace Spotflix
             }
             return true;
         }//True si es valido False si ya existe
-        public static bool checkGmail(string gmail)
+        public static bool CheckGmail(string gmail)
         {
             if (users.Count() == 0)
             {
@@ -57,7 +57,7 @@ namespace Spotflix
             }
             return true;
         }//True si es valido False si ya existe
-        public static bool checkCodeA(string code)
+        public static bool CheckCodeA(string code)
         {
             if (managers.Count() == 0)
             {
@@ -74,7 +74,7 @@ namespace Spotflix
             }
             return true;
         }//True si es valido False si ya existe
-        public static bool checkCodeP(string code)
+        public static bool CheckCodeP(string code)
         {
             if (teachers.Count() == 0)
             {

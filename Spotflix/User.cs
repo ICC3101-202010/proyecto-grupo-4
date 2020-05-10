@@ -36,6 +36,7 @@ namespace Spotflix
             this.Street = street;
             this.PostalCode = postalCode;
         }
+        public User() { }
 
         public int UserID { get => userID; set => userID = value; }
         public string Gmail { get => gmail; set => gmail = value; }

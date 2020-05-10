@@ -90,6 +90,7 @@ namespace Spotflix
                         List<Song> songs = new List<Song>();
                         songs.Append(song);
                         Album al = new Album(song.Album, artists,  1, songs);
+                        mediaPlayer.Albums.Append(al);
                     }
                 }
                 else Console.WriteLine("Esa canción ya existe");

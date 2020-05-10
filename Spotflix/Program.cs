@@ -17,6 +17,7 @@ namespace Spotflix
         {
             MediaPlayer mediaPlayer = new MediaPlayer();
             Admin admin = new Admin();
+            User user = new User();
             Teacher teacher = new Teacher();
             List<Video> vid = new List<Video>();
             List<Song> son = new List<Song>();
@@ -24,15 +25,14 @@ namespace Spotflix
             Playlist play = new Playlist(son, "");
             Karaoke karaoke = new Karaoke("", "", "", true, "", "", 0, 0, "", "");
 
-            mediaPlayer.AddVideoSerie += serie.OnAddVideoSerie;
-            mediaPlayer.DeleteVideoSerie += serie.OnDeleteVideoSerie;
-            mediaPlayer.AddSong += play.OnAddSong;
-            mediaPlayer.DeleteSong += play.OnDeleteSong;
-            mediaPlayer.AddVideo += play.OnAddVideo;
-            mediaPlayer.DeleteVideo += play.OnDeleteVideo;
+            mediaPlayer.AddVideoSerie += admin.OnAddVideoSerie;
+            mediaPlayer.DeleteVideoSerie += admin.OnDeleteVideoSerie;
+            mediaPlayer.AddSong += user.OnAddSong;
+            mediaPlayer.DeleteSong += user.OnDeleteSong;
+            mediaPlayer.AddVideo += user.OnAddVideo;
+            mediaPlayer.DeleteVideo += user.OnDeleteVideo;
             mediaPlayer.OrderBy += play.OnOrderBy;
-            mediaPlayer.AddKaraoke += karaoke.OnAddKaraoke;
-            mediaPlayer.DeleteKaraoke += karaoke.OnDeleteKaraoke;
+            
 
 
 
@@ -92,7 +92,7 @@ namespace Spotflix
                                 {
                                     Console.WriteLine("\nIngrese su Gmail\n");
                                     gmail = Console.ReadLine();
-                                    mailcheck = Gate.checkGmail(gmail);
+                                    mailcheck = Gate.CheckGmail(gmail);
                                 }
                                 while (!nickcheck)
                                 {
@@ -116,7 +116,7 @@ namespace Spotflix
                                 string contra = Console.ReadLine();
                                 if (key == "123")
                                 {
-                                    if (Gate.checkCodeA(key))
+                                    if (Gate.CheckCodeA(key))
                                     {
                                         Admin a1 = new Admin(key, contra);
                                         Gate.SingAdmin(a1);
@@ -137,7 +137,7 @@ namespace Spotflix
                                 string pas = Console.ReadLine();
                                 if (key_T == "321")
                                 {
-                                    if (Gate.checkCodeP(key_T))
+                                    if (Gate.CheckCodeP(key_T))
                                     {
                                         Teacher t1 = new Teacher(key_T, curso, pas);
                                         Gate.SingTeacher(t1);
@@ -188,7 +188,7 @@ namespace Spotflix
                                                     if (variable1 == -1) break;
                                                     else
                                                     {
-                                                        mediaPlayer.Play(mediaPlayer.videos[variable1].Route);
+                                                        mediaPlayer.Play(mediaPlayer.Videos[variable1].Route);
                                                     }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
