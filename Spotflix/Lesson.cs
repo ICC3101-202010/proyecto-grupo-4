@@ -10,14 +10,16 @@ namespace Spotflix
 {
     public class Lesson 
     {
+        private string name;
         private int course;
         private string subject;
         private List<Video> lessons = new List<Video>();
         private Teacher teacher;
         private int currentSecond;
 
-        public Lesson(string subject, int course, int currentSecond, List<Video> lessons, Teacher teacher)
+        public Lesson(string name, string subject, int course, int currentSecond, List<Video> lessons, Teacher teacher)
         {
+            this.name = name;
             this.course = course;
             this.subject = subject;
             this.currentSecond = currentSecond;
@@ -30,6 +32,7 @@ namespace Spotflix
         public List<Video> Lessons { get => lessons; set => lessons = value; }
         public Teacher Teacher { get => teacher; set => teacher = value; }
         public string Subject { get => subject; set => subject = value; }
+        public string Name { get => name; set => name = value; }
 
         public void Add(Video lesson)
           {

@@ -67,6 +67,7 @@
     <Compile Include="MediaFile.cs" />
     <Compile Include="OrderByAEventArgs.cs" />
     <Compile Include="OrderByEventArgs.cs" />
+    <Compile Include="PlayEventArgs.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

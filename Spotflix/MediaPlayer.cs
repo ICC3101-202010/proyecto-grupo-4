@@ -30,6 +30,8 @@ namespace Spotflix
         public List<Karaoke> Karaokes { get => karaokes; set => karaokes = value; }
         public List<Album> Albums { get => albums; set => albums = value; }
 
+        
+
         //Creo el evento AddVideoSerie
         public delegate void AddVideoSerieHandler(object source, VideoSerieEventArgs args);
         public event AddVideoSerieHandler AddVideoSerie;
@@ -346,14 +348,30 @@ namespace Spotflix
             Console.WriteLine("Metodo muy dificil pa pensarlo ahora\n");
         }
 
+        //Creo el evento PlayEvent
+        public delegate void PlayEventHandler(object source, PlayEventArgs args);
+        public event PlayEventHandler PlayEvent;
+        protected virtual void OnPlayEvent(string route)
+        {
+            // Verifica si hay alguien suscrito al evento
+            if (PlayEvent != null)
+            {
+                // Engatilla el evento
+                PlayEvent(this, new PlayEventArgs() { Route = route });
+            }
+        }
+
         public void Play(Song song)// Listo
         {
             System.Diagnostics.Process.Start(song.Route);
+            OnPlayEvent(song.Route);
         }
         public void Play(Video video) //Listo
         {
             System.Diagnostics.Process.Start(video.Route);
             Thread.Sleep(video.Length);
+            OnPlayEvent(video.Route);
+
         }
         public void Play(Series serie)
         {
@@ -371,15 +389,49 @@ namespace Spotflix
                 Thread.Sleep(song.Length);
             }
         }//Listo
+        //Creo el evento StopEvent
+        public delegate void StopEventHandler(object source, PlayEventArgs args);
+        public event StopEventHandler StopEvent;
+        protected virtual void OnStopEvent(string route)
+        {
+            // Verifica si hay alguien suscrito al evento
+            if (StopEvent != null)
+            {
+                // Engatilla el evento
+                StopEvent(this, new PlayEventArgs() { Route = route });
+            }
+        }
+        public void Stop(Song song) 
+        {
+            OnStopEvent(song.Route);
+        }
 
-        //Pendiente
-        public void Stop(Song song) { }//Pendiente
-        //Pendiente
-        public void Stop(Video video) { }//Pendiente
+        
+        public void Stop(Video video) 
+        {
+            OnStopEvent(video.Route);
+        }
+        //Creo el evento PauseEvent
+        public delegate void PauseEventHandler(object source, PlayEventArgs args);
+        public event PauseEventHandler PauseEvent;
+        protected virtual void OnPauseEvent(string route)
+        {
+            // Verifica si hay alguien suscrito al evento
+            if (PauseEvent != null)
+            {
+                // Engatilla el evento
+                PauseEvent(this, new PlayEventArgs() { Route = route });
+            }
+        }
+        public void Pause(Song song) 
+        {
+            OnPauseEvent(song.Route);
+        }
 
-        public void Pause(Song song) { }//Pendiente
-
-        public void Pause(Video video) { }//Pendiente
+        public void Pause(Video video) 
+        {
+            OnPauseEvent(video.Route);
+        }
 
         public Video ShowVideos()
         {
@@ -549,7 +601,249 @@ namespace Spotflix
                 return null;
             }
         }//Listo
-        //Shows listos
+
+
+        public List<int> GenericSearch()
+        {
+            List<int> choice = new List<int>();
+            int c1=0;
+            int c2=0;
+
+            Console.WriteLine("Ingrese la busqueda del archivo a reproducir o -1 para salir\n");
+            string filter = Console.ReadLine().ToLower();
+            if (filter == "-1")
+            {
+                choice.Add(-1);
+                return choice;
+            }
+            List<Video> catchsv = new List<Video>();
+            List<Song> catchss = new List<Song>();
+            List<Lesson> catchl = new List<Lesson>();
+            List<Karaoke> catchk = new List<Karaoke>();
+            List<Playlist> catchp = new List<Playlist>();
+            List<Album> catchsa = new List<Album>();
+            List<Series> catchse = new List<Series>();
+            foreach (Video video in this.Videos)
+            {
+                if (video.Name.ToLower().Contains(filter) && (!(catchsv.Contains(video))))
+                {
+                    catchsv.Add(video);
+                }
+                if (video.Gender.ToLower().Contains(filter) && (!(catchsv.Contains(video))))
+                {
+                    catchsv.Add(video);
+                }
+                if (video.Studio.ToLower().Contains(filter) && (!(catchsv.Contains(video))))
+                {
+                    catchsv.Add(video);
+                }
+                if (video.Director.ToLower().Contains(filter) && (!(catchsv.Contains(video))))
+                {
+                    catchsv.Add(video);
+                }
+                foreach (string actor in video.Actors)
+                {
+                    if (actor.ToLower().Contains(filter) && (!(catchsv.Contains(video))))
+                    {
+                        catchsv.Add(video);
+                    }
+                }
+
+            }
+            foreach (Song song in this.Songs)
+            {
+                if (song.Name.ToLower().Contains(filter) && (!(catchss.Contains(song))))
+                {
+                    catchss.Add(song);
+                }
+                if (song.Gender.ToLower().Contains(filter) && (!(catchss.Contains(song))))
+                {
+                    catchss.Add(song);
+                }
+                if (song.Artist.ToLower().Contains(filter) && (!(catchss.Contains(song))))
+                {
+                    catchss.Add(song);
+                }
+                if (song.Album.ToLower().Contains(filter) && (!(catchss.Contains(song))))
+                {
+                    catchss.Add(song);
+                }
+            }
+
+            foreach (Series serie in this.Series)
+            {
+                if (serie.SerieName.ToLower().Contains(filter) && (!(catchse.Contains(serie))))
+                {
+                    catchse.Add(serie);
+                }
+                foreach (Video video in serie.Episodes)
+                {
+                    if (video.Name.ToLower().Contains(filter) && (!(catchse.Contains(serie))))
+                    {
+                        catchse.Add(serie);
+                    }
+                    if (video.Director.ToLower().Contains(filter) && (!(catchse.Contains(serie))))
+                    {
+                        catchse.Add(serie);
+                    }
+                    if (video.Gender.ToLower().Contains(filter) && (!(catchse.Contains(serie))))
+                    {
+                        catchse.Add(serie);
+                    }
+                    if (video.Studio.ToLower().Contains(filter) && (!(catchse.Contains(serie))))
+                    {
+                        catchse.Add(serie);
+                    }
+                    foreach (string actor in video.Actors)
+                    {
+                        if (actor.ToLower().Contains(filter) && (!catchse.Contains(serie)))
+                        {
+                            catchse.Add(serie);
+                        }
+
+                    }
+
+                }
+            }
+            foreach (Playlist playlist in this.Playlists)
+            {
+                if (playlist.PlaylistName.ToLower().Contains(filter) && (!(catchp.Contains(playlist))))
+                {
+                    catchp.Add(playlist);
+                }
+                foreach (Song song in playlist.Songs)
+                {
+                    if (song.Name.ToLower().Contains(filter) && (!(catchp.Contains(playlist))))
+                    {
+                        catchp.Add(playlist);
+                    }
+                }
+            }
+            foreach (Album album in this.Albums)
+            {
+                if (album.Name.ToLower().Contains(filter) && (!(catchsa.Contains(album))))
+                {
+                    catchsa.Add(album);
+                }
+                foreach (Song song in album.Songs)
+                {
+                    if (song.Name.ToLower().Contains(filter) && (!(catchsa.Contains(album))))
+                    {
+                        catchsa.Add(album);
+                    }
+                }
+            }
+
+            foreach (Lesson lesson in this.lessons)
+            {
+                if (lesson.Teacher.Name.ToLower().Contains(filter) && (!(catchl.Contains(lesson))))
+                {
+                    catchl.Add(lesson);
+                }
+                if (lesson.Subject.ToLower().Contains(filter) && (!(catchl.Contains(lesson))))
+                {
+                    catchl.Add(lesson);
+                }
+                if (lesson.Name.ToLower().Contains(filter) && (!(catchl.Contains(lesson))))
+                {
+                    catchl.Add(lesson);
+                }
+
+            }
+
+            foreach (Karaoke karaoke in this.karaokes)
+            {
+                if (karaoke.Gender.ToLower().Contains(filter) && (!(catchk.Contains(karaoke)))) catchk.Add(karaoke);
+                if (karaoke.Name.ToLower().Contains(filter) && (!(catchk.Contains(karaoke)))) catchk.Add(karaoke);
+                if (karaoke.Artist.ToLower().Contains(filter) && (!(catchk.Contains(karaoke)))) catchk.Add(karaoke);
+                if (karaoke.Album.ToLower().Contains(filter) && (!(catchk.Contains(karaoke)))) catchk.Add(karaoke);
+
+            }
+            int n = 1;
+            if (catchsv.Count() != 0)
+            {
+                foreach (Video video in catchsv)
+                {
+                    Console.WriteLine("{0}{1}{2}\n", n, catchsv.IndexOf(video) + 1, video.Name);
+                }
+                n++;
+            }
+            if (catchss.Count() != 0)
+            {
+                foreach (Song song in catchss)
+                {
+                    Console.WriteLine("{0}{1}{2}\n", n,catchss.IndexOf(song) + 1, song.Name);
+                }
+                n++;
+            }
+            if (catchl.Count() != 0)
+            {
+                foreach (Lesson lesson in catchl)
+                {
+                    Console.WriteLine("{0}{1}{2}{3}{4}\n", n, catchl.IndexOf(lesson) + 1, lesson.Name, lesson.Subject, lesson.Course);
+                }
+                n++;
+            }
+            if (catchk.Count() != 0)
+            {
+                foreach (Karaoke karaoke in catchk)
+                {
+                    Console.WriteLine("{0}{1}{2}\n", n,catchk.IndexOf(karaoke) + 1, karaoke.Name);
+                }
+                n++;
+            }
+            if (catchp.Count() != 0)
+            {
+                foreach (Playlist playlist in catchp)
+                {
+                    Console.WriteLine("{0}{1}{2}\n", n,catchp.IndexOf(playlist) + 1, playlist.PlaylistName);
+                }
+                n++;
+            }
+            if (catchsa.Count() != 0)
+            {
+                foreach (Album album in catchsa)
+                {
+                    Console.WriteLine("{0}{1}{2}\n", n,catchsa.IndexOf(album) + 1, album.Name);
+                }
+                n++;
+            }
+            if (catchse.Count() != 0)
+            {
+                foreach (Series serie in catchse)
+                {
+                    Console.WriteLine("{0}{1}{2}\n", n,catchse.IndexOf(serie) + 1, serie.SerieName);
+                }
+            }
+            while (c1 != -1)
+            {
+                while (c1 == 0)
+                {
+                    try
+                    {
+                        c1 = int.Parse(Console.ReadLine());
+                        choice.Add(c1);
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Ingrese un numero para seleccionar la categoría deseada\n");
+                    }
+                    
+                }
+                if (c1 > 8)
+                {
+                    choice.Add(-1);
+                    Console.WriteLine("Input invalido, volviendo al menú");
+                    return choice;
+                }
+                else if (c1 == 1)
+                {
+                    
+                }
+            }
+
+        }
+
         public int Search(string switcher)
         {
             int choice = 0;
@@ -561,7 +855,9 @@ namespace Spotflix
             }
             switch (switcher)
             {
-                case "1":
+                
+
+                case "1": //Videos
                     if (this.Videos.Count == 0)
                     {
                         Console.WriteLine("No se encontaron videos\n");
@@ -627,6 +923,7 @@ namespace Spotflix
                                 choice = 0;
                             }
                         }
+
 
                     }
                     Console.WriteLine("No se encontraron coincidencias, volviendo al menu...\n");
