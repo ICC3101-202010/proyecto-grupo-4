@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Spotflix
 {
@@ -99,7 +102,7 @@ namespace Spotflix
         }
         public static void SingTeacher(Teacher teacher)
         {
-           teachers.Add(teacher);
+            teachers.Add(teacher);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static bool LogAsUser(string email_nickname, string password) //listo
@@ -155,6 +158,56 @@ namespace Spotflix
             }
             Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
             return false;
+        }
+
+        //Metodos Serializar:
+        static private void SaveUser(List<User> users)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoUsuarios", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, users);
+            stream.Close();
+        }
+
+        static private List<User> LoadUser()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoUsuarios", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<User> users = (List<User>)formatter.Deserialize(stream);
+            stream.Close();
+            return users;
+        }
+        static private void SaveAdmin(List<Admin> managers)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoAdministradores", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, managers);
+            stream.Close();
+        }
+
+        static private List<Admin> LoadAdmin()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoAdministradores", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Admin> managers = (List<Admin>)formatter.Deserialize(stream);
+            stream.Close();
+            return managers;
+        }
+        static private void SaveTeacher(List<Teacher> teachers)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivosProfesores", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, teachers);
+            stream.Close();
+        }
+
+        static private List<Teacher> LoadTeacher()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("ArchivoProfesores", FileMode.Open, FileAccess.Read, FileShare.Read);
+            List<Teacher> teachers = (List<Teacher>)formatter.Deserialize(stream);
+            stream.Close();
+            return teachers;
         }
     }
 }

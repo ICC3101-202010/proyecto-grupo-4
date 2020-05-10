@@ -20,9 +20,9 @@ namespace Spotflix
             Teacher teacher = new Teacher();
             List<Video> vid = new List<Video>();
             List<Song> son = new List<Song>();
-            Series serie = new Series(0,vid,"");
-            Playlist play = new Playlist(son,"");
-            Karaoke karaoke = new Karaoke("","","",true,"","",0,0,"","");
+            Series serie = new Series(0, vid, "");
+            Playlist play = new Playlist(son, "");
+            Karaoke karaoke = new Karaoke("", "", "", true, "", "", 0, 0, "", "");
 
             mediaPlayer.AddVideoSerie += serie.OnAddVideoSerie;
             mediaPlayer.DeleteVideoSerie += serie.OnDeleteVideoSerie;
@@ -118,7 +118,7 @@ namespace Spotflix
                                 {
                                     if (Gate.checkCodeA(key))
                                     {
-                                        Admin a1 = new Admin(key,contra);
+                                        Admin a1 = new Admin(key, contra);
                                         Gate.SingAdmin(a1);
                                     }
                                 }
@@ -128,7 +128,7 @@ namespace Spotflix
                                     Thread.Sleep(1000);
                                 }
                                 break;
-                            case "3":
+                            case "3": //profesor
                                 Console.WriteLine("Ingrese el codigo para registrarse como profesor");
                                 string key_T = Console.ReadLine();
                                 Console.WriteLine("Ingrese el curso que desea tener\n");
@@ -166,7 +166,7 @@ namespace Spotflix
                             switch (switcher2)
                             {
                                 case "1": //usuario
-                                  
+
                                     Console.WriteLine("Ingrese su nombre de usuario o Gmail\n");
                                     string n = Console.ReadLine();
                                     Console.WriteLine("Ingrese su contraseña\n");
@@ -496,7 +496,7 @@ namespace Spotflix
                                 default:
                                     Console.WriteLine("Ingrese una opcion valida");
                                     break;
-                            } 
+                            }
                         }
                         break;
                     case "3":
@@ -504,17 +504,17 @@ namespace Spotflix
                     case "4":
                         break;
                     case "5":
-                        break; 
+                        break;
 
-                default:
+                    default:
                         Console.WriteLine("Ingrese una opción valida");
                         break;
                 }
-                
+
 
             }
-            
+
         }
     }
-   
+
 }
