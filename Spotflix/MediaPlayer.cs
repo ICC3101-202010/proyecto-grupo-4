@@ -33,30 +33,30 @@ namespace Spotflix
         //Creo el evento AddVideoSerie
         public delegate void AddVideoSerieHandler(object source, VideoSerieEventArgs args);
         public event AddVideoSerieHandler AddVideoSerie;
-        protected virtual void OnAddVideoSerie(Video video, Series serie)
+        protected virtual void OnAddVideoSerie(Video video, Series serie, MediaPlayer mediaPlayer)
         {
             // Verifica si hay alguien suscrito al evento
             if (AddVideoSerie != null)
             {
                 // Engatilla el evento
-                AddVideoSerie(this, new VideoSerieEventArgs() { Video = video, Serie = serie });
+                AddVideoSerie(this, new VideoSerieEventArgs() { Video = video, Serie = serie, Mediaplayer = mediaPlayer });
             }
         }
 
         //Creo el evento DeleteVideoSerie
         public delegate void DeleteVideoSerieHandler(object source, VideoSerieEventArgs args);
         public event DeleteVideoSerieHandler DeleteVideoSerie;
-        protected virtual void OnDeleteVideoSerie(Video video, Series serie)
+        protected virtual void OnDeleteVideoSerie(Video video, Series serie, MediaPlayer mediaPlayer)
         {
             // Verifica si hay alguien suscrito al evento
             if (DeleteVideoSerie != null)
             {
                 // Engatilla el evento
-                DeleteVideoSerie(this, new VideoSerieEventArgs() { Video = video, Serie = serie });
+                DeleteVideoSerie(this, new VideoSerieEventArgs() { Video = video, Serie = serie, Mediaplayer = mediaPlayer });
             }
         }
 
-        public void VideoSerieStarter(string option, string serieName, string videoName)
+        public void VideoSerieStarter(string option, string serieName, string videoName, MediaPlayer mediaPlayer)
         {
             Series serie = null;
             Video video = null;
@@ -80,12 +80,12 @@ namespace Spotflix
             }
             else if (count == 0 && option == "Add")
             {
-                OnAddVideoSerie(video, serie);
+                OnAddVideoSerie(video, serie, mediaPlayer);
             }
 
             else if (count != 0 && option == "Delete")
             {
-                OnDeleteVideoSerie(video, serie);
+                OnDeleteVideoSerie(video, serie, mediaPlayer);
             }
             else if (count == 0 && option == "Delete")
             {

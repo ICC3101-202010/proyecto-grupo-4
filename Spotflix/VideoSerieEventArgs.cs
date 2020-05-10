@@ -10,5 +10,6 @@ namespace Spotflix
     {
         public Video Video { get; set; }
         public Series Serie { get; set; }
+        public MediaPlayer Mediaplayer { get; set; }
     }
 }
