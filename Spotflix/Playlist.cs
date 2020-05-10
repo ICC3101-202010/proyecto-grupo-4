@@ -23,6 +23,7 @@ namespace Spotflix
             this.playlistName = playlistName;
             this.videos = videos;
         }
+        public Playlist() { }
 
 
         public List<Song> Songs { get => songs; set => songs = value; }

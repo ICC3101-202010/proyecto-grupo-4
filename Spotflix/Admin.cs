@@ -58,7 +58,7 @@ namespace Spotflix
             //aqui deberiamos poder importar una cancion
             if (mediaPlayer.Songs.Count() == 0)
             {
-                mediaPlayer.Songs.Append(song);
+                mediaPlayer.Songs.Add(song);
             }
             else
             {
@@ -71,14 +71,14 @@ namespace Spotflix
                 }
                 if (count == 0)
                 {
-                    mediaPlayer.Songs.Append(song);
+                    mediaPlayer.Songs.Add(song);
                     foreach (Album a in mediaPlayer.Albums)
                     {
                         if (a.Name == song.Album)
                         {
                             count2++; 
-                            a.Songs.Append(song);
-                            if (a.Artists.Contains(song.Artist)==false) a.Artists.Append(song.Artist);
+                            a.Songs.Add(song);
+                            if (a.Artists.Contains(song.Artist)==false) a.Artists.Add(song.Artist);
                             a.NumberSongs += 1;
 
                         }
@@ -86,11 +86,11 @@ namespace Spotflix
                     if (count2 == 0)
                     {
                         List<string> artists = new List<string>();
-                        artists.Append(song.Artist);
+                        artists.Add(song.Artist);
                         List<Song> songs = new List<Song>();
-                        songs.Append(song);
+                        songs.Add(song);
                         Album al = new Album(song.Album, artists,  1, songs);
-                        mediaPlayer.Albums.Append(al);
+                        mediaPlayer.Albums.Add(al);
                     }
                 }
                 else Console.WriteLine("Esa canción ya existe");
@@ -102,7 +102,7 @@ namespace Spotflix
             //aqui deberiamos poder importar un video
             if (mediaPlayer.Videos.Count() == 0)
             {
-                mediaPlayer.Videos.Append(video);
+                mediaPlayer.Videos.Add(video);
             }
             else
             {
@@ -114,7 +114,7 @@ namespace Spotflix
                     }
 
                 }
-                if (count == 0) mediaPlayer.Videos.Append(video);
+                if (count == 0) mediaPlayer.Videos.Add(video);
                 else Console.WriteLine("Ese video ya existe");
 
             }
@@ -125,7 +125,7 @@ namespace Spotflix
             //aqui deberiamos poder importar una karaoke (cnación + letra)
             if (mediaPlayer.Karaokes.Count() == 0)
             {
-                mediaPlayer.Karaokes.Append(karaoke);
+                mediaPlayer.Karaokes.Add(karaoke);
             }
             else
             {
@@ -136,7 +136,7 @@ namespace Spotflix
                         count++;
                     }
                 }
-                if (count == 0) mediaPlayer.Karaokes.Append(karaoke);
+                if (count == 0) mediaPlayer.Karaokes.Add(karaoke);
                 else Console.WriteLine("Ese karaoke ya existe");
 
             }
@@ -150,7 +150,7 @@ namespace Spotflix
             int count = 0;
             if (mediaPlayer.Series.Count() == 0)
             {
-                mediaPlayer.Series.Append(serie);
+                mediaPlayer.Series.Add(serie);
             }
             else
             {
@@ -162,7 +162,7 @@ namespace Spotflix
                     }
 
                 }
-                if (count == 0) mediaPlayer.Series.Append(serie);
+                if (count == 0) mediaPlayer.Series.Add(serie);
                 else Console.WriteLine("Esa serie ya existe\n");
             }
         }

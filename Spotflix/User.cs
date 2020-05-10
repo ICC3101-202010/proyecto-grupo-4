@@ -20,6 +20,8 @@ namespace Spotflix
         private List<Video> likedVideos = new List<Video>();
         private int screenNumber;
         private List<Playlist> likedPlaylist = new List<Playlist>();
+        private List<Playlist> myPlaylist = new List<Playlist>();
+
 
 
         public User(int userID, string gmail, string nickname, string password, string name, string lastName, int age, string country, string city, string street, string postalCode)
@@ -48,12 +50,14 @@ namespace Spotflix
         public List<Video> LikedVideos { get => likedVideos; set => likedVideos = value; }
         public int ScreenNumber { get => screenNumber; set => screenNumber = value; }
         public List<Playlist> LikedPlaylist { get => likedPlaylist; set => likedPlaylist = value; }
+        public List<Playlist> MyPlaylist { get => myPlaylist; set => myPlaylist = value; }
+
 
         public void AddToFavorite(Song song) //listo
         {
             if (LikedSongs.Count() == 0)
             {
-                LikedSongs.Append(song);
+                LikedSongs.Add(song);
             }
             else
             {
@@ -65,7 +69,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        LikedSongs.Append(song);
+                        LikedSongs.Add(song);
                     }
                 }
             }
@@ -75,7 +79,7 @@ namespace Spotflix
         {
             if (LikedVideos.Count() == 0)
             {
-                LikedVideos.Append(video);
+                LikedVideos.Add(video);
             }
             else
             {
@@ -87,7 +91,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        LikedVideos.Append(video);
+                        LikedVideos.Add(video);
                     }
                 }
             }
@@ -123,17 +127,22 @@ namespace Spotflix
         public void OnAddSong(object source, SongEventArgs so)
         {
             int counter = 0;
-            foreach (Song s in so.PlayList.Songs)
+
+            foreach (Playlist p in myPlaylist)
             {
-                if (so.Song == s)
+                foreach (Song cancion in p.Songs)
                 {
-                    counter += 1;
+                    if (so.Song == cancion) counter += 1;
                 }
             }
             if (counter == 0)
             {
                 so.PlayList.Songs.Add(so.Song);
                 Console.WriteLine($"Se ha agregado la canción {so.Song.Name} a su Playlist {so.PlayList.PlaylistName}");
+                foreach (Playlist p in myPlaylist)
+                {
+                    if (p.PlaylistName==so.PlayList.PlaylistName) p.Songs.Add(so.Song);
+                }
             }
             else
             {
@@ -143,52 +152,73 @@ namespace Spotflix
                 {
                     so.PlayList.Songs.Add(so.Song);
                     Console.WriteLine($"Se ha agregado la canción {so.Song.Name} a su Playlist {so.PlayList.PlaylistName}");
+                    foreach (Playlist p in myPlaylist)
+                    {
+                        if (p.PlaylistName == so.PlayList.PlaylistName) p.Songs.Add(so.Song);
+                    }
                 }
             }
         }
 
         public void OnDeleteSong(object source, SongEventArgs so)
         {
-            int count = 0;
-            foreach (Song s in so.PlayList.Songs)
-            {
-                if (s == so.Song)
-                {
-                    count += 1;
+            int counter = 0;
 
+            foreach (Playlist p in myPlaylist)
+            {
+                foreach (Song cancion in p.Songs)
+                {
+                    if (so.Song == cancion) counter += 1;
                 }
             }
-            if (count != 0)
+            if (counter != 0)
             {
                 so.PlayList.Songs.Remove(so.Song);
-                Console.WriteLine($"Se ha eliminado la canción {so.Song.Name} de su Playlist {so.PlayList.PlaylistName}");
+                Console.WriteLine($"Se ha eliminado la canción {so.Song.Name} a su Playlist {so.PlayList.PlaylistName}");
+                foreach (Playlist p in myPlaylist)
+                {
+                    if (p.PlaylistName == so.PlayList.PlaylistName) p.Songs.Remove(so.Song);
+                }
             }
-            else Console.WriteLine("La canción no se encontraba en su PlayList.");
+            else
+            {
+                Console.WriteLine("La canción no se encuentra en su playList.");
+                
+            }
         }
 
-        public void OnAddVideo(object source, VideoEventArgs so)
+        public void OnAddVideo(object source,VideoEventArgs so)
         {
             int counter = 0;
-            foreach (Video v in so.PlayList.Videos)
+
+            foreach (Playlist p in myPlaylist)
             {
-                if (so.Video == v)
+                foreach (Video video in p.Videos)
                 {
-                    counter += 1;
+                    if (so.Video == video) counter += 1;
                 }
             }
             if (counter == 0)
             {
                 so.PlayList.Videos.Add(so.Video);
                 Console.WriteLine($"Se ha agregado el video {so.Video.Name} a su Playlist {so.PlayList.PlaylistName}");
+                foreach (Playlist p in myPlaylist)
+                {
+                    if (p.PlaylistName == so.PlayList.PlaylistName) p.Videos.Add(so.Video);
+                }
             }
             else
             {
-                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarla de todas formas?\nOpción 1: Sí\nOpción 2: No");
+                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarlo de todas formas?\nOpción 1: Sí\nOpción 2: No");
                 string answer = Console.ReadLine();
                 if (answer == "1" || answer == "Sí")
                 {
                     so.PlayList.Videos.Add(so.Video);
                     Console.WriteLine($"Se ha agregado el video {so.Video.Name} a su Playlist {so.PlayList.PlaylistName}");
+                    foreach (Playlist p in myPlaylist)
+                    {
+                        if (p.PlaylistName == so.PlayList.PlaylistName) p.Videos.Add(so.Video);
+                    }
                 }
             }
         }
@@ -196,21 +226,29 @@ namespace Spotflix
         public void OnDeleteVideo(object source, VideoEventArgs so)
         {
             int counter = 0;
-            foreach (Video v in so.PlayList.Videos)
+
+            foreach (Playlist p in myPlaylist)
             {
-                if (v == so.Video)
+                foreach (Video video in p.Videos)
                 {
-                    counter += 1;
+                    if (so.Video == video) counter += 1;
                 }
             }
             if (counter != 0)
             {
                 so.PlayList.Videos.Remove(so.Video);
-                Console.WriteLine($"Se ha eliminado el video {so.Video.Name} de su Playlist {so.PlayList.PlaylistName}");
+                Console.WriteLine($"Se ha eliminado el video {so.Video.Name} a su Playlist {so.PlayList.PlaylistName}");
+                foreach (Playlist p in myPlaylist)
+                {
+                    if (p.PlaylistName == so.PlayList.PlaylistName) p.Videos.Remove(so.Video);
+                }
             }
-            else Console.WriteLine("El video no se encontraba en su PlayList");
-        }
+            else
+            {
+                Console.WriteLine("El video no se encuentra en su playList.");
 
+            }
+        }
     }
 
 }

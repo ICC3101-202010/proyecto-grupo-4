@@ -20,6 +20,7 @@ namespace Spotflix
             this.numberSongs = numberSongs;
             this.songs = songs;
         }
+        public Album() { }
 
         public string Name { get => name; set => name = value; }
         public List<string> Artists { get => artists; set => artists = value; }
