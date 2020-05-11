@@ -11,7 +11,7 @@ namespace Spotflix
         List<Song> songs = new List<Song>();
         List<Video> videos = new List<Video>();
         private string playlistName;
-
+        User userowner; 
 
         public Playlist(List<Song> songs, string playlistName) 
         {
