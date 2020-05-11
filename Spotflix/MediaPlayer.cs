@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
 using WMPLib;
+using System.IO;
 
 namespace Spotflix
 {
@@ -365,14 +366,15 @@ namespace Spotflix
 
         public void Play(Song song)// Listo
         {
-            System.Diagnostics.Process.Start(song.Route);
-            OnPlayEvent(song.Route);
+            song.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(song.Route));
+            player.URL = song.Route;
+            player.controls.play();
         }
         public void Play(Video video) //Listo
         {
-            System.Diagnostics.Process.Start(video.Route);
-            Thread.Sleep(video.Length);
-            OnPlayEvent(video.Route);
+            video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(video.Route));
+            player.URL = video.Route;
+            player.controls.play();
 
         }
         public void Play(Series serie)
@@ -945,12 +947,6 @@ namespace Spotflix
             int choice = 0;
             string choice2;
 
-            Console.WriteLine("Ingrese la búsqueda del archivo o -1 para salir\n");
-            string filter = Console.ReadLine().ToLower();
-            if (filter == "-1")
-            {
-                return -1;
-            }
             switch (switcher)
             {
                 case "1": //Videos
@@ -962,20 +958,19 @@ namespace Spotflix
                     List<Video> catchs = new List<Video>();
                     foreach (Video video in this.Videos)
                     {
-                        if (video.Name.ToLower().Contains(filter) && (!(catchs.Contains(video)))) catchs.Add(video);
-                        if (video.Gender.ToLower().Contains(filter) && (!(catchs.Contains(video)))) catchs.Add(video);
-                        if (video.Studio.ToLower().Contains(filter) && (!(catchs.Contains(video)))) catchs.Add(video);
-                        if (video.Director.ToLower().Contains(filter) && (!(catchs.Contains(video)))) catchs.Add(video);
-                        foreach (string actor in video.Actors)
-                        {
-                            if (actor.ToLower().Contains(filter) && (!(catchs.Contains(video)))) catchs.Add(video);
-                        }
+                        catchs.Add(video);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para el video");
                     Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio\n-1 para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Génerico
                         {
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -986,7 +981,7 @@ namespace Spotflix
                         {
                             foreach (Video video in catchs)
                             {
-                                if (!(video.Name.ToLower().Contains(filter)) ) catchs.Remove(video);
+                                if (!(video.Name.ToLower().Contains(filter))) catchs.Remove(video);
                             }
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
                             Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio");
@@ -996,7 +991,7 @@ namespace Spotflix
                         {
                             foreach (Video video in catchs)
                             {
-                                if (!(video.Gender.ToLower().Contains(filter)) ) catchs.Remove(video);
+                                if (!(video.Gender.ToLower().Contains(filter))) catchs.Remove(video);
                             }
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
                             Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio");
@@ -1006,7 +1001,7 @@ namespace Spotflix
                         {
                             foreach (Video video in catchs)
                             {
-                                
+
                                 if (!(video.Director.ToLower().Contains(filter))) catchs.Remove(video);
                             }
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1046,7 +1041,7 @@ namespace Spotflix
                     {
                         foreach (Video video in catchs)
                         {
-                            Console.WriteLine("{0}{1}{2}{3}\n", catchs.IndexOf(video) + 1, video.Name, video.Director,video.Gender);
+                            Console.WriteLine("{0}{1}{2}{3}\n", catchs.IndexOf(video) + 1, video.Name, video.Director, video.Gender);
                         }
                         while (choice != -1)
                         {
@@ -1089,16 +1084,19 @@ namespace Spotflix
                     List<Song> catchsSongs = new List<Song>();
                     foreach (Song song in this.Songs)
                     {
-                        if (song.Name.ToLower().Contains(filter) && (!(catchsSongs.Contains(song)))) catchsSongs.Add(song);
-                        if (song.Gender.ToLower().Contains(filter) && (!(catchsSongs.Contains(song)))) catchsSongs.Add(song);
-                        if (song.Artist.ToLower().Contains(filter) && (!(catchsSongs.Contains(song)))) catchsSongs.Add(song);
-                        if (song.Album.ToLower().Contains(filter) && (!(catchsSongs.Contains(song)))) catchsSongs.Add(song);
+                        catchsSongs.Add(song);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para la canción");
                     Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Artista\n5: Album\n6: Explicit\n-1 para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Genérico
                         {
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1163,13 +1161,13 @@ namespace Spotflix
                             Console.WriteLine("Esa opción no existe");
                             choice2 = "-1";
                         }
-                        
+
                     }
                     if (catchsSongs.Count() != 0)
                     {
                         foreach (Song song in catchsSongs)
                         {
-                            Console.WriteLine("{0}{1}{2}{3}\n", catchsSongs.IndexOf(song) + 1, song.Name,song.Artist,song.Gender);
+                            Console.WriteLine("{0}{1}{2}{3}\n", catchsSongs.IndexOf(song) + 1, song.Name, song.Artist, song.Gender);
                         }
                         while (choice != -1)
                         {
@@ -1211,26 +1209,22 @@ namespace Spotflix
                         return -1;
                     }
                     List<Series> catchsSeries = new List<Series>();
-                    
+
                     foreach (Series serie in this.Series)
                     {
-                        if (serie.SerieName.ToLower().Contains(filter) && (!(catchsSeries.Contains(serie)))) catchsSeries.Add(serie);
-                        foreach (Video video in serie.Episodes)
-                        {
-                            if (video.Name.ToLower().Contains(filter) && (!(catchsSeries.Contains(serie)))) catchsSeries.Add(serie);
-                            if (video.Director.ToLower().Contains(filter) && (!catchsSeries.Contains(serie))) catchsSeries.Add(serie);
-                            if (video.Gender.ToLower().Contains(filter) && (!catchsSeries.Contains(serie))) catchsSeries.Add(serie);
-                            foreach (string actor in video.Actors)
-                            {
-                                if (actor.ToLower().Contains(filter) && (!(catchsSeries.Contains(serie)))) catchsSeries.Add(serie);
-                            }
-                        }
+                        catchsSeries.Add(serie);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para la serie");
                     Console.WriteLine("1: Genérico\n2: Nombre serie\n3: Nombre capítulo\n4: Director\n5: Actor\n6: Género\n-1 para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Genérico
                         {
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1253,7 +1247,7 @@ namespace Spotflix
                             {
                                 foreach (Video video in serie.Episodes)
                                 {
-                                    if (!(video.Name.ToLower().Contains(filter)))  catchsSeries.Remove(serie);
+                                    if (!(video.Name.ToLower().Contains(filter))) catchsSeries.Remove(serie);
                                 }
                             }
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1281,7 +1275,7 @@ namespace Spotflix
                                 {
                                     foreach (string actor in video.Actors)
                                     {
-                                        if (!(actor.ToLower().Contains(filter)))  catchsSeries.Remove(serie);
+                                        if (!(actor.ToLower().Contains(filter))) catchsSeries.Remove(serie);
                                     }
                                 }
                             }
@@ -1312,7 +1306,7 @@ namespace Spotflix
                     {
                         foreach (Series serie in catchsSeries)
                         {
-                            Console.WriteLine("{0}{1}{2}\n", catchsSeries.IndexOf(serie) + 1, serie.SerieName,serie.NofVideos);
+                            Console.WriteLine("{0}{1}{2}\n", catchsSeries.IndexOf(serie) + 1, serie.SerieName, serie.NofVideos);
                         }
                         while (choice != -1)
                         {
@@ -1353,34 +1347,22 @@ namespace Spotflix
                         return -1;
                     }
                     List<Playlist> catchsPlaylists = new List<Playlist>();
-                    
+
                     foreach (Playlist playlist in this.Playlists)
                     {
-                        if (playlist.PlaylistName.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist))))catchsPlaylists.Add(playlist);
-                        if (playlist.Userowner.Nickname.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-
-                        foreach (Song song in playlist.Songs)
-                        {
-                            if (song.Name.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist))))catchsPlaylists.Add(playlist);
-                            if (song.Artist.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-                            if (song.Gender.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-                        }
-                        foreach (Video video in playlist.Videos)
-                        {
-                            if (video.Name.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-                            if (video.Director.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-                            if (video.Gender.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-                            foreach(string actor in video.Actors)
-                            {
-                                if (actor.ToLower().Contains(filter) && (!(catchsPlaylists.Contains(playlist)))) catchsPlaylists.Add(playlist);
-                            }
-                        }
+                        catchsPlaylists.Add(playlist);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para la playlist");
                     Console.WriteLine("1: Genérico\n2: Nombre playlist\n3: Canción o video contenido\n4: Artista (compositor/director/actor)\n5: Género contenido\n6: NickName del creador\n7: Canciones\n8: Videos\n-1 para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Genérico
                         {
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1510,12 +1492,12 @@ namespace Spotflix
                             choice2 = "-1";
                         }
                     }
-                        
+
                     if (catchsPlaylists.Count() != 0)
                     {
                         foreach (Playlist playlist in catchsPlaylists)
                         {
-                            Console.WriteLine("{0}{1}{2}{3}\n", catchsPlaylists.IndexOf(playlist) + 1, playlist.PlaylistName,playlist.Userowner.Name, playlist.Userowner.Lastname);
+                            Console.WriteLine("{0}{1}{2}{3}\n", catchsPlaylists.IndexOf(playlist) + 1, playlist.PlaylistName, playlist.Userowner.Name, playlist.Userowner.Lastname);
                         }
                         while (choice != -1)
                         {
@@ -1559,19 +1541,19 @@ namespace Spotflix
                     List<Album> catchsAlbum = new List<Album>();
                     foreach (Album album in this.Albums)
                     {
-                        if (album.Name.ToLower().Contains(filter) && (!(catchsAlbum.Contains(album)))) catchsAlbum.Add(album);
-                        foreach (Song song in album.Songs)
-                        {
-                            if (song.Name.ToLower().Contains(filter) && (!(catchsAlbum.Contains(album)))) catchsAlbum.Add(album);
-                            if (song.Artist.ToLower().Contains(filter) && (!(catchsAlbum.Contains(album)))) catchsAlbum.Add(album);
-                            if (song.Gender.ToLower().Contains(filter) && (!(catchsAlbum.Contains(album)))) catchsAlbum.Add(album);
-                        }
+                        catchsAlbum.Add(album);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para el album");
                     Console.WriteLine("1: Genérico\n2: Nombre álbum\n3: Canción contenida\n4: Artista contenido\n5: Género contenido\n-1 para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Genérico
                         {
 
@@ -1639,7 +1621,7 @@ namespace Spotflix
                     {
                         foreach (Album album in catchsAlbum)
                         {
-                            Console.WriteLine("{0}{1}{2}\n", catchsAlbum.IndexOf(album) + 1, album.Name,album.NumberSongs);
+                            Console.WriteLine("{0}{1}{2}\n", catchsAlbum.IndexOf(album) + 1, album.Name, album.NumberSongs);
                         }
                         while (choice != -1)
                         {
@@ -1682,10 +1664,7 @@ namespace Spotflix
                     List<Karaoke> catchsKaraoke = new List<Karaoke>();
                     foreach (Karaoke karaoke in this.Karaokes)
                     {
-                        if (karaoke.Name.ToLower().Contains(filter) && (!(catchsKaraoke.Contains(karaoke)))) catchsKaraoke.Add(karaoke);
-                        if (karaoke.Artist.ToLower().Contains(filter) && (!(catchsKaraoke.Contains(karaoke)))) catchsKaraoke.Add(karaoke);
-                        if (karaoke.Gender.ToLower().Contains(filter) && (!(catchsKaraoke.Contains(karaoke)))) catchsKaraoke.Add(karaoke);
-                        if (karaoke.Album.ToLower().Contains(filter) && (!(catchsKaraoke.Contains(karaoke)))) catchsKaraoke.Add(karaoke);
+                        catchsKaraoke.Add(karaoke);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para el Karaoke");
                     Console.WriteLine("1: Genérico\n2: Nombre canción\n3: Artista canción\n4: Género canción\n5: Álbum canción\n-1 para salir");
@@ -1693,6 +1672,12 @@ namespace Spotflix
 
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Genérico
                         {
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1702,7 +1687,7 @@ namespace Spotflix
                         else if (choice2 == "2")
                         {
                             foreach (Karaoke karaoke in catchsKaraoke) if (!(karaoke.Name.ToLower().Contains(filter))) catchsKaraoke.Remove(karaoke);
-                            
+
                         }
                         else if (choice2 == "3")
                         {
@@ -1736,7 +1721,7 @@ namespace Spotflix
                     {
                         foreach (Karaoke karaoke in catchsKaraoke)
                         {
-                            Console.WriteLine("{0}{1}{2}{3}\n", catchsKaraoke.IndexOf(karaoke) + 1, karaoke.Name, karaoke.Artist,karaoke.Gender);
+                            Console.WriteLine("{0}{1}{2}{3}\n", catchsKaraoke.IndexOf(karaoke) + 1, karaoke.Name, karaoke.Artist, karaoke.Gender);
                         }
                         while (choice != -1)
                         {
@@ -1779,10 +1764,7 @@ namespace Spotflix
                     List<Lesson> catchsLessons = new List<Lesson>();
                     foreach (Lesson lesson in this.Lessons)
                     {
-                        if (lesson.Name.ToLower().Contains(filter) && (!(catchsLessons.Contains(lesson)))) catchsLessons.Add(lesson);
-                        if (lesson.Teacher.Code.ToLower().Contains(filter) && (!(catchsLessons.Contains(lesson)))) catchsLessons.Add(lesson);
-                        if (lesson.Subject.ToLower().Contains(filter) && (!(catchsLessons.Contains(lesson)))) catchsLessons.Add(lesson);
-                        if (lesson.Course.ToLower().Contains(filter) && (!(catchsLessons.Contains(lesson)))) catchsLessons.Add(lesson);
+                        catchsLessons.Add(lesson);
                     }
 
                     Console.WriteLine("Ingrese el criterio de filtro para el clases");
@@ -1790,6 +1772,12 @@ namespace Spotflix
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
+                        Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
+                        string filter = Console.ReadLine().ToLower();
+                        if (filter == "-1")
+                        {
+                            return -1;
+                        }
                         if (choice2 == "1") //Genérico
                         {
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
@@ -1830,7 +1818,7 @@ namespace Spotflix
                     {
                         foreach (Lesson lesson in catchsLessons)
                         {
-                            Console.WriteLine("{0}{1}{2}{3}\n", catchsLessons.IndexOf(lesson) + 1, lesson.Name, lesson.Subject,lesson.Course);
+                            Console.WriteLine("{0}{1}{2}{3}\n", catchsLessons.IndexOf(lesson) + 1, lesson.Name, lesson.Subject, lesson.Course);
                         }
                         while (choice != -1)
                         {
