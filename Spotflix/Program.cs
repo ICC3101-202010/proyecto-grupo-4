@@ -602,13 +602,13 @@ namespace Spotflix
                                                     mediaPlayer.CreatePlaylistS(user);
                                                     break;
                                                 case "16": //crear playlist de videos
-                                                    mediaPlayer.CreatePlaylistV();
+                                                    mediaPlayer.CreatePlaylistV(user);
                                                     break;
                                                 case "17": //añadir a la cola
                                                     mediaPlayer.AddToQueue();
                                                     break;
                                                 case "18": //seguir a otras personas
-                                                    mediaPlayer.Follow();
+                                                   // mediaPlayer.Follow();
                                                     break;
 
                                                 case "19": //calificacion cancion

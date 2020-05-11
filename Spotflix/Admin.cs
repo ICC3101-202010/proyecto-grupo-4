@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using WMPLib;
-using System.IO;
-using System.Text;
+
 
 namespace Spotflix
 {
@@ -20,14 +19,18 @@ namespace Spotflix
 
         private string code;
         private string pass;
+        private string gmaila;
+        private string namea;
         WindowsMediaPlayer music = new WindowsMediaPlayer();
         public Admin()
         {
 
         }
-        public Admin(string code, string pass) { this.code = code; this.pass = pass; }
+        public Admin(string namea,string gmaila,string code, string pass) { this.Namea = namea; this.Gmaila = gmaila; this.code = code; this.pass = pass; }
         public string Code { get => code; set => code = value; }
         public string Pass { get => pass; set => pass = value; }
+        public string Gmaila { get => gmaila; set => gmaila = value; }
+        public string Namea { get => namea; set => namea = value; }
 
         WindowsMediaPlayer player = new WindowsMediaPlayer();
         public void ImportSong(MediaPlayer mediaPlayer)

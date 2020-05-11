@@ -21,6 +21,7 @@ namespace Spotflix
         private List<Artist> artists = new List<Artist>();
         private List<Karaoke> karaokes = new List<Karaoke>();
         private List<Album> albums = new List<Album>();
+        WindowsMediaPlayer player;
 
         public List<Song> Songs { get => songs; set => songs = value; }
         public List<Video> Videos { get => videos; set => videos = value; }

@@ -14,6 +14,7 @@ namespace Spotflix
         private string course;
         private string code;
         private string passw;
+        
         public Teacher(string namet, string gmailp, string code, string course, string passw)
         {
             this.namet = namet;
