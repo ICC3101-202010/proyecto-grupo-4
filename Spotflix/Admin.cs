@@ -53,7 +53,7 @@ namespace Spotflix
             List<Karaoke> karaokesa = new List<Karaoke>();
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             Console.WriteLine("Para añadir canciones de forma mas facil, estas deben estar en el siguiente directorio\n{0}\n", dir);
-            string[] filters = new[] { "*.mp3", "*.wav" };
+            string[] filters = new[] { "*.wav" };
             string[] filePaths = filters.SelectMany(f => Directory.GetFiles(dir, f)).ToArray();
 
             Console.WriteLine("Seleccione la cancion a añadir:\n");

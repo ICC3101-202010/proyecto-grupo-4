@@ -11,6 +11,7 @@ using WMPLib;
 using System.IO;
 using System.Timers;
 using System.Configuration;
+using System.Media;
 
 namespace Spotflix
 {
@@ -24,7 +25,6 @@ namespace Spotflix
         private List<Artist> artists = new List<Artist>();
         private List<Karaoke> karaokes = new List<Karaoke>();
         private List<Album> albums = new List<Album>();
-        WindowsMediaPlayer player;
 
         public List<Song> Songs { get => songs; set => songs = value; }
         public List<Video> Videos { get => videos; set => videos = value; }
@@ -68,6 +68,7 @@ namespace Spotflix
             Series serie = null;
             Video video = null;
             int count = 0;
+            int cont2 = 0;
             foreach (Series s in series)
             {
                 foreach (Video v in s.Episodes)
@@ -79,6 +80,10 @@ namespace Spotflix
                         video = v;
 
                     }
+                }
+                if (s.SerieName == serieName)
+                {
+                    cont2++;
                 }
             }
             if (count != 0 && option == "Add")
@@ -97,6 +102,10 @@ namespace Spotflix
             else if (count == 0 && option == "Delete")
             {
                 Console.WriteLine($"El video {videoName} no existe en la serie {serieName}");
+            }
+            else if (cont2==0)
+            {
+                //KIKA Agregar que se cree una serie nueva
             }
             else Console.WriteLine("No se reconoce esa opción");
         }
@@ -383,53 +392,42 @@ namespace Spotflix
         }
 
         Stopwatch stopper = new Stopwatch();
-        public void Play(Song song)// Listo
+        System.Media.SoundPlayer SoundPlayer = new SoundPlayer();
+        public void Play(Song song,User user)// Listo
         {
             song.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(song.Route));
-            player.URL = song.Route;
-            player.controls.play();
+            SoundPlayer.SoundLocation = song.Route;
+            SoundPlayer.Play();
             stopper.Start();
             bool bruteforce = true;
             while (stopper.Elapsed.TotalSeconds!=song.Length.TotalSeconds&&bruteforce)
             {
-                Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\nIngrese cualquier otro caracter para salir\n");
+                Console.WriteLine("(1)Detener cancion\n(2)Ponerle me gusta a la cancion\nIngrese cualquier otro caracter para salir\n");
                 string switcher=Console.ReadLine();
                 Console.Clear();
                 switch (switcher)
                 {
                     case "1":
-                        player.controls.pause();
+                        SoundPlayer.Stop();
                         stopper.Stop();
-                        Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                        Console.WriteLine("(1)Volver a empezar cancion\nIngrese cualquier caracter para detener y salir\n");
                         string choice = Console.ReadLine();
                         Console.Clear();
                         if (choice == "1")
                         {
-                            player.controls.play();
+                            SoundPlayer.Play();
                             stopper.Start();
+                        }
+                        if (choice=="2")
+                        {
+                            user.AddToFavorite(song);
                         }
                         else
                         {
-                            player.controls.stop();
                             stopper.Reset();
                             bruteforce = false;
                         }            
                         break;
-                    case "2":
-                        player.controls.stop();
-                        stopper.Reset();
-                        Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
-                        choice = Console.ReadLine();
-                        if (choice=="1")
-                        {
-                            player.controls.play();
-                            stopper.Start();
-                        }
-                        else
-                        {
-                            bruteforce = false;
-                        }
-                        break;
                     default:
                         bruteforce = false;
                         break;
@@ -437,130 +435,93 @@ namespace Spotflix
 
             }
         }
-        public void Play(Video video) //Listo
+        public void Play(Video video, User user) //Listo
         {
-            video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(video.Route));
-            player.URL = video.Route;
-            player.controls.play();
-            stopper.Start();
-            bool bruteforce = true;
-            while (stopper.Elapsed.TotalSeconds != video.Length.TotalSeconds && bruteforce)
+            Console.WriteLine("*ADVERTENCIA*\n una vez incializado el video no podra detenerlo desde la consola, Desea continuar Y/N");
+            string choice = Console.ReadLine();
+            if (choice=="Y")
             {
-                Console.WriteLine("(1)Pausar video\n(2)Detener video\nIngrese cualquier otro caracter para salir\n");
-                string switcher = Console.ReadLine();
-                Console.Clear();
-                switch (switcher)
+                video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(video.Route));
+                System.Diagnostics.Process.Start(video.Route);
+                Console.WriteLine("Desea darle me gusta al video Y/N");
+                string like = Console.ReadLine();
+                if (like=="Y")
                 {
-                    case "1":
-                        player.controls.pause();
-                        stopper.Stop();
-                        Console.WriteLine("(1)Reaundar video\nIngrese cualquier caracter para detener y salir\n");
-                        string choice = Console.ReadLine();
-                        Console.Clear();
-                        if (choice == "1")
-                        {
-                            player.controls.play();
-                            stopper.Start();
-                        }
-                        else
-                        {
-                            player.controls.stop();
-                            stopper.Reset();
-                            bruteforce = false;
-                        }
-                        break;
-                    case "2":
-                        player.controls.stop();
-                        stopper.Reset();
-                        Console.WriteLine("(1)Empezar video nuevamente\nIngrese cualquier caracter para salir\n");
-                        choice = Console.ReadLine();
-                        if (choice == "1")
-                        {
-                            player.controls.play();
-                            stopper.Start();
-                        }
-                        else
-                        {
-                            bruteforce = false;
-                        }
-                        break;
-                    default:
-                        bruteforce = false;
-                        break;
+                    user.AddToFavorite(video);
                 }
+            }
+            if (choice=="N")
+            {
+                Console.WriteLine("Selecciono no, volviendo al menu...\n");
+                Thread.Sleep(1000);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Opcion invalida, volviendo al menu...\n");
+                Thread.Sleep(1000);
+                Console.Clear();
 
             }
-
         }
-        public void Play(Series serie)
+        public void Play(Series serie,User user)
         {
             if (serie.Episodes.Count()!=0)
             {
-                for (int i = 0; i < serie.NofVideos; i++)
+                Console.WriteLine("*ADVERTENCIA*\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
+                string choice = Console.ReadLine();
+                if (choice == "Y")
                 {
-                    serie.Episodes[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(serie.Episodes[i].Route));
-                    player.URL = serie.Episodes[i].Route;
-                    player.controls.play();
-                    stopper.Start();
-                    bool bruteforce = true;
-                    while (stopper.Elapsed.TotalSeconds != serie.Episodes[i].Length.TotalSeconds && bruteforce)
+                    for (int i = 0; i < serie.NofVideos; i++)
                     {
-                        Console.WriteLine("(1)Pausar video\n(2)Detener video\n(3)Siguiente video\n(4)Video anterior\nIngrese cualquier otro caracter para salir\n");
-                        string switcher = Console.ReadLine();
-                        Console.Clear();
-                        switch (switcher)
+                        serie.Episodes[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(serie.Episodes[i].Route));
+                        System.Diagnostics.Process.Start(serie.Episodes[i].Route);
+                        bool bruteforce = true;
+                        while (stopper.Elapsed.TotalSeconds != serie.Episodes[i].Length.TotalSeconds && bruteforce)
                         {
-                            case "1":
-                                player.controls.pause();
-                                stopper.Stop();
-                                Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
-                                string choice = Console.ReadLine();
-                                Console.Clear();
-                                if (choice == "1")
-                                {
-                                    player.controls.play();
-                                    stopper.Start();
-                                }
-                                else
-                                {
-                                    player.controls.stop();
+                            Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\nIngrese cualquier otro caracter para salir\n");
+                            string switcher = Console.ReadLine();
+                            Console.Clear();
+                            switch (switcher)
+                            {
+                                case "1":
+                                    i++;
+                                    bruteforce = false;
                                     stopper.Reset();
+                                    break;
+                                case "2":
+                                    i--;
+                                    bruteforce = false;                                   
+                                    stopper.Reset();
+                                    break;
+                                case "3":
+                                    user.AddToFavorite(serie.Episodes[i]);
+                                    break;
+                                default:
                                     bruteforce = false;
-                                }
-                                break;
-                            case "2":
-                                player.controls.stop();
-                                stopper.Reset();
-                                Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
-                                choice = Console.ReadLine();
-                                if (choice == "1")
-                                {
-                                    player.controls.play();
-                                    stopper.Start();
-                                }
-                                else
-                                {
-                                    bruteforce = false;
-                                }
-                                break;
-                            case "3":
-                                i++;
-                                bruteforce = false;
-                                stopper.Reset();
-                                player.controls.stop();
-                                break;
-                            case "4":
-                                i--;
-                                bruteforce = false;
-                                stopper.Reset();
-                                player.controls.stop();
-                                break;
-                            default:
-                                bruteforce = false;
-                                break;
-                        }
+                                    break;
+                            }
 
+                        }
+                        if (i==serie.NofVideos)
+                        {
+                            i = 0;
+                        }
                     }
+
+                }
+                if (choice == "N")
+                {
+                    Console.WriteLine("Selecciono no, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("Opcion invalida, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+
                 }
             }
             else
@@ -570,137 +531,127 @@ namespace Spotflix
             }
         }
         //Listo
-        public void Play(Playlist playlist)
+        public void Play(Playlist playlist,User user)
         {
             if (playlist.Videos.Count() != 0)
             {
-                for (int i = 0; i < playlist.Videos.Count(); i++)
+                Console.WriteLine("*ADVERTENCIA*\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
+                string choice = Console.ReadLine();
+                if (choice == "Y")
                 {
-                    playlist.Videos[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(playlist.Videos[i].Route));
-                    player.URL = playlist.Videos[i].Route;
-                    player.controls.play();
-                    stopper.Start();
-                    bool bruteforce = true;
-                    while (stopper.Elapsed.TotalSeconds != playlist.Videos[i].Length.TotalSeconds && bruteforce)
+                    for (int i = 0; i < playlist.Videos.Count(); i++)
                     {
-                        Console.WriteLine("(1)Pausar video\n(2)Detener video\n(3)Siguiente video\n(4)Video anterior\nIngrese cualquier otro caracter para salir\n");
-                        string switcher = Console.ReadLine();
-                        Console.Clear();
-                        switch (switcher)
-                        {
-                            case "1":
-                                player.controls.pause();
-                                stopper.Stop();
-                                Console.WriteLine("(1)Reaundar video\nIngrese cualquier caracter para detener y salir\n");
-                                string choice = Console.ReadLine();
-                                Console.Clear();
-                                if (choice == "1")
-                                {
-                                    player.controls.play();
-                                    stopper.Start();
-                                }
-                                else
-                                {
-                                    player.controls.stop();
-                                    stopper.Reset();
-                                    bruteforce = false;
-                                }
-                                break;
-                            case "2":
-                                player.controls.stop();
-                                stopper.Reset();
-                                Console.WriteLine("(1)Empezar video nuevamente\nIngrese cualquier caracter para salir\n");
-                                choice = Console.ReadLine();
-                                if (choice == "1")
-                                {
-                                    player.controls.play();
-                                    stopper.Start();
-                                }
-                                else
-                                {
-                                    bruteforce = false;
-                                }
-                                break;
-                            case "3":
-                                i++;
-                                bruteforce = false;
-                                stopper.Reset();
-                                player.controls.stop();
-                                break;
-                            case "4":
-                                i--;
-                                bruteforce = false;
-                                stopper.Reset();
-                                player.controls.stop();
-                                break;
-                            default:
-                                bruteforce = false;
-                                break;
-                        }
+                        playlist.Videos[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(playlist.Videos[i].Route));
+                        System.Diagnostics.Process.Start(playlist.Videos[i].Route);
+                        bool bruteforce = true;
 
+                        while (stopper.Elapsed.TotalSeconds != playlist.Videos[i].Length.TotalSeconds && bruteforce)
+                        {
+                            Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\n()Ingrese cualquier otro caracter para salir\n");
+                            string switcher = Console.ReadLine();
+                            Console.Clear();
+                            switch (switcher)
+                            {
+                                case "1":
+                                    i++;
+                                    bruteforce = false;
+                                    stopper.Reset();
+                                    break;
+                                case "2":
+                                    i--;
+                                    bruteforce = false;
+                                    stopper.Reset();
+                                    break;
+                                case "3":
+                                    user.AddToFavorite(playlist.Videos[i]);
+                                    break;
+                                default:
+                                    bruteforce = false;
+                                    break;
+                            }
+
+                        }
+                        if (i==playlist.Videos.Count())
+                        {
+                            i = 0;
+                        }
                     }
                 }
+                if (choice == "N")
+                {
+                    Console.WriteLine("Selecciono no, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("Opcion invalida, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+
+                }
+
+
             }
             if (playlist.Songs.Count() != 0)
             {
                 for (int i = 0; i < playlist.Songs.Count(); i++)
                 {
                     playlist.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(playlist.Songs[i].Route));
-                    player.URL = playlist.Songs[i].Route;
-                    player.controls.play();
+                    SoundPlayer.SoundLocation = playlist.Songs[i].Route;
+                    SoundPlayer.Play();
                     stopper.Start();
                     bool bruteforce = true;
                     while (stopper.Elapsed.TotalSeconds != playlist.Songs[i].Length.TotalSeconds && bruteforce)
                     {
-                        Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\n(3)Siguiente cancion\n(4)Cancionanterior\nIngrese cualquier otro caracter para salir\n");
+                        Console.WriteLine("(1)Detener cancion\n(2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion()Ingrese cualquier otro caracter para salir\n");
                         string switcher = Console.ReadLine();
                         Console.Clear();
                         switch (switcher)
                         {
                             case "1":
-                                player.controls.pause();
+                                SoundPlayer.Stop();
                                 stopper.Stop();
-                                Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                                Console.WriteLine("(1)Volver a empezar cancion\n2)Siguiente Cancion(3)Cancion anterior\n()Ingrese cualquier caracter para detener y salir\n");
                                 string choice = Console.ReadLine();
                                 Console.Clear();
                                 if (choice == "1")
                                 {
-                                    player.controls.play();
+                                    SoundPlayer.Play();
                                     stopper.Start();
+                                }
+                                else if (choice=="2")
+                                {
+                                    i++;
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                }
+                                else if (choice=="3")
+                                {
+                                    i--;
+                                    stopper.Reset();
+                                    bruteforce = false;
                                 }
                                 else
                                 {
-                                    player.controls.stop();
                                     stopper.Reset();
                                     bruteforce = false;
                                 }
                                 break;
                             case "2":
-                                player.controls.stop();
+                                i++;
+                                SoundPlayer.Stop();
                                 stopper.Reset();
-                                Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
-                                choice = Console.ReadLine();
-                                if (choice == "1")
-                                {
-                                    player.controls.play();
-                                    stopper.Start();
-                                }
-                                else
-                                {
-                                    bruteforce = false;
-                                }
+                                bruteforce = false;
                                 break;
                             case "3":
-                                i++;
-                                bruteforce = false;
+                                i--;
+                                SoundPlayer.Stop();
                                 stopper.Reset();
-                                player.controls.stop();
+                                bruteforce = false;
                                 break;
                             case "4":
-                                i--;
-                                bruteforce = false;
-                                stopper.Reset();
-                                player.controls.stop();
+                                user.AddToFavorite(playlist.Songs[i]);
                                 break;
                             default:
                                 bruteforce = false;
@@ -708,140 +659,117 @@ namespace Spotflix
                         }
 
                     }
+                    if (i == playlist.Songs.Count()) ;
+                    {
+                        i = 0;
+                    }
+
                 }
-            }
+            }        
             if (playlist.Videos.Count() == 0 && playlist.Songs.Count() == 0)
             {
                 Console.WriteLine("Playlist vacia, volviendo al menu...\n");
                 Console.Clear();
             }
         }
-        public void Play(Lesson lessons)
+        public void Play(Lesson lessons, User user)
         {
-            lessons.Lessons.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(lessons.Lessons.Route));
-            player.URL = lessons.Lessons.Route;
-            player.controls.play();
-            stopper.Start();
-            bool bruteforce = true;
-            while (stopper.Elapsed.TotalSeconds != lessons.Lessons.Length.TotalSeconds && bruteforce)
+            Console.WriteLine("*ADVERTENCIA*\n una vez incializado la clase no podra detenerlo desde la consola, Desea continuar Y/N");
+            string choice = Console.ReadLine();
+            if (choice == "Y")
             {
-                Console.WriteLine("(1)Pausar clasen(2)Detener clase\nIngrese cualquier otro caracter para salir\n");
-                string switcher = Console.ReadLine();
-                Console.Clear();
-                switch (switcher)
+                lessons.Lessons.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(lessons.Lessons.Route));
+                System.Diagnostics.Process.Start(lessons.Lessons.Route);
+                Console.WriteLine("Desea darle me gusta al video Y/N");
+                string like = Console.ReadLine();
+                if (choice == "Y")
                 {
-                    case "1":
-                        player.controls.pause();
-                        stopper.Stop();
-                        Console.WriteLine("(1)Reaundar clase\nIngrese cualquier caracter para detener y salir\n");
-                        string choice = Console.ReadLine();
-                        Console.Clear();
-                        if (choice == "1")
-                        {
-                            player.controls.play();
-                            stopper.Start();
-                        }
-                        else
-                        {
-                            player.controls.stop();
-                            stopper.Reset();
-                            bruteforce = false;
-                        }
-                        break;
-                    case "2":
-                        player.controls.stop();
-                        stopper.Reset();
-                        Console.WriteLine("(1)Empezar clase nuevamente\nIngrese cualquier caracter para salir\n");
-                        choice = Console.ReadLine();
-                        if (choice == "1")
-                        {
-                            player.controls.play();
-                            stopper.Start();
-                        }
-                        else
-                        {
-                            bruteforce = false;
-                        }
-                        break;
-                    default:
-                        bruteforce = false;
-                        break;
+                    user.AddToFavorite(lessons.Lessons);
                 }
+            }
+            if (choice == "N")
+            {
+                Console.WriteLine("Selecciono no, volviendo al menu...\n");
+                Thread.Sleep(1000);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Opcion invalida, volviendo al menu...\n");
+                Thread.Sleep(1000);
+                Console.Clear();
 
             }
-
-            
-
-        }
-             //Listo
-        public void Play(Album album)
+        }                   
+        public void Play(Album album,User user)
         {
             if (album.Songs.Count() != 0)
             {
                 for (int i = 0; i < album.Songs.Count(); i++)
                 {
                     album.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(album.Songs[i].Route));
-                    player.URL = album.Songs[i].Route;
-                    player.controls.play();
+                    SoundPlayer.SoundLocation = album.Songs[i].Route;
+                    SoundPlayer.Play();
                     stopper.Start();
                     bool bruteforce = true;
                     while (stopper.Elapsed.TotalSeconds != album.Songs[i].Length.TotalSeconds && bruteforce)
                     {
-                        Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\n(3)Siguiente cancion\n(4)Cancionanterior\nIngrese cualquier otro caracter para salir\n");
+                        Console.WriteLine("(1)Detener cancion\n(2)Siguiente cancion\n(3)Cancion anterior\n(4)Darle me gusta a la cancion\n()Ingrese cualquier otro caracter para salir\n");
                         string switcher = Console.ReadLine();
                         Console.Clear();
                         switch (switcher)
                         {
                             case "1":
-                                player.controls.pause();
-                                stopper.Stop();
-                                Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                                SoundPlayer.Stop();
+                                stopper.Reset();
+                                Console.WriteLine("(1)Empezar cancion nuevamente\n(2)Siguiente cancion\n(3)Cancion anterior\n()Ingrese cualquier caracter para salir\n");
                                 string choice = Console.ReadLine();
-                                Console.Clear();
                                 if (choice == "1")
                                 {
-                                    player.controls.play();
+                                    SoundPlayer.Play();
                                     stopper.Start();
+                                }
+                                else if (choice=="2")
+                                {
+                                    i++;
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                }
+                                else if (choice=="3")
+                                {
+                                    i--;
+                                    stopper.Reset();
+                                    bruteforce = false;
                                 }
                                 else
                                 {
-                                    player.controls.stop();
-                                    stopper.Reset();
                                     bruteforce = false;
                                 }
                                 break;
                             case "2":
-                                player.controls.stop();
-                                stopper.Reset();
-                                Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
-                                choice = Console.ReadLine();
-                                if (choice == "1")
-                                {
-                                    player.controls.play();
-                                    stopper.Start();
-                                }
-                                else
-                                {
-                                    bruteforce = false;
-                                }
-                                break;
-                            case "3":
                                 i++;
                                 bruteforce = false;
                                 stopper.Reset();
-                                player.controls.stop();
+                                SoundPlayer.Stop();
                                 break;
-                            case "4":
+                            case "3":
                                 i--;
                                 bruteforce = false;
                                 stopper.Reset();
-                                player.controls.stop();
+                                SoundPlayer.Stop();
+                                break;
+                            case "4":
+                                user.AddToFavorite(album.Songs[i]);
                                 break;
                             default:
                                 bruteforce = false;
                                 break;
                         }
 
+                    }
+                    if (i==album.Songs.Count())
+                    {
+                        i = 0;
                     }
                 }
             }
@@ -851,56 +779,43 @@ namespace Spotflix
                 Console.Clear();
             }
         }
-        public void Play(Karaoke karaoke)
+        public void Play(Karaoke karaoke,User user)
         {
             karaoke.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(karaoke.Route));
-            player.URL = karaoke.Route;
-            player.controls.play();
+            SoundPlayer.SoundLocation = karaoke.Route;
+            SoundPlayer.Play();
+            foreach (string l in karaoke.Lyrics)
+            {
+                Console.WriteLine(karaoke.Lyrics);
+            }
             stopper.Start();
             bool bruteforce = true;
             while (stopper.Elapsed.TotalSeconds != karaoke.Length.TotalSeconds && bruteforce)
             {
-                foreach (string l in karaoke.Lyrics)
-                {
-                    Console.WriteLine(l);
-                }
-                Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\nIngrese cualquier otro caracter para salir\n");
+                Console.WriteLine("(1)Detener cancion(2)Darle me gusta a la cancion\n()Ingrese cualquier otro caracter para salir\n");
                 string switcher = Console.ReadLine();
                 Console.Clear();
                 switch (switcher)
                 {
                     case "1":
-                        player.controls.pause();
+                        SoundPlayer.Stop();
                         stopper.Stop();
-                        Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                        Console.WriteLine("(1)Volver a empezar cancion\n()Ingrese cualquier caracter para detener y salir\n");
                         string choice = Console.ReadLine();
                         Console.Clear();
                         if (choice == "1")
                         {
-                            player.controls.play();
+                            SoundPlayer.Play();
                             stopper.Start();
                         }
                         else
                         {
-                            player.controls.stop();
                             stopper.Reset();
                             bruteforce = false;
                         }
                         break;
                     case "2":
-                        player.controls.stop();
-                        stopper.Reset();
-                        Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
-                        choice = Console.ReadLine();
-                        if (choice == "1")
-                        {
-                            player.controls.play();
-                            stopper.Start();
-                        }
-                        else
-                        {
-                            bruteforce = false;
-                        }
+                        user.AddToFavorite(karaoke);
                         break;
                     default:
                         bruteforce = false;
@@ -909,10 +824,6 @@ namespace Spotflix
 
             }
         }
-        
-
-
-      
 
         public Video ShowVideos()
         {
@@ -2538,39 +2449,105 @@ namespace Spotflix
         public void Follow(string key, List<User> users, User caller)//Falta Trabajo
         {
             bool succes = false;
-            int choice;
+            int choice = 0;
+            int choice2 = 0;
+            string choice3;
+            int choice4 = 0;
+            Playlist p = new Playlist();
             switch (key)
             {
                 case "Users":
-                    Console.WriteLine("Seleccione el usuario que quiere seguir");
-                    foreach (User user in users)
+                    while (choice4 == 0)
                     {
-                        Console.WriteLine("{0}{1}\n", users.IndexOf(user) + 1, user.Name);
-                    }
-                    succes = int.TryParse(Console.ReadLine(), out choice);
-                    if (succes && users.Count() >= choice - 1)
-                    {
-                        if (caller.FollowUsers.Contains(users[choice - 1]))
+                        Console.WriteLine("Seleccione el usuario que quiere ver sus playlist o -1 para salir");
+                        foreach (User user in users)
                         {
-                            Console.WriteLine("Ya esta siguiendo a este album, volviendo al menu...\n");
-                            Thread.Sleep(1000);
-                            Console.Clear();
+                            Console.WriteLine("{0}{1}\n", users.IndexOf(user) + 1, user.Name);
+                        }
+                        while (choice2 == 0)
+                        {
+                            try
+                            {
+                                choice2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Ingrese un numero para seleccionar un usuario\n");
+                            }
+                        }
+                        try
+                        {
+                            p = users[choice2 - 1].ShowPlaylistSong();
+
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            if (choice == -1)
+                            {
+                                Console.WriteLine("Saliendo de Follow");
+                            }
+                            Console.WriteLine("Seleccione un usuario dentro del rango o ingrese -1 para salir\n");
+                            choice = 0;
+                        }
+
+                        if (p != null)
+                        {
+                            if (caller.FollowUsers.Contains(users[choice2 - 1]))
+                            {
+                                Console.WriteLine("Ya esta siguiendo a esta playlist");
+                                Console.WriteLine("¿Desea intentar con otro usuario?");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    choice4 = 1;
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    choice4 = 1;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                caller.FollowUsers.Add(users[choice2 - 1]);
+                                Console.WriteLine("Follow realizado correctamente");
+                                Console.WriteLine("¿Desea seguir a otro usuario?\n1: si\n2:no");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    choice4 = 1;
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    choice4 = 1;
+                                    break;
+                                }
+
+                            }
                         }
                         else
                         {
-                            caller.FollowUsers.Add(users[choice - 1]);
-                            Console.WriteLine("Follow realizado correctamente");
+                            Console.WriteLine("Volviendo al menu...\n");
                             Thread.Sleep(1000);
                             Console.Clear();
+                            break;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
-                        Thread.Sleep(1000);
-                        Console.Clear();
+
                     }
                     break;
+
                 case "Albums":
                     Console.WriteLine("Seleccione el album que quiere seguir");
                     foreach (Album album in this.Albums)
