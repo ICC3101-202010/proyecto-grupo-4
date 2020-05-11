@@ -499,7 +499,7 @@ namespace Spotflix
                                                     mediaPlayer.ShowPlaylists();
                                                     break;
                                                 case "9": //importar cancion
-                                                    //admin.ImportSong(mediaPlayer);
+                                                    admin.Import(mediaPlayer);
                                                     break; /*
                                                 case "10": //importar video
                                                     admin.Import(mediaPlayer);

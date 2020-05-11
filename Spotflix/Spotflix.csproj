@@ -111,6 +111,5 @@
     <Content Include="bin\Debug\Nombrependiente.exe" />
     <Content Include="bin\Debug\Nombrependiente.pdb" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
