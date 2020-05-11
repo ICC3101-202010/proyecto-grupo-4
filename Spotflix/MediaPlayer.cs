@@ -1560,9 +1560,172 @@ namespace Spotflix
             Console.WriteLine("\tLa calificacion que posee la cancion solicitada es:{0\n}", this.GetQualification(song));
         }//listo
 
-        public void Follow()//pendiente
+        public void Follow(string key, List<User> users,User caller)//Falta Trabajo
         {
-            throw new NotImplementedException();
+            bool succes = false;
+            int choice;
+            switch (key)
+            {
+                case "Users":
+                    Console.WriteLine("Seleccione el usuario que quiere seguir");
+                    foreach (User user in users)
+                    {
+                        Console.WriteLine("{0}{1}\n",users.IndexOf(user)+1,user.Name);
+                    }
+                    succes = int.TryParse(Console.ReadLine(), out choice);
+                    if (succes&&users.Count()>=choice-1)
+                    {
+                        if (caller.FollowUsers.Contains(users[choice - 1]))
+                        {
+                            Console.WriteLine("Ya esta siguiendo a este album, volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            caller.FollowUsers.Add(users[choice - 1]);
+                            Console.WriteLine("Follow realizado correctamente");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();    
+                    }
+                    break;
+                case "Albums":
+                    Console.WriteLine("Seleccione el album que quiere seguir");
+                    foreach (Album album in this.Albums)
+                    {
+                        Console.WriteLine("{0}{1}\n", this.Albums.IndexOf(album) + 1, album.Name);
+                    }
+                    succes = int.TryParse(Console.ReadLine(), out choice);
+                    if (succes && this.Albums.Count() >= choice - 1)
+                    {
+                        if (caller.FollowAlbums.Contains(this.Albums[choice - 1]))
+                        {
+                            Console.WriteLine("Ya esta siguiendo a este album, volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
+                            Console.WriteLine("Follow realizado correctamente");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    }
+                    break;
+                case "Playlists":
+                    Console.WriteLine("Seleccione la playlist que quiere seguir");
+                    foreach (Playlist playlist in this.Playlists)
+                    {
+                        Console.WriteLine("{0}{1}\n", this.Playlists.IndexOf(playlist) + 1, playlist.PlaylistName);
+                    }
+                    succes = int.TryParse(Console.ReadLine(), out choice);
+                    if (succes && this.Albums.Count() >= choice - 1)
+                    {
+                        if (caller.FollowPlaylist.Contains(this.Playlists[choice - 1]))
+                        {
+                            Console.WriteLine("Ya esta siguiendo a esta playlist, volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
+                            Console.WriteLine("Follow realizado correctamente");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+ 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    }
+                    break;
+                case "Artists":
+                    Console.WriteLine("Seleccione al artista que quiere seguir");
+                    foreach (Artist artist in this.Artists)
+                    {
+                        Console.WriteLine("{0}{1}\n", this.Artists.IndexOf(artist) + 1, artist.Name);
+                    }
+                    succes = int.TryParse(Console.ReadLine(), out choice);
+                    if (succes && this.Artists.Count() >= choice - 1)
+                    {
+                        if (caller.FollowArtist.Contains(this.Artists[choice - 1]))
+                        {
+                            Console.WriteLine("Ya esta siguiendo a este artista, volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
+                            Console.WriteLine("Follow realizado correctamente");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        caller.FollowPlaylist.Add(this.Playlists[choice - 1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    }
+                    break;
+                case "Series":
+                    Console.WriteLine("Seleccione la Serie que quiere seguir");
+                    foreach (Series serie in this.Series)
+                    {
+                        Console.WriteLine("{0}{1}\n", this.Series.IndexOf(serie) + 1, serie.SerieName);
+                    }
+                    succes = int.TryParse(Console.ReadLine(), out choice);
+                    if (succes && this.Series.Count() >= choice - 1)
+                    {
+                        if (caller.FollowSeries.Contains(this.Series[choice - 1]))
+                        {
+                            Console.WriteLine("Ya esta siguiendo a esta Serie, volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        else
+                        {
+                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
+                            Console.WriteLine("Follow realizado correctamente");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                        caller.FollowPlaylist.Add(this.Playlists[choice - 1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Formato invalido, volviendo al menu...\n");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    break;
+            }
         }
         public void Download(Song song)//listo
         {

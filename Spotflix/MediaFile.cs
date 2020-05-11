@@ -10,7 +10,7 @@ namespace Spotflix
     {
         //Atributes
         protected TimeSpan length;
-        protected int fileSize;
+        protected long fileSize;
         protected string name;
         protected string gender;
         protected int year;
@@ -28,7 +28,7 @@ namespace Spotflix
         public string Route { get => route; set => route = value; }
         protected int CurrentSecond { get => currentSecond; set => currentSecond = value; }
         public TimeSpan Length { get => length; set => length = value; }
-        public int FileSize { get => fileSize; set => fileSize = value; }
+        public long FileSize { get => fileSize; set => fileSize = value; }
         public string Name { get => name; set => name = value; }
         public string Gender { get => gender; set => gender = value; }
         public int Year { get => year; set => year = value; }

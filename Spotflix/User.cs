@@ -21,6 +21,11 @@ namespace Spotflix
         private int screenNumber;
         private List<Playlist> likedPlaylist = new List<Playlist>();
         private List<Playlist> myPlaylist = new List<Playlist>();
+        private List<User> followUsers = new List<User>();
+        private List<Album> followAlbums = new List<Album>();
+        private List<Playlist> followPlaylist = new List<Playlist>();
+        private List<Artist> followArtist = new List<Artist>();
+        private List<Series> followSeries = new List<Series>();
 
 
 
@@ -51,7 +56,11 @@ namespace Spotflix
         public int ScreenNumber { get => screenNumber; set => screenNumber = value; }
         public List<Playlist> LikedPlaylist { get => likedPlaylist; set => likedPlaylist = value; }
         public List<Playlist> MyPlaylist { get => myPlaylist; set => myPlaylist = value; }
-
+        public List<User> FollowUsers { get => followUsers; set => followUsers = value; }
+        public List<Album> FollowAlbums { get => followAlbums; set => followAlbums = value; }
+        public List<Playlist> FollowPlaylist { get => followPlaylist; set => followPlaylist = value; }
+        public List<Artist> FollowArtist { get => followArtist; set => followArtist = value; }
+        public List<Series> FollowSeries { get => followSeries; set => followSeries = value; }
 
         public void AddToFavorite(Song song) //listo
         {
