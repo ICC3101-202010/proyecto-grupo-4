@@ -28,7 +28,7 @@ namespace Spotflix
         {
 
         }
-        public Admin(string namea,string gmaila,string code, string pass) { this.Namea = namea; this.Gmaila = gmaila; this.code = code; this.pass = pass; }
+        public Admin(string namea, string gmaila, string code, string pass) { this.Namea = namea; this.Gmaila = gmaila; this.code = code; this.pass = pass; }
         public string Code { get => code; set => code = value; }
         public string Pass { get => pass; set => pass = value; }
         public string Gmaila { get => gmaila; set => gmaila = value; }
@@ -59,14 +59,14 @@ namespace Spotflix
             Console.WriteLine("Seleccione la cancion a añadir:\n");
             foreach (string file in filePaths)
             {
-                Console.WriteLine("{0} {1}\n",countofsongs,Path.GetFileName(file));
+                Console.WriteLine("{0} {1}\n", countofsongs, Path.GetFileName(file));
                 countofsongs++;
             }
-            succes = int.TryParse(Console.ReadLine(),out choice);
+            succes = int.TryParse(Console.ReadLine(), out choice);
 
-            if (succes&&(filePaths.Count()>=(choice-1)))
+            if (succes && (filePaths.Count() >= (choice - 1)))
             {
-                route = filePaths[choice-1];
+                route = filePaths[choice - 1];
             }
             else
             {
@@ -112,7 +112,7 @@ namespace Spotflix
                 Console.WriteLine("Ingrese el nombre de la cancion");
                 string name = Console.ReadLine();
                 string image = null;
-                string destination = Path.Combine(Environment.CurrentDirectory+ @"\Songs", Path.GetFileName(filePaths[choice - 1]));
+                string destination = Path.Combine(Environment.CurrentDirectory + @"\Songs", Path.GetFileName(filePaths[choice - 1]));
                 System.IO.File.Copy(route, destination, true);
                 long fileSize = new System.IO.FileInfo(destination).Length;
                 Song song = new Song(artist, album, aux, name, genre, year, image, destination);
@@ -270,7 +270,7 @@ namespace Spotflix
                 string destination = Path.Combine(Environment.CurrentDirectory + @"\Videos", Path.GetFileName(filePaths[choice - 1]));
                 System.IO.File.Copy(route, destination, true);
                 long fileSize = new System.IO.FileInfo(destination).Length;
-                Video video = new Video(actors, age, director, studio,name, genre, image, year, destination);
+                Video video = new Video(actors, age, director, studio, name, genre, image, year, destination);
                 video.Route = destination;
                 video.FileSize = fileSize;
                 if (mediaPlayer.Videos.Count() == 0)
@@ -451,13 +451,13 @@ namespace Spotflix
                 System.IO.File.Copy(route, destination, true);
                 long fileSize = new System.IO.FileInfo(destination).Length;
 
-                
+
                 Console.WriteLine("Ingrese la ruta del archivo txt con la letra de la canción que quiere agregar");
                 string file = Console.ReadLine();
                 List<string> lyrics = System.IO.File.ReadLines(file).ToList();
 
 
-                Karaoke karaoke = new Karaoke(lyrics, artist,album,aux, name,genre,year,image,destination);
+                Karaoke karaoke = new Karaoke(lyrics, artist, album, aux, name, genre, year, image, destination);
                 if (mediaPlayer.Karaokes.Count() == 0)
                 {
                     mediaPlayer.Karaokes.Add(karaoke);
@@ -508,8 +508,8 @@ namespace Spotflix
                         {
                             foreach (Artist a in mediaPlayer.Artists)
                             {
-                                if (karaoke.Artist== a.Name && a.Karaokes.IndexOf(karaoke) == 0) a.Karaokes.Add(karaoke);
-                                
+                                if (karaoke.Artist == a.Name && a.Karaokes.IndexOf(karaoke) == 0) a.Karaokes.Add(karaoke);
+
                             }
                         }
                     }
@@ -519,7 +519,7 @@ namespace Spotflix
         }//Listo
 
 
-        public void OnAddVideoSerie(object source, VideoSerieEventArgs v) 
+        public void OnAddVideoSerie(object source, VideoSerieEventArgs v)
         {
             int count3 = 0;
             Artist classa;
@@ -529,7 +529,7 @@ namespace Spotflix
             List<Karaoke> karaokesa = new List<Karaoke>();
             foreach (Artist a in v.Mediaplayer.Artists)
             {
-                if (a.Name == v.Video.Director) count3++;
+                if (a.Name.ToLower() == v.Video.Director.ToLower()) count3++;
             }
             if (count3 == 0)
             {
@@ -543,7 +543,7 @@ namespace Spotflix
                 int count2 = 0;
                 foreach (Artist a in v.Mediaplayer.Artists)
                 {
-                    if (a.Name == actor) count2++;
+                    if (a.Name.ToLower() == actor.ToLower()) count2++;
                 }
                 namea = actor;
                 videosa.Add(v.Video);
@@ -554,21 +554,21 @@ namespace Spotflix
             Console.WriteLine($"Se ha agregado el video {v.Video.Name} a la serie {v.Serie.SerieName}");
         }
 
-        public void OnDeleteVideoSerie(object source, VideoSerieEventArgs v) 
+        public void OnDeleteVideoSerie(object source, VideoSerieEventArgs v)
         {
             v.Serie.Episodes.Remove(v.Video);
             Console.WriteLine($"Se ha eliminado el video {v.Video.Name} a la serie {v.Serie.SerieName}");
             int count2 = 0;
-            
+
             foreach (Video i in v.Mediaplayer.Videos)
             {
-                if (i.Director == v.Video.Director) count2++;
+                if (i.Director.ToLower() == v.Video.Director.ToLower()) count2++;
             }
             foreach (Series s in v.Mediaplayer.Series)
             {
                 foreach (Video video in s.Episodes)
                 {
-                    if (v.Video.Director == video.Director) count2++;
+                    if (v.Video.Director.ToLower() == video.Director.ToLower()) count2++;
                 }
             }
 
