@@ -17,15 +17,19 @@ namespace Spotflix
         private static List<Teacher> teachers = new List<Teacher>();
         private static List<int> states = new List<int>(); //State es el segundo donde el usuario cuyo index corresponde al de su int quedo
 
+        public static List<User> Users { get => users; set => users = value; }
+        public static List<Admin> Managers { get => managers; set => managers = value; }
+        public static List<Teacher> Teachers { get => teachers; set => teachers = value; }
+
         public static bool checkUsername(string userName)
         {
-            if (users.Count() == 0)
+            if (Users.Count() == 0)
             {
                 return true;
             }
             else
             {
-                foreach (User user_T in users)
+                foreach (User user_T in Users)
                 {
                     if (user_T.Nickname == userName)
                     {
@@ -42,13 +46,13 @@ namespace Spotflix
         }//True si es valido False si ya existe
         public static bool CheckGmail(string gmail)
         {
-            if (users.Count() == 0)
+            if (Users.Count() == 0)
             {
                 return true;
             }
             else
             {
-                foreach (User user_T in users)
+                foreach (User user_T in Users)
                 {
                     if (user_T.Gmail == gmail)
                     {
@@ -61,13 +65,13 @@ namespace Spotflix
         }//True si es valido False si ya existe
         public static bool checkUsernameA(string userName)
         {
-            if (managers.Count() == 0)
+            if (Managers.Count() == 0)
             {
                 return true;
             }
             else
             {
-                foreach (Admin admin_T in managers)
+                foreach (Admin admin_T in Managers)
                 {
                     if (admin_T.Namea == userName)
                     {
@@ -84,13 +88,13 @@ namespace Spotflix
         }//True si es valido False si ya existe
         public static bool CheckGmailA(string gmail)
         {
-            if (managers.Count() == 0)
+            if (Managers.Count() == 0)
             {
                 return true;
             }
             else
             {
-                foreach (Admin admin_T in managers)
+                foreach (Admin admin_T in Managers)
                 {
                     if (admin_T.Gmaila == gmail)
                     {
@@ -103,13 +107,13 @@ namespace Spotflix
         }
         public static bool checkUsernameP(string userName)
         {
-            if (teachers.Count() == 0)
+            if (Teachers.Count() == 0)
             {
                 return true;
             }
             else
             {
-                foreach (Teacher teacher_T in teachers)
+                foreach (Teacher teacher_T in Teachers)
                 {
                     if (teacher_T.Nickname == userName)
                     {
@@ -126,13 +130,13 @@ namespace Spotflix
         }//True si es valido False si ya existe
         public static bool CheckGmailP(string gmail)
         {
-            if (teachers.Count() == 0)
+            if (Teachers.Count() == 0)
             {
                 return true;
             }
             else
             {
-                foreach (Teacher teacher_T in teachers)
+                foreach (Teacher teacher_T in Teachers)
                 {
                     if (teacher_T.Gmail == gmail)
                     {
@@ -145,11 +149,11 @@ namespace Spotflix
         }
         public static bool CheckCodeA(string code)
         {
-            if (managers.Count() == 0)
+            if (Managers.Count() == 0)
             {
                 return true;
             }
-            foreach (Admin manager_T in managers)
+            foreach (Admin manager_T in Managers)
             {
                 if (manager_T.Code == code)
                 {
@@ -162,11 +166,11 @@ namespace Spotflix
         }//True si es valido False si ya existe
         public static bool CheckCodeP(string code)
         {
-            if (teachers.Count() == 0)
+            if (Teachers.Count() == 0)
             {
                 return true;
             }
-            foreach (Teacher teacher_T in teachers)
+            foreach (Teacher teacher_T in Teachers)
             {
                 if (teacher_T.Code == code)
                 {
@@ -178,29 +182,29 @@ namespace Spotflix
         }
         public static void SingUser(User user)//listo
         {
-            users.Add(user);
+            Users.Add(user);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static void SingAdmin(Admin manager) //Listo
         {
-            managers.Add(manager);
+            Managers.Add(manager);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static void SingTeacher(Teacher teacher)
         {
-            teachers.Add(teacher);
+            Teachers.Add(teacher);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
         public static bool LogAsUser(string email_nickname, string password) //listo
         {
-            if (users.Count() == 0)
+            if (Users.Count() == 0)
             {
                 Console.WriteLine("No existen usuarios registrado con esas caracteristicas\n");
                 return false;
             }
             else
             {
-                foreach (User user in users)
+                foreach (User user in Users)
                 {
                     if ((user.Nickname == email_nickname || user.Gmail == email_nickname) && user.Password == password)
                     {
@@ -213,12 +217,12 @@ namespace Spotflix
         }
         public static bool LogAsAdmin(string code, string password) //listo
         {
-            if (managers.Count() == 0)
+            if (Managers.Count() == 0)
             {
                 Console.WriteLine("No hay ningun administrador registrado con esas caracteristicas\n");
                 return false;
             }
-            foreach (Admin manager in managers)
+            foreach (Admin manager in Managers)
             {
                 if (manager.Code == code && manager.Pass == password)
                 {
@@ -230,12 +234,12 @@ namespace Spotflix
         }
         public static bool LogAsTeacher(string code, string password) //listo
         {
-            if (teachers.Count() == 0)
+            if (Teachers.Count() == 0)
             {
                 Console.WriteLine("No hay ningun profesor registrado con esas caracteristicas\n");
                 return false;
             }
-            foreach (Teacher teacher in teachers)
+            foreach (Teacher teacher in Teachers)
             {
                 if (teacher.Code == code && teacher.Passw == password)
                 {
@@ -268,7 +272,7 @@ namespace Spotflix
        
         public static void ChangePassword2(string usr, string newpsswd)
         {
-            foreach (User user in users)
+            foreach (User user in Users)
             {
                 if (user.Nickname == usr)
                 {
@@ -283,7 +287,7 @@ namespace Spotflix
             string gm = Console.ReadLine();
             Console.WriteLine("Ingresa tu contraseña");
             string pas = Console.ReadLine();
-            foreach(User um in users)
+            foreach(User um in Users)
             {
                 if(gm == um.Gmail && pas == um.Password)
                 {
@@ -307,7 +311,7 @@ namespace Spotflix
             string gm = Console.ReadLine();
             Console.WriteLine("Ingresa tu contraseña");
             string pas = Console.ReadLine();
-            foreach (User um in users)
+            foreach (User um in Users)
             {
                 if (gm == um.Gmail && pas == um.Password)
                 {
@@ -339,7 +343,7 @@ namespace Spotflix
                     case "1"://Nickname
                         Console.WriteLine("Ingrese su nuevo nombre de usuario");
                         string nuevonusuario = Console.ReadLine();
-                        foreach(User u in users)
+                        foreach(User u in Users)
                         {
                             if (u.Nickname == nuevonusuario)
                             {
@@ -400,13 +404,13 @@ namespace Spotflix
             Console.WriteLine("Ingrese su antiguo nombre");
             string antoguonombre = Console.ReadLine();
 
-            foreach (Admin a in managers)
+            foreach (Admin a in Managers)
             {
                 if (a.Namea == antoguonombre)
                 {
                     Console.WriteLine("Ingrese su nuevo nombre");
                     string nuevonombre = Console.ReadLine();
-                    foreach (Admin b in managers)
+                    foreach (Admin b in Managers)
                     {
                         if (b.Namea == nuevonombre)
                         {

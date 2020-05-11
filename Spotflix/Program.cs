@@ -7,13 +7,25 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Resources;
-using WMPLib;
+using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
 
 namespace Spotflix
 {
     public class Program
     {
         //Metodos Serializar:
+                    //Setup
+            List<User> users = new List<User>();
+            List<Admin> admins = new List<Admin>();
+            List<Teacher> teachers = new List<Teacher>();
+            List<Song> Songs = new List<Song>();
+            List<Video> Videos = new List<Video>();
+            List<Lesson> Lessons = new List<Lesson>();
+            List<Series> Series = new List<Series>();
+            List<Playlist> Playlists = new List<Playlist>();
+            List<Karaoke> Karaokes = new List<Karaoke>();
+            List<Album> Albums = new List<Album>();
         static private void SaveUser(List<User> users)
         {
             IFormatter formatter = new BinaryFormatter();
@@ -168,20 +180,17 @@ namespace Spotflix
         //MAIN
         static void Main(string[] args)
         {
+            //constructores
             MediaPlayer mediaPlayer = new MediaPlayer();
             Admin admin = new Admin();
             User user = new User();
-            
             Teacher teacher = new Teacher();
-            List<Video> vid = new List<Video>();
-            List<Song> son = new List<Song>();
-
             Playlist play = new Playlist();
             Album album = new Album();
   
 
 
-
+            //Setup
             List<User> users = new List<User>();
             List<Admin> admins = new List<Admin>();
             List<Teacher> teachers = new List<Teacher>();
@@ -197,13 +206,14 @@ namespace Spotflix
             Console.WriteLine("(1)Empezar desde 0\n(2)Cargar archivos serializados");
             string choser = Console.ReadLine();
             Console.Clear();
-            if (choser=="(2)")
+            if (choser=="2")
             {
                 string archivouser = @"\ArchivoUsuarios.bin";
                 string pathu = Directory.GetCurrentDirectory() + archivouser;
                 if (File.Exists(pathu))
                 {
                     users = LoadUser();
+                    Gate.Users = users;
                 }
                 else { }
                 string archivoadmin = @"\ArchivoAdministradores.bin";
@@ -211,6 +221,7 @@ namespace Spotflix
                 if (File.Exists(patha))
                 {
                     admins = LoadAdmin();
+                    Gate.Managers = admins;
                 }
                 else { }
                 string archivoteacher = @"\ArchivoProfesores.bin";
@@ -218,6 +229,7 @@ namespace Spotflix
                 if (File.Exists(patht))
                 {
                     teachers = LoadTeacher();
+                    Gate.Teachers = teachers;
                 }
                 else { }
                 string archivosong = @"\ArchivoCanciones.bin";
@@ -225,15 +237,16 @@ namespace Spotflix
                 if (File.Exists(paths))
                 {
                     Songs = LoadSong();
+                    mediaPlayer.Songs = Songs;
                 }
                 else { }
-
 
                 string archivovideo = @"\ArchivoVideos.bin";
                 string pathv = Directory.GetCurrentDirectory() + archivovideo;
                 if (File.Exists(pathv))
                 {
                     Videos = LoadVideo();
+                    mediaPlayer.Videos = Videos;
                 }
                 else { }
 
@@ -243,6 +256,7 @@ namespace Spotflix
                 if (File.Exists(pathl))
                 {
                     Lessons = LoadLesson();
+                    mediaPlayer.Lessons = Lessons;
                 }
                 else { }
 
@@ -252,6 +266,7 @@ namespace Spotflix
                 if (File.Exists(pathp))
                 {
                     Playlists = LoadPlaylist();
+                    mediaPlayer.Playlists = Playlists;
                 }
                 else { }
 
@@ -261,6 +276,7 @@ namespace Spotflix
                 if (File.Exists(pathse))
                 {
                     Series = LoadSerie();
+                    mediaPlayer.Series = Series;
                 }
                 else { }
 
@@ -270,6 +286,7 @@ namespace Spotflix
                 if (File.Exists(pathk))
                 {
                     Karaokes = LoadKaraoke();
+                    mediaPlayer.Karaokes = Karaokes;
                 }
                 else { }
 
@@ -278,9 +295,11 @@ namespace Spotflix
                 if (File.Exists(pathal))
                 {
                     Albums = LoadAlbum();
+                    mediaPlayer.Albums = Albums;
                 }
                 else { }
             }
+
                
             
 
@@ -293,7 +312,10 @@ namespace Spotflix
             mediaPlayer.OrderBy += play.OnOrderBy;
             mediaPlayer.OrderByA += album.OnOrderByA;
 
-
+            foreach (Admin item in admins)
+            {
+                Console.WriteLine(item.Namea);
+            }
             int num = 0;
             string switcher = "0";
             string stopper = "3";
@@ -911,17 +933,20 @@ namespace Spotflix
                         }
                         break;
                     case "3":
-                        
-                        SaveUser(users);
-                        SaveAdmin(admins);
-                        SaveTeacher(teachers);
-                        SaveSong(Songs);
-                        SaveVideo(Videos);
-                        SaveLesson(Lessons);
-                        SavePlaylist(Playlists);
-                        SaveSerie(Series);
-                        SaveKaraoke(Karaokes);
-                        SaveAlbum(Albums);
+                        foreach (Admin item in Gate.Managers)
+                        {
+                            Console.WriteLine(item.Code);
+                        }
+                        SaveUser(Gate.Users);
+                        SaveAdmin(Gate.Managers);
+                        SaveTeacher(Gate.Teachers);
+                        SaveSong(mediaPlayer.Songs);
+                        SaveVideo(mediaPlayer.Videos);
+                        SaveLesson(mediaPlayer.Lessons);
+                        SavePlaylist(mediaPlayer.Playlists);
+                        SaveSerie(mediaPlayer.Series);
+                        SaveKaraoke(mediaPlayer.Karaokes);
+                        SaveAlbum(mediaPlayer.Albums);
                         
 
                         switcher = "3";

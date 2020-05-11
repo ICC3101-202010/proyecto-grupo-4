@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using WMPLib;
 
 
 namespace Spotflix
@@ -21,7 +20,6 @@ namespace Spotflix
         private string pass;
         private string gmaila;
         private string namea;
-        WindowsMediaPlayer music = new WindowsMediaPlayer();
         private List<Song> downloadSongs = new List<Song>();
 
         public Admin()
@@ -33,10 +31,8 @@ namespace Spotflix
         public string Pass { get => pass; set => pass = value; }
         public string Gmaila { get => gmaila; set => gmaila = value; }
         public string Namea { get => namea; set => namea = value; }
-        public WindowsMediaPlayer Music { get => music; set => music = value; }
         public List<Song> DownloadSongs { get => downloadSongs; set => downloadSongs = value; }
 
-        WindowsMediaPlayer player = new WindowsMediaPlayer();
         public void ImportSong(MediaPlayer mediaPlayer)
         {
             int count = 0;
@@ -78,7 +74,7 @@ namespace Spotflix
             }
             else
             {
-                TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
+                //TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
                 Console.WriteLine("A continuacion ingrese los datos de la cancion:\n");
                 Console.WriteLine("Ingrese el nombre del artista:\n");
                 string artist = Console.ReadLine();
@@ -244,7 +240,7 @@ namespace Spotflix
             }
             else
             {
-                TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
+                //TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
                 Console.WriteLine("A continuacion ingrese los datos de la cancion:\n");
                 Console.WriteLine("Ingrese el nombre del director\n");
                 string director = Console.ReadLine();
@@ -413,7 +409,7 @@ namespace Spotflix
             }
             else
             {
-                TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
+                //TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
                 Console.WriteLine("A continuacion ingrese los datos de la cancion del karaoke:\n");
                 Console.WriteLine("Ingrese el nombre del artista:\n");
                 string artist = Console.ReadLine();

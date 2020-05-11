@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
+    [Serializable]
     public class Artist
     {
         private List<Song> songs = new List<Song>();
