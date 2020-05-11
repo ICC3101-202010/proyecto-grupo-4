@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Threading;
 using WMPLib;
 using System.IO;
+using System.Timers;
+using System.Configuration;
 
 namespace Spotflix
 {
@@ -346,114 +348,571 @@ namespace Spotflix
         }
 
 
-        public void CreateRecommendedList()
+        public List<Song> CreateRecommendedListS(User user)
         {
-            Console.WriteLine("Metodo muy dificil pa pensarlo ahora\n");
-        }
-
-        //Creo el evento PlayEvent
-        public delegate void PlayEventHandler(object source, PlayEventArgs args);
-        public event PlayEventHandler PlayEvent;
-        protected virtual void OnPlayEvent(string route)
-        {
-            // Verifica si hay alguien suscrito al evento
-            if (PlayEvent != null)
+            var random = new Random();
+            List<Song> song = new List<Song>();
+            if (user.FollowAlbums.Count!=0&& user.FollowArtist.Count != 0&& user.FollowPlaylist.Count != 0&&user.FollowSeries.Count != 0&&user.FollowUsers.Count != 0)
             {
-                // Engatilla el evento
-                PlayEvent(this, new PlayEventArgs() { Route = route });
+                while (song.Count<15)
+                {
+                    int rand = random.Next(0, this.Songs.Count());
+                    if (song.Contains(this.Songs[rand]))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        song.Add(this.Songs[rand]);
+                    }
+                }
             }
+            else
+            {
+                if (user.FollowAlbums.Count!=0)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int bigindex = random.Next(0, user.FollowAlbums.Count());
+                        int smallindex = random.Next(0, user.FollowAlbums[bigindex].Songs.Count());
+                        song.Add(user.FollowAlbums[bigindex].Songs[smallindex]);
+                    }
+                }
+            }
+            return song;
         }
 
+        Stopwatch stopper = new Stopwatch();
         public void Play(Song song)// Listo
         {
             song.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(song.Route));
             player.URL = song.Route;
             player.controls.play();
+            stopper.Start();
+            bool bruteforce = true;
+            while (stopper.Elapsed.TotalSeconds!=song.Length.TotalSeconds&&bruteforce)
+            {
+                Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\nIngrese cualquier otro caracter para salir\n");
+                string switcher=Console.ReadLine();
+                Console.Clear();
+                switch (switcher)
+                {
+                    case "1":
+                        player.controls.pause();
+                        stopper.Stop();
+                        Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                        string choice = Console.ReadLine();
+                        Console.Clear();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            player.controls.stop();
+                            stopper.Reset();
+                            bruteforce = false;
+                        }            
+                        break;
+                    case "2":
+                        player.controls.stop();
+                        stopper.Reset();
+                        Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
+                        choice = Console.ReadLine();
+                        if (choice=="1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            bruteforce = false;
+                        }
+                        break;
+                    default:
+                        bruteforce = false;
+                        break;
+                }
+
+            }
         }
         public void Play(Video video) //Listo
         {
-            video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(video.Route));
+            video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(video.Route));
             player.URL = video.Route;
             player.controls.play();
+            stopper.Start();
+            bool bruteforce = true;
+            while (stopper.Elapsed.TotalSeconds != video.Length.TotalSeconds && bruteforce)
+            {
+                Console.WriteLine("(1)Pausar video\n(2)Detener video\nIngrese cualquier otro caracter para salir\n");
+                string switcher = Console.ReadLine();
+                Console.Clear();
+                switch (switcher)
+                {
+                    case "1":
+                        player.controls.pause();
+                        stopper.Stop();
+                        Console.WriteLine("(1)Reaundar video\nIngrese cualquier caracter para detener y salir\n");
+                        string choice = Console.ReadLine();
+                        Console.Clear();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            player.controls.stop();
+                            stopper.Reset();
+                            bruteforce = false;
+                        }
+                        break;
+                    case "2":
+                        player.controls.stop();
+                        stopper.Reset();
+                        Console.WriteLine("(1)Empezar video nuevamente\nIngrese cualquier caracter para salir\n");
+                        choice = Console.ReadLine();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            bruteforce = false;
+                        }
+                        break;
+                    default:
+                        bruteforce = false;
+                        break;
+                }
+
+            }
 
         }
         public void Play(Series serie)
         {
-            foreach (Video video in serie.Episodes)
+            if (serie.Episodes.Count()!=0)
             {
-                System.Diagnostics.Process.Start(video.Route);
-                Thread.Sleep(video.Length);
+                for (int i = 0; i < serie.NofVideos; i++)
+                {
+                    serie.Episodes[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(serie.Episodes[i].Route));
+                    player.URL = serie.Episodes[i].Route;
+                    player.controls.play();
+                    stopper.Start();
+                    bool bruteforce = true;
+                    while (stopper.Elapsed.TotalSeconds != serie.Episodes[i].Length.TotalSeconds && bruteforce)
+                    {
+                        Console.WriteLine("(1)Pausar video\n(2)Detener video\n(3)Siguiente video\n(4)Video anterior\nIngrese cualquier otro caracter para salir\n");
+                        string switcher = Console.ReadLine();
+                        Console.Clear();
+                        switch (switcher)
+                        {
+                            case "1":
+                                player.controls.pause();
+                                stopper.Stop();
+                                Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                                string choice = Console.ReadLine();
+                                Console.Clear();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    player.controls.stop();
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "2":
+                                player.controls.stop();
+                                stopper.Reset();
+                                Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
+                                choice = Console.ReadLine();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "3":
+                                i++;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            case "4":
+                                i--;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            default:
+                                bruteforce = false;
+                                break;
+                        }
+
+                    }
+                }
             }
-        }//Listo
+            else
+            {
+                Console.WriteLine("Serie vacia, volviendo al menu...\n");
+                Console.Clear();
+            }
+        }
+        //Listo
         public void Play(Playlist playlist)
         {
-            foreach (Song song in playlist.Songs)
+            if (playlist.Videos.Count() != 0)
             {
-                System.Diagnostics.Process.Start(song.Route);
-                Thread.Sleep(song.Length);
-            }
-        }//Listo
+                for (int i = 0; i < playlist.Videos.Count(); i++)
+                {
+                    playlist.Videos[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(playlist.Videos[i].Route));
+                    player.URL = playlist.Videos[i].Route;
+                    player.controls.play();
+                    stopper.Start();
+                    bool bruteforce = true;
+                    while (stopper.Elapsed.TotalSeconds != playlist.Videos[i].Length.TotalSeconds && bruteforce)
+                    {
+                        Console.WriteLine("(1)Pausar video\n(2)Detener video\n(3)Siguiente video\n(4)Video anterior\nIngrese cualquier otro caracter para salir\n");
+                        string switcher = Console.ReadLine();
+                        Console.Clear();
+                        switch (switcher)
+                        {
+                            case "1":
+                                player.controls.pause();
+                                stopper.Stop();
+                                Console.WriteLine("(1)Reaundar video\nIngrese cualquier caracter para detener y salir\n");
+                                string choice = Console.ReadLine();
+                                Console.Clear();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    player.controls.stop();
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "2":
+                                player.controls.stop();
+                                stopper.Reset();
+                                Console.WriteLine("(1)Empezar video nuevamente\nIngrese cualquier caracter para salir\n");
+                                choice = Console.ReadLine();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "3":
+                                i++;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            case "4":
+                                i--;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            default:
+                                bruteforce = false;
+                                break;
+                        }
 
+                    }
+                }
+            }
+            if (playlist.Songs.Count() != 0)
+            {
+                for (int i = 0; i < playlist.Songs.Count(); i++)
+                {
+                    playlist.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(playlist.Songs[i].Route));
+                    player.URL = playlist.Songs[i].Route;
+                    player.controls.play();
+                    stopper.Start();
+                    bool bruteforce = true;
+                    while (stopper.Elapsed.TotalSeconds != playlist.Songs[i].Length.TotalSeconds && bruteforce)
+                    {
+                        Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\n(3)Siguiente cancion\n(4)Cancionanterior\nIngrese cualquier otro caracter para salir\n");
+                        string switcher = Console.ReadLine();
+                        Console.Clear();
+                        switch (switcher)
+                        {
+                            case "1":
+                                player.controls.pause();
+                                stopper.Stop();
+                                Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                                string choice = Console.ReadLine();
+                                Console.Clear();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    player.controls.stop();
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "2":
+                                player.controls.stop();
+                                stopper.Reset();
+                                Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
+                                choice = Console.ReadLine();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "3":
+                                i++;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            case "4":
+                                i--;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            default:
+                                bruteforce = false;
+                                break;
+                        }
+
+                    }
+                }
+            }
+            if (playlist.Videos.Count() == 0 && playlist.Songs.Count() == 0)
+            {
+                Console.WriteLine("Playlist vacia, volviendo al menu...\n");
+                Console.Clear();
+            }
+        }
         public void Play(Lesson lessons)
         {
-            foreach (Video video in lessons.Lessons)
+            lessons.Lessons.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(lessons.Lessons.Route));
+            player.URL = lessons.Lessons.Route;
+            player.controls.play();
+            stopper.Start();
+            bool bruteforce = true;
+            while (stopper.Elapsed.TotalSeconds != lessons.Lessons.Length.TotalSeconds && bruteforce)
             {
-                System.Diagnostics.Process.Start(video.Route);
-                Thread.Sleep(video.Length);
+                Console.WriteLine("(1)Pausar clasen(2)Detener clase\nIngrese cualquier otro caracter para salir\n");
+                string switcher = Console.ReadLine();
+                Console.Clear();
+                switch (switcher)
+                {
+                    case "1":
+                        player.controls.pause();
+                        stopper.Stop();
+                        Console.WriteLine("(1)Reaundar clase\nIngrese cualquier caracter para detener y salir\n");
+                        string choice = Console.ReadLine();
+                        Console.Clear();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            player.controls.stop();
+                            stopper.Reset();
+                            bruteforce = false;
+                        }
+                        break;
+                    case "2":
+                        player.controls.stop();
+                        stopper.Reset();
+                        Console.WriteLine("(1)Empezar clase nuevamente\nIngrese cualquier caracter para salir\n");
+                        choice = Console.ReadLine();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            bruteforce = false;
+                        }
+                        break;
+                    default:
+                        bruteforce = false;
+                        break;
+                }
+
             }
-        } //Listo
-        public void Play(Album albums)
+
+            
+
+        }
+             //Listo
+        public void Play(Album album)
         {
-            foreach (Song song in albums.Songs)
+            if (album.Songs.Count() != 0)
             {
-                System.Diagnostics.Process.Start(song.Route);
-                Thread.Sleep(song.Length);
+                for (int i = 0; i < album.Songs.Count(); i++)
+                {
+                    album.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(album.Songs[i].Route));
+                    player.URL = album.Songs[i].Route;
+                    player.controls.play();
+                    stopper.Start();
+                    bool bruteforce = true;
+                    while (stopper.Elapsed.TotalSeconds != album.Songs[i].Length.TotalSeconds && bruteforce)
+                    {
+                        Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\n(3)Siguiente cancion\n(4)Cancionanterior\nIngrese cualquier otro caracter para salir\n");
+                        string switcher = Console.ReadLine();
+                        Console.Clear();
+                        switch (switcher)
+                        {
+                            case "1":
+                                player.controls.pause();
+                                stopper.Stop();
+                                Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                                string choice = Console.ReadLine();
+                                Console.Clear();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    player.controls.stop();
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "2":
+                                player.controls.stop();
+                                stopper.Reset();
+                                Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
+                                choice = Console.ReadLine();
+                                if (choice == "1")
+                                {
+                                    player.controls.play();
+                                    stopper.Start();
+                                }
+                                else
+                                {
+                                    bruteforce = false;
+                                }
+                                break;
+                            case "3":
+                                i++;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            case "4":
+                                i--;
+                                bruteforce = false;
+                                stopper.Reset();
+                                player.controls.stop();
+                                break;
+                            default:
+                                bruteforce = false;
+                                break;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Album vacio, volviendo al menu...\n");
+                Console.Clear();
+            }
+        }
+        public void Play(Karaoke karaoke)
+        {
+            karaoke.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(karaoke.Route));
+            player.URL = karaoke.Route;
+            player.controls.play();
+            stopper.Start();
+            bool bruteforce = true;
+            while (stopper.Elapsed.TotalSeconds != karaoke.Length.TotalSeconds && bruteforce)
+            {
+                foreach (string l in karaoke.Lyrics)
+                {
+                    Console.WriteLine(l);
+                }
+                Console.WriteLine("(1)Pausar cancion\n(2)Detener cancion\nIngrese cualquier otro caracter para salir\n");
+                string switcher = Console.ReadLine();
+                Console.Clear();
+                switch (switcher)
+                {
+                    case "1":
+                        player.controls.pause();
+                        stopper.Stop();
+                        Console.WriteLine("(1)Reaundar cancion\nIngrese cualquier caracter para detener y salir\n");
+                        string choice = Console.ReadLine();
+                        Console.Clear();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            player.controls.stop();
+                            stopper.Reset();
+                            bruteforce = false;
+                        }
+                        break;
+                    case "2":
+                        player.controls.stop();
+                        stopper.Reset();
+                        Console.WriteLine("(1)Empezar cancion nuevamente\nIngrese cualquier caracter para salir\n");
+                        choice = Console.ReadLine();
+                        if (choice == "1")
+                        {
+                            player.controls.play();
+                            stopper.Start();
+                        }
+                        else
+                        {
+                            bruteforce = false;
+                        }
+                        break;
+                    default:
+                        bruteforce = false;
+                        break;
+                }
+
             }
         }
         
-        //Creo el evento StopEvent
-        public delegate void StopEventHandler(object source, PlayEventArgs args);
-        public event StopEventHandler StopEvent;
-        protected virtual void OnStopEvent(string route)
-        {
-            // Verifica si hay alguien suscrito al evento
-            if (StopEvent != null)
-            {
-                // Engatilla el evento
-                StopEvent(this, new PlayEventArgs() { Route = route });
-            }
-        }
-        public void Stop(Song song) 
-        {
-            OnStopEvent(song.Route);
-        }
 
-        
-        public void Stop(Video video) 
-        {
-            OnStopEvent(video.Route);
-        }
-        //Creo el evento PauseEvent
-        public delegate void PauseEventHandler(object source, PlayEventArgs args);
-        public event PauseEventHandler PauseEvent;
-        protected virtual void OnPauseEvent(string route)
-        {
-            // Verifica si hay alguien suscrito al evento
-            if (PauseEvent != null)
-            {
-                // Engatilla el evento
-                PauseEvent(this, new PlayEventArgs() { Route = route });
-            }
-        }
-        public void Pause(Song song) 
-        {
-            OnPauseEvent(song.Route);
-        }
 
-        public void Pause(Video video) 
-        {
-            OnPauseEvent(video.Route);
-        }
+      
 
         public Video ShowVideos()
         {

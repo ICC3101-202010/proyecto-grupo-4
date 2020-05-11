@@ -27,7 +27,7 @@ namespace Spotflix
 
 
 
-        public Teacher(List<Lesson> lessons, string nickname, string name, string lastname, string gmail, string code, string course, string passw)
+        public Teacher(string nickname, string name, string lastname, string gmail, string code, string course, string passw)
         {
             this.nickname = nickname;
             this.name = name;
@@ -36,7 +36,6 @@ namespace Spotflix
             this.code = code;
             this.course = course;
             this.passw = passw;
-            this.lessons = lessons;
         }
         
         public string Course { get => course; set => course = value; }

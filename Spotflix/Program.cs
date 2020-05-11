@@ -178,101 +178,110 @@ namespace Spotflix
 
             Playlist play = new Playlist();
             Album album = new Album();
+  
 
-            //CARGAR TODO
 
 
             List<User> users = new List<User>();
-               
-            string archivouser = @"\ArchivoUsuarios.bin";
-            string pathu = Directory.GetCurrentDirectory() + archivouser;
-            if (File.Exists(pathu))
-            {
-                Console.WriteLine("m");
-                users = LoadUser();
-            }
-            else { }
-
             List<Admin> admins = new List<Admin>();
-            string archivoadmin = @"\ArchivoAdministradores.bin";
-            string patha = Directory.GetCurrentDirectory() + archivoadmin;
-            if (File.Exists(patha))
-            {
-                admins = LoadAdmin();
-            }
-            else { }
-
             List<Teacher> teachers = new List<Teacher>();
-            string archivoteacher = @"\ArchivoProfesores.bin";
-            string patht = Directory.GetCurrentDirectory() + archivoteacher;
-            if (File.Exists(patht))
-            {
-                teachers = LoadTeacher();
-            }
-            else { }
-
             List<Song> Songs = new List<Song>();
-            string archivosong = @"\ArchivoCanciones.bin";
-            string paths = Directory.GetCurrentDirectory() + archivosong;
-            if (File.Exists(paths))
-            {
-                Songs = LoadSong();
-            }
-            else { }
-
             List<Video> Videos = new List<Video>();
-            string archivovideo = @"\ArchivoVideos.bin";
-            string pathv = Directory.GetCurrentDirectory() + archivovideo;
-            if (File.Exists(pathv))
-            {
-                Videos = LoadVideo();
-            }
-            else { }
-
             List<Lesson> Lessons = new List<Lesson>();
-            string archivolesson = @"\ArchivoClases.bin";
-            string pathl = Directory.GetCurrentDirectory() + archivolesson;
-            if (File.Exists(pathl))
-            {
-                Lessons = LoadLesson();
-            }
-            else { }
-
-            List<Playlist> Playlists = new List<Playlist>();
-            string archivoplay = @"\ArchivoPlaylist.bin";
-            string pathp = Directory.GetCurrentDirectory() + archivoplay;
-            if (File.Exists(pathp))
-            {
-                Playlists = LoadPlaylist();
-            }
-            else { }
-
             List<Series> Series = new List<Series>();
-            string archivoserie = @"\ArchivoSeries.bin";
-            string pathse = Directory.GetCurrentDirectory() + archivoserie;
-            if (File.Exists(pathse))
-            {
-                Series = LoadSerie();
-            }
-            else { }
-
+            List<Playlist> Playlists = new List<Playlist>();
             List<Karaoke> Karaokes = new List<Karaoke>();
-            string archivokarak = @"\ArchivoKaraoke.bin";
-            string pathk = Directory.GetCurrentDirectory() + archivokarak;
-            if (File.Exists(pathk))
-            {
-                Karaokes = LoadKaraoke();
-            }
-            else { }
-
             List<Album> Albums = new List<Album>();
-            string archivoalbum = @"\ArchivoAlbum.bin";
-            string pathal = Directory.GetCurrentDirectory() + archivoalbum;
-            if (File.Exists(pathal))
+            //CARGAR TODO
+
+            Console.WriteLine("(1)Empezar desde 0\n(2)Cargar archivos serializados");
+            string choser = Console.ReadLine();
+            if (choser=="(2)")
             {
-                Albums = LoadAlbum();
+                string archivouser = @"\ArchivoUsuarios.bin";
+                string pathu = Directory.GetCurrentDirectory() + archivouser;
+                if (File.Exists(pathu))
+                {
+                    users = LoadUser();
+                }
+                else { }
+                string archivoadmin = @"\ArchivoAdministradores.bin";
+                string patha = Directory.GetCurrentDirectory() + archivoadmin;
+                if (File.Exists(patha))
+                {
+                    admins = LoadAdmin();
+                }
+                else { }
+                string archivoteacher = @"\ArchivoProfesores.bin";
+                string patht = Directory.GetCurrentDirectory() + archivoteacher;
+                if (File.Exists(patht))
+                {
+                    teachers = LoadTeacher();
+                }
+                else { }
+                string archivosong = @"\ArchivoCanciones.bin";
+                string paths = Directory.GetCurrentDirectory() + archivosong;
+                if (File.Exists(paths))
+                {
+                    Songs = LoadSong();
+                }
+                else { }
+
+
+                string archivovideo = @"\ArchivoVideos.bin";
+                string pathv = Directory.GetCurrentDirectory() + archivovideo;
+                if (File.Exists(pathv))
+                {
+                    Videos = LoadVideo();
+                }
+                else { }
+
+
+                string archivolesson = @"\ArchivoClases.bin";
+                string pathl = Directory.GetCurrentDirectory() + archivolesson;
+                if (File.Exists(pathl))
+                {
+                    Lessons = LoadLesson();
+                }
+                else { }
+
+
+                string archivoplay = @"\ArchivoPlaylist.bin";
+                string pathp = Directory.GetCurrentDirectory() + archivoplay;
+                if (File.Exists(pathp))
+                {
+                    Playlists = LoadPlaylist();
+                }
+                else { }
+
+
+                string archivoserie = @"\ArchivoSeries.bin";
+                string pathse = Directory.GetCurrentDirectory() + archivoserie;
+                if (File.Exists(pathse))
+                {
+                    Series = LoadSerie();
+                }
+                else { }
+
+
+                string archivokarak = @"\ArchivoKaraoke.bin";
+                string pathk = Directory.GetCurrentDirectory() + archivokarak;
+                if (File.Exists(pathk))
+                {
+                    Karaokes = LoadKaraoke();
+                }
+                else { }
+
+                string archivoalbum = @"\ArchivoAlbum.bin";
+                string pathal = Directory.GetCurrentDirectory() + archivoalbum;
+                if (File.Exists(pathal))
+                {
+                    Albums = LoadAlbum();
+                }
+                else { }
             }
-            else { }
+               
+            
 
             mediaPlayer.AddVideoSerie += admin.OnAddVideoSerie;
             mediaPlayer.DeleteVideoSerie += admin.OnDeleteVideoSerie;
@@ -302,11 +311,11 @@ namespace Spotflix
                         switch (register)
                         {
                             case "1": //usuario
-                                Console.WriteLine("Ingrese su nombre:\n ");
+                                Console.WriteLine("Ingrese su nombre: ");
                                 string name = Console.ReadLine();
-                                Console.WriteLine("Ingrese su apellido:\n ");
+                                Console.WriteLine("Ingrese su apellido: ");
                                 string lastName = Console.ReadLine();
-                                Console.WriteLine("nIngrese su edad:\n ");
+                                Console.WriteLine("nIngrese su edad: ");
                                 int age = -1;
                                 while (age == -1)
                                 {
@@ -315,22 +324,22 @@ namespace Spotflix
                                         age = int.Parse(Console.ReadLine());
                                         if (age < 1)
                                         {
-                                            Console.WriteLine("Ingrese una edad valida\n");
+                                            Console.WriteLine("Ingrese una edad valida");
                                             age = -1;
                                         }
                                     }
                                     catch (FormatException)
                                     {
-                                        Console.WriteLine("Formato invalido\nIngrese un numero como edad\n");
+                                        Console.WriteLine("Formato invalido\nIngrese un numero como edad");
                                     }
                                 }
-                                Console.WriteLine("Ingrese su pais de origen:\n ");
+                                Console.WriteLine("Ingrese su pais de origen:");
                                 string country = Console.ReadLine();
-                                Console.WriteLine("Ingrese su ciudad de origen:\n ");
+                                Console.WriteLine("Ingrese su ciudad de origen:");
                                 string city = Console.ReadLine();
-                                Console.WriteLine("\nIngrese su calle:\n ");
+                                Console.WriteLine("\nIngrese su calle:");
                                 string street = Console.ReadLine();
-                                Console.WriteLine("Ingrese su código postal:\n ");
+                                Console.WriteLine("Ingrese su código postal:");
                                 string postalCode = Console.ReadLine();
                                 bool nickcheck = false;
                                 bool mailcheck = false;
@@ -338,17 +347,17 @@ namespace Spotflix
                                 string gmail = "";
                                 while (!mailcheck)
                                 {
-                                    Console.WriteLine("\nIngrese su Gmail\n");
+                                    Console.WriteLine("Ingrese su Gmail:");
                                     gmail = Console.ReadLine();
                                     mailcheck = Gate.CheckGmail(gmail);
                                 }
                                 while (!nickcheck)
                                 {
-                                    Console.WriteLine("\nIngrese su nombre de usuario\n");
+                                    Console.WriteLine("Ingrese su nombre de usuario:");
                                     nickName = Console.ReadLine();
                                     nickcheck = Gate.checkUsername(nickName);
                                 }
-                                Console.WriteLine("\nIngrese su contraseña\n ");
+                                Console.WriteLine("Ingrese su contraseña:");
                                 string passWord = Console.ReadLine();
                                 if (nickcheck && mailcheck)
                                 {

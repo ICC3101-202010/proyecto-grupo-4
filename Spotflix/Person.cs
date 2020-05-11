@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
+    [Serializable]
     public abstract class Person
     {
         protected string name;
