@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization;
@@ -324,5 +325,146 @@ namespace Spotflix
                 else { Console.WriteLine("Gmail o contraseña incorrecta"); }
             }
         }
+        public static void ChangeProfile(User user)
+        {
+            string switu = "0";
+            string stopu = "9";
+            while(switu!=stopu)
+            {
+                Console.WriteLine("Desea cambiar:\n\t(1)Su nombre de usuario\n\t(2)Su nombre\n\t(3)Su apellido\n\t(4)Su edad\n\t(5)Su pais\n\t(6)Su ciudad\n\t(7)Su calle\n\t(8)Su codigo postal\n\t(9)Actualizar");
+                string opcion = Console.ReadLine();
+                Console.Clear();
+                switch (switu)
+                {
+                    case "1"://Nickname
+                        Console.WriteLine("Ingrese su nuevo nombre de usuario");
+                        string nuevonusuario = Console.ReadLine();
+                        foreach(User u in users)
+                        {
+                            if (u.Nickname == nuevonusuario)
+                            {
+                                Console.WriteLine("Ese nombre de usuario ya está utilizado");
+                            }
+                            else
+                            {
+                                user.Nickname = nuevonusuario;
+                            }
+                        }
+                        break;
+                    case "2": //Name
+                        Console.WriteLine("Ingrese su nuevo nombre");
+                        string nuevoname = Console.ReadLine();
+                        user.Name = nuevoname;
+                        break;
+                    case "3": //LastName
+                        Console.WriteLine("Ingrese su nuevo apellido");
+                        string nuevoapellido = Console.ReadLine();
+                        user.Lastname = nuevoapellido;
+                        break;
+                    case "4": //Age int
+                        Console.WriteLine("Ingrese su nueva edad");
+                        string nuevaedad = Console.ReadLine();
+                        int nuevaEdad = Convert.ToInt32(nuevaedad);
+                        user.Age = nuevaEdad;
+                        break;
+                    case "5": //Country
+                        Console.WriteLine("Ingrese su nuevo pais");
+                        string nuevopais = Console.ReadLine();
+                        user.Country = nuevopais;
+                        break;
+                    case "6": //City
+                        Console.WriteLine("Ingrese su nueva ciudad");
+                        string nuevaciudad = Console.ReadLine();
+                        user.City = nuevaciudad;
+                        break;
+                    case "7": //Street
+                        Console.WriteLine("Ingrese su nueva calle");
+                        string nuevacalle = Console.ReadLine();
+                        user.Street = nuevacalle;
+                        break;
+                    case "8": //Código Postal
+                        Console.WriteLine("Ingrese su nuevo codigo postal");
+                        string nuevocodigo = Console.ReadLine();
+                        user.PostalCode = nuevocodigo;
+                        break;
+                    case "9":
+                        Console.WriteLine("Se ha actualizado correctamente");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                }
+            }
+        }
+        public static void ChangeAdmin()
+        {
+            Console.WriteLine("Ingrese su antiguo nombre");
+            string antoguonombre = Console.ReadLine();
+
+            foreach (Admin a in managers)
+            {
+                if (a.Namea == antoguonombre)
+                {
+                    Console.WriteLine("Ingrese su nuevo nombre");
+                    string nuevonombre = Console.ReadLine();
+                    foreach (Admin b in managers)
+                    {
+                        if (b.Namea == nuevonombre)
+                        {
+                            Console.WriteLine("Ese nombre ya esta utilizado");
+                        }
+                        else
+                        {
+                            b.Namea = nuevonombre;
+                        }
+                    }
+                }   
+            }
+        }
+        /*
+        public static void ChangeTeacher()
+        {
+            string switu = "0";
+            string stopu = "4";
+            while (switu != stopu)
+            {
+                Console.WriteLine("Desea cambiar:\n\t(1)Su nombre de usuario\n\t(2)Su apellido\n\t(3)Su curso\n\t(4)Actualizar");
+                string opcion = Console.ReadLine();
+                Console.Clear();
+                switch (switu)
+                {
+                    case "1"://Nickname
+                        Console.WriteLine("Ingrese su nuevo nombre de usuario");
+                        string nuevonusuariot = Console.ReadLine();
+                        foreach (Teacher t in teachers)
+                        {
+                            if (t.Nickname == nuevonusuariot)
+                            {
+                                Console.WriteLine("Ese nombre de usuario ya está utilizado");
+                            }
+                            else
+                            {
+                                t.Nickname = nuevonusuariot;
+                            }
+                        }
+                        break;
+                    case "2": //LastName
+                        Console.WriteLine("Ingrese su nuevo apellido");
+                        string nuevoapellidot = Console.ReadLine();
+                        t.Lastname = nuevoapellidot;
+                        break;
+                    case "3": //Age int
+                        Console.WriteLine("Ingrese su nuevo curso");
+                        string nuevocurso = Console.ReadLine();
+                        int nuevoCurso = Convert.ToInt32(nuevocurso);
+                        t.Course = nuevoCurso;
+                        break;
+                    case "4":
+                        Console.WriteLine("Se ha actualizado correctamente");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                }
+            }
+        }*/
     }
 }
