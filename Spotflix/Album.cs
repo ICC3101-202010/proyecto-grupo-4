@@ -93,5 +93,34 @@ namespace Spotflix
                 else Console.WriteLine("No se han encontrado canciones");
             }    
         }
+        public Song ShowAlbumSong()
+        {
+            int choice = 0;
+
+            if (this.Songs.Count() != 0)
+            {
+                while (choice != -1)
+                {
+                    foreach (Song song in this.Songs)
+                    {
+                        Console.WriteLine("\t{0} {1}\n", this.Songs.IndexOf(song) + 1, song.Name);
+                    }
+                    try
+                    {
+                            return this.Songs[choice - 1];
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Ingrese -1 para salir\n");
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron series");
+                return null;
+            }
+        }
     }
 }
