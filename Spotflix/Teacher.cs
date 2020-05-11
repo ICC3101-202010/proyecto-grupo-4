@@ -22,8 +22,9 @@ namespace Spotflix
         private string gmail;
         private string nickname;
         List<Lesson> lessons = new List<Lesson>();
-        WindowsMediaPlayer music = new WindowsMediaPlayer();
         WindowsMediaPlayer player = new WindowsMediaPlayer();
+        private List<Song> downloadSongs = new List<Song>();
+
 
 
 
@@ -44,6 +45,8 @@ namespace Spotflix
         public string Gmail { get => gmail; set => gmail = value; }
         public string Nickname { get => nickname; set => nickname = value; }
         public List<Lesson> Lessons { get => lessons; set => lessons = value; }
+        public WindowsMediaPlayer Player { get => player; set => player = value; }
+        public List<Song> DownloadSongs { get => downloadSongs; set => downloadSongs = value; }
 
         public Teacher() { }
         public void ImportLesson(MediaPlayer mediaPlayer)

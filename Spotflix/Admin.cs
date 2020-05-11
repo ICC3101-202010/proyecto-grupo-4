@@ -22,6 +22,8 @@ namespace Spotflix
         private string gmaila;
         private string namea;
         WindowsMediaPlayer music = new WindowsMediaPlayer();
+        private List<Song> downloadSongs = new List<Song>();
+
         public Admin()
         {
 
@@ -31,6 +33,8 @@ namespace Spotflix
         public string Pass { get => pass; set => pass = value; }
         public string Gmaila { get => gmaila; set => gmaila = value; }
         public string Namea { get => namea; set => namea = value; }
+        public WindowsMediaPlayer Music { get => music; set => music = value; }
+        public List<Song> DownloadSongs { get => downloadSongs; set => downloadSongs = value; }
 
         WindowsMediaPlayer player = new WindowsMediaPlayer();
         public void ImportSong(MediaPlayer mediaPlayer)

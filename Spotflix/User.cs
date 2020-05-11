@@ -18,6 +18,8 @@ namespace Spotflix
         private bool premiunVideo;
         private List<Song> likedSongs = new List<Song>();
         private List<Video> likedVideos = new List<Video>();
+        private List<Song> downloadSongs = new List<Song>();
+
         private int screenNumber;
         private List<Playlist> likedPlaylist = new List<Playlist>();
         private List<Playlist> myPlaylist = new List<Playlist>();
@@ -26,6 +28,7 @@ namespace Spotflix
         private List<Playlist> followPlaylist = new List<Playlist>();
         private List<Artist> followArtist = new List<Artist>();
         private List<Series> followSeries = new List<Series>();
+        
 
 
 
@@ -61,6 +64,7 @@ namespace Spotflix
         public List<Playlist> FollowPlaylist { get => followPlaylist; set => followPlaylist = value; }
         public List<Artist> FollowArtist { get => followArtist; set => followArtist = value; }
         public List<Series> FollowSeries { get => followSeries; set => followSeries = value; }
+        public List<Song> DownloadSongs { get => downloadSongs; set => downloadSongs = value; }
 
         public void AddToFavorite(Song song) //listo
         {
