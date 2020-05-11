@@ -57,6 +57,90 @@ namespace Spotflix
             }
             return true;
         }//True si es valido False si ya existe
+        public static bool checkUsernameA(string userName)
+        {
+            if (managers.Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                foreach (Admin admin_T in managers)
+                {
+                    if (admin_T.Namea == userName)
+                    {
+                        Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }//True si es valido False si ya existe
+        public static bool CheckGmailA(string gmail)
+        {
+            if (managers.Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                foreach (Admin admin_T in managers)
+                {
+                    if (admin_T.Gmaila == gmail)
+                    {
+                        Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        public static bool checkUsernameP(string userName)
+        {
+            if (teachers.Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                foreach (Teacher teacher_T in teachers)
+                {
+                    if (teacher_T.Namet == userName)
+                    {
+                        Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return true;
+        }//True si es valido False si ya existe
+        public static bool CheckGmailP(string gmail)
+        {
+            if (teachers.Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                foreach (Teacher teacher_T in teachers)
+                {
+                    if (teacher_T.Gmailp == gmail)
+                    {
+                        Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         public static bool CheckCodeA(string code)
         {
             if (managers.Count() == 0)

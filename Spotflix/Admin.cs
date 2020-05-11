@@ -17,7 +17,8 @@ namespace Spotflix
     [Serializable]
     public class Admin : Person
     {
-
+        private string namea;
+        private string gmaila;
         private string code;
         private string pass;
         WindowsMediaPlayer music = new WindowsMediaPlayer();
@@ -25,11 +26,13 @@ namespace Spotflix
         {
 
         }
-        public Admin(string code, string pass) { this.code = code; this.pass = pass; }
+        public Admin(string namea, string gmaila, string code, string pass) { this.namea = namea; this.gmaila = gmaila; this.code = code; this.pass = pass; }
         public string Code { get => code; set => code = value; }
         public string Pass { get => pass; set => pass = value; }
+        public string Namea { get => namea; set => namea = value; }
+        public string Gmaila { get => gmaila; set => gmaila = value; }
 
-        
+
         public void Import(MediaPlayer mediaPlayer)
         {
             WindowsMediaPlayer player = new WindowsMediaPlayer();
