@@ -403,25 +403,34 @@ namespace Spotflix
                                     bool mailcheckp = false;
                                     string nickNamep = "";
                                     string gmailp = "";
+                                    string namet="";
+                                    string lastname = "";
                                     while (!mailcheckp)
                                     {
-                                        Console.WriteLine("Ingrese su Gmail:\n");
+                                        Console.WriteLine("Ingrese su Gmail:");
                                         gmailp = Console.ReadLine();
                                         mailcheckp = Gate.CheckGmailP(gmailp);
                                     }
                                     while (!nickcheckp)
                                     {
-                                        Console.WriteLine("Ingrese su nombre de usuario:\n");
+                                        Console.WriteLine("Ingrese su nombre de usuario:");
                                         nickNamep = Console.ReadLine();
                                         nickcheckp = Gate.checkUsernameP(nickNamep);
                                     }
+                                    Console.WriteLine("Ingrese su nombre:");
+                                    namet = Console.ReadLine();
+                                    Console.WriteLine("Ingrese su apellido:");
+                                    lastname = Console.ReadLine();
+                                        
+
+
                                     Console.WriteLine("Ingrese su contraseña:\n ");
                                     string passWordp = Console.ReadLine();
                                     if (nickcheckp && mailcheckp)
                                     {
                                         Console.WriteLine("Ingrese el curso que desea tener:\n");
                                         string curso = Console.ReadLine();
-                                        Teacher t1 = new Teacher(nickNamep, gmailp, key_T, curso, passWordp);
+                                        Teacher t1 = new Teacher(nickNamep, namet, lastname, gmailp, key_T, curso, passWordp);
                                         Gate.SingTeacher(t1);
                                     }
                                 }

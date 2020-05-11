@@ -15,6 +15,7 @@ namespace Spotflix
         private static List<Admin> managers = new List<Admin>();
         private static List<Teacher> teachers = new List<Teacher>();
         private static List<int> states = new List<int>(); //State es el segundo donde el usuario cuyo index corresponde al de su int quedo
+
         public static bool checkUsername(string userName)
         {
             if (users.Count() == 0)
@@ -109,7 +110,7 @@ namespace Spotflix
             {
                 foreach (Teacher teacher_T in teachers)
                 {
-                    if (teacher_T.Namet == userName)
+                    if (teacher_T.Nickname == userName)
                     {
                         Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
                         return false;
@@ -132,7 +133,7 @@ namespace Spotflix
             {
                 foreach (Teacher teacher_T in teachers)
                 {
-                    if (teacher_T.Gmailp == gmail)
+                    if (teacher_T.Gmail == gmail)
                     {
                         Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
                         return false;
