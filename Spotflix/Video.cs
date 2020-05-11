@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
+    [Serializable]
     public class Video : MediaFile,IGo
     {
         protected string ageFilter;

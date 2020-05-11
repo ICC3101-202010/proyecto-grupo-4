@@ -245,7 +245,7 @@ namespace Spotflix
             return false;
         }
 
-        public void ChangePassword()
+        public static void ChangePassword()
         {
             Console.WriteLine("Ingresa tu nombre de usuario: ");
             string usr = Console.ReadLine();
@@ -256,7 +256,7 @@ namespace Spotflix
             {
                 Console.Write("Ingrese la nueva contrasena: ");
                 string newPsswd = Console.ReadLine();
-                ChangePassword(usr, newPsswd);
+                ChangePassword2(usr, newPsswd);
             }
             else
             {
@@ -264,7 +264,8 @@ namespace Spotflix
                 Console.WriteLine("[!] ERROR: " + result + "\n");
             }
         }
-        public void ChangePassword(string usr, string newpsswd)
+       
+        public static void ChangePassword2(string usr, string newpsswd)
         {
             foreach (User user in users)
             {
@@ -275,54 +276,53 @@ namespace Spotflix
             }
         }
 
-        //Metodos Serializar:
-        static private void SaveUser(List<User> users)
+        public static void MemberShip()
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivoUsuarios", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, users);
-            stream.Close();
+            Console.WriteLine("Ingresa tu Gmail");
+            string gm = Console.ReadLine();
+            Console.WriteLine("Ingresa tu contraseña");
+            string pas = Console.ReadLine();
+            foreach(User um in users)
+            {
+                if(gm == um.Gmail && pas == um.Password)
+                {
+                    if (um.MembershipType == "no pago")
+                    {
+                        Console.WriteLine("Ingrese el numero de tarjeta de credito");
+                        string tarjeta = Console.ReadLine();
+                        Console.WriteLine("Ingrese la clave");
+                        string clave = Console.ReadLine();
+                        um.MembershipType = "pago";
+                        Console.WriteLine("Usted ya es Premium y puede descargar canciones");
+                    }
+                    else { Console.WriteLine("Usted ya es Premium"); }
+                }
+                else { Console.WriteLine("Gmail o contraseña incorrecta"); }
+            }
         }
-
-        static private List<User> LoadUser()
+        public static void NoMemberShip()
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivoUsuarios", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<User> users = (List<User>)formatter.Deserialize(stream);
-            stream.Close();
-            return users;
-        }
-        static private void SaveAdmin(List<Admin> managers)
-        {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivoAdministradores", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, managers);
-            stream.Close();
-        }
-
-        static private List<Admin> LoadAdmin()
-        {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivoAdministradores", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<Admin> managers = (List<Admin>)formatter.Deserialize(stream);
-            stream.Close();
-            return managers;
-        }
-        static private void SaveTeacher(List<Teacher> teachers)
-        {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivosProfesores", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, teachers);
-            stream.Close();
-        }
-
-        static private List<Teacher> LoadTeacher()
-        {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivoProfesores", FileMode.Open, FileAccess.Read, FileShare.Read);
-            List<Teacher> teachers = (List<Teacher>)formatter.Deserialize(stream);
-            stream.Close();
-            return teachers;
+            Console.WriteLine("Ingresa tu Gmail");
+            string gm = Console.ReadLine();
+            Console.WriteLine("Ingresa tu contraseña");
+            string pas = Console.ReadLine();
+            foreach (User um in users)
+            {
+                if (gm == um.Gmail && pas == um.Password)
+                {
+                    if (um.MembershipType == "pago")
+                    {
+                        Console.WriteLine("Ingrese el numero de tarjeta de credito");
+                        string tarjeta = Console.ReadLine();
+                        Console.WriteLine("Ingrese la clave");
+                        string clave = Console.ReadLine();
+                        um.MembershipType = "no pago";
+                        Console.WriteLine("Usted ya no es Premium y no puede descargar canciones");
+                    }
+                    else { Console.WriteLine("Usted no es Premium"); }
+                }
+                else { Console.WriteLine("Gmail o contraseña incorrecta"); }
+            }
         }
     }
 }

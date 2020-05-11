@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spotflix
 {
+    [Serializable]
     public class Karaoke : Song
     {
         List<string> lyrics=new List<string>();

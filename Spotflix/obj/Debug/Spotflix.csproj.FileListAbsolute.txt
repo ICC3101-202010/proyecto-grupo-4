@@ -22,3 +22,15 @@ C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe.config
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.pdb
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
+C:\Users\marim\Desktop\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb
