@@ -286,11 +286,11 @@ namespace Spotflix
 
             int num = 1;
             string switcher = "0";
-            string stopper = "8";
+            string stopper = "3";
 
             while (switcher != stopper)
             {
-                Console.WriteLine("Si desea:\n\t(1)Registrarse\n\t(2)Iniciar Sesion\n\t(7)Salir de la busqueda\n");
+                Console.WriteLine("Si desea:\n\t(1)Registrarse\n\t(2)Iniciar Sesion\n\t(3)Salir del programa\n");
                 switcher = Console.ReadLine();
 
                 switch (switcher)
@@ -302,11 +302,11 @@ namespace Spotflix
                         switch (register)
                         {
                             case "1": //usuario
-                                Console.WriteLine("\nIngrese su nombre\n ");
+                                Console.WriteLine("Ingrese su nombre:\n ");
                                 string name = Console.ReadLine();
-                                Console.WriteLine("\nIngrese su apellido\n ");
+                                Console.WriteLine("Ingrese su apellido:\n ");
                                 string lastName = Console.ReadLine();
-                                Console.WriteLine("\nIngrese su edad\n ");
+                                Console.WriteLine("nIngrese su edad:\n ");
                                 int age = -1;
                                 while (age == -1)
                                 {
@@ -324,13 +324,13 @@ namespace Spotflix
                                         Console.WriteLine("Formato invalido\nIngrese un numero como edad\n");
                                     }
                                 }
-                                Console.WriteLine("\nIngrese su pais de origen\n ");
+                                Console.WriteLine("Ingrese su pais de origen:\n ");
                                 string country = Console.ReadLine();
-                                Console.WriteLine("\nIngrese su ciudad de origen\n ");
+                                Console.WriteLine("Ingrese su ciudad de origen:\n ");
                                 string city = Console.ReadLine();
-                                Console.WriteLine("\nIngrese su calle\n ");
+                                Console.WriteLine("\nIngrese su calle:\n ");
                                 string street = Console.ReadLine();
-                                Console.WriteLine("\nIngrese su código postal\n ");
+                                Console.WriteLine("Ingrese su código postal:\n ");
                                 string postalCode = Console.ReadLine();
                                 bool nickcheck = false;
                                 bool mailcheck = false;
@@ -354,6 +354,8 @@ namespace Spotflix
                                 {
                                     User u1 = new User(num, gmail, nickName, passWord, name, lastName, age, country, city, street, postalCode);
                                     Gate.SingUser(u1);
+                                    Thread.Sleep(1000);
+                                    Console.Clear();
                                 }
                                 num++;
                                 break;
@@ -388,12 +390,12 @@ namespace Spotflix
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Codgio invalido, volviendo al menu...");
+                                    Console.WriteLine("Codigo invalido, volviendo al menu...");
                                     Thread.Sleep(1000);
                                 }
                                 break;
                             case "3": //profesor
-                                Console.WriteLine("Ingrese el codigo para registrarse como profesor");
+                                Console.WriteLine("Ingrese el codigo para registrarse como profesor:");
                                 string key_T = Console.ReadLine();
                                 if (key_T == "321")
                                 {
@@ -403,21 +405,21 @@ namespace Spotflix
                                     string gmailp = "";
                                     while (!mailcheckp)
                                     {
-                                        Console.WriteLine("\nIngrese su Gmail\n");
+                                        Console.WriteLine("Ingrese su Gmail:\n");
                                         gmailp = Console.ReadLine();
                                         mailcheckp = Gate.CheckGmailP(gmailp);
                                     }
                                     while (!nickcheckp)
                                     {
-                                        Console.WriteLine("\nIngrese su nombre de usuario\n");
+                                        Console.WriteLine("Ingrese su nombre de usuario:\n");
                                         nickNamep = Console.ReadLine();
                                         nickcheckp = Gate.checkUsernameP(nickNamep);
                                     }
-                                    Console.WriteLine("\nIngrese su contraseña\n ");
+                                    Console.WriteLine("Ingrese su contraseña:\n ");
                                     string passWordp = Console.ReadLine();
                                     if (nickcheckp && mailcheckp)
                                     {
-                                        Console.WriteLine("Ingrese el curso que desea tener\n");
+                                        Console.WriteLine("Ingrese el curso que desea tener:\n");
                                         string curso = Console.ReadLine();
                                         Teacher t1 = new Teacher(nickNamep, gmailp, key_T, curso, passWordp);
                                         Gate.SingTeacher(t1);
@@ -427,11 +429,13 @@ namespace Spotflix
                                 {
                                     Console.WriteLine("Codgio invalido, volviendo al menu...");
                                     Thread.Sleep(1000);
+                                    Console.Clear();
                                 }
                                 break;
                             default:
                                 Console.WriteLine("Opcion invalida, volviendo al menu...");
                                 Thread.Sleep(1000);
+                                Console.Clear();
                                 break;
                         }
                         break;
@@ -831,15 +835,6 @@ namespace Spotflix
                         }
                         break;
                     case "3":
-                        break;
-                    case "4":
-                        break;
-                    case "5": //Salir
-                        break;
-                    case "6":
-                        
-                        break;
-                    case "7":
                         
                         SaveUser(users);
                         SaveAdmin(admins);
@@ -853,11 +848,13 @@ namespace Spotflix
                         SaveAlbum(Albums);
                         
 
-                        switcher = "8";
+                        switcher = "3";
                         break;
 
                     default:
-                        Console.WriteLine("Ingrese una opción valida");
+                        Console.WriteLine("Ingrese una opción valida\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
                         break;
                 }
             }
