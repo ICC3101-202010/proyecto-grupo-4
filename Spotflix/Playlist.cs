@@ -13,13 +13,15 @@ namespace Spotflix
         private string playlistName;
         User userowner; 
 
-        public Playlist(List<Song> songs, string playlistName) 
+        public Playlist(List<Song> songs, string playlistName, User user) 
         {
+            this.userowner = user;
             this.songs = songs;
             this.playlistName = playlistName;
         }
-        public Playlist(List<Video> videos,string playlistName)
+        public Playlist(List<Video> videos, string playlistName, User user)
         {
+            this.userowner = user;
             this.playlistName = playlistName;
             this.videos = videos;
         }
@@ -29,6 +31,7 @@ namespace Spotflix
         public List<Song> Songs { get => songs; set => songs = value; }
         public List<Video> Videos { get => videos; set => videos = value; }
         public string PlaylistName { get => playlistName; set => playlistName = value; }
+        public User Userowner { get => userowner; set => userowner = value; }
 
         //Este método lo vamos a hacer bien para la próxima entrega. Cuanto le queden seconds segundos a una, empiezo a reproducir la otra
         public void Mixture (int seconds, string mediaFile) 

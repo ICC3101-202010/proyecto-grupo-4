@@ -16,26 +16,19 @@ namespace Spotflix
         private string studio;
         protected List<string> actors = new List<string>();
 
-        public Video(List<string> actors, int ageFilter, string director, string synopsis, string studio, int currentSecond, int length, int fileSize, string name, string gender, int year, int numberOfReproductions, List<int> rankings, string relations, List<int> qualification, string quality, string dimension, object image, string route)
+        public Video(List<string> actors, int ageFilter, string director, string synopsis, string studio,int fileSize, string name, string gender,object image, int year, string relations, List<int> qualification, string route)
         {
             this.actors = actors;
             this.ageFilter = ageFilter;
             this.director = director;
             this.synopsis = synopsis;
             this.Studio  = studio;
-            this.currentSecond = currentSecond;
-            this.length = length;
             this.fileSize = fileSize;
             this.name = name;
             this.gender = gender;
             this.year = year;
-            this.numberOfReproductions = numberOfReproductions;
-            this.rankings = rankings;
-            this.relations = relations;
-            this.qualification = qualification;
-            this.quality = quality;
-            this.dimension = dimension;
             this.image = image;
+            this.qualification = qualification;
             this.route = route;
         }
 
