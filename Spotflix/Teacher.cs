@@ -141,12 +141,57 @@ namespace Spotflix
                 }
             }
         }
-        public void ShowTeacher()
+        public Teacher ShowTeacher()
         {
-            Console.WriteLine($"Nombre: {name}; Curso: {course}");
-            foreach (Lesson lesson in lessons)
+            int choice = 0;
+            int choice2 = 0;
+            if (lessons.Count() != 0)
             {
-                Console.WriteLine($"Asignatura: {lesson.Subject}; Nombre: {lesson.Name}");
+
+                foreach (Lesson l in lessons)
+                {
+                    Console.WriteLine("{0} {1} {2} {3}\n", lessons.IndexOf(l) + 1, l.Course, l.Name, l.Subject);
+                }
+
+                Console.WriteLine($"¿Desea agregar este profesor o desea ver más opciones\nOpción 1: Seguir profesor {name} {lastname}\nOpción 2: Ver más profesores");
+
+                while (choice2 == 0)
+                {
+                    try
+                    {
+                        choice2 = int.Parse(Console.ReadLine());
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Ingrese un numero para seleccionar su decisión\n");
+                    }
+                }
+                try
+                {
+                    if (choice2 == 1)
+                    {
+                        return this;
+                    }
+
+                    else return null;
+
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    if (choice == -1)
+                    {
+                        return null;
+                    }
+                    Console.WriteLine("Seleccione una opción  dentro del rango o ingrese -1 para salir\n");
+                    choice = 0;
+                }
+                return null;
+
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron clases en el profesor");
+                return null;
             }
         }
     }

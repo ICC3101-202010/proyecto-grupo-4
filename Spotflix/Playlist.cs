@@ -187,5 +187,62 @@ namespace Spotflix
             }
 
         }
+        public Playlist ShowPlaylist()
+        {
+            int choice = 0;
+            int choice2 = 0;
+            if (songs.Count() != 0 || videos.Count!=0)
+            {
+
+                foreach (Song s in songs)
+                {
+                    Console.WriteLine("{0} {1} {2} {3}\n", songs.IndexOf(s) + 1, s.Name, s.Artist, s.Gender);
+                }
+                foreach (Video v in videos)
+                {
+                    Console.WriteLine("{0} {1} {2} {3}\n", videos.IndexOf(v) + 1, v.Name, v.Director, v.Gender);
+                }
+
+                Console.WriteLine($"¿Desea agregar esa playlist o desea ver más opciones\nOpción 1: Agregar playlist {playlistName}\nOpción 2: Ver más palylists");
+
+                while (choice2 == 0)
+                {
+                    try
+                    {
+                        choice2 = int.Parse(Console.ReadLine());
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Ingrese un numero para seleccionar su decisión\n");
+                    }
+                }
+                try
+                {
+                    if (choice2 == 1)
+                    {
+                        return this;
+                    }
+
+                    else return null;
+
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    if (choice == -1)
+                    {
+                        return null;
+                    }
+                    Console.WriteLine("Seleccione una opción  dentro del rango o ingrese -1 para salir\n");
+                    choice = 0;
+                }
+                return null;
+
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron canciones y videos en la playlist");
+                return null;
+            }
+        }
     }
 }

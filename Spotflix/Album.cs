@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Spotflix
 {
     [Serializable]
-    public class Album 
+    public class Album
     {
         private string name;
         private List<string> artists = new List<string>();
@@ -92,34 +92,58 @@ namespace Spotflix
                     }
                 }
                 else Console.WriteLine("No se han encontrado canciones");
-            }    
+            }
         }
-        public Song ShowAlbumSong()
+        public Album ShowAlbumsSong()
         {
             int choice = 0;
-
-            if (this.Songs.Count() != 0)
+            int choice2 = 0;
+            if (songs.Count() != 0)
             {
-                while (choice != -1)
+
+                foreach (Song s in songs)
                 {
-                    foreach (Song song in this.Songs)
-                    {
-                        Console.WriteLine("\t{0} {1}\n", this.Songs.IndexOf(song) + 1, song.Name);
-                    }
+                    Console.WriteLine("{0} {1} {2} {3}\n", songs.IndexOf(s) + 1, s.Name, s.Artist, s.Gender);
+                }
+
+                Console.WriteLine($"¿Desea agregar ese álbum o desea ver más opciones\nOpción 1: Agregar album {name}\nOpción 2: Ver más albumes");
+
+                while (choice2 == 0)
+                {
                     try
                     {
-                            return this.Songs[choice - 1];
+                        choice2 = int.Parse(Console.ReadLine());
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Ingrese -1 para salir\n");
+                        Console.WriteLine("Ingrese un numero para seleccionar su decisión\n");
                     }
                 }
+                try
+                {
+                    if (choice2 == 1)
+                    {
+                        return this;
+                    }
+
+                    else return null;
+
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    if (choice == -1)
+                    {
+                        return null;
+                    }
+                    Console.WriteLine("Seleccione una opción  dentro del rango o ingrese -1 para salir\n");
+                    choice = 0;
+                }
                 return null;
+
             }
             else
             {
-                Console.WriteLine("No se encontraron series");
+                Console.WriteLine("No se encontraron canciones");
                 return null;
             }
         }

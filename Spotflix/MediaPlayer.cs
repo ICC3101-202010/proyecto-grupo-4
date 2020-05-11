@@ -63,7 +63,7 @@ namespace Spotflix
             }
         }
 
-        public void VideoSerieStarter(string option, string serieName, string videoName, MediaPlayer mediaPlayer)
+        public void VideoSerieStarter(string option, string serieName, string videoName, string videoDirector,  MediaPlayer mediaPlayer)
         {
             Series serie = null;
             Video video = null;
@@ -92,7 +92,17 @@ namespace Spotflix
             }
             else if (count == 0 && option == "Add")
             {
-                OnAddVideoSerie(video, serie, mediaPlayer);
+                int count4=0;
+                foreach (Video v in videos)
+                {
+                    if (videoName==video.Name && videoDirector == video.Director)
+                    {
+                        video = v;
+                        count4++;
+                    }
+                }
+                if (count4 != 0) OnAddVideoSerie(video, serie, mediaPlayer);
+                else Console.WriteLine("No se ha encontrado el video deseado");
             }
 
             else if (count != 0 && option == "Delete")
@@ -103,9 +113,32 @@ namespace Spotflix
             {
                 Console.WriteLine($"El video {videoName} no existe en la serie {serieName}");
             }
-            else if (cont2==0)
+            else if (cont2==0 && option  =="Add")
             {
-                //KIKA Agregar que se cree una serie nueva
+                Console.WriteLine("La playlist no existe, ¿desea crearla?\n Opción 1: Si\n Opción 2: No");
+                string optionc = Console.ReadLine(); 
+                if (optionc=="1" || optionc.ToLower()=="si")
+                {
+                    int counter = 0;
+                    List<Video> vid = new List<Video>();
+                    Console.WriteLine("Ingrese el nombre de la serie");
+                    string name = Console.ReadLine();
+                    Series s = new Series(0,vid,name);
+                    series.Add(s);
+                    foreach (Video v in videos)
+                    {
+                        if (v.Director == videoDirector && v.Name == videoName)
+                        {
+                            video = v;
+                            counter++;
+                        }
+                    }
+                    if (counter != 0) OnAddVideoSerie(video, s, mediaPlayer); 
+                }
+                else
+                {
+                    Console.WriteLine("Saliendo");
+                }
             }
             else Console.WriteLine("No se reconoce esa opción");
         }
@@ -356,14 +389,13 @@ namespace Spotflix
             }
         }
 
-
         public List<Song> CreateRecommendedListS(User user)
         {
             var random = new Random();
             List<Song> song = new List<Song>();
-            if (user.FollowAlbums.Count!=0&& user.FollowArtist.Count != 0&& user.FollowPlaylist.Count != 0&&user.FollowSeries.Count != 0&&user.FollowUsers.Count != 0)
+            if (user.FollowAlbums.Count != 0 && user.FollowArtist.Count != 0 && user.FollowPlaylist.Count != 0 && user.FollowUsers.Count != 0)
             {
-                while (song.Count<15)
+                while (song.Count < 15)
                 {
                     int rand = random.Next(0, this.Songs.Count());
                     if (song.Contains(this.Songs[rand]))
@@ -378,32 +410,294 @@ namespace Spotflix
             }
             else
             {
-                if (user.FollowAlbums.Count!=0)
+                if (user.FollowAlbums.Count() != 0)
                 {
-                    for (int i = 0; i < 5; i++)
+                    if (user.FollowAlbums.Count() > 5)
                     {
-                        int bigindex = random.Next(0, user.FollowAlbums.Count());
-                        int smallindex = random.Next(0, user.FollowAlbums[bigindex].Songs.Count());
-                        song.Add(user.FollowAlbums[bigindex].Songs[smallindex]);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowAlbums.Count());
+                            int smallindex = random.Next(0, user.FollowAlbums[bigindex].Songs.Count());
+                            if (!song.Contains(user.FollowAlbums[bigindex].Songs[smallindex]))
+                            {
+                                song.Add(user.FollowAlbums[bigindex].Songs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowAlbums.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowAlbums.Count());
+                            int smallindex = random.Next(0, user.FollowAlbums[bigindex].Songs.Count());
+                            if (!song.Contains(user.FollowAlbums[bigindex].Songs[smallindex]))
+                            {
+                                song.Add(user.FollowAlbums[bigindex].Songs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+                if (user.FollowArtist.Count() != 0)
+                {
+                    if (user.FollowArtist.Count() > 5)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowArtist.Count());
+                            int smallindex = random.Next(0, user.FollowArtist[bigindex].Songs.Count());
+                            if (!song.Contains(user.FollowArtist[bigindex].Songs[smallindex]))
+                            {
+                                song.Add(user.FollowArtist[bigindex].Songs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowArtist.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowArtist.Count());
+                            int smallindex = random.Next(0, user.FollowArtist[bigindex].Songs.Count());
+                            if (!song.Contains(user.FollowArtist[bigindex].Songs[smallindex]))
+                            {
+                                song.Add(user.FollowArtist[bigindex].Songs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+
+                if (user.FollowPlaylist.Count() != 0)
+                {
+                    if (user.FollowPlaylist.Count() > 5)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowPlaylist.Count());
+                            int smallindex = random.Next(0, user.FollowPlaylist[bigindex].Songs.Count());
+                            if (!song.Contains(user.FollowArtist[bigindex].Songs[smallindex]))
+                            {
+                                song.Add(user.FollowPlaylist[bigindex].Songs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowPlaylist.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowPlaylist.Count());
+                            int smallindex = random.Next(0, user.FollowPlaylist[bigindex].Songs.Count());
+                            if (!song.Contains(user.FollowArtist[bigindex].Songs[smallindex]))
+                            {
+                                song.Add(user.FollowPlaylist[bigindex].Songs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+                if (user.FollowUsers.Count() != 0)
+                {
+                    if (user.FollowUsers.Count() > 5)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowUsers.Count());
+                            int smallindex = random.Next(0, user.FollowUsers[bigindex].LikedSongs.Count());
+                            if (!song.Contains(user.FollowUsers[bigindex].LikedSongs[smallindex]))
+                            {
+                                song.Add(user.FollowUsers[bigindex].LikedSongs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowUsers.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowUsers.Count());
+                            int smallindex = random.Next(0, user.FollowUsers[bigindex].LikedSongs.Count());
+                            if (!song.Contains(user.FollowUsers[bigindex].LikedSongs[smallindex]))
+                            {
+                                song.Add(user.FollowUsers[bigindex].LikedSongs[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
                     }
                 }
             }
             return song;
         }
 
+        public List<Video> CreateRecommendedListV(User user)
+        {
+            var random = new Random();
+            List<Video> video = new List<Video>();
+            if (user.FollowArtist.Count != 0 && user.FollowPlaylist.Count != 0 && user.FollowUsers.Count != 0)
+            {
+                while (video.Count < 15)
+                {
+                    int rand = random.Next(0, this.Songs.Count());
+                    if (video.Contains(this.videos[rand]))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        video.Add(this.videos[rand]);
+                    }
+                }
+            }
+            else
+            {
+                if (user.FollowArtist.Count() != 0)
+                {
+                    if (user.FollowArtist.Count() > 5)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowArtist.Count());
+                            int smallindex = random.Next(0, user.FollowArtist[bigindex].Videos.Count());
+                            if (!video.Contains(user.FollowArtist[bigindex].Videos[smallindex]))
+                            {
+                                video.Add(user.FollowArtist[bigindex].Videos[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowArtist.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowArtist.Count());
+                            int smallindex = random.Next(0, user.FollowArtist[bigindex].Songs.Count());
+                            if (!video.Contains(user.FollowArtist[bigindex].Videos[smallindex]))
+                            {
+                                video.Add(user.FollowArtist[bigindex].Videos[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+                if (user.FollowPlaylist.Count != 0)
+                {
+                    if (user.FollowPlaylist.Count() > 5)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowPlaylist.Count());
+                            int smallindex = random.Next(0, user.FollowPlaylist[bigindex].Videos.Count());
+                            if (!Videos.Contains(user.FollowArtist[bigindex].Videos[smallindex]))
+                            {
+                                videos.Add(user.FollowPlaylist[bigindex].Videos[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowPlaylist.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowPlaylist.Count());
+                            int smallindex = random.Next(0, user.FollowPlaylist[bigindex].Videos.Count());
+                            if (!video.Contains(user.FollowArtist[bigindex].Videos[smallindex]))
+                            {
+                                video.Add(user.FollowPlaylist[bigindex].Videos[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+                if (user.FollowUsers.Count() != 0)
+                {
+                    if (user.FollowUsers.Count() > 5)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowUsers.Count());
+                            int smallindex = random.Next(0, user.FollowUsers[bigindex].LikedVideos.Count());
+                            if (!video.Contains(user.FollowUsers[bigindex].LikedVideos[smallindex]))
+                            {
+                                video.Add(user.FollowUsers[bigindex].LikedVideos[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < user.FollowUsers.Count(); i++)
+                        {
+                            int bigindex = random.Next(0, user.FollowUsers.Count());
+                            int smallindex = random.Next(0, user.FollowUsers[bigindex].LikedVideos.Count());
+                            if (!video.Contains(user.FollowUsers[bigindex].LikedVideos[smallindex]))
+                            {
+                                video.Add(user.FollowUsers[bigindex].LikedVideos[smallindex]);
+                            }
+                            else
+                            {
+                                i--;
+                            }
+                        }
+                    }
+                }
+            }
+            return video;
+        }
         Stopwatch stopper = new Stopwatch();
         System.Media.SoundPlayer SoundPlayer = new SoundPlayer();
-        public void Play(Song song,User user)// Listo
+        public void Play(Song song, User user)// Listo
         {
             song.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(song.Route));
             SoundPlayer.SoundLocation = song.Route;
             SoundPlayer.Play();
+            song.NumberOfReproductions += 1;
             stopper.Start();
             bool bruteforce = true;
-            while (stopper.Elapsed.TotalSeconds!=song.Length.TotalSeconds&&bruteforce)
+            while (stopper.Elapsed.TotalSeconds != song.Length.TotalSeconds && bruteforce)
             {
                 Console.WriteLine("(1)Detener cancion\n(2)Ponerle me gusta a la cancion\nIngrese cualquier otro caracter para salir\n");
-                string switcher=Console.ReadLine();
+                string switcher = Console.ReadLine();
                 Console.Clear();
                 switch (switcher)
                 {
@@ -418,15 +712,14 @@ namespace Spotflix
                             SoundPlayer.Play();
                             stopper.Start();
                         }
-                        if (choice=="2")
-                        {
-                            user.AddToFavorite(song);
-                        }
                         else
                         {
                             stopper.Reset();
                             bruteforce = false;
-                        }            
+                        }
+                        break;
+                    case "2":
+                        user.AddToFavorite(song);
                         break;
                     default:
                         bruteforce = false;
@@ -437,20 +730,21 @@ namespace Spotflix
         }
         public void Play(Video video, User user) //Listo
         {
-            Console.WriteLine("*ADVERTENCIA*\n una vez incializado el video no podra detenerlo desde la consola, Desea continuar Y/N");
+            Console.WriteLine("ADVERTENCIA\n una vez incializado el video no podra detenerlo desde la consola, Desea continuar Y/N");
             string choice = Console.ReadLine();
-            if (choice=="Y")
+            if (choice == "Y")
             {
                 video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(video.Route));
                 System.Diagnostics.Process.Start(video.Route);
+                video.NumberOfReproductions += 1;
                 Console.WriteLine("Desea darle me gusta al video Y/N");
                 string like = Console.ReadLine();
-                if (like=="Y")
+                if (like == "Y")
                 {
                     user.AddToFavorite(video);
                 }
             }
-            if (choice=="N")
+            if (choice == "N")
             {
                 Console.WriteLine("Selecciono no, volviendo al menu...\n");
                 Thread.Sleep(1000);
@@ -464,11 +758,11 @@ namespace Spotflix
 
             }
         }
-        public void Play(Series serie,User user)
+        public void Play(Series serie, User user)
         {
-            if (serie.Episodes.Count()!=0)
+            if (serie.Episodes.Count() != 0)
             {
-                Console.WriteLine("*ADVERTENCIA*\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
+                Console.WriteLine("ADVERTENCIA\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
                 string choice = Console.ReadLine();
                 if (choice == "Y")
                 {
@@ -476,6 +770,7 @@ namespace Spotflix
                     {
                         serie.Episodes[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(serie.Episodes[i].Route));
                         System.Diagnostics.Process.Start(serie.Episodes[i].Route);
+                        serie.Episodes[i].NumberOfReproductions += 1;
                         bool bruteforce = true;
                         while (stopper.Elapsed.TotalSeconds != serie.Episodes[i].Length.TotalSeconds && bruteforce)
                         {
@@ -491,7 +786,7 @@ namespace Spotflix
                                     break;
                                 case "2":
                                     i--;
-                                    bruteforce = false;                                   
+                                    bruteforce = false;
                                     stopper.Reset();
                                     break;
                                 case "3":
@@ -503,7 +798,7 @@ namespace Spotflix
                             }
 
                         }
-                        if (i==serie.NofVideos)
+                        if (i == serie.NofVideos)
                         {
                             i = 0;
                         }
@@ -530,12 +825,12 @@ namespace Spotflix
                 Console.Clear();
             }
         }
-        //Listo
-        public void Play(Playlist playlist,User user)
+
+        public void Play(Playlist playlist, User user)
         {
             if (playlist.Videos.Count() != 0)
             {
-                Console.WriteLine("*ADVERTENCIA*\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
+                Console.WriteLine("ADVERTENCIA\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
                 string choice = Console.ReadLine();
                 if (choice == "Y")
                 {
@@ -543,6 +838,7 @@ namespace Spotflix
                     {
                         playlist.Videos[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(playlist.Videos[i].Route));
                         System.Diagnostics.Process.Start(playlist.Videos[i].Route);
+                        playlist.Videos[i].NumberOfReproductions += 1;
                         bool bruteforce = true;
 
                         while (stopper.Elapsed.TotalSeconds != playlist.Videos[i].Length.TotalSeconds && bruteforce)
@@ -571,7 +867,7 @@ namespace Spotflix
                             }
 
                         }
-                        if (i==playlist.Videos.Count())
+                        if (i == playlist.Videos.Count())
                         {
                             i = 0;
                         }
@@ -600,6 +896,7 @@ namespace Spotflix
                     playlist.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(playlist.Songs[i].Route));
                     SoundPlayer.SoundLocation = playlist.Songs[i].Route;
                     SoundPlayer.Play();
+                    playlist.Songs[i].NumberOfReproductions += 1;
                     stopper.Start();
                     bool bruteforce = true;
                     while (stopper.Elapsed.TotalSeconds != playlist.Songs[i].Length.TotalSeconds && bruteforce)
@@ -612,7 +909,7 @@ namespace Spotflix
                             case "1":
                                 SoundPlayer.Stop();
                                 stopper.Stop();
-                                Console.WriteLine("(1)Volver a empezar cancion\n2)Siguiente Cancion(3)Cancion anterior\n()Ingrese cualquier caracter para detener y salir\n");
+                                Console.WriteLine("(1)Volver a empezar cancion\n2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion\n()Ingrese cualquier caracter para detener y salir\n");
                                 string choice = Console.ReadLine();
                                 Console.Clear();
                                 if (choice == "1")
@@ -620,17 +917,21 @@ namespace Spotflix
                                     SoundPlayer.Play();
                                     stopper.Start();
                                 }
-                                else if (choice=="2")
+                                else if (choice == "2")
                                 {
                                     i++;
                                     stopper.Reset();
                                     bruteforce = false;
                                 }
-                                else if (choice=="3")
+                                else if (choice == "3")
                                 {
                                     i--;
                                     stopper.Reset();
                                     bruteforce = false;
+                                }
+                                else if (choice == "4")
+                                {
+                                    user.AddToFavorite(playlist.Songs[i]);
                                 }
                                 else
                                 {
@@ -659,27 +960,30 @@ namespace Spotflix
                         }
 
                     }
-                    if (i == playlist.Songs.Count()) ;
+                    if (i == playlist.Songs.Count())
                     {
                         i = 0;
                     }
 
                 }
-            }        
+            }
             if (playlist.Videos.Count() == 0 && playlist.Songs.Count() == 0)
             {
                 Console.WriteLine("Playlist vacia, volviendo al menu...\n");
                 Console.Clear();
             }
         }
+
+
         public void Play(Lesson lessons, User user)
         {
-            Console.WriteLine("*ADVERTENCIA*\n una vez incializado la clase no podra detenerlo desde la consola, Desea continuar Y/N");
+            Console.WriteLine("ADVERTENCIA\n una vez incializado la clase no podra detenerlo desde la consola, Desea continuar Y/N");
             string choice = Console.ReadLine();
             if (choice == "Y")
             {
                 lessons.Lessons.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(lessons.Lessons.Route));
                 System.Diagnostics.Process.Start(lessons.Lessons.Route);
+                lessons.Lessons.NumberOfReproductions += 1;
                 Console.WriteLine("Desea darle me gusta al video Y/N");
                 string like = Console.ReadLine();
                 if (choice == "Y")
@@ -700,8 +1004,8 @@ namespace Spotflix
                 Console.Clear();
 
             }
-        }                   
-        public void Play(Album album,User user)
+        }
+        public void Play(Album album, User user)
         {
             if (album.Songs.Count() != 0)
             {
@@ -710,6 +1014,7 @@ namespace Spotflix
                     album.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(album.Songs[i].Route));
                     SoundPlayer.SoundLocation = album.Songs[i].Route;
                     SoundPlayer.Play();
+                    album.Songs[i].NumberOfReproductions += 1;
                     stopper.Start();
                     bool bruteforce = true;
                     while (stopper.Elapsed.TotalSeconds != album.Songs[i].Length.TotalSeconds && bruteforce)
@@ -722,24 +1027,28 @@ namespace Spotflix
                             case "1":
                                 SoundPlayer.Stop();
                                 stopper.Reset();
-                                Console.WriteLine("(1)Empezar cancion nuevamente\n(2)Siguiente cancion\n(3)Cancion anterior\n()Ingrese cualquier caracter para salir\n");
+                                Console.WriteLine("(1)Empezar cancion nuevamente\n(2)Siguiente cancion\n(3)Cancion anterior\n(4)Darle me gusta a la cancion\n()Ingrese cualquier caracter para salir\n");
                                 string choice = Console.ReadLine();
                                 if (choice == "1")
                                 {
                                     SoundPlayer.Play();
                                     stopper.Start();
                                 }
-                                else if (choice=="2")
+                                else if (choice == "2")
                                 {
                                     i++;
                                     stopper.Reset();
                                     bruteforce = false;
                                 }
-                                else if (choice=="3")
+                                else if (choice == "3")
                                 {
                                     i--;
                                     stopper.Reset();
                                     bruteforce = false;
+                                }
+                                else if (choice == "4")
+                                {
+                                    user.AddToFavorite(album.Songs[i]);
                                 }
                                 else
                                 {
@@ -767,7 +1076,7 @@ namespace Spotflix
                         }
 
                     }
-                    if (i==album.Songs.Count())
+                    if (i == album.Songs.Count())
                     {
                         i = 0;
                     }
@@ -779,11 +1088,13 @@ namespace Spotflix
                 Console.Clear();
             }
         }
-        public void Play(Karaoke karaoke,User user)
+
+        public void Play(Karaoke karaoke, User user)
         {
             karaoke.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(karaoke.Route));
             SoundPlayer.SoundLocation = karaoke.Route;
             SoundPlayer.Play();
+            karaoke.NumberOfReproductions += 1;
             foreach (string l in karaoke.Lyrics)
             {
                 Console.WriteLine(karaoke.Lyrics);
@@ -822,6 +1133,153 @@ namespace Spotflix
                         break;
                 }
 
+            }
+        }
+
+        public void Play(User user)
+        {
+            int choice = 0;
+            bool checker = false;
+            Console.WriteLine("Seleccione una cancion para comenzar la reproduccion en cola: \n");
+            if (this.Songs.Count() != 0)
+            {
+                while (!checker)
+                {
+                    foreach (Song song in this.Songs)
+                    {
+                        Console.WriteLine("{0} {1}\n", this.Songs.IndexOf(song) + 1, song.Name);
+                    }
+                    checker = int.TryParse(Console.ReadLine(), out choice);
+                    if (!checker)
+                    {
+                        Console.WriteLine("Ingrese un numero\n");
+                    }
+                    else if (choice > this.Songs.Count())
+                    {
+                        checker = false;
+                        Console.WriteLine("Ingrese una opcion dentro del rango\n");
+                    }
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                }
+                this.AddToQueue(user, this.Songs[choice - 1]);
+                bool bigbruteforce = true;
+                foreach (Song song in user.Queque)
+                {
+                    bool smallbruteforce = true;
+                    if (!bigbruteforce)
+                    {
+                        Console.WriteLine("Volviendo al menu...");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                    }
+                    stopper.Restart();
+                    song.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(song.Route));
+                    SoundPlayer.SoundLocation = song.Route;
+                    SoundPlayer.Play();
+                    song.NumberOfReproductions += 1;
+                    stopper.Start();
+                    while (stopper.Elapsed.TotalSeconds != song.Length.TotalSeconds && smallbruteforce)
+                    {
+                        Console.WriteLine("(1)Detener la cancion\n(2)Siguiente cancion en cola\n(3)Agregar cancion a la cola\n(4)Darle me gusta a la cancion'\n()Ingrese cualquier otro caracter para salir\n");
+                        string submenu = Console.ReadLine();
+                        string inside;
+                        switch (submenu)
+                        {
+                            case "1":
+                                SoundPlayer.Stop();
+                                stopper.Stop();
+                                Console.WriteLine("(1)Volver a empezar cancion\n(2)Siguiente cancion en cola\n(3)Agregar cancion a la cola\n(4)Darle me gusta a la cancion\n()Ingrese cualquier caracter para detener y salir\n");
+                                inside = Console.ReadLine();
+                                Console.Clear();
+                                if (inside == "1")
+                                {
+                                    SoundPlayer.Play();
+                                    stopper.Start();
+                                }
+                                if (inside == "2")
+                                {
+                                    smallbruteforce = false;
+                                }
+                                if (inside == "3")
+                                {
+                                    bool insidechecker = false;
+                                    Console.WriteLine("Seleccione una cancion para añadir a la reproduccion en cola: \n");
+                                    while (!insidechecker)
+                                    {
+                                        foreach (Song s in this.Songs)
+                                        {
+                                            Console.WriteLine("{0} {1}\n", this.Songs.IndexOf(s) + 1, s.Name);
+                                        }
+                                        insidechecker = int.TryParse(Console.ReadLine(), out choice);
+                                        if (!insidechecker)
+                                        {
+                                            Console.WriteLine("Ingrese un numero\n");
+                                        }
+                                        else if (choice > this.Songs.Count())
+                                        {
+                                            insidechecker = false;
+                                            Console.WriteLine("Ingrese una opcion dentro del rango\n");
+                                        }
+                                        Thread.Sleep(1000);
+                                        Console.Clear();
+                                    }
+                                    this.AddToQueue(user, this.Songs[choice - 1]);
+                                }
+                                if (inside == "4")
+                                {
+                                    user.AddToFavorite(song);
+                                }
+                                else
+                                {
+                                    stopper.Reset();
+                                    bigbruteforce = false;
+                                }
+                                break;
+                            case "2":
+                                smallbruteforce = false;
+                                break;
+                            case "3":
+                                bool biginsidechecker = false;
+                                Console.WriteLine("Seleccione una cancion para añadir a la reproduccion en cola: \n");
+                                while (!biginsidechecker)
+                                {
+                                    foreach (Song s in this.Songs)
+                                    {
+                                        Console.WriteLine("{0} {1}\n", this.Songs.IndexOf(s) + 1, s.Name);
+                                    }
+                                    biginsidechecker = int.TryParse(Console.ReadLine(), out choice);
+                                    if (!biginsidechecker)
+                                    {
+                                        Console.WriteLine("Ingrese un numero\n");
+                                    }
+                                    else if (choice > this.Songs.Count())
+                                    {
+                                        biginsidechecker = false;
+                                        Console.WriteLine("Ingrese una opcion dentro del rango\n");
+                                    }
+                                    Thread.Sleep(1000);
+                                    Console.Clear();
+                                }
+                                this.AddToQueue(user, this.Songs[choice - 1]);
+                                break;
+                            case "4":
+                                user.AddToFavorite(song);
+                                break;
+                            default:
+                                stopper.Reset();
+                                bigbruteforce = false;
+                                break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No existen canciones en el Database\nVolviendo al menu...");
+                Thread.Sleep(1000);
+                Console.Clear();
             }
         }
 
@@ -2336,9 +2794,9 @@ namespace Spotflix
             }
         }//Listo
 
-        public void AddToQueue()//Pendeinte
+        public void AddToQueue(User user, Song song)//Pendeinte
         {
-            throw new NotImplementedException();
+            user.Queque.Add(song);
         }
 
         public void Qualify(Song song)
@@ -2446,14 +2904,18 @@ namespace Spotflix
             Console.WriteLine("\tLa calificacion que posee la cancion solicitada es:{0\n}", this.GetQualification(song));
         }//listo
 
-        public void Follow(string key, List<User> users, User caller)//Falta Trabajo
+        public void Follow(string key, List<User> users, User caller, List<Teacher> teachers)//Falta Trabajo
         {
-            bool succes = false;
             int choice = 0;
             int choice2 = 0;
             string choice3;
             int choice4 = 0;
             Playlist p = new Playlist();
+            Album a = new Album();
+            Artist ar = new Artist();
+            Series s = new Series();
+            Teacher t = new Teacher();
+
             switch (key)
             {
                 case "Users":
@@ -2462,7 +2924,7 @@ namespace Spotflix
                         Console.WriteLine("Seleccione el usuario que quiere ver sus playlist o -1 para salir");
                         foreach (User user in users)
                         {
-                            Console.WriteLine("{0}{1}\n", users.IndexOf(user) + 1, user.Name);
+                            Console.WriteLine("{0} {1} {2}\n", users.IndexOf(user) + 1, user.Name, user.Lastname);
                         }
                         while (choice2 == 0)
                         {
@@ -2503,13 +2965,12 @@ namespace Spotflix
                                 }
                                 else if (choice3 == "2" || choice3.ToLower() == "no")
                                 {
-                                    choice4 = 1;
+                                    Console.WriteLine("Saliendo al menú");
                                     break;
                                 }
                                 else
                                 {
                                     Console.WriteLine("Opcion inválida, volviendo al menú");
-                                    choice4 = 1;
                                     break;
                                 }
                             }
@@ -2525,13 +2986,12 @@ namespace Spotflix
                                 }
                                 else if (choice3 == "2" || choice3.ToLower() == "no")
                                 {
-                                    choice4 = 1;
+                                    Console.WriteLine("Saliendo al menú");
                                     break;
                                 }
                                 else
                                 {
                                     Console.WriteLine("Opcion inválida, volviendo al menú");
-                                    choice4 = 1;
                                     break;
                                 }
 
@@ -2549,126 +3009,449 @@ namespace Spotflix
                     break;
 
                 case "Albums":
-                    Console.WriteLine("Seleccione el album que quiere seguir");
-                    foreach (Album album in this.Albums)
+                    while (choice4 == 0)
                     {
-                        Console.WriteLine("{0}{1}\n", this.Albums.IndexOf(album) + 1, album.Name);
-                    }
-                    succes = int.TryParse(Console.ReadLine(), out choice);
-                    if (succes && this.Albums.Count() >= choice - 1)
-                    {
-                        if (caller.FollowAlbums.Contains(this.Albums[choice - 1]))
+                        Console.WriteLine("Seleccione el álbum que quiere ver sus canciones o -1 para salir");
+                        foreach (Album album in albums)
                         {
-                            Console.WriteLine("Ya esta siguiendo a este album, volviendo al menu...\n");
-                            Thread.Sleep(1000);
-                            Console.Clear();
+                            Console.WriteLine("{0} {1}\n", albums.IndexOf(album) + 1, album.Name);
+                        }
+                        while (choice2 == 0)
+                        {
+                            try
+                            {
+                                choice2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Ingrese un numero para seleccionar un album\n");
+                            }
+                        }
+                        try
+                        {
+                            a=albums[choice2 - 1].ShowAlbumsSong();
+                            
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            if (choice == -1)
+                            {
+                                Console.WriteLine("Saliendo de Follow");
+                            }
+                            Console.WriteLine("Seleccione un album dentro del rango o ingrese -1 para salir\n");
+                            choice = 0;
+                        }
+
+                        if (a != null)
+                        {
+                            if (caller.FollowAlbums.Contains(a))
+                            {
+                                Console.WriteLine("Ya esta siguiendo a este álbum");
+                                Console.WriteLine("¿Desea intentar con otro álbum?");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                caller.FollowAlbums.Add(a);
+                                Console.WriteLine("Follow realizado correctamente");
+                                Console.WriteLine("¿Desea seguir otro album?\n1: si\n2:no");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+
+                            }
                         }
                         else
                         {
-                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
-                            Console.WriteLine("Follow realizado correctamente");
+                            Console.WriteLine("Volviendo al menu...\n");
                             Thread.Sleep(1000);
                             Console.Clear();
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
-                        Thread.Sleep(1000);
-                        Console.Clear();
-                    }
-                    break;
-                case "Playlists":
-                    Console.WriteLine("Seleccione la playlist que quiere seguir");
-                    foreach (Playlist playlist in this.Playlists)
-                    {
-                        Console.WriteLine("{0}{1}\n", this.Playlists.IndexOf(playlist) + 1, playlist.PlaylistName);
-                    }
-                    succes = int.TryParse(Console.ReadLine(), out choice);
-                    if (succes && this.Albums.Count() >= choice - 1)
-                    {
-                        if (caller.FollowPlaylist.Contains(this.Playlists[choice - 1]))
-                        {
-                            Console.WriteLine("Ya esta siguiendo a esta playlist, volviendo al menu...\n");
-                            Thread.Sleep(1000);
-                            Console.Clear();
-                        }
-                        else
-                        {
-                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
-                            Console.WriteLine("Follow realizado correctamente");
-                            Thread.Sleep(1000);
-                            Console.Clear();
+                            break;
                         }
 
                     }
-                    else
+                    break;
+                case "Playlists":
+                    while (choice4 == 0)
                     {
-                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
-                        Thread.Sleep(1000);
-                        Console.Clear();
+                        Console.WriteLine("Seleccione la playlist que desee ver o -1 para salir");
+                        foreach (Playlist playlist in playlists)
+                        {
+                            Console.WriteLine("{0} {1} {2}\n", playlists.IndexOf(playlist) + 1, playlist.PlaylistName, playlist.Userowner);
+                        }
+                        while (choice2 == 0)
+                        {
+                            try
+                            {
+                                choice2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Ingrese un numero para seleccionar una playlist\n");
+                            }
+                        }
+                        try
+                        {
+                            p = playlists[choice2 - 1].ShowPlaylist();
+
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            if (choice == -1)
+                            {
+                                Console.WriteLine("Saliendo de Follow");
+                            }
+                            Console.WriteLine("Seleccione una playlist dentro del rango o ingrese -1 para salir\n");
+                            choice = 0;
+                        }
+
+                        if (p != null)
+                        {
+                            if (caller.FollowPlaylist.Contains(p))
+                            {
+                                Console.WriteLine("Ya esta siguiendo a esta playlist");
+                                Console.WriteLine("¿Desea intentar con otra playlist?");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                caller.FollowPlaylist.Add(p);
+                                Console.WriteLine("Follow realizado correctamente");
+                                Console.WriteLine("¿Desea seguir otra playlist?\n1: si\n2:no");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                            break;
+                        }
+
                     }
                     break;
                 case "Artists":
-                    Console.WriteLine("Seleccione al artista que quiere seguir");
-                    foreach (Artist artist in this.Artists)
+                    while (choice4 == 0)
                     {
-                        Console.WriteLine("{0}{1}\n", this.Artists.IndexOf(artist) + 1, artist.Name);
-                    }
-                    succes = int.TryParse(Console.ReadLine(), out choice);
-                    if (succes && this.Artists.Count() >= choice - 1)
-                    {
-                        if (caller.FollowArtist.Contains(this.Artists[choice - 1]))
+                        Console.WriteLine("Seleccione el artista que desee ver  o -1 para salir");
+                        foreach (Artist artist in artists)
                         {
-                            Console.WriteLine("Ya esta siguiendo a este artista, volviendo al menu...\n");
-                            Thread.Sleep(1000);
-                            Console.Clear();
+                            Console.WriteLine("{0} {1}\n", artists.IndexOf(artist) + 1, artist.Name);
+                        }
+                        while (choice2 == 0)
+                        {
+                            try
+                            {
+                                choice2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Ingrese un numero para seleccionar un artista\n");
+                            }
+                        }
+                        try
+                        {
+                            ar = artists[choice2 - 1].ShowArtist();
+
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            if (choice == -1)
+                            {
+                                Console.WriteLine("Saliendo de Follow");
+                            }
+                            Console.WriteLine("Seleccione un artista dentro del rango o ingrese -1 para salir\n");
+                            choice = 0;
+                        }
+
+                        if (ar != null)
+                        {
+                            if (caller.FollowArtist.Contains(ar))
+                            {
+                                Console.WriteLine("Ya esta siguiendo a este artista");
+                                Console.WriteLine("¿Desea intentar con otro artista?");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                caller.FollowArtist.Add(ar);
+                                Console.WriteLine("Follow realizado correctamente");
+                                Console.WriteLine("¿Desea seguir otro artista?\n1: si\n2:no");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+
+                            }
                         }
                         else
                         {
-                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
-                            Console.WriteLine("Follow realizado correctamente");
+                            Console.WriteLine("Volviendo al menu...\n");
                             Thread.Sleep(1000);
                             Console.Clear();
+                            break;
                         }
-                        caller.FollowPlaylist.Add(this.Playlists[choice - 1]);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
-                        Thread.Sleep(1000);
-                        Console.Clear();
+
                     }
                     break;
                 case "Series":
-                    Console.WriteLine("Seleccione la Serie que quiere seguir");
-                    foreach (Series serie in this.Series)
+                    while (choice4 == 0)
                     {
-                        Console.WriteLine("{0}{1}\n", this.Series.IndexOf(serie) + 1, serie.SerieName);
-                    }
-                    succes = int.TryParse(Console.ReadLine(), out choice);
-                    if (succes && this.Series.Count() >= choice - 1)
-                    {
-                        if (caller.FollowSeries.Contains(this.Series[choice - 1]))
+                        Console.WriteLine("Seleccione la serie que desee ver  o -1 para salir");
+                        foreach (Series serie in series)
                         {
-                            Console.WriteLine("Ya esta siguiendo a esta Serie, volviendo al menu...\n");
-                            Thread.Sleep(1000);
-                            Console.Clear();
+                            Console.WriteLine("{0} {1} {3}\n", series.IndexOf(serie) + 1, serie.SerieName, serie.NofVideos);
+                        }
+                        while (choice2 == 0)
+                        {
+                            try
+                            {
+                                choice2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Ingrese un numero para seleccionar una serie\n");
+                            }
+                        }
+                        try
+                        {
+                            s = series[choice2 - 1].ShowSerie();
+
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            if (choice == -1)
+                            {
+                                Console.WriteLine("Saliendo de Follow");
+                            }
+                            Console.WriteLine("Seleccione una serie dentro del rango o ingrese -1 para salir\n");
+                            choice = 0;
+                        }
+
+                        if (s != null)
+                        {
+                            if (caller.FollowSeries.Contains(s))
+                            {
+                                Console.WriteLine("Ya esta siguiendo esta serie");
+                                Console.WriteLine("¿Desea intentar con otra serie?");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                caller.FollowSeries.Add(s);
+                                Console.WriteLine("Follow realizado correctamente");
+                                Console.WriteLine("¿Desea seguir otra serie?\n1: si\n2:no");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+
+                            }
                         }
                         else
                         {
-                            caller.FollowAlbums.Add(this.Albums[choice - 1]);
-                            Console.WriteLine("Follow realizado correctamente");
+                            Console.WriteLine("Volviendo al menu...\n");
                             Thread.Sleep(1000);
                             Console.Clear();
+                            break;
                         }
-                        caller.FollowPlaylist.Add(this.Playlists[choice - 1]);
+
                     }
-                    else
+                    break;
+
+                case "Teacher":
+                    while (choice4 == 0)
                     {
-                        Console.WriteLine("Formato invalido, volviendo al menu...\n");
-                        Thread.Sleep(1000);
-                        Console.Clear();
+                        Console.WriteLine("Seleccione el profesor que desee ver  o -1 para salir");
+                        foreach (Teacher teacher in teachers)
+                        {
+                            Console.WriteLine("{0} {1} {3} {4}\n", teachers.IndexOf(teacher) + 1, teacher.Name, teacher.Lastname, teacher.Course);
+                        }
+                        while (choice2 == 0)
+                        {
+                            try
+                            {
+                                choice2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Ingrese un numero para seleccionar un profesor\n");
+                            }
+                        }
+                        try
+                        {
+                            t = teachers[choice2 - 1].ShowTeacher();
+
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            if (choice == -1)
+                            {
+                                Console.WriteLine("Saliendo de Follow");
+                            }
+                            Console.WriteLine("Seleccione un profesor dentro del rango o ingrese -1 para salir\n");
+                            choice = 0;
+                        }
+
+                        if (t != null)
+                        {
+                            if (caller.FollowTeachers.Contains(t))
+                            {
+                                Console.WriteLine("Ya esta siguiendo este profesor");
+                                Console.WriteLine("¿Desea intentar con otro profesor?");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                caller.FollowTeachers.Add(t);
+                                Console.WriteLine("Follow realizado correctamente");
+                                Console.WriteLine("¿Desea seguir otro profesor?\n1: si\n2:no");
+                                choice3 = Console.ReadLine();
+                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                {
+                                    choice4 = 0;
+                                }
+                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                {
+                                    Console.WriteLine("Saliendo al menú");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Opcion inválida, volviendo al menú");
+                                    break;
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Volviendo al menu...\n");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                            break;
+                        }
+
                     }
                     break;
 
@@ -2683,10 +3466,9 @@ namespace Spotflix
         {
             string destination = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             string source = song.Route;
-            System.IO.File.Copy(source, destination, true);
-
-            
+            System.IO.File.Copy(source, destination, true); 
         }
+        
     }
 
 }

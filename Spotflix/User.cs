@@ -20,6 +20,8 @@ namespace Spotflix
         private List<Song> likedSongs = new List<Song>();
         private List<Video> likedVideos = new List<Video>();
         private List<Song> downloadSongs = new List<Song>();
+        private List<Song> queque = new List<Song>();
+
 
         private int screenNumber;
         private List<Playlist> myPlaylist = new List<Playlist>();
@@ -28,8 +30,7 @@ namespace Spotflix
         private List<Playlist> followPlaylist = new List<Playlist>();
         private List<Artist> followArtist = new List<Artist>();
         private List<Series> followSeries = new List<Series>();
-
-
+        private List<Teacher> followTeachers = new List<Teacher>();
 
 
         public User(int userID, string gmail, string nickname, string password, string membershipType, string name, string lastName, int age, string country, string city, string street, string postalCode)
@@ -65,6 +66,8 @@ namespace Spotflix
         public List<Artist> FollowArtist { get => followArtist; set => followArtist = value; }
         public List<Series> FollowSeries { get => followSeries; set => followSeries = value; }
         public List<Song> DownloadSongs { get => downloadSongs; set => downloadSongs = value; }
+        public List<Teacher> FollowTeachers { get => followTeachers; set => followTeachers = value; }
+        public List<Song> Queque { get => queque; set => queque = value; }
 
         public void AddToFavorite(Song song) //listo
         {
@@ -351,7 +354,7 @@ namespace Spotflix
             }
             else
             {
-                Console.WriteLine("No se encontraron playlist");
+                Console.WriteLine("No se encontraron playlist en el usuario");
                 return null;
             }
 
