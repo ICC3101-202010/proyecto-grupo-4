@@ -10,6 +10,9 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using System.Runtime.InteropServices;
+using System.Windows.Forms.VisualStyles;
+using Microsoft.WindowsAPICodePack.Shell;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Spotflix
 {
@@ -384,22 +387,35 @@ namespace Spotflix
 
                                 bool nickcheck = false;
                                 bool mailcheck = false;
+                                bool passcheck = false;
                                 string nickName = "";
                                 string gmail = "";
+                                string passWord = "";
                                 while (!mailcheck)
                                 {
                                     Console.WriteLine("Ingrese su Gmail:");
                                     gmail = Console.ReadLine();
                                     mailcheck = Gate.CheckGmail(gmail);
+                                    mailcheck = String.IsNullOrEmpty(gmail);
                                 }
                                 while (!nickcheck)
                                 {
                                     Console.WriteLine("Ingrese su nombre de usuario:");
                                     nickName = Console.ReadLine();
                                     nickcheck = Gate.checkUsername(nickName);
+                                    nickcheck = String.IsNullOrEmpty(nickName);
                                 }
-                                Console.WriteLine("Ingrese su contraseña:");
-                                string passWord = Console.ReadLine();
+                                while (!passcheck)
+                                {
+                                    Console.WriteLine("Ingrese su contraseña:");
+                                    passWord = Console.ReadLine();
+                                    passcheck = string.IsNullOrEmpty(passWord);
+                                    if (passcheck)
+                                    {
+                                        Console.WriteLine("Ingrese una contraseña no vacia");
+                                    }
+                                }
+
                                 if (nickcheck && mailcheck)
                                 {
                                     User u1 = new User(num, gmail, nickName, passWord, "no pago", name, lastName, age, country, city, street, PostalCode);
@@ -417,8 +433,10 @@ namespace Spotflix
                                 {
                                     bool nickchecka = false;
                                     bool mailchecka = false;
+                                    bool passcheck1 = false;
                                     string nickNamea = "";
                                     string gmaila = "";
+                                    string passWorda = "";
                                     while (!mailchecka)
                                     {
                                         Console.WriteLine("Ingrese su Gmail");
@@ -431,8 +449,17 @@ namespace Spotflix
                                         nickNamea = Console.ReadLine();
                                         nickchecka = Gate.checkUsernameA(nickNamea);
                                     }
-                                    Console.WriteLine("Ingrese su contraseña");
-                                    string passWorda = Console.ReadLine();
+                                    while (!passcheck1)
+                                    {
+                                        Console.WriteLine("Ingrese su contraseña");
+                                        passWorda = Console.ReadLine();
+                                        passcheck1 = string.IsNullOrEmpty(passWorda);
+                                        if (passcheck1)
+                                        {
+                                            Console.WriteLine("Ingrese una contraseña no vacia");
+                                        }
+                                    }
+
                                     if (nickchecka && mailchecka)
                                     {
                                         Admin a1 = new Admin(nickNamea, gmaila, key, passWorda);
@@ -454,10 +481,12 @@ namespace Spotflix
                                 {
                                     bool nickcheckp = false;
                                     bool mailcheckp = false;
+                                    bool passcheck2 = false;
                                     string nickNamep = "";
                                     string gmailp = "";
                                     string namet="";
                                     string lastname = "";
+                                    string passWordp = "";
                                     while (!mailcheckp)
                                     {
                                         Console.WriteLine("Ingrese su Gmail:");
@@ -474,11 +503,17 @@ namespace Spotflix
                                     namet = Console.ReadLine();
                                     Console.WriteLine("Ingrese su apellido:");
                                     lastname = Console.ReadLine();
-                                        
 
-
-                                    Console.WriteLine("Ingrese su contraseña:");
-                                    string passWordp = Console.ReadLine();
+                                    while (!passcheck2)
+                                    {
+                                        Console.WriteLine("Ingrese su contraseña");
+                                        passWordp = Console.ReadLine();
+                                        passcheck2 = string.IsNullOrEmpty(passWordp);
+                                        if (passcheck2)
+                                        {
+                                            Console.WriteLine("Ingrese una contraseña no vacia");
+                                        }
+                                    }
                                     if (nickcheckp && mailcheckp)
                                     {
                                         Console.WriteLine("Ingrese el curso que desea tener:");
@@ -805,7 +840,7 @@ namespace Spotflix
 
                                                                 break;
                                                             case "4":
-                                                                comunitystopper = false;
+                                                                comunitystopper = true ;
                                                                 break;
                                                             default:
                                                                 Console.WriteLine("Opcion invalida intente nuevamente...");
@@ -819,7 +854,7 @@ namespace Spotflix
                                                     bool playliststopper = false;
                                                     while (!playliststopper)
                                                     {
-                                                        Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t()Cualquier otro caracter para volver al menu anterior\n");
+                                                        Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t(5)Crear playlist de canciones basada en tus preferencias(6)\nCrear playlist de videos basada en tus preferencias(7)Para volver al menu anterior\n");
                                                         string playlistfilter = Console.ReadLine();
                                                         switch (playlistfilter)
                                                         {
@@ -960,8 +995,42 @@ namespace Spotflix
                                                                     mediaPlayer.AlbumStarter(namea, upa1, "Qualification");
                                                                 }
                                                                 break;
+                                                            case "5":
+                                                                List<Song> temp = mediaPlayer.CreateRecommendedListS(user);
+                                                                Console.WriteLine("Estas son las canciones de la playlist generada automaticamente:\n");
+                                                                foreach (Song song in temp)
+                                                                {
+                                                                    Console.WriteLine(song.Name);
+                                                                }
+                                                                bool anwser = false;
+                                                                
+                                                                while (!anwser)
+                                                                {
+                                                                    Console.WriteLine("Desea añadir la playlist a sus playlist? Y/N");
+                                                                    string response = Console.ReadLine();
+                                                                    if (response=="Y")
+                                                                    {
+                                                                        bool nullcheck = false;
+                                                                        while (!nullcheck)
+                                                                        {
+                                                                            string name = Console.ReadLine();
+                                                                            nullcheck = String.IsNullOrEmpty(name);
+                                                                        }
+                                                                        
+                                                                    }
+
+                                                                }
+
+                                                                break;
+                                                            case "6":
+                                                                break;
+                                                            case "7":
+                                                                playliststopper = true;
+                                                                break;
                                                             default:
-                                                                playliststopper = false;
+                                                                Console.WriteLine("Opcion invalida intente nuevamente...");
+                                                                Thread.Sleep(1000);
+                                                                Console.Clear();
                                                                 break;
                                                         }
                                                     }
@@ -970,12 +1039,528 @@ namespace Spotflix
                                                     bool followstopper = false;
                                                     while (!followstopper)
                                                     {
-                                                        Console.WriteLine("Si desea:\n\t(1)Reproducir Playlist de tu seguidas\n\t(2)Reproducir favoritos de tus usarios seguidos\n\t(3)Reproducir album de tus seguidss\n\t(5)Reproducir canciones de tus artistas seguidos\n\t(6)Reproducir videos de tus series seguidas\n\t(7)Reproducir clases de tus profesores seguidos\n\t(8)Volver al menu principal\n");
+                                                        Console.WriteLine("Si desea:\n\t(1)Reproducir tus playlist\n\t(2)Reproducir playlist de tus usarios seguidos\n\t(3)Reproducir cancion de album de tus seguidos\n\t(4)Reproducir cancion o video de tus artistas seguidos\n\t(5)Reproducir tus series seguidas\n\t(6)Reproducir clase de tus profesores seguidos\n\t(7)Volver al menu principal\n");
                                                         string followfilter = Console.ReadLine();
                                                         switch (followfilter)
                                                         {
+                                                            case "1"://Listo
+                                                                if (user.FollowPlaylist.Count()!=0)
+                                                                {
+                                                                    bool success = false;
+                                                                    int pchoice = 0;
+                                                                    Console.WriteLine("Seleccione la playlist a escuchar:\n");
+                                                                    foreach (Playlist playlist in user.FollowPlaylist)
+                                                                    {
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowPlaylist.IndexOf(playlist), playlist.PlaylistName);
+                                                                    }
+                                                                    while (!success)
+                                                                    {
+                                                                        success = int.TryParse(Console.ReadLine(), out pchoice);
+                                                                        if (!success)
+                                                                        {
+                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            pchoice--;
+                                                                        }
+                                                                        if (user.FollowPlaylist.Count() >= pchoice)
+                                                                        {
+                                                                            mediaPlayer.Play((user.FollowPlaylist[pchoice]), user);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                            success = false;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No tienes playlist seguida, volviendo al menu anterior...\n");
+                                                                    Thread.Sleep(1000);
+                                                                    Console.Clear();
+                                                                }                                
+                                                                break;
+                                                            case "2"://Listo
+                                                                if (user.FollowUsers.Count()!=0)
+                                                                {
+                                                                    bool success2 = false;
+                                                                    int uchoice = 0;
+                                                                    Console.WriteLine("Seleccione el usuario:\n");
+                                                                    foreach (User followed in user.FollowUsers)
+                                                                    {
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowUsers.IndexOf(followed), followed.Name);
+                                                                    }
+                                                                    while (!success2)
+                                                                    {
+                                                                        success2 = int.TryParse(Console.ReadLine(), out uchoice);
+                                                                        if (!success2)
+                                                                        {
+                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            uchoice--;
+                                                                        }
+                                                                        if (user.FollowUsers.Count() >= uchoice)
+                                                                        {
+                                                                            if (user.FollowUsers[uchoice].MyPlaylist.Count()!=0)
+                                                                            {
+                                                                                bool internesuccess = false;
+                                                                                int intern = 0;
+                                                                                Console.WriteLine("Seleccione la playlist a escuchar:\n");
+                                                                                foreach (Playlist playlist in user.FollowUsers[uchoice].MyPlaylist)
+                                                                                {
+                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowUsers[uchoice].MyPlaylist.IndexOf(playlist), playlist.PlaylistName);
+                                                                                }
+                                                                                while (!internesuccess)
+                                                                                {
+                                                                                    internesuccess = int.TryParse(Console.ReadLine(), out intern);
+                                                                                    if (!internesuccess)
+                                                                                    {
+                                                                                        Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                        Thread.Sleep(1000);
+                                                                                        Console.Clear();
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        intern--;
+                                                                                    }
+                                                                                    if (user.FollowUsers.Count() >= intern)
+                                                                                    {
+                                                                                        mediaPlayer.Play(user.FollowUsers[uchoice].MyPlaylist[intern], user);
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                        Thread.Sleep(1000);
+                                                                                        Console.Clear();
+                                                                                        internesuccess = false;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                Console.WriteLine("El usuario seguido no tiene playlists, volviendo al menu anterior..\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                            success2 = false;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("no tienes usuario seguidos, volviendo al menu anterior..\n");
+                                                                    Thread.Sleep(1000);
+                                                                    Console.Clear();
+                                                                }                                                               
+                                                                break;
+                                                            case "4"://Artistas
+                                                                if (user.FollowArtist.Count()!=0)
+                                                                {
+                                                                    Console.WriteLine("Si desea:\n\t(1)Reproducir videos del artista(2)Reproduciir canciones del artista()Cualquier caracter para volver al menu anterior\n");
+                                                                    string sov = Console.ReadLine();
+                                                                    if (sov=="1")
+                                                                    {
+                                                                        bool success3 = false;
+                                                                        int achoice = 0;
+                                                                        Console.WriteLine("Seleccione el artista a escuchar:\n");
+                                                                        foreach (Artist artist in user.FollowArtist)
+                                                                        {
+                                                                            Console.WriteLine("({0}) {1}\n", user.FollowArtist.IndexOf(artist), artist.Name);
+                                                                        }
+                                                                        while (!success3)
+                                                                        {
+                                                                            success3 = int.TryParse(Console.ReadLine(), out achoice);
+                                                                            if (!success3)
+                                                                            {
+                                                                                Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                achoice--;
+                                                                            }
+                                                                            if (user.FollowArtist.Count() >= achoice)
+                                                                            {
+                                                                                if (user.FollowArtist[achoice].Videos.Count() != 0)
+                                                                                {
+                                                                                    bool successintern = false;
+                                                                                    int schoiceintern = 0;
+                                                                                    Console.WriteLine("Seleccione el video a ver:\n");
+                                                                                    foreach (Video video in user.FollowArtist[achoice].Videos)
+                                                                                    {
+                                                                                        Console.WriteLine("({0}) {1}\n", user.FollowArtist[achoice].Videos.IndexOf(video), video.Name);
+                                                                                    }
+                                                                                    while (!successintern)
+                                                                                    {
+                                                                                        successintern = int.TryParse(Console.ReadLine(), out schoiceintern);
+                                                                                        if (!successintern)
+                                                                                        {
+                                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                            Thread.Sleep(1000);
+                                                                                            Console.Clear();
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            schoiceintern--;
+                                                                                        }
+                                                                                        if (user.FollowArtist.Count() >= schoiceintern)
+                                                                                        {
+                                                                                            mediaPlayer.Play((user.FollowArtist[achoice].Songs[schoiceintern]), user);
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                            Thread.Sleep(1000);
+                                                                                            Console.Clear();
+                                                                                            successintern = false;
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    Console.WriteLine("El artista seguido no tiene videos, volviendo al menu anterior..\n");
+                                                                                    Thread.Sleep(1000);
+                                                                                    Console.Clear();
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                                success3 = false;
+                                                                            }
 
+
+                                                                        }
+                                                                    }
+                                                                    else if (sov=="2")
+                                                                    {
+                                                                        bool success3 = false;
+                                                                        int achoice = 0;
+                                                                        Console.WriteLine("Seleccione el artista a escuchar:\n");
+                                                                        foreach (Artist artist in user.FollowArtist)
+                                                                        {
+                                                                            Console.WriteLine("({0}) {1}\n", user.FollowArtist.IndexOf(artist), artist.Name);
+                                                                        }
+                                                                        while (!success3)
+                                                                        {
+                                                                            success3 = int.TryParse(Console.ReadLine(), out achoice);
+                                                                            if (!success3)
+                                                                            {
+                                                                                Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                achoice--;
+                                                                            }
+                                                                            if (user.FollowPlaylist.Count() >= achoice)
+                                                                            {
+                                                                                if (user.FollowArtist[achoice].Songs.Count() != 0)
+                                                                                {
+                                                                                    bool successintern = false;
+                                                                                    int schoiceintern = 0;
+                                                                                    Console.WriteLine("Seleccione la cancion a escuchar:\n");
+                                                                                    foreach (Song song in user.FollowArtist[achoice].Songs)
+                                                                                    {
+                                                                                        Console.WriteLine("({0}) {1}\n", user.FollowArtist[achoice].Songs.IndexOf(song), song.Name);
+                                                                                    }
+                                                                                    while (!successintern)
+                                                                                    {
+                                                                                        successintern = int.TryParse(Console.ReadLine(), out schoiceintern);
+                                                                                        if (!successintern)
+                                                                                        {
+                                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                            Thread.Sleep(1000);
+                                                                                            Console.Clear();
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            schoiceintern--;
+                                                                                        }
+                                                                                        if (user.FollowArtist.Count() >= schoiceintern)
+                                                                                        {
+                                                                                            mediaPlayer.Play((user.FollowArtist[achoice].Songs[schoiceintern]), user);
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                            Thread.Sleep(1000);
+                                                                                            Console.Clear();
+                                                                                            successintern = false;
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    Console.WriteLine("El artista seguido no tiene canciones, volviendo al menu anterior..\n");
+                                                                                    Thread.Sleep(1000);
+                                                                                    Console.Clear();
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                                success3 = false;
+                                                                            }
+
+
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        Console.WriteLine("Volviendo al menu anterior..\n");
+                                                                        Thread.Sleep(1000);
+                                                                        Console.Clear();
+                                                                    }
+                                                               
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No tienes artistas seguidos, volviendo al menu anterior..\n");
+                                                                    Thread.Sleep(1000);
+                                                                    Console.Clear();
+                                                                }
+                                                                break;
+                                                            case "3"://Albums
+                                                                if (user.FollowAlbums.Count()!=0)
+                                                                {                                                                   
+                                                                    bool success3 = false;
+                                                                    int achoice = 0;
+                                                                    Console.WriteLine("Seleccione el album a escuchar:\n");
+                                                                    foreach (Album item in user.FollowAlbums)
+                                                                    {
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowAlbums.IndexOf(item), item.Name);
+                                                                    }
+                                                                    while (!success3)
+                                                                    {
+                                                                        success3 = int.TryParse(Console.ReadLine(), out achoice);
+                                                                        if (!success3)
+                                                                        {
+                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            achoice--;
+                                                                        }
+                                                                        if (user.FollowAlbums.Count() >= achoice)
+                                                                        {
+                                                                            if (user.FollowAlbums[achoice].Songs.Count() != 0)
+                                                                            {
+                                                                                bool successintern = false;
+                                                                                int schoiceintern = 0;
+                                                                                Console.WriteLine("Seleccione la cancion a escuchar:\n");
+                                                                                foreach (Song song in user.FollowAlbums[achoice].Songs)
+                                                                                {
+                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowAlbums[achoice].Songs.IndexOf(song), song.Name);
+                                                                                }
+                                                                                while (!successintern)
+                                                                                {
+                                                                                    successintern = int.TryParse(Console.ReadLine(), out schoiceintern);
+                                                                                    if (!successintern)
+                                                                                    {
+                                                                                        Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                        Thread.Sleep(1000);
+                                                                                        Console.Clear();
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        schoiceintern--;
+                                                                                    }
+                                                                                    if (user.FollowAlbums.Count() >= schoiceintern)
+                                                                                    {
+                                                                                        mediaPlayer.Play((user.FollowAlbums[achoice].Songs[schoiceintern]), user);
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                        Thread.Sleep(1000);
+                                                                                        Console.Clear();
+                                                                                        successintern = false;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                Console.WriteLine("El album seguido no tiene canciones, volviendo al menu anterior..\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                            success3 = false;
+                                                                        }
+                                                                    }                                                                    
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No tienes albums seguidos, volviendo al menu anterior..\n");
+                                                                    Thread.Sleep(1000);
+                                                                    Console.Clear();
+                                                                }
+                                                                break;
+                                                            case "5"://Series
+                                                                if (user.FollowSeries.Count() != 0)
+                                                                {
+                                                                    bool success = false;
+                                                                    int pchoice = 0;
+                                                                    Console.WriteLine("Seleccione la serie a ver:\n");
+                                                                    foreach (Series serie in user.FollowSeries)
+                                                                    {
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowSeries.IndexOf(serie), serie.SerieName);
+                                                                    }
+                                                                    while (!success)
+                                                                    {
+                                                                        success = int.TryParse(Console.ReadLine(), out pchoice);
+                                                                        if (!success)
+                                                                        {
+                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            pchoice--;
+                                                                        }
+                                                                        if (user.FollowSeries.Count() >= pchoice)
+                                                                        {
+                                                                            mediaPlayer.Play((user.FollowSeries[pchoice]), user);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                            success = false;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No tienes series seguida, volviendo al menu anterior...\n");
+                                                                    Thread.Sleep(1000);
+                                                                    Console.Clear();
+                                                                }
+                                                                break;
+                                                            case "6"://teachers
+                                                                if (user.FollowTeachers.Count()!=0)
+                                                                {
+                                                                    bool success3 = false;
+                                                                    int achoice = 0;
+                                                                    Console.WriteLine("Seleccione el profesor:\n");
+                                                                    foreach (Teacher item in user.FollowTeachers)
+                                                                    {
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowTeachers.IndexOf(item), item.Name);
+                                                                    }
+                                                                    while (!success3)
+                                                                    {
+                                                                        success3 = int.TryParse(Console.ReadLine(), out achoice);
+                                                                        if (!success3)
+                                                                        {
+                                                                            Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            achoice--;
+                                                                        }
+                                                                        if (user.FollowTeachers.Count() >= achoice)
+                                                                        {
+                                                                            if (user.FollowTeachers[achoice].Lessons.Count() != 0)
+                                                                            {
+                                                                                bool successintern = false;
+                                                                                int schoiceintern = 0;
+                                                                                Console.WriteLine("Seleccione el video a ver:\n");
+                                                                                foreach (Lesson les in user.FollowTeachers[achoice].Lessons)
+                                                                                {
+                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowTeachers[achoice].Lessons.IndexOf(les), les.Name);
+                                                                                }
+                                                                                while (!successintern)
+                                                                                {
+                                                                                    successintern = int.TryParse(Console.ReadLine(), out schoiceintern);
+                                                                                    if (!successintern)
+                                                                                    {
+                                                                                        Console.WriteLine("Formato invalido, ingrese un numero...\n");
+                                                                                        Thread.Sleep(1000);
+                                                                                        Console.Clear();
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        schoiceintern--;
+                                                                                    }
+                                                                                    if (user.FollowArtist.Count() >= schoiceintern)
+                                                                                    {
+                                                                                        mediaPlayer.Play((user.FollowTeachers[achoice].Lessons[schoiceintern]), user);
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                                        Thread.Sleep(1000);
+                                                                                        Console.Clear();
+                                                                                        successintern = false;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                Console.WriteLine("El artista seguido no tiene videos, volviendo al menu anterior..\n");
+                                                                                Thread.Sleep(1000);
+                                                                                Console.Clear();
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Console.WriteLine("Seleccione una opcion dentro del rango...\n");
+                                                                            Thread.Sleep(1000);
+                                                                            Console.Clear();
+                                                                            success3 = false;
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("No tienes profesores seguidos, volviendo al menu anterior...\n");
+                                                                    Thread.Sleep(1000);
+                                                                    Console.Clear();
+                                                                }
+                                                                
+                                                                break;
+                                                            case "7":
+                                                                followstopper = true;
+                                                                Console.Clear();
+                                                                break;
                                                             default:
+                                                                Console.WriteLine("Opcion invalida intente nuevamente...");
+                                                                Thread.Sleep(1000);
+                                                                Console.Clear();
                                                                 break;
                                                         }
                                                     }
@@ -992,9 +1577,6 @@ namespace Spotflix
                                     }
                                     else { Thread.Sleep(1000); Console.Clear(); }
                                     break;
-
-
-
 
                                 case "2": //Administrador
                                     Console.WriteLine("Ingrese su codigo de administrador");
