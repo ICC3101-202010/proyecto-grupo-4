@@ -1,0 +1,17 @@
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe.config
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.pdb
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb

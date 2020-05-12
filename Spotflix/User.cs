@@ -33,7 +33,7 @@ namespace Spotflix
         private List<Teacher> followTeachers = new List<Teacher>();
 
 
-        public User(int userID, string gmail, string nickname, string password, string membershipType, string name, string lastName, int age, string country, string city, string street, string postalCode)
+        public User(int userID, string gmail, string nickname, string password, string membershipType, string name, string lastName, int age, string country, string city, string street, int postalCode)
         {
             this.userID = userID;
             this.Gmail = gmail;
@@ -120,32 +120,6 @@ namespace Spotflix
             }
         }
 
-        public Playlist FavoritePlaylist() //falta
-        {
-            throw new NotImplementedException();
-        }
-
-        /* public void Follow()
-         {
-             MediaPlayer.Follow();
-         }
-         public void Close()
-         {
-             MediaPlayer.Close();
-         }
-         public void DownloadSong()
-         {
-             MediaPlayer.DownloadSong();
-         }
-         public void AddFile(Song song)
-         {
-             MediaPlayer.AddFile();
-         }
-         public void AddFile(Video video)
-         {
-             MediaPlayer.AddFile();
-         }
-         */
         public void OnAddSong(object source, SongEventArgs so)
         {
             int counter = 0;

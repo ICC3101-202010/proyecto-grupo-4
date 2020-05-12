@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms.VisualStyles;
 
 namespace Spotflix
 {
@@ -195,12 +196,12 @@ namespace Spotflix
             Teachers.Add(teacher);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
-        public static bool LogAsUser(string email_nickname, string password) //listo
+        public static User LogAsUser(string email_nickname, string password) //listo
         {
             if (Users.Count() == 0)
             {
                 Console.WriteLine("No existen usuarios registrado con esas caracteristicas\n");
-                return false;
+                return null;
             }
             else
             {
@@ -208,11 +209,11 @@ namespace Spotflix
                 {
                     if ((user.Nickname == email_nickname || user.Gmail == email_nickname) && user.Password == password)
                     {
-                        return true;
+                        return user;
                     }
                 }
                 Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
-                return false;
+                return null;
             }
         }
         public static bool LogAsAdmin(string code, string password) //listo
@@ -256,8 +257,8 @@ namespace Spotflix
             string usr = Console.ReadLine();
             Console.WriteLine("Ingresa tu contrasena: ");
             string pswd = Console.ReadLine();
-            bool result = LogAsUser(usr, pswd);
-            if (result == true)
+            User user = LogAsUser(usr, pswd);
+            if (user != null)
             {
                 Console.Write("Ingrese la nueva contrasena: ");
                 string newPsswd = Console.ReadLine();
@@ -266,7 +267,9 @@ namespace Spotflix
             else
             {
                 // Mostramos el error
-                Console.WriteLine("[!] ERROR: " + result + "\n");
+                Console.WriteLine("[!] ERROR: No se logro cambiar la contraseña\n");
+                Thread.Sleep(1000);
+                Console.Clear();
             }
         }
        

@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Shell;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
+
 
 
 namespace Spotflix
@@ -52,108 +55,82 @@ namespace Spotflix
             string[] filters = new[] { "*.wav" };
             string[] filePaths = filters.SelectMany(f => Directory.GetFiles(dir, f)).ToArray();
 
-            Console.WriteLine("Seleccione la cancion a añadir:\n");
-            foreach (string file in filePaths)
+            if (filePaths.Count()!=0)
             {
-                Console.WriteLine("{0} {1}\n", countofsongs, Path.GetFileName(file));
-                countofsongs++;
-            }
-            succes = int.TryParse(Console.ReadLine(), out choice);
-
-            if (succes && (filePaths.Count() >= (choice - 1)))
-            {
-                route = filePaths[choice - 1];
-            }
-            else
-            {
-                route = null;
-            }
-            if (route == null)
-            {
-                Console.WriteLine("Input invalido, volviendo al menu...");
-            }
-            else
-            {
-                //TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
-                Console.WriteLine("A continuacion ingrese los datos de la cancion:\n");
-                Console.WriteLine("Ingrese el nombre del artista:\n");
-                string artist = Console.ReadLine();
-                Console.WriteLine("Ingrese el nombre del album:\n");
-                string album = Console.ReadLine();
-                bool response = true;
-                bool aux = false;
-                while (response)
+                Console.WriteLine("Seleccione la cancion a añadir:\n");
+                foreach (string file in filePaths)
                 {
-                    Console.WriteLine("Ingrese si la cancion posee contenido explicito(no apto para menores Y/N\n");
-                    string expliciT = Console.ReadLine();
-                    if (expliciT == "Y")
-                    {
-                        aux = true;
-                        response = false;
-                    }
-                    else if (expliciT == "N")
-                    {
-                        aux = false;
-                        response = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ingrese una opcion valida\n");
-                    }
+                    Console.WriteLine("{0} {1}\n", countofsongs, Path.GetFileName(file));
+                    countofsongs++;
                 }
-                Console.WriteLine("Ingrese el genero de la cancion");
-                string genre = Console.ReadLine();
-                Console.WriteLine("Ingrese el año de la cancion");
-                int year = int.Parse(Console.ReadLine());
-                Console.WriteLine("Ingrese el nombre de la cancion");
-                string name = Console.ReadLine();
-                string image = null;
-                string destination = Path.Combine(Environment.CurrentDirectory + @"\Songs", Path.GetFileName(filePaths[choice - 1]));
-                System.IO.File.Copy(route, destination, true);
-                long fileSize = new System.IO.FileInfo(destination).Length;
-                Song song = new Song(artist, album, aux, name, genre, year, image, destination);
-                song.Route = destination;
-                song.FileSize = fileSize;
-                if (mediaPlayer.Songs.Count() == 0)
+                succes = int.TryParse(Console.ReadLine(), out choice);
+
+                if (succes && (filePaths.Count() > Math.Abs(choice - 1)))
                 {
-                    mediaPlayer.Songs.Add(song);
-                    foreach (Artist a in mediaPlayer.Artists)
-                    {
-                        if (a.Name == song.Artist) count3++;
-                    }
-                    if (count3 == 0)
-                    {
-                        namea = song.Artist;
-                        songsa.Add(song);
-                        classa = new Artist(karaokesa, songsa, videosa, namea);
-                        mediaPlayer.Artists.Add(classa);
-                    }
-                    else
-                    {
-                        foreach (Artist a in mediaPlayer.Artists)
-                        {
-                            if (song.Artist == a.Name && a.Songs.IndexOf(song) == 0) a.Songs.Add(song);
-
-                        }
-
-                    }
-                    List<string> artists = new List<string>();
-                    artists.Add(song.Artist);
-                    List<Song> songs = new List<Song>();
-                    songs.Add(song);
-                    Album al = new Album(song.Album, artists, 1, songs);
-                    mediaPlayer.Albums.Add(al);
+                    route = filePaths[choice - 1];
                 }
                 else
                 {
-                    foreach (Song i in mediaPlayer.Songs)
+                    route = null;
+                }
+                if (route == null)
+                {
+                    Console.WriteLine("Input invalido, volviendo al menu...");
+                }
+                else
+                {
+                    TimeSpan lenght = GetVideoDuration(route);
+                    Console.WriteLine("\nA continuacion ingrese los datos de la cancion:");
+                    Console.WriteLine("\nIngrese el nombre del artista:");
+                    string artist = Console.ReadLine();
+                    Console.WriteLine("\nIngrese el nombre del album:");
+                    string album = Console.ReadLine();
+                    bool response = true;
+                    bool aux = false;
+                    while (response)
                     {
-                        if (i.Name == song.Name && i.Artist == song.Artist)
+                        Console.WriteLine("\nIngrese si la cancion posee contenido explicito(no apto para menores Y/N)");
+                        string expliciT = Console.ReadLine();
+                        if (expliciT == "Y")
                         {
-                            count++;
+                            aux = true;
+                            response = false;
+                        }
+                        else if (expliciT == "N")
+                        {
+                            aux = false;
+                            response = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nIngrese una opcion valida");
                         }
                     }
-                    if (count == 0)
+                    Console.WriteLine("\nIngrese el genero de la cancion");
+                    string genre = Console.ReadLine();
+                    bool yearcheck = false;
+                    int year = 0;
+                    while (!yearcheck)
+                    {
+                        Console.WriteLine("\nIngrese el año de la cancion");
+                        yearcheck = int.TryParse(Console.ReadLine(), out year);
+                        if (!yearcheck)
+                        {
+                            Console.WriteLine("\nFormato invalido, intente nuevamente...");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                        }
+                    }
+                    Console.WriteLine("\nIngrese el nombre de la cancion");
+                    string name = Console.ReadLine();
+                    string image = null;
+                    string destination = Path.Combine(Environment.CurrentDirectory + @"\Songs", Path.GetFileName(filePaths[choice - 1]));
+                    System.IO.File.Copy(route, destination, true);
+                    long fileSize = new System.IO.FileInfo(destination).Length;
+                    Song song = new Song(artist, album, aux, name, genre, year, image, destination);
+                    song.Route = destination;
+                    song.FileSize = fileSize;
+                    if (mediaPlayer.Songs.Count() == 0)
                     {
                         mediaPlayer.Songs.Add(song);
                         foreach (Artist a in mediaPlayer.Artists)
@@ -176,31 +153,87 @@ namespace Spotflix
                             }
 
                         }
-                        foreach (Album a in mediaPlayer.Albums)
+                        List<string> artists = new List<string>();
+                        artists.Add(song.Artist);
+                        List<Song> songs = new List<Song>();
+                        songs.Add(song);
+                        Album al = new Album(song.Album, artists, 1, songs);
+                        mediaPlayer.Albums.Add(al);
+                    }
+                    else
+                    {
+                        foreach (Song i in mediaPlayer.Songs)
                         {
-                            if (a.Name == song.Album)
+                            if (i.Name == song.Name && i.Artist == song.Artist)
                             {
-                                count2++;
-                                a.Songs.Add(song);
-                                if (a.Artists.Contains(song.Artist) == false) a.Artists.Add(song.Artist);
-                                a.NumberSongs += 1;
-
+                                count++;
                             }
                         }
-                        if (count2 == 0)
+                        if (count == 0)
                         {
-                            List<string> artists = new List<string>();
-                            artists.Add(song.Artist);
-                            List<Song> songs = new List<Song>();
-                            songs.Add(song);
-                            Album al = new Album(song.Album, artists, 1, songs);
-                            mediaPlayer.Albums.Add(al);
+                            mediaPlayer.Songs.Add(song);
+                            foreach (Artist a in mediaPlayer.Artists)
+                            {
+                                if (a.Name == song.Artist) count3++;
+                            }
+                            if (count3 == 0)
+                            {
+                                namea = song.Artist;
+                                songsa.Add(song);
+                                classa = new Artist(karaokesa, songsa, videosa, namea);
+                                mediaPlayer.Artists.Add(classa);
+                            }
+                            else
+                            {
+                                foreach (Artist a in mediaPlayer.Artists)
+                                {
+                                    if (song.Artist == a.Name && a.Songs.IndexOf(song) == 0) a.Songs.Add(song);
+
+                                }
+
+                            }
+                            foreach (Album a in mediaPlayer.Albums)
+                            {
+                                if (a.Name == song.Album)
+                                {
+                                    count2++;
+                                    a.Songs.Add(song);
+                                    if (a.Artists.Contains(song.Artist) == false) a.Artists.Add(song.Artist);
+                                    a.NumberSongs += 1;
+
+                                }
+                            }
+                            if (count2 == 0)
+                            {
+                                List<string> artists = new List<string>();
+                                artists.Add(song.Artist);
+                                List<Song> songs = new List<Song>();
+                                songs.Add(song);
+                                Album al = new Album(song.Album, artists, 1, songs);
+                                mediaPlayer.Albums.Add(al);
+                            }
                         }
+                        else Console.WriteLine("Esa canción ya existe");
                     }
-                    else Console.WriteLine("Esa canción ya existe");
                 }
             }
+            else
+            {
+                Console.WriteLine("No hay canciones en el directorio solicitado\nVolviendo al menu...");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            
         }//Listo
+        private  TimeSpan GetVideoDuration(string filePath)
+        {
+            using (var shell = ShellObject.FromParsingName(filePath))
+            {
+                IShellProperty prop = shell.Properties.System.Media.Duration;
+                var t = (ulong)prop.ValueAsObject;
+                return TimeSpan.FromTicks((long)t);
+            }
+        }
         public void ImportVideo(MediaPlayer mediaPlayer)
         {
             int count = 0;
@@ -218,111 +251,61 @@ namespace Spotflix
             Console.WriteLine("Para añadir canciones de forma mas facil, estas deben estar en el siguiente directorio\n{0}\n", dir);
             string[] filters = new[] { "*.mp4" };
             string[] filePaths = filters.SelectMany(f => Directory.GetFiles(dir, f)).ToArray();
-            Console.WriteLine("Seleccione la cancion a añadir:\n");
-            foreach (string file in filePaths)
+            if (filePaths.Count()!=0)
             {
-                Console.WriteLine("{0} {1}\n", countofvideos, Path.GetFileName(file));
-                countofvideos++;
-            }
-            succes = int.TryParse(Console.ReadLine(), out choice);
-
-            if (succes && (filePaths.Count() >= (choice - 1)))
-            {
-                route = filePaths[choice - 1];
-            }
-            else
-            {
-                route = null;
-            }
-            if (route == null)
-            {
-                Console.WriteLine("Input invalido, volviendo al menu...");
-            }
-            else
-            {
-                //TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
-                Console.WriteLine("A continuacion ingrese los datos de la cancion:\n");
-                Console.WriteLine("Ingrese el nombre del director\n");
-                string director = Console.ReadLine();
-                Console.WriteLine("Ingrese el nombre del estudio:\n");
-                string studio = Console.ReadLine();
-                Console.WriteLine("Ingrese el genero del video");
-                string genre = Console.ReadLine();
-                Console.WriteLine("Ingrese el año del vdieo");
-                int year = int.Parse(Console.ReadLine());
-                Console.WriteLine("Ingrese el nombre del video");
-                string name = Console.ReadLine();
-                string image = null;
-                string stopper = "0";
-                List<String> actors = new List<string>();
-                while (stopper == "0")
+                Console.WriteLine("Seleccione la cancion a añadir:\n");
+                foreach (string file in filePaths)
                 {
-                    Console.WriteLine("Ingrese los actores:(Ingrese 0 cuando haya terminado)\n");
-                    string temp = Console.ReadLine();
-                    if (temp != "0") actors.Append(temp);
+                    Console.WriteLine("{0} {1}\n", countofvideos, Path.GetFileName(file));
+                    countofvideos++;
                 }
-                Console.WriteLine("Ingrese desde que edad se puede ver el video: \n");
-                string age = Console.ReadLine();
-                string destination = Path.Combine(Environment.CurrentDirectory + @"\Videos", Path.GetFileName(filePaths[choice - 1]));
-                System.IO.File.Copy(route, destination, true);
-                long fileSize = new System.IO.FileInfo(destination).Length;
-                Video video = new Video(actors, age, director, studio, name, genre, image, year, destination);
-                video.Route = destination;
-                video.FileSize = fileSize;
-                if (mediaPlayer.Videos.Count() == 0)
+                succes = int.TryParse(Console.ReadLine(), out choice);
+
+                if (succes && (filePaths.Count() > Math.Abs(choice - 1)))
                 {
-                    mediaPlayer.Videos.Add(video);
-                    foreach (Artist a in mediaPlayer.Artists)
-                    {
-                        if (a.Name == video.Director) count3++;
-                    }
-                    if (count3 == 0)
-                    {
-                        namea = video.Director;
-                        videosa.Add(video);
-                        classa = new Artist(karaokesa, songsa, videosa, namea);
-                        mediaPlayer.Artists.Add(classa);
-                    }
-                    else
-                    {
-                        foreach (Artist a in mediaPlayer.Artists)
-                        {
-                            if (video.Director == a.Name && a.Videos.IndexOf(video) == 0) a.Videos.Add(video);
-
-                        }
-                    }
-                    foreach (string actor in video.Actors)
-                    {
-                        int count2 = 0;
-                        foreach (Artist a in mediaPlayer.Artists)
-                        {
-                            if (a.Name == actor) count2++;
-                        }
-                        namea = actor;
-                        videosa.Add(video);
-                        classa = new Artist(karaokesa, songsa, videosa, namea);
-                        if (count2 == 0) mediaPlayer.Artists.Add(classa);
-                        else
-                        {
-                            foreach (Artist a in mediaPlayer.Artists)
-                            {
-                                if (actor == a.Name && a.Videos.IndexOf(video) == 0) a.Videos.Add(video);
-
-                            }
-                        }
-                    }
+                    route = filePaths[choice - 1];
+                    Console.WriteLine(route);
                 }
                 else
                 {
-                    foreach (Video i in mediaPlayer.Videos)
+                    route = null;
+                }
+                if (route == null)
+                {
+                    Console.WriteLine("\nInput invalido, volviendo al menu...");
+                }
+                else
+                {
+                    TimeSpan lenght = GetVideoDuration(route);
+                    Console.WriteLine("\nA continuacion ingrese los datos de la cancion:");
+                    Console.WriteLine("\nIngrese el nombre del director");
+                    string director = Console.ReadLine();
+                    Console.WriteLine("\nIngrese el nombre del estudio:");
+                    string studio = Console.ReadLine();
+                    Console.WriteLine("\nIngrese el genero del video");
+                    string genre = Console.ReadLine();
+                    Console.WriteLine("\nIngrese el año del video");
+                    int year = int.Parse(Console.ReadLine());
+                    Console.WriteLine("\nIngrese el nombre del video");
+                    string name = Console.ReadLine();
+                    string image = null;
+                    string temp = "";
+                    List<String> actors = new List<string>();
+                    while (temp != "0")
                     {
-                        if (i.Name == video.Name && i.Director == video.Director)
-                        {
-                            count++;
-                        }
-
+                        Console.WriteLine("\nIngrese los actores:(Ingrese 0 cuando haya terminado)");
+                        temp = Console.ReadLine();
+                        if (temp != "0") actors.Append(temp);
                     }
-                    if (count == 0)
+                    Console.WriteLine("\nIngrese desde que edad se puede ver el video: ");
+                    string age = Console.ReadLine();
+                    string destination = Path.Combine(Environment.CurrentDirectory + @"\Videos", Path.GetFileName(filePaths[choice - 1]));
+                    System.IO.File.Copy(route, destination, true);
+                    long fileSize = new System.IO.FileInfo(destination).Length;
+                    Video video = new Video(actors, age, director, studio, name, genre, image, year, destination);
+                    video.Route = destination;
+                    video.FileSize = fileSize;
+                    if (mediaPlayer.Videos.Count() == 0)
                     {
                         mediaPlayer.Videos.Add(video);
                         foreach (Artist a in mediaPlayer.Artists)
@@ -365,9 +348,70 @@ namespace Spotflix
                             }
                         }
                     }
-                    else Console.WriteLine("Ese video ya existe");
+                    else
+                    {
+                        foreach (Video i in mediaPlayer.Videos)
+                        {
+                            if (i.Name == video.Name && i.Director == video.Director)
+                            {
+                                count++;
+                            }
+
+                        }
+                        if (count == 0)
+                        {
+                            mediaPlayer.Videos.Add(video);
+                            foreach (Artist a in mediaPlayer.Artists)
+                            {
+                                if (a.Name == video.Director) count3++;
+                            }
+                            if (count3 == 0)
+                            {
+                                namea = video.Director;
+                                videosa.Add(video);
+                                classa = new Artist(karaokesa, songsa, videosa, namea);
+                                mediaPlayer.Artists.Add(classa);
+                            }
+                            else
+                            {
+                                foreach (Artist a in mediaPlayer.Artists)
+                                {
+                                    if (video.Director == a.Name && a.Videos.IndexOf(video) == 0) a.Videos.Add(video);
+
+                                }
+                            }
+                            foreach (string actor in video.Actors)
+                            {
+                                int count2 = 0;
+                                foreach (Artist a in mediaPlayer.Artists)
+                                {
+                                    if (a.Name == actor) count2++;
+                                }
+                                namea = actor;
+                                videosa.Add(video);
+                                classa = new Artist(karaokesa, songsa, videosa, namea);
+                                if (count2 == 0) mediaPlayer.Artists.Add(classa);
+                                else
+                                {
+                                    foreach (Artist a in mediaPlayer.Artists)
+                                    {
+                                        if (actor == a.Name && a.Videos.IndexOf(video) == 0) a.Videos.Add(video);
+
+                                    }
+                                }
+                            }
+                        }
+                        else Console.WriteLine("\nEse video ya existe");
+                    }
                 }
             }
+            else
+            {
+                Console.WriteLine("\nNo hay videos en el directorio solicitado\nVolviendo al menu...");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            
         }//Listo
         public void ImportKaraoke(MediaPlayer mediaPlayer)
         {
@@ -405,21 +449,21 @@ namespace Spotflix
             }
             if (route == null)
             {
-                Console.WriteLine("Input invalido, volviendo al menu...");
+                Console.WriteLine("\nInput invalido, volviendo al menu...");
             }
             else
             {
-                TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
-                Console.WriteLine("A continuacion ingrese los datos de la cancion del karaoke:\n");
-                Console.WriteLine("Ingrese el nombre del artista:\n");
+                TimeSpan lenght = GetVideoDuration(route);
+                Console.WriteLine("\nA continuacion ingrese los datos de la cancion del karaoke:");
+                Console.WriteLine("\nIngrese el nombre del artista:");
                 string artist = Console.ReadLine();
-                Console.WriteLine("Ingrese el nombre del album:\n");
+                Console.WriteLine("\nIngrese el nombre del album:");
                 string album = Console.ReadLine();
                 bool response = true;
                 bool aux = false;
                 while (response)
                 {
-                    Console.WriteLine("Ingrese si la cancion posee contenido explicito(no apto para menores Y/N\n");
+                    Console.WriteLine("\nIngrese si la cancion posee contenido explicito(no apto para menores Y/N");
                     string expliciT = Console.ReadLine();
                     if (expliciT == "Y")
                     {
@@ -433,14 +477,14 @@ namespace Spotflix
                     }
                     else
                     {
-                        Console.WriteLine("Ingrese una opcion valida\n");
+                        Console.WriteLine("\nIngrese una opcion valida");
                     }
                 }
-                Console.WriteLine("Ingrese el genero de la cancion");
+                Console.WriteLine("\nIngrese el genero de la cancion");
                 string genre = Console.ReadLine();
-                Console.WriteLine("Ingrese el año de la cancion");
+                Console.WriteLine("\nIngrese el año de la cancion");
                 int year = int.Parse(Console.ReadLine());
-                Console.WriteLine("Ingrese el nombre de la cancion");
+                Console.WriteLine("\nIngrese el nombre de la cancion");
                 string name = Console.ReadLine();
                 string image = null;
                 string destination = Path.Combine(Environment.CurrentDirectory + @"\Karaoke", Path.GetFileName(filePaths[choice - 1]));
@@ -448,7 +492,7 @@ namespace Spotflix
                 long fileSize = new System.IO.FileInfo(destination).Length;
 
 
-                Console.WriteLine("Ingrese la ruta del archivo txt con la letra de la canción que quiere agregar");
+                Console.WriteLine("\nIngrese la ruta del archivo txt con la letra de la canción que quiere agregar");
                 string file = Console.ReadLine();
                 List<string> lyrics = System.IO.File.ReadLines(file).ToList();
 
@@ -509,7 +553,7 @@ namespace Spotflix
                             }
                         }
                     }
-                    else Console.WriteLine("Esa canción ya existe");
+                    else Console.WriteLine("\nEsa canción ya existe");
                 }
             }
         }//Listo

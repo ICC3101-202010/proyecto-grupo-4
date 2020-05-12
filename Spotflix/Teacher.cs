@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Shell;
+using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using WMPLib;
 
 namespace Spotflix
 {
@@ -22,7 +23,6 @@ namespace Spotflix
         private string gmail;
         private string nickname;
         List<Lesson> lessons = new List<Lesson>();
-        WindowsMediaPlayer player = new WindowsMediaPlayer();
         private List<Song> downloadSongs = new List<Song>();
 
 
@@ -45,10 +45,18 @@ namespace Spotflix
         public string Gmail { get => gmail; set => gmail = value; }
         public string Nickname { get => nickname; set => nickname = value; }
         public List<Lesson> Lessons { get => lessons; set => lessons = value; }
-        public WindowsMediaPlayer Player { get => player; set => player = value; }
         public List<Song> DownloadSongs { get => downloadSongs; set => downloadSongs = value; }
 
         public Teacher() { }
+        private TimeSpan GetVideoDuration(string filePath)
+        {
+            using (var shell = ShellObject.FromParsingName(filePath))
+            {
+                IShellProperty prop = shell.Properties.System.Media.Duration;
+                var t = (ulong)prop.ValueAsObject;
+                return TimeSpan.FromTicks((long)t);
+            }
+        }
         public void ImportLesson(MediaPlayer mediaPlayer)
         {
             int count = 0;
@@ -82,7 +90,7 @@ namespace Spotflix
             }
             else
             {
-                TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
+                TimeSpan lenght = GetVideoDuration(route);
                 Console.WriteLine("A continuacion ingrese los datos del video:\n");
                 Console.WriteLine("Ingrese el nombre del profesor\n");
                 string director = Console.ReadLine();

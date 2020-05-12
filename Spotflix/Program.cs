@@ -361,7 +361,26 @@ namespace Spotflix
                                 Console.WriteLine("Ingrese su calle:");
                                 string street = Console.ReadLine();
                                 Console.WriteLine("Ingrese su código postal:");
-                                string postalCode = Console.ReadLine();
+
+                                int PostalCode = -1;
+                                while (PostalCode == -1)
+                                {
+                                    try
+                                    {
+                                        PostalCode = int.Parse(Console.ReadLine());
+                                        if (PostalCode < 1)
+                                        {
+                                            Console.WriteLine("Ingrese un codigo valido");
+                                            PostalCode = -1;
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        Console.WriteLine("Formato invalido\nIngrese un numero como codigo postal");
+                                    }
+                                }
+
+
                                 bool nickcheck = false;
                                 bool mailcheck = false;
                                 string nickName = "";
@@ -382,7 +401,7 @@ namespace Spotflix
                                 string passWord = Console.ReadLine();
                                 if (nickcheck && mailcheck)
                                 {
-                                    User u1 = new User(num, gmail, nickName, passWord, "no pago", name, lastName, age, country, city, street, postalCode);
+                                    User u1 = new User(num, gmail, nickName, passWord, "no pago", name, lastName, age, country, city, street, PostalCode);
                                     Gate.SingUser(u1);
                                     Thread.Sleep(1000);
                                     Console.Clear();
@@ -499,63 +518,91 @@ namespace Spotflix
                                     Console.WriteLine("Ingrese su contraseña");
                                     string p = Console.ReadLine();
                                     Console.Clear();
-                                    if (Gate.LogAsUser(n, p))
+                                    user = Gate.LogAsUser(n, p);
+                                    if (user!=null)
                                     {
                                         string switcherusr = "0";
                                         string stopperusr = "30";
                                         while (switcherusr != stopperusr)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(0)Buscador General para reproducir\n\t(1)Buscar y reproducir videos\n\t(2)Buscar y reproducir canciones\n\t(3)Buscar y reproducir series\n\t(4)Buscar y reproducir playlist\n\t(5)Mostrar videos\n\t(6)Mostrar canciones\n\t(7)Mostrar series\n\t(8)Mostrar playlist\n\t(9)Convertirse en Premium\n\t(10)Añadir cancion a favorito\n\t(11)Añadir video a favorito\n\t(12)Descargar Cancion\n\t(13)Cambiar contraseña\n\t(14)Calificar una cancion\n\t(15)Calificar un video\n\t(16)Hacer una PlayList de canciones\n\t(17)Hacer una PlayList de videos\n\t(18)Añadir a la cola\n\t(19)Seguir\n\t(20)Saber la calificación de una canción\n\t(21)Saber la calificación de un video\n\t(22)Saber la información de la canción\n\t(23)Saber la información de un video\n\t(24)Saber la información intrínseca de una canción\n\t(25)Saber la información intrínseca de un video\n\t(26)Saber la información en la plataforma de una canción\n\t(27)Saber la información en la plataforma de un video\n\t(28)Dejar de ser Premiun\n\t(29)Editar perfil\n\t(30)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Buscar y Reproducir\n\t(5)Mostrar videos\n\t(6)Mostrar canciones\n\t(7)Mostrar series\n\t(8)Mostrar playlist\n\t(9)Convertirse en Premium\n\t(10)Añadir cancion a favorito\n\t(11)Añadir video a favorito\n\t(12)Descargar Cancion\n\t(13)Cambiar contraseña\n\t(14)Calificar una cancion\n\t(15)Calificar un video\n\t(16)Hacer una PlayList de canciones\n\t(17)Hacer una PlayList de videos\n\t(18)Añadir a la cola\n\t(19)Seguir\n\t(20)Saber la calificación de una canción\n\t(21)Saber la calificación de un video\n\t(22)Saber la información de la canción\n\t(23)Saber la información de un video\n\t(24)Saber la información intrínseca de una canción\n\t(25)Saber la información intrínseca de un video\n\t(26)Saber la información en la plataforma de una canción\n\t(27)Saber la información en la plataforma de un video\n\t(28)Dejar de ser Premiun\n\t(29)Editar perfil\n\t(30)Atras\n");
                                             switcherusr = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherusr)
                                             {
-                                                case "0":
-                                                    if (mediaPlayer.GenericSearch().Contains(-1)) break;
-                                                    else
+                                                case "1"://Buscar y reprodcuir
+                                                    bool searshstopper = false;
+                                                    while (!searshstopper)
                                                     {
-                                                        List<int> choice = mediaPlayer.GenericSearch();
+                                                        Console.WriteLine("Si desea:\n\t(0)Buscador generico\n\t(1)Buscar videos\n\t(2)Buscar canciones\n\t(3)Buscar por clases\n\t(4)Buscar por karaokes\n\t(5)Buscar por playlist\n\t(6)Album\n\t(7)Buscar por Series\n\t(8)Para volver al menu\n" );
+                                                        string searchandplay = Console.ReadLine();
+                                                        Console.Clear();
+                                                        switch (searchandplay)
+                                                        {
+                                                            case "0":
+                                                                List<int> choice = mediaPlayer.GenericSearch();
+                                                                if (mediaPlayer.GenericSearch().Contains(-1))
+                                                                {
+                                                                    break;
+                                                                }
+                                                                if (choice[0] == 1)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Videos[choice[1]], user);
+                                                                }
+                                                                else if (choice[0] == 2)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Songs[choice[1]], user);
+                                                                }
+                                                                else if (choice[0] == 3)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Lessons[choice[1]], user);
+                                                                }
+                                                                else if (choice[0] == 4)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Karaokes[choice[1]], user);
+                                                                }
+                                                                else if (choice[0] == 5)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Playlists[choice[1]], user);
+                                                                }
+                                                                else if (choice[0] == 6)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Albums[choice[1]], user);
+                                                                }
+                                                                else if (choice[0] == 7)
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Series[choice[1]], user);
+                                                                }
+                                                                break;
+                                                            case "1":
+                                                                mediaPlayer.Search("1");
+                                                                int variable1 = mediaPlayer.Search("1");
+                                                                if (variable1 == -1)
+                                                                {
+                                                                    break;
+                                                                }
+                                                                else
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Videos[variable1], user);
+                                                                }
+                                                                break;
+                                                            case "2":
+                                                                mediaPlayer.Search("2");
+                                                                int variable2 = mediaPlayer.Search("2");
+                                                                if (variable2 == -1) break;
+                                                                else
+                                                                {
+                                                                    mediaPlayer.Play(mediaPlayer.Songs[variable2],user);
+                                                                }
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
 
-                                                        if (choice[0] == 1)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Videos[choice[1]],Gate.Users[user.UserID]);
-                                                        }
-                                                        else if (choice[0] == 2)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Songs[choice[1]],Gate.Users[user.UserID]);
-                                                        }
-                                                        else if (choice[0] == 3)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Lessons[choice[1]],Gate.Users[user.UserID]);
-                                                        }
-                                                        else if (choice[0] == 4)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Karaokes[choice[1]],Gate.Users[user.UserID]);
-                                                        }
-                                                        else if (choice[0] == 5)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Playlists[choice[1]],Gate.Users[user.UserID]);
-                                                        }
-                                                        else if (choice[0] == 6)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Albums[choice[1]],Gate.Users[user.UserID]);
-                                                        }
-                                                        else if (choice[0] == 7)
-                                                        {
-                                                            mediaPlayer.Play(mediaPlayer.Series[choice[1]],Gate.Users[user.UserID]);
-                                                        }
                                                     }
-
                                                     break;
+
                                                 /*
-                                                case "1": //buscar y reproducir videos
-                                                    mediaPlayer.Search("1");
-                                                    int variable1 = mediaPlayer.Search("1");
-                                                    if (variable1 == -1) break;
-                                                    else
-                                                    {
-                                                        mediaPlayer.Play(mediaPlayer.Videos[variable1]);
-                                                    }
                                                     //por aqui deberia estar la opcion de pausar y stop
                                                     break;
                                                 case "2": //buscar y reproducir canciones
@@ -841,7 +888,7 @@ namespace Spotflix
                                         string stopperad = "6";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir video existente a una Serien\t(5)Cambiar su contraseña\n\t(6)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir video existente a una Serien\n\t(5)Cambiar su contraseña\n\t(6)Atras\n");
                                             switcherad = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherad)
@@ -954,19 +1001,49 @@ namespace Spotflix
                         }
                         break;
                     case "3":
-                        /*
-                        SaveUser(Gate.Users);
-                        SaveAdmin(Gate.Managers);
-                        SaveTeacher(Gate.Teachers);
-                        SaveSong(mediaPlayer.Songs);
-                        SaveVideo(mediaPlayer.Videos);
-                        SaveLesson(mediaPlayer.Lessons);
-                        SavePlaylist(mediaPlayer.Playlists);
-                        SaveSerie(mediaPlayer.Series);
-                        SaveKaraoke(mediaPlayer.Karaokes);
-                        SaveAlbum(mediaPlayer.Albums);
+
+                        if (Gate.Users.Count()!=0)
+                        {
+                            SaveUser(Gate.Users);
+                        }
+                        if (Gate.Managers.Count()!=0)
+                        {
+                            SaveAdmin(Gate.Managers);
+                        }
+                        if (Gate.Teachers.Count()!=0)
+                        {
+                            SaveTeacher(Gate.Teachers);
+                        }
+                        if (mediaPlayer.Songs.Count()!=0)
+                        {
+                            SaveSong(mediaPlayer.Songs);
+                        }
+                        if (mediaPlayer.Videos.Count()!=0)
+                        {
+                            SaveVideo(mediaPlayer.Videos);
+                        }
+                        if (mediaPlayer.Lessons.Count()!=0)
+                        {
+                            SaveLesson(mediaPlayer.Lessons);
+                        }
+                        if (mediaPlayer.Playlists.Count()!=0)
+                        {
+                            SavePlaylist(mediaPlayer.Playlists);
+                        }
+                        if (mediaPlayer.Series.Count()!=0)
+                        {
+                            SaveSerie(mediaPlayer.Series);
+                        }
+                        if (mediaPlayer.Karaokes.Count()!=0)
+                        {
+                            SaveKaraoke(mediaPlayer.Karaokes);
+                        }
+                        if (mediaPlayer.Albums.Count()!=0)
+                        {
+                            SaveAlbum(mediaPlayer.Albums);
+                        }
                         
-    */
+    
                         switcher = "3";
                         break;
 
