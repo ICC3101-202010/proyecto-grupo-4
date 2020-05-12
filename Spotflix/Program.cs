@@ -203,103 +203,100 @@ namespace Spotflix
             List<Album> Albums = new List<Album>();
             //CARGAR TODO
 
-            Console.WriteLine("(1)Empezar desde 0\n(2)Cargar archivos serializados");
-            string choser = Console.ReadLine();
-            Console.Clear();
-            if (choser=="2")
+
+            /*
+            string archivouser = @"\ArchivoUsuarios.bin";
+            string pathu = Directory.GetCurrentDirectory() + archivouser;
+            if (File.Exists(pathu))
             {
-                string archivouser = @"\ArchivoUsuarios.bin";
-                string pathu = Directory.GetCurrentDirectory() + archivouser;
-                if (File.Exists(pathu))
-                {
-                    users = LoadUser();
-                    Gate.Users = users;
-                }
-                else { }
-                string archivoadmin = @"\ArchivoAdministradores.bin";
-                string patha = Directory.GetCurrentDirectory() + archivoadmin;
-                if (File.Exists(patha))
-                {
-                    admins = LoadAdmin();
-                    Gate.Managers = admins;
-                }
-                else { }
-                string archivoteacher = @"\ArchivoProfesores.bin";
-                string patht = Directory.GetCurrentDirectory() + archivoteacher;
-                if (File.Exists(patht))
-                {
-                    teachers = LoadTeacher();
-                    Gate.Teachers = teachers;
-                }
-                else { }
-                string archivosong = @"\ArchivoCanciones.bin";
-                string paths = Directory.GetCurrentDirectory() + archivosong;
-                if (File.Exists(paths))
-                {
-                    Songs = LoadSong();
-                    mediaPlayer.Songs = Songs;
-                }
-                else { }
-
-                string archivovideo = @"\ArchivoVideos.bin";
-                string pathv = Directory.GetCurrentDirectory() + archivovideo;
-                if (File.Exists(pathv))
-                {
-                    Videos = LoadVideo();
-                    mediaPlayer.Videos = Videos;
-                }
-                else { }
-
-
-                string archivolesson = @"\ArchivoClases.bin";
-                string pathl = Directory.GetCurrentDirectory() + archivolesson;
-                if (File.Exists(pathl))
-                {
-                    Lessons = LoadLesson();
-                    mediaPlayer.Lessons = Lessons;
-                }
-                else { }
-
-
-                string archivoplay = @"\ArchivoPlaylist.bin";
-                string pathp = Directory.GetCurrentDirectory() + archivoplay;
-                if (File.Exists(pathp))
-                {
-                    Playlists = LoadPlaylist();
-                    mediaPlayer.Playlists = Playlists;
-                }
-                else { }
-
-
-                string archivoserie = @"\ArchivoSeries.bin";
-                string pathse = Directory.GetCurrentDirectory() + archivoserie;
-                if (File.Exists(pathse))
-                {
-                    Series = LoadSerie();
-                    mediaPlayer.Series = Series;
-                }
-                else { }
-
-
-                string archivokarak = @"\ArchivoKaraoke.bin";
-                string pathk = Directory.GetCurrentDirectory() + archivokarak;
-                if (File.Exists(pathk))
-                {
-                    Karaokes = LoadKaraoke();
-                    mediaPlayer.Karaokes = Karaokes;
-                }
-                else { }
-
-                string archivoalbum = @"\ArchivoAlbum.bin";
-                string pathal = Directory.GetCurrentDirectory() + archivoalbum;
-                if (File.Exists(pathal))
-                {
-                    Albums = LoadAlbum();
-                    mediaPlayer.Albums = Albums;
-                }
-                else { }
+                users = LoadUser();
+                Gate.Users = users;
             }
+            else { }
+            string archivoadmin = @"\ArchivoAdministradores.bin";
+            string patha = Directory.GetCurrentDirectory() + archivoadmin;
+            if (File.Exists(patha))
+            {
+                admins = LoadAdmin();
+                Gate.Managers = admins;
+            }
+            else { }
+            string archivoteacher = @"\ArchivoProfesores.bin";
+            string patht = Directory.GetCurrentDirectory() + archivoteacher;
+            if (File.Exists(patht))
+            {
+                teachers = LoadTeacher();
+                Gate.Teachers = teachers;
+            }
+            else { }
+            string archivosong = @"\ArchivoCanciones.bin";
+            string paths = Directory.GetCurrentDirectory() + archivosong;
+            if (File.Exists(paths))
+            {
+                Songs = LoadSong();
+                mediaPlayer.Songs = Songs;
+            }
+            else { }
 
+            string archivovideo = @"\ArchivoVideos.bin";
+            string pathv = Directory.GetCurrentDirectory() + archivovideo;
+            if (File.Exists(pathv))
+            {
+                Videos = LoadVideo();
+                mediaPlayer.Videos = Videos;
+            }
+            else { }
+
+
+            string archivolesson = @"\ArchivoClases.bin";
+            string pathl = Directory.GetCurrentDirectory() + archivolesson;
+            if (File.Exists(pathl))
+            {
+                Lessons = LoadLesson();
+                mediaPlayer.Lessons = Lessons;
+            }
+            else { }
+
+
+            string archivoplay = @"\ArchivoPlaylist.bin";
+            string pathp = Directory.GetCurrentDirectory() + archivoplay;
+            if (File.Exists(pathp))
+            {
+                Playlists = LoadPlaylist();
+                mediaPlayer.Playlists = Playlists;
+            }
+            else { }
+
+
+            string archivoserie = @"\ArchivoSeries.bin";
+            string pathse = Directory.GetCurrentDirectory() + archivoserie;
+            if (File.Exists(pathse))
+            {
+                Series = LoadSerie();
+                mediaPlayer.Series = Series;
+            }
+            else { }
+
+
+            string archivokarak = @"\ArchivoKaraoke.bin";
+            string pathk = Directory.GetCurrentDirectory() + archivokarak;
+            if (File.Exists(pathk))
+            {
+                Karaokes = LoadKaraoke();
+                mediaPlayer.Karaokes = Karaokes;
+            }
+            else { }
+
+            string archivoalbum = @"\ArchivoAlbum.bin";
+            string pathal = Directory.GetCurrentDirectory() + archivoalbum;
+            if (File.Exists(pathal))
+            {
+                Albums = LoadAlbum();
+                mediaPlayer.Albums = Albums;
+            }
+            else { }
+            
+            */
                
             
 
@@ -933,10 +930,7 @@ namespace Spotflix
                         }
                         break;
                     case "3":
-                        foreach (Admin item in Gate.Managers)
-                        {
-                            Console.WriteLine(item.Code);
-                        }
+                        /*
                         SaveUser(Gate.Users);
                         SaveAdmin(Gate.Managers);
                         SaveTeacher(Gate.Teachers);
@@ -948,7 +942,7 @@ namespace Spotflix
                         SaveKaraoke(mediaPlayer.Karaokes);
                         SaveAlbum(mediaPlayer.Albums);
                         
-
+    */
                         switcher = "3";
                         break;
 

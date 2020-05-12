@@ -409,7 +409,7 @@ namespace Spotflix
             }
             else
             {
-                //TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
+                TimeSpan lenght = TimeSpan.FromSeconds(player.newMedia(route).duration);
                 Console.WriteLine("A continuacion ingrese los datos de la cancion del karaoke:\n");
                 Console.WriteLine("Ingrese el nombre del artista:\n");
                 string artist = Console.ReadLine();
