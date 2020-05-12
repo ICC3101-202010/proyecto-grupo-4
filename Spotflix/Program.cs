@@ -70,9 +70,8 @@ namespace Spotflix
         static private List<Teacher> LoadTeacher()
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("ArchivoProfesores.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            Stream stream = new FileStream("ArchivosProfesores.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
             List<Teacher> teachers = (List<Teacher>)formatter.Deserialize(stream);
-            stream.Close();
             return teachers;
         }
         static private void SaveSong(List<Song> Songs)
@@ -225,10 +224,11 @@ namespace Spotflix
                 Gate.Managers = admins;
             }
             else { }
-            string archivoteacher = @"\ArchivoProfesores.bin";
+            string archivoteacher = @"\ArchivosProfesores.bin";
             string patht = Directory.GetCurrentDirectory() + archivoteacher;
             if (File.Exists(patht))
             {
+                
                 teachers = LoadTeacher();
                 Gate.Teachers = teachers;
             }
@@ -326,7 +326,7 @@ namespace Spotflix
                 {
                     case "1": //Registrarse
                         string register = "0";
-                        Console.WriteLine("Si desea:\n\t(1)Registrarse como usuario\n\t(2)Registrarse como administrador\n\t(3)Registrarse como profesor\n");
+                        Console.WriteLine("Si desea:\n\t(1)Registrarse como usuario\n\t(2)Registrarse como administrador\n\t(3)Registrarse como profesor\n\t(4)Cualquier caracter para volver al menu");
                         register = Console.ReadLine();
                         Console.Clear();
                         switch (register)
@@ -529,7 +529,7 @@ namespace Spotflix
                                 }
                                 break;
                             default:
-                                Console.WriteLine("Opcion invalida, volviendo al menu...");
+                                Console.WriteLine("Volviendo al menu...");
                                 Thread.Sleep(1000);
                                 Console.Clear();
                                 break;
@@ -1734,7 +1734,7 @@ namespace Spotflix
                                             }
                                         } 
                                         string switcherad = "0";
-                                        string stopperad = "5";
+                                        string stopperad = "3";
                                         while (switcherad != stopperad)
                                         {
                                             Console.WriteLine("Si desea:\n\t(1)Importar clase\n\t(2)Editar su perfil\n\t(3)Atras\n");
@@ -1749,6 +1749,7 @@ namespace Spotflix
                                                     Gate.ChangeTeacher(Gate.Teachers[posiciont]);
                                                     break;
                                                 case "3":
+                                                    Console.Clear();
                                                     break;
                                                 default:
                                                     Console.WriteLine("Ingrese una opcion valida");

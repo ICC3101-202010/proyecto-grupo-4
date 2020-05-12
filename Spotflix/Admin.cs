@@ -506,17 +506,31 @@ namespace Spotflix
                 Console.WriteLine("\nIngrese el nombre de la cancion");
                 string name = Console.ReadLine();
                 string image = null;
-                string destination = Path.Combine(Environment.CurrentDirectory + @"\Karaoke", Path.GetFileName(filePaths[choice - 1]));
+                string destination = Path.Combine(Environment.CurrentDirectory + @"\Songs", Path.GetFileName(filePaths[choice - 1]));
                 System.IO.File.Copy(route, destination, true);
                 long fileSize = new System.IO.FileInfo(destination).Length;
 
 
                 Console.WriteLine("\nIngrese la ruta del archivo txt con la letra de la canción que quiere agregar");
+                string line;
                 string file = Console.ReadLine();
-                List<string> lyrics = System.IO.File.ReadLines(file).ToList();
-                string text = Path.Combine(Environment.CurrentDirectory + @"\Karaoke", Path.GetFileName(file));
-
-
+                List<string> lyrics = new List<string>();
+                if (File.Exists(file))
+                {
+                    System.IO.StreamReader reader = new System.IO.StreamReader(file);
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        lyrics.Add(line);
+                    }
+                    string text = Path.Combine(Environment.CurrentDirectory + @"\Songs", Path.GetFileName(file));
+                    System.IO.File.Copy(file, text, true);
+                }
+                else
+                {
+                    lyrics.Append("Archivo de letra ingresado de forma incorrecta\n");
+                }
+                Console.WriteLine(destination);
+               
                 Karaoke karaoke = new Karaoke(lyrics, artist, album, aux, name, genre, year, image, destination);
                 if (mediaPlayer.Karaokes.Count() == 0)
                 {

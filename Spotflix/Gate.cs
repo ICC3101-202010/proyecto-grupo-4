@@ -419,8 +419,7 @@ namespace Spotflix
             while (switu != stopu)
             {
                 Console.WriteLine("Desea cambiar:\n\t(1)Su nombre de usuario\n\t(2)Su curso\n\t(3)Actualizar");
-                string opcion = Console.ReadLine();
-                Console.Clear();
+                switu = Console.ReadLine();
                 switch (switu)
                 {
                     case "1"://Nickname
@@ -447,7 +446,9 @@ namespace Spotflix
                         Console.WriteLine("Se ha actualizado correctamente");
                         Thread.Sleep(1000);
                         Console.Clear();
+                        switu = "4";
                         break;
+
                 }
             }
         }

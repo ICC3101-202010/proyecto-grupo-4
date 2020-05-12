@@ -999,7 +999,7 @@ namespace Spotflix
                         bool bruteforce = true;
                         while (stopper.Elapsed.TotalSeconds != playlist.Songs[i].Length.TotalSeconds && bruteforce)
                         {
-                            Console.WriteLine("(1)Detener cancion\n(2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion()Ingrese cualquier otro caracter para salir\n");
+                            Console.WriteLine("(1)Detener cancion\n(2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion\n()Ingrese cualquier otro caracter para salir\n");
                             string switcher = Console.ReadLine();
                             Console.Clear();
                             switch (switcher)
@@ -1195,13 +1195,14 @@ namespace Spotflix
             karaoke.NumberOfReproductions += 1;
             foreach (string l in karaoke.Lyrics)
             {
-                Console.WriteLine(karaoke.Lyrics);
+                Console.WriteLine(l);
             }
+            Console.WriteLine("\n");
             stopper.Start();
             bool bruteforce = true;
             while (stopper.Elapsed.TotalSeconds != karaoke.Length.TotalSeconds && bruteforce)
             {
-                Console.WriteLine("(1)Detener cancion(2)Darle me gusta a la cancion\n()Ingrese cualquier otro caracter para salir\n");
+                Console.WriteLine("(1)Detener cancion\n(2)Darle me gusta a la cancion\n()Ingrese cualquier otro caracter para salir\n");
                 string switcher = Console.ReadLine();
                 Console.Clear();
                 switch (switcher)
@@ -1216,6 +1217,11 @@ namespace Spotflix
                         {
                             SoundPlayer.Play();
                             stopper.Start();
+                            foreach (string l in karaoke.Lyrics)
+                            {
+                                Console.WriteLine(l);
+                            }
+                            Console.WriteLine("\n");
                         }
                         else
                         {
@@ -2052,7 +2058,7 @@ namespace Spotflix
                     Console.WriteLine("Ingrese el criterio de filtro para la canción");
                     Console.WriteLine("(1) Nombre\n(2) Género\n(3) Artista\n(4) Album\n(5) Explicit\n(6) Resolucion\n(7) Evaluación\n(-1) Salir");
                     choice2 = Console.ReadLine().ToLower();
-                    while (choice2 != "-1"||catchsSongs.Count>0)
+                    while (choice2 != "-1"&&catchsSongs.Count>0)
                     {
                         Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
                         string filter = Console.ReadLine().ToLower();
@@ -2262,7 +2268,7 @@ namespace Spotflix
                     Console.WriteLine("Ingrese el criterio de filtro para la serie");
                     Console.WriteLine("(1) Nombre serie\n(2) Nombre capítulo\n(3) Director\n(4) Actor\n(5) Género\n(-1) Salir");
                     choice2 = Console.ReadLine().ToLower();
-                    while (choice2 != "-1" || catchsSeries.Count()>0)
+                    while (choice2 != "-1" && catchsSeries.Count()>0)
                     {
                         Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
                         string filter = Console.ReadLine().ToLower();
@@ -2401,7 +2407,7 @@ namespace Spotflix
                     Console.WriteLine("Ingrese el criterio de filtro para la playlist");
                     Console.WriteLine("(1) Nombre playlist\n(3) Canción o video contenido\n(4) Artista (compositor/director/actor)\n(5) Género contenido\n(6) NickName del creador\n(7) Canciones\n(8) Videos\n(-1) Salir");
                     choice2 = Console.ReadLine().ToLower();
-                    while (choice2 != "-1" || catchsPlaylists.Count()>0)
+                    while (choice2 != "-1"&& catchsPlaylists.Count()>0)
                     {
                         Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
                         string filter = Console.ReadLine().ToLower();
@@ -2592,7 +2598,7 @@ namespace Spotflix
                     Console.WriteLine("Ingrese el criterio de filtro para el album");
                     Console.WriteLine("(1) Nombre álbum\n(2) Canción contenida\n(3) Artista contenido\n(4) Género contenido\n(-1) Salir");
                     choice2 = Console.ReadLine().ToLower();
-                    while (choice2 != "-1"|| catchsAlbum.Count()>0)
+                    while (choice2 != "-1"&& catchsAlbum.Count()>0)
                     {
                         Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
                         string filter = Console.ReadLine().ToLower();
@@ -2715,7 +2721,7 @@ namespace Spotflix
                     Console.WriteLine("(1) Nombre canción\n(2) Artista canción\n(3) Género canción\n(4) Álbum canción\n(-1) Salir");
                     choice2 = Console.ReadLine().ToLower();
 
-                    while (choice2 != "-1")
+                    while (choice2 != "-1"&&catchsKaraoke.Count()>0)
                     {
                         Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
                         string filter = Console.ReadLine().ToLower();
@@ -2817,7 +2823,7 @@ namespace Spotflix
                     Console.WriteLine("Ingrese el criterio de filtro para el clases");
                     Console.WriteLine("(1) Nombre clase\n(2) Asignatura\n(3) Curso (PK,K,1-8,I,II,II,IV)\n(4) Código profesor\n(-1) Salir");
                     choice2 = Console.ReadLine().ToLower();
-                    while (choice2 != "-1"||catchsLessons.Count()>0)
+                    while (choice2 != "-1"&&catchsLessons.Count()>0)
                     {
                         Console.WriteLine("Ingrese el filtro del archivo o -1 para salir\n");
                         string filter = Console.ReadLine().ToLower();

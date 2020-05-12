@@ -92,8 +92,7 @@ namespace Spotflix
             {
                 TimeSpan lenght = GetVideoDuration(route);
                 Console.WriteLine("A continuacion ingrese los datos del video:");
-                Console.WriteLine("\nIngrese el nombre del profesor");
-                string director = Console.ReadLine();
+                string director = this.name + this.lastname;
                 string studio = "colegio";
                 string genre = "clase";
                 Console.WriteLine("\nIngrese el año del video:");
@@ -106,22 +105,21 @@ namespace Spotflix
                 while (stopper != "0")
                 {
                     Console.WriteLine("\nIngrese los contenidos:(Ingrese 0 cuando haya terminado)");
-                    string temp = Console.ReadLine();
-                    if (temp != "0") actors.Append(temp);
+                    stopper = Console.ReadLine();
+                    if (stopper != "0") actors.Append(stopper);
                 }
                 Console.WriteLine("\nIngrese desde que edad se puede ver el video: ");
                 string age = Console.ReadLine();
-                string destination = Path.Combine(Environment.CurrentDirectory + @"\Lessons", Path.GetFileName(filePaths[choice - 1]));
+                string destination = Path.Combine(Environment.CurrentDirectory + @"\Videos", Path.GetFileName(filePaths[choice - 1]));
                 System.IO.File.Copy(route, destination, true);
                 long fileSize = new System.IO.FileInfo(destination).Length;
                 Video video = new Video(actors, age, director, studio, name, genre, image, year, destination);
                 video.Route = destination;
                 video.FileSize = fileSize;
-                Console.WriteLine("A continuación, ingrese los datos de la clase");
+                Console.WriteLine("A continuación, ingrese los datos de la clase:\n");
                 Console.WriteLine("Ingrese la asignatura de la clase");
                 string subject= Console.ReadLine();
-                Console.WriteLine("Ingrese el curso de la clase(PK,K,1-8,I,II,II,IV)");
-                string coursec = Console.ReadLine();
+                string coursec = this.course;
                 Lesson lesson = new Lesson(name, subject, coursec, 0, video, this);
                 if (mediaPlayer.Lessons.Count() == 0)
                 {
