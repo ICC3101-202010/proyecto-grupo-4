@@ -205,7 +205,6 @@ namespace Spotflix
             else
             {
                 Console.WriteLine("La canción no se encuentra en su playList.");
-
             }
         }
 

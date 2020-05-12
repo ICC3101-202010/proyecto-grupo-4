@@ -170,61 +170,77 @@ namespace Spotflix
                 DeleteSong(this, new SongEventArgs() { Song = song, PlayList = playList });
             }
         }
+        
 
-        public void SongStarter(string name, string namePlayList, string what)
+        public void CreatePlaylistS(User user,string what)
         {
-            int counterp = 0;
-            Playlist newPlaylist = null;
-            foreach (Playlist playList in playlists)
+            int choice = 0;
+            Console.WriteLine("Ingrese el nombre de su playlist");
+            string namePlayList = Console.ReadLine();
+            while (choice == 0)
             {
-                if (namePlayList == playList.PlaylistName)
+                Console.WriteLine("Ingrese el nombre de la canción");
+                string name = Console.ReadLine();
+                Console.WriteLine("Ingrese el artisa de la canción");
+                string artist = Console.ReadLine();
+                int counterp = 0;
+                Playlist newPlaylist = null;
+                foreach (Playlist playList in user.MyPlaylist)
                 {
-                    counterp += 1;
-                    newPlaylist = playList;
-                }
-            }
-            Song newSong = null;
-
-            int counter = 0;
-            foreach (Song s in songs)
-            {
-                if (name == s.Name)
-                {
-                    counter += 1;
-                    newSong = s;
-                }
-            }
-            if (counter != 0 && counterp != 0)
-            {
-                if (what == "agregar")
-                {
-                    //Disparo el evento
-                    OnAddSong(newSong, newPlaylist);
-                }
-                else if (what == "eliminar")
-                {
-                    OnDeleteSong(newSong, newPlaylist);
-                }
-
-            }
-            else if (counter == 0)
-            {
-                Console.WriteLine("La canción ingresada no existe en la base de datos");
-            }
-            else if (counter != 0 && counterp == 0)
-            {
-                if (what == "agregar")
-                {
-                    Console.WriteLine("La PlayList no existe. ¿Desea crearla?\nOpción 1: Sí\nOpción 2: No");
-                    string option = Console.ReadLine();
-                    if (option == "1" || option == "Sí")
+                    if (namePlayList == playList.PlaylistName)
                     {
-                        newPlaylist.PlaylistName = namePlayList;
-                        playlists.Add(newPlaylist);
-                        OnAddSong(newSong, newPlaylist);
+                        counterp += 1;
+                        newPlaylist = playList;
                     }
                 }
-                else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");
+                Song newSong = null;
+
+                int counter = 0;
+                foreach (Song s in songs)
+                {
+                    if (name == s.Name && artist == s.Artist)
+                    {
+                        counter += 1;
+                        newSong = s;
+                    }
+                }
+                if (counter != 0 && counterp != 0)
+                {
+                    if (what == "agregar")
+                    {
+                        //Disparo el evento
+                        OnAddSong(newSong, newPlaylist);
+                    }
+                    else if (what == "eliminar")
+                    {
+                        OnDeleteSong(newSong, newPlaylist);
+                    }
+
+                }
+                else if (counter == 0)
+                {
+                    Console.WriteLine("La canción ingresada no existe en la base de datos");
+                }
+                else if (counter != 0 && counterp == 0)
+                {
+                    if (what == "agregar")
+                    {
+                        Console.WriteLine("La PlayList no existe. ¿Desea crearla?\nOpción 1: Sí\nOpción 2: No");
+                        string option = Console.ReadLine();
+                        if (option == "1" || option == "Sí")
+                        {
+                            newPlaylist.PlaylistName = namePlayList;
+                            playlists.Add(newPlaylist);
+                            user.MyPlaylist.Add(newPlaylist);
+                            OnAddSong(newSong, newPlaylist);
+                        }
+                    }
+                    else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");
+                }
+                Console.WriteLine($"¿Desea agregar otra canción a su playlist {newPlaylist.PlaylistName}\n1: Si\n2: No");
+                string ans = Console.ReadLine();
+                if (ans == "1" || ans.ToLower() == "si") continue;
+                else break;
             }
         }
 
@@ -254,60 +270,75 @@ namespace Spotflix
             }
         }
 
-        public void VideoStarter(string name, string namePlayList, string what)
+        public void CreatePlaylistV(User user, string what)
         {
-            int counterp = 0;
-            Playlist newPlaylist = null;
-            foreach (Playlist playList in playlists)
+            int choice = 0;
+            Console.WriteLine("Ingrese el nombre de su playlist");
+            string namePlayList = Console.ReadLine();
+            while (choice == 0)
             {
-                if (namePlayList == playList.PlaylistName)
+                Console.WriteLine("Ingrese el nombre del video");
+                string name = Console.ReadLine();
+                Console.WriteLine("Ingrese el director del video");
+                string director = Console.ReadLine();
+                int counterp = 0;
+                Playlist newPlaylist = null;
+                foreach (Playlist playList in user.MyPlaylist)
                 {
-                    counterp += 1;
-                    newPlaylist = playList;
-                }
-            }
-            Video newVideo = null;
-
-            int counter = 0;
-            foreach (Video s in videos)
-            {
-                if (name == s.Name)
-                {
-                    counter += 1;
-                    newVideo = s;
-                }
-            }
-            if (counter != 0 && counterp != 0)
-            {
-                if (what == "agregar")
-                {
-                    //Disparo el evento
-                    OnAddVideo(newVideo, newPlaylist);
-                }
-                else if (what == "eliminar")
-                {
-                    OnDeleteVideo(newVideo, newPlaylist);
-                }
-
-            }
-            else if (counter == 0)
-            {
-                Console.WriteLine("El video ingresado no existe en la base de datos");
-            }
-            else if (counter != 0 && counterp == 0)
-            {
-                if (what == "agregar")
-                {
-                    Console.WriteLine("La PlayList no existe. ¿Desea crearla?\nOpción 1: Sí\nOpción 2: No");
-                    string option = Console.ReadLine();
-                    if (option == "1" || option == "Sí")
+                    if (namePlayList == playList.PlaylistName)
                     {
-                        newPlaylist.PlaylistName = namePlayList;
-                        playlists.Add(newPlaylist);
-                        OnAddVideo(newVideo, newPlaylist);
+                        counterp += 1;
+                        newPlaylist = playList;
                     }
                 }
-                else Console.WriteLine("No se ha podido eliminar el video. La PlayList no existe");
+                Video newVideo = null;
+
+                int counter = 0;
+                foreach (Video v in videos)
+                {
+                    if (name == v.Name && director == v.Director)
+                    {
+                        counter += 1;
+                        newVideo = v;
+                    }
+                }
+                if (counter != 0 && counterp != 0)
+                {
+                    if (what == "agregar")
+                    {
+                        //Disparo el evento
+                        OnAddVideo(newVideo, newPlaylist);
+                    }
+                    else if (what == "eliminar")
+                    {
+                        OnDeleteVideo(newVideo, newPlaylist);
+                    }
+
+                }
+                else if (counter == 0)
+                {
+                    Console.WriteLine("El video ingresado no existe en la base de datos");
+                }
+                else if (counter != 0 && counterp == 0)
+                {
+                    if (what == "agregar")
+                    {
+                        Console.WriteLine("La PlayList no existe. ¿Desea crearla?\nOpción 1: Sí\nOpción 2: No");
+                        string option = Console.ReadLine();
+                        if (option == "1" || option == "Sí")
+                        {
+                            newPlaylist.PlaylistName = namePlayList;
+                            playlists.Add(newPlaylist);
+                            user.MyPlaylist.Add(newPlaylist);
+                            OnAddVideo(newVideo, newPlaylist);
+                        }
+                    }
+                    else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");
+                }
+                Console.WriteLine($"¿Desea agregar otro video a su playlist {newPlaylist.PlaylistName}\n1: Si\n2: No");
+                string ans = Console.ReadLine();
+                if (ans == "1" || ans.ToLower() == "si") continue;
+                else break;
             }
         }
 
@@ -1789,7 +1820,7 @@ namespace Spotflix
                         catchs.Add(video);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para el video");
-                    Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio\n-1 para salir");
+                    Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio\n7: Resolución\n8: Evaluación\n-1 para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
@@ -1858,6 +1889,38 @@ namespace Spotflix
                             Console.WriteLine("Ingrese otro filtro o -1 para salir");
                             Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio");
                             choice2 = Console.ReadLine().ToLower();
+                        }
+                        else if (choice2 == "7")
+                        {
+                            bool ool2 = false;
+                            int size = 0;
+                            string symbol;
+
+                            while (ool2 == false)
+                            {
+                                Console.WriteLine("Ingrese el tamaño de resolución a comparar");
+                                ool2 = int.TryParse(Console.ReadLine(), out size);
+                            }
+
+                            Console.WriteLine("Ingrese su opción\n 1: Mayor al tamaño\n2: Menor al tamaño\n3: Igual al tamaño");
+                            symbol = Console.ReadLine();
+                            int n;
+                            bool ool;
+                            ool = int.TryParse(filter, out n);
+                            if (ool == true)
+                            {
+                                foreach (Video video in catchs)
+                                {
+                                    if (symbol =="1" || symbol.ToLower()== "mayor")
+                                    {
+                                        //if (video.Dimension) catchs.Remove(video);
+                                    }
+                                }
+                                Console.WriteLine("Ingrese otro filtro o -1 para salir");
+                                Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio");
+                                choice2 = Console.ReadLine().ToLower();
+                            }
+                            
                         }
                         else
                         {
@@ -2688,111 +2751,7 @@ namespace Spotflix
 
         }
 
-        public void CreatePlaylistS(User user) //AGREGAR USUARIO
-        {
-            List<Song> tempsongs = new List<Song>();
-            bool checker = true;
-            foreach (Song song in this.Songs)
-            {
-                Console.WriteLine("{0}: {1}\n", songs.IndexOf(song) + 1, song.Name);
-            }
-            while (checker)
-            {
-                Console.WriteLine("Seleccione las canciones que desea anadir en el siguiente formato: 1,2,3,4,5\n Ingrese 0 para dejar de añadir canciones\n");
-                string aux = Console.ReadLine();
-                string[] words = aux.Split(',');
-                if (aux == "0")
-                {
-                    checker = false;
-                    if (tempsongs.Count() != 0)
-                    {
-                        Console.WriteLine("Que nombre tendra la playlist?\n");
-                        string name = Console.ReadLine();
-                        Playlists.Add(new Playlist(tempsongs, name,user));
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("No se selecciono ninguna cancion, no se creara la playlist\n");
-                        break;
-                    }
-                }
-                if (((aux.Length + 1) / 2) != words.Length)
-                {
-                    int index = 0;
-                    foreach (String letter in words)
-                    {
-                        try
-                        {
-                            index = Int32.Parse(letter);
-                            index++;
-                            tempsongs.Add(songs[index]);
-                        }
-                        catch (FormatException)
-                        {
-                            Console.WriteLine("Formato invalido");
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Formato invalido");
-                }
-            }
-        }//Listo
-
-        public void CreatePlaylistV(User user)
-        {
-            List<Video> tempvideo = new List<Video>();
-            bool checker = true;
-            foreach (Video video in this.Videos)
-            {
-                Console.WriteLine("{0}: {1}\n", videos.IndexOf(video) + 1, video.Name);
-            }
-            while (checker)
-            {
-                Console.WriteLine("Seleccione los videos que desea anadir en el siguiente formato: 1,2,3,4,5\n Ingrese 0 para dejar de añadir videos\n");
-                string aux = Console.ReadLine();
-                string[] words = aux.Split(',');
-                if (aux == "0")
-                {
-                    checker = false;
-                    if (tempvideo.Count() != 0)
-                    {
-                        Console.WriteLine("Que nombre tendra la playlist?\n");
-                        string name = Console.ReadLine();
-                        Playlists.Add(new Playlist(tempvideo, name,user));
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("No se selecciono ninguna cancion, no se creara la playlist\n");
-                        break;
-                    }
-                }
-                if (((aux.Length + 1) / 2) != words.Length)
-                {
-                    int index = 0;
-                    foreach (String letter in words)
-                    {
-                        try
-                        {
-                            index = Int32.Parse(letter);
-                            index++;
-                            tempvideo.Add(videos[index]);
-                        }
-                        catch (FormatException)
-                        {
-                            Console.WriteLine("Formato invalido");
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Formato invalido");
-                }
-            }
-        }//Listo
+        
 
         public void AddToQueue(User user, Song song)//Pendeinte
         {
@@ -3462,11 +3421,28 @@ namespace Spotflix
                     break;
             }
         }
-        public void Download(Song song)//listo
+        public void Download(Song song, User user)//listo
         {
-            string destination = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
-            string source = song.Route;
-            System.IO.File.Copy(source, destination, true); 
+            int count = 0;
+            foreach (Song s in user.DownloadSongs)
+            {
+                if (s == song)
+                {
+                    count++;
+                }
+            }
+            if (count == 0)
+            {
+                string destination = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+                string source = song.Route;
+                System.IO.File.Copy(source, destination, true);
+                user.DownloadSongs.Add(song);
+                Console.WriteLine($"Descarga exitosa de la canción {song.Name}");
+            }
+            else
+            {
+                Console.WriteLine($"Error. La canción {song.Name} ya se encuentra en sus descargas");
+            }    
         }
         
     }
