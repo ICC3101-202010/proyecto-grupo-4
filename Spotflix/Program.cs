@@ -526,22 +526,22 @@ namespace Spotflix
                                         string stopperusr = "6";
                                         while (switcherusr != stopperusr)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Pestaña buscar y reproducir\n\t(2)Pestaña Informacion\n\t(3)Pestaña comunidad\n\t(4)Pestaña Playlist\n\t(5)Pestaña Follows(6)Atras\n");
-                                            Console.Clear();
+                                            Console.WriteLine("Si desea:\n\t(1)Pestaña buscar y reproducir\n\t(2)Pestaña Informacion\n\t(3)Pestaña comunidad\n\t(4)Pestaña Playlist\n\t(5)Pestaña Follows\n\t(6)Atras\n");
+                                            switcherusr = Console.ReadLine();
                                             switch (switcherusr)
                                             {
-                                                case "1":
+                                                case "1"://Ok
                                                     bool searshstopper = false;
                                                     while (!searshstopper)
                                                     {
-                                                        Console.WriteLine("Si desea:\n\t(0)Buscador generico\n\t(1)Buscar videos\n\t(2)Buscar canciones\n\t(3)Buscar por clases(Lessons)\n\t(4)Buscar por karaokes\n\t(5)Buscar por playlist\n\t(6)Album\n\t(7)Buscar por Series\n\t(8)Buscar y reproducir añadiendo a la cola\n\t(9)Para volver al menu\n" );
+                                                        Console.WriteLine("Si desea:\n\t(0)Buscador generico\n\t(1)Buscar videos\n\t(2)Buscar canciones\n\t(3)Buscar por Series\n\t(4)Buscar por playlist\n\t(5)Album\n\t(6)Buscar por karaokes\n\t(7)Buscar por clases(Lessons)\n\t(8)Buscar y reproducir añadiendo a la cola\n\t(9)Para volver al menu\n");
                                                         string searchandplay = Console.ReadLine();
                                                         Console.Clear();
                                                         switch (searchandplay)
                                                         {
                                                             case "0":
                                                                 List<int> choice = mediaPlayer.GenericSearch();
-                                                                if (mediaPlayer.GenericSearch().Contains(-1))
+                                                                if (choice.Contains(-1))
                                                                 {
                                                                     break;
                                                                 }
@@ -648,7 +648,7 @@ namespace Spotflix
 
                                                     }
                                                     break;
-                                                case "2":
+                                                case "2"://Ok
                                                     bool infostopper = false;
                                                     while (!infostopper)
                                                     {
@@ -658,7 +658,7 @@ namespace Spotflix
                                                         switch (infofilter)
                                                         {
                                                             case "1":
-                                                                Console.WriteLine("Si desea:\n\t(1)Ver calificacion de una cancion\n\t(2)Ver informacion de una cancion(3)\n\tVer informacion intrinseca de una cancion\n\t(4)Ver informacion de la plataforma de una cancion\n\t()Cualquier otro caracter para volver al Menu anterior\n");
+                                                                Console.WriteLine("Si desea:\n\t(1)Ver calificacion de una cancion\n\t(2)Ver informacion de una cancion\n\t(3)Ver informacion intrinseca de una cancion\n\t(4)Ver informacion de la plataforma de una cancion\n\t()Cualquier otro caracter para volver al Menu anterior\n");
                                                                 string songfilter = Console.ReadLine();
                                                                 switch (songfilter)
                                                                 {
@@ -675,6 +675,7 @@ namespace Spotflix
                                                                         mediaPlayer.GetPlataformInformation(mediaPlayer.Songs[mediaPlayer.Search("2")]);
                                                                         break;
                                                                     default:
+                                                                        Console.Clear();
                                                                         break;
                                                                 }
                                                                 break;
@@ -696,6 +697,7 @@ namespace Spotflix
                                                                         mediaPlayer.GetPlataformInformation(mediaPlayer.Videos[mediaPlayer.Search("1")]);
                                                                         break;
                                                                     default:
+                                                                        Console.Clear();
                                                                         break;
                                                                 }
                                                                 break;
@@ -710,7 +712,7 @@ namespace Spotflix
                                                         }
                                                     }
                                                     break;
-                                                case "3":
+                                                case "3"://ok
                                                     bool comunitystopper = false;
                                                     while (!comunitystopper)
                                                     {
@@ -802,8 +804,13 @@ namespace Spotflix
                                                                 }
 
                                                                 break;
-                                                            default:
+                                                            case "4":
                                                                 comunitystopper = false;
+                                                                break;
+                                                            default:
+                                                                Console.WriteLine("Opcion invalida intente nuevamente...");
+                                                                Thread.Sleep(1000);
+                                                                Console.Clear();
                                                                 break;
                                                         }
                                                     }
@@ -959,24 +966,35 @@ namespace Spotflix
                                                         }
                                                     }
                                                     break;
-                                                    /*& = case "5":
-                                                          bool followstopper = false;
-                                                          while (!followstopper)
-                                                          {
-                                                              Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t()Cualquier otro caracter para volver al menu anterior\n");
-                                                              string followfilter = Console.ReadLine();
-                                                              switch (playlistfilter)
-                                                          }
-                                                          Console.WriteLine("Si desea:\n\t(1)Reproducir Playlist de tu seguidas\n\t(2)Reproducir favoritos de tus usarios seguidos\n\t(3)Reproducir album de tus seguidss\n\t(5)Reproducir canciones de tus artistas seguidos\n\t(6)Reproducir videos de tus series seguidas\n\t(7)Reproducir clases de tus profesores seguidos\n\t(8)Volver al menu principal\n");
+                                                case "5":
+                                                    bool followstopper = false;
+                                                    while (!followstopper)
+                                                    {
+                                                        Console.WriteLine("Si desea:\n\t(1)Reproducir Playlist de tu seguidas\n\t(2)Reproducir favoritos de tus usarios seguidos\n\t(3)Reproducir album de tus seguidss\n\t(5)Reproducir canciones de tus artistas seguidos\n\t(6)Reproducir videos de tus series seguidas\n\t(7)Reproducir clases de tus profesores seguidos\n\t(8)Volver al menu principal\n");
+                                                        string followfilter = Console.ReadLine();
+                                                        switch (followfilter)
+                                                        {
 
-                                                      default:
-                                                          Console.WriteLine("Ingrese una opcion valida");
-                                                          break;*/
+                                                            default:
+                                                                break;
+                                                        }
+                                                    }
+                                                    break;
+                                                default:
+                                                    Console.WriteLine("Opcion invalida intente nuevamente...");
+                                                    Thread.Sleep(1000);
+                                                    Console.Clear();
+                                                    break;
+                                                   
+ 
                                             }
                                         }
                                     }
                                     else { Thread.Sleep(1000); Console.Clear(); }
                                     break;
+
+
+
 
                                 case "2": //Administrador
                                     Console.WriteLine("Ingrese su codigo de administrador");
@@ -990,7 +1008,7 @@ namespace Spotflix
                                         string stopperad = "6";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir video existente a una Serien\n\t(5)Cambiar su contraseña\n\t(6)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir video existente a una Serie\n\t(5)Cambiar su contraseña\n\t(6)Atras\n");
                                             switcherad = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherad)

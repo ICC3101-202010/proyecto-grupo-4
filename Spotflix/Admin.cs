@@ -134,6 +134,8 @@ namespace Spotflix
                     {
                         mediaPlayer.Songs.Add(song);
                         Console.WriteLine("\nCancion añadida correctamente\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
                         foreach (Artist a in mediaPlayer.Artists)
                         {
                             if (a.Name == song.Artist) count3++;
@@ -309,6 +311,9 @@ namespace Spotflix
                     if (mediaPlayer.Videos.Count() == 0)
                     {
                         mediaPlayer.Videos.Add(video);
+                        Console.WriteLine("Video añadido correctamente\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
                         foreach (Artist a in mediaPlayer.Artists)
                         {
                             if (a.Name == video.Director) count3++;

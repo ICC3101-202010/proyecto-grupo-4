@@ -765,7 +765,7 @@ namespace Spotflix
             string choice = Console.ReadLine();
             if (choice == "Y")
             {
-                video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(video.Route));
+                video.Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Videos\", Path.GetFileName(video.Route));
                 System.Diagnostics.Process.Start(video.Route);
                 video.NumberOfReproductions += 1;
                 Console.WriteLine("Desea darle me gusta al video Y/N");
@@ -775,7 +775,7 @@ namespace Spotflix
                     user.AddToFavorite(video);
                 }
             }
-            if (choice == "N")
+            else if (choice == "N")
             {
                 Console.WriteLine("Selecciono no, volviendo al menu...\n");
                 Thread.Sleep(1000);
@@ -1319,7 +1319,7 @@ namespace Spotflix
             int c1=0;
             int c2;
 
-            Console.WriteLine("Ingrese la busqueda del archivo o -1 para salir\n");
+            Console.WriteLine("Ingrese la busqueda del archivo o (-1) para salir\n");
             string filter = Console.ReadLine().ToLower();
             if (filter == "-1")
             {
@@ -1408,7 +1408,7 @@ namespace Spotflix
             {
                 foreach (Video video in catchsv)
                 {
-                    Console.WriteLine("{0}{1}{2}{3}{4}\n", n, catchsv.IndexOf(video) + 1, video.Name,video.Director,video.Gender);
+                    Console.WriteLine("{0}-{1}-{2}-{3}-{4}\n", n, catchsv.IndexOf(video) + 1, video.Name,video.Director,video.Gender);
                 }
                 n++;
             }
@@ -1416,7 +1416,7 @@ namespace Spotflix
             {
                 foreach (Song song in catchss)
                 {
-                    Console.WriteLine("{0}{1}{2}{3}{4}\n", n,catchss.IndexOf(song) + 1, song.Name,song.Artist, song.Gender);
+                    Console.WriteLine("{0}-{1}-{2}-{3}-{4}\n", n,catchss.IndexOf(song) + 1, song.Name,song.Artist, song.Gender);
                 }
                 n++;
             }
@@ -1424,7 +1424,7 @@ namespace Spotflix
             {
                 foreach (Lesson lesson in catchl)
                 {
-                    Console.WriteLine("{0}{1}{2}{3}{4}\n", n, catchl.IndexOf(lesson) + 1, lesson.Name, lesson.Subject, lesson.Course);
+                    Console.WriteLine("{0}-{1}-{2}-{3}-{4}\n", n, catchl.IndexOf(lesson) + 1, lesson.Name, lesson.Subject, lesson.Course);
                 }
                 n++;
             }
@@ -1459,6 +1459,11 @@ namespace Spotflix
                     Console.WriteLine("{0}{1}{2}{3}\n", n,catchse.IndexOf(serie) + 1, serie.SerieName,serie.NofVideos);
                 }
             }
+            if (catchse.Count() == 0&& catchsa.Count()==0&&catchp.Count()==0&&catchk.Count()==0&&catchl.Count()==0&&catchss.Count()==0&&catchsv.Count()==0)
+            {
+                c1 = -1;
+
+            }
             while (c1 != -1)
             {
                 while (c1 == 0)
@@ -1479,7 +1484,7 @@ namespace Spotflix
                 {
                     foreach (Video video in catchsv)
                     {
-                        Console.WriteLine("{0}{1}{2}{3}\n", catchsv.IndexOf(video) + 1, video.Name,video.Director,video.Gender);
+                        Console.WriteLine("{0}-{1}-{2}-{3}\n", catchsv.IndexOf(video) + 1, video.Name,video.Director,video.Gender);
                     }
                     Console.WriteLine("Ingrese el número de video que desee");
                     c2 = int.Parse(Console.ReadLine());
@@ -1499,7 +1504,7 @@ namespace Spotflix
                 {
                     foreach (Song song in catchss)
                     {
-                        Console.WriteLine("{0}{1}{2}{3}\n", catchss.IndexOf(song) + 1, song.Name,song.Artist, song.Gender);
+                        Console.WriteLine("{0}-{1}-{2}-{3}\n", catchss.IndexOf(song) + 1, song.Name,song.Artist, song.Gender);
                     }
                     Console.WriteLine("Ingrese el número de canción que desee");
                     c2 = int.Parse(Console.ReadLine());
@@ -1649,7 +1654,7 @@ namespace Spotflix
                         catchs.Add(video);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para el video");
-                    Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio\n7: Resolución\n8: Evaluación\n-1 para salir");
+                    Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Director\n5: Actor\n6:Estudio\n7: Resolución\n8: Evaluación\n(-1) para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
@@ -1860,7 +1865,7 @@ namespace Spotflix
                         catchsSongs.Add(song);
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para la canción");
-                    Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Artista\n5: Album\n6: Explicit\n7: Resolucion\n8: Evaluación\n-1 para salir");
+                    Console.WriteLine("1: Genérico\n2: Nombre\n3: Género\n4: Artista\n5: Album\n6: Explicit\n7: Resolucion\n8: Evaluación\n(-1) para salir");
                     choice2 = Console.ReadLine().ToLower();
                     while (choice2 != "-1")
                     {
