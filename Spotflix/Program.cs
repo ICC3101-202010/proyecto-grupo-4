@@ -207,8 +207,8 @@ namespace Spotflix
             List<Album> Albums = new List<Album>();
             //CARGAR TODO
 
-
-            /*
+            
+            
             string archivouser = @"\ArchivoUsuarios.bin";
             string pathu = Directory.GetCurrentDirectory() + archivouser;
             if (File.Exists(pathu))
@@ -300,8 +300,8 @@ namespace Spotflix
             }
             else { }
             
-            */
-               
+            
+              
             
 
             mediaPlayer.AddVideoSerie += admin.OnAddVideoSerie;
@@ -313,10 +313,6 @@ namespace Spotflix
             mediaPlayer.OrderBy += play.OnOrderBy;
             mediaPlayer.OrderByA += album.OnOrderByA;
 
-            foreach (Admin item in admins)
-            {
-                Console.WriteLine(item.Namea);
-            }
             int num = 0;
             string switcher = "0";
             string stopper = "3";
@@ -396,21 +392,21 @@ namespace Spotflix
                                     Console.WriteLine("Ingrese su Gmail:");
                                     gmail = Console.ReadLine();
                                     mailcheck = Gate.CheckGmail(gmail);
-                                    mailcheck = String.IsNullOrEmpty(gmail);
+                                    mailcheck = !String.IsNullOrEmpty(gmail);
                                 }
                                 while (!nickcheck)
                                 {
                                     Console.WriteLine("Ingrese su nombre de usuario:");
                                     nickName = Console.ReadLine();
                                     nickcheck = Gate.checkUsername(nickName);
-                                    nickcheck = String.IsNullOrEmpty(nickName);
+                                    nickcheck = !String.IsNullOrEmpty(nickName);
                                 }
                                 while (!passcheck)
                                 {
                                     Console.WriteLine("Ingrese su contraseña:");
                                     passWord = Console.ReadLine();
-                                    passcheck = string.IsNullOrEmpty(passWord);
-                                    if (passcheck)
+                                    passcheck = !String.IsNullOrEmpty(passWord);
+                                    if (!passcheck)
                                     {
                                         Console.WriteLine("Ingrese una contraseña no vacia");
                                     }
@@ -453,8 +449,8 @@ namespace Spotflix
                                     {
                                         Console.WriteLine("Ingrese su contraseña");
                                         passWorda = Console.ReadLine();
-                                        passcheck1 = string.IsNullOrEmpty(passWorda);
-                                        if (passcheck1)
+                                        passcheck1 = !String.IsNullOrEmpty(passWorda);
+                                        if (!passcheck1)
                                         {
                                             Console.WriteLine("Ingrese una contraseña no vacia");
                                         }
@@ -464,6 +460,7 @@ namespace Spotflix
                                     {
                                         Admin a1 = new Admin(nickNamea, gmaila, key, passWorda);
                                         Gate.SingAdmin(a1);
+                                        Thread.Sleep(1000);
                                         Console.Clear();
                                     }
                                 }
@@ -508,18 +505,19 @@ namespace Spotflix
                                     {
                                         Console.WriteLine("Ingrese su contraseña");
                                         passWordp = Console.ReadLine();
-                                        passcheck2 = string.IsNullOrEmpty(passWordp);
-                                        if (passcheck2)
+                                        passcheck2 = !String.IsNullOrEmpty(passWordp);
+                                        if (!passcheck2)
                                         {
                                             Console.WriteLine("Ingrese una contraseña no vacia");
                                         }
                                     }
                                     if (nickcheckp && mailcheckp)
                                     {
-                                        Console.WriteLine("Ingrese el curso que desea tener:");
+                                        Console.WriteLine("Ingrese el curso que desea tener(PK,K,1-8,I,II,II,IV):");
                                         string curso = Console.ReadLine();
                                         Teacher t1 = new Teacher(nickNamep, namet, lastname, gmailp, key_T, curso, passWordp);
                                         Gate.SingTeacher(t1);
+                                        Thread.Sleep(1000);
                                         Console.Clear();
                                     }
                                 }
@@ -569,7 +567,7 @@ namespace Spotflix
                                                     bool searshstopper = false;
                                                     while (!searshstopper)
                                                     {
-                                                        Console.WriteLine("Si desea:\n\t(0)Buscador generico\n\t(1)Buscar videos\n\t(2)Buscar canciones\n\t(3)Buscar por Series\n\t(4)Buscar por playlist\n\t(5)Album\n\t(6)Buscar por karaokes\n\t(7)Buscar por clases(Lessons)\n\t(8)Buscar y reproducir añadiendo a la cola\n\t(9)Para volver al menu\n");
+                                                        Console.WriteLine("Si desea:\n\t(0)Buscador generico\n\t(1)Buscar videos\n\t(2)Buscar canciones\n\t(3)Buscar por Series\n\t(4)Buscar por playlist\n\t(5)Buscar por Album\n\t(6)Buscar por karaokes\n\t(7)Buscar por clases(Lessons)\n\t(8)Buscar y reproducir añadiendo a la cola\n\t(9)Para volver al menu\n");
                                                         string searchandplay = Console.ReadLine();
                                                         Console.Clear();
                                                         switch (searchandplay)
@@ -633,7 +631,7 @@ namespace Spotflix
                                                                 if (variable3 == -1) break;
                                                                 else
                                                                 {
-                                                                    mediaPlayer.Play(mediaPlayer.Songs[variable3], user);
+                                                                    mediaPlayer.Play(mediaPlayer.Series[variable3], user);
                                                                 }
                                                                 break;
                                                             case "4":
@@ -641,7 +639,7 @@ namespace Spotflix
                                                                 if (variable4 == -1) break;
                                                                 else
                                                                 {
-                                                                    mediaPlayer.Play(mediaPlayer.Songs[variable4], user);
+                                                                    mediaPlayer.Play(mediaPlayer.Playlists[variable4], user);
                                                                 }
                                                                 break;
                                                             case "5":
@@ -649,7 +647,7 @@ namespace Spotflix
                                                                 if (variable5 == -1) break;
                                                                 else
                                                                 {
-                                                                    mediaPlayer.Play(mediaPlayer.Songs[variable5], user);
+                                                                    mediaPlayer.Play(mediaPlayer.Albums[variable5], user);
                                                                 }
                                                                 break;
                                                             case "6":
@@ -657,7 +655,7 @@ namespace Spotflix
                                                                 if (variable6 == -1) break;
                                                                 else
                                                                 {
-                                                                    mediaPlayer.Play(mediaPlayer.Songs[variable6], user);
+                                                                    mediaPlayer.Play(mediaPlayer.Karaokes[variable6], user);
                                                                 }
                                                                 break;
                                                             case "7":
@@ -665,7 +663,7 @@ namespace Spotflix
                                                                 if (variable7 == -1) break;
                                                                 else
                                                                 {
-                                                                    mediaPlayer.Play(mediaPlayer.Songs[variable7], user);
+                                                                    mediaPlayer.Play(mediaPlayer.Lessons[variable7], user);
                                                                 }
                                                                 break;
                                                             case "8":
@@ -1002,27 +1000,108 @@ namespace Spotflix
                                                                 {
                                                                     Console.WriteLine(song.Name);
                                                                 }
-                                                                bool anwser = false;
-                                                                
+                                                                bool anwser = false;                                                                
                                                                 while (!anwser)
                                                                 {
                                                                     Console.WriteLine("Desea añadir la playlist a sus playlist? Y/N");
                                                                     string response = Console.ReadLine();
                                                                     if (response=="Y")
                                                                     {
+                                                                        string name = "";
                                                                         bool nullcheck = false;
                                                                         while (!nullcheck)
                                                                         {
-                                                                            string name = Console.ReadLine();
-                                                                            nullcheck = String.IsNullOrEmpty(name);
+                                                                            Console.WriteLine("Ingrese el nombre de la playlist:\n");
+                                                                            name = Console.ReadLine();
+                                                                            nullcheck = !String.IsNullOrEmpty(name);
+                                                                            if (nullcheck)
+                                                                            {
+                                                                                Console.WriteLine("Ingreso un nombre vacio, Intente nuevamete...\n");
+                                                                            }
                                                                         }
-                                                                        
+                                                                        Console.WriteLine("Si desea:\n\t(1) Sea publica\n\t(2) Sea privada\n*Advertencia inputs erroneos se tomaran como privada*\n");
+                                                                        string publicornot = Console.ReadLine();
+                                                                        if (publicornot=="1")
+                                                                        {
+                                                                            publicornot = "public";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            publicornot = "private";
+                                                                        }
+                                                                        Playlist tempplaylist = new Playlist(temp, name, user,publicornot);
+                                                                        user.MyPlaylist.Add(tempplaylist);
+                                                                        anwser = true;
                                                                     }
-
+                                                                    else if (response=="N")
+                                                                    {
+                                                                        Console.WriteLine("Volviendo al menu anterior...");
+                                                                        Thread.Sleep(1000);
+                                                                        Console.Clear();
+                                                                        anwser = true;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        Console.WriteLine("Opcion invalida, intente nuevamente...\n");
+                                                                        Thread.Sleep(1000);
+                                                                        Console.Clear();
+                                                                    }
                                                                 }
-
                                                                 break;
                                                             case "6":
+                                                                List<Video> tempv = mediaPlayer.CreateRecommendedListV(user);
+                                                                Console.WriteLine("Estos son los videos de la playlist generada automaticamente:\n");
+                                                                foreach (Video video in tempv)
+                                                                {
+                                                                    Console.WriteLine(video.Name);
+                                                                }
+                                                                bool anwserv = false;
+                                                                while (!anwserv)
+                                                                {
+                                                                    Console.WriteLine("Desea añadir la playlist a sus playlist? Y/N");
+                                                                    string response = Console.ReadLine();
+                                                                    if (response == "Y")
+                                                                    {
+                                                                        string name = "";
+                                                                        bool nullcheck = false;
+                                                                        while (!nullcheck)
+                                                                        {
+                                                                            Console.WriteLine("Ingrese el nombre de la playlist:\n");
+                                                                            name = Console.ReadLine();
+                                                                            nullcheck = !String.IsNullOrEmpty(name);
+                                                                            if (nullcheck)
+                                                                            {
+                                                                                Console.WriteLine("Ingreso un nombre vacio, Intente nuevamete...\n");
+                                                                            }
+                                                                        }
+                                                                        Console.WriteLine("Si desea:\n\t(1) Sea publica\n\t(2) Sea privada\n*Advertencia inputs erroneos se tomaran como privada*\n");
+                                                                        string publicornot = Console.ReadLine();
+                                                                        if (publicornot == "1")
+                                                                        {
+                                                                            publicornot = "public";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            publicornot = "private";
+                                                                        }
+                                                                        Playlist tempplaylist = new Playlist(tempv, name, user,publicornot);
+                                                                        user.MyPlaylist.Add(tempplaylist);
+                                                                        anwserv = true;
+                                                                    }
+                                                                    else if (response == "N")
+                                                                    {
+                                                                        Console.WriteLine("Volviendo al menu anterior...");
+                                                                        Thread.Sleep(1000);
+                                                                        Console.Clear();
+                                                                        anwserv = true;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        Console.WriteLine("Opcion invalida, intente nuevamente...\n");
+                                                                        Thread.Sleep(1000);
+                                                                        Console.Clear();
+                                                                    }
+                                                                }
                                                                 break;
                                                             case "7":
                                                                 playliststopper = true;
@@ -1565,6 +1644,9 @@ namespace Spotflix
                                                         }
                                                     }
                                                     break;
+                                                case "6":
+                                                    Console.Clear();
+                                                    break;
                                                 default:
                                                     Console.WriteLine("Opcion invalida intente nuevamente...");
                                                     Thread.Sleep(1000);
@@ -1619,6 +1701,7 @@ namespace Spotflix
                                                     Gate.ChangePassword();
                                                     break;
                                                 case "6":
+                                                    Console.Clear();
                                                     break;
 
                                                 default:
@@ -1654,7 +1737,7 @@ namespace Spotflix
                                         string stopperad = "5";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Importar video\n\t(2)Añadir o eliminar archivo a curso\n\t(3)Cambiar su contraseña\n\t(4)Editar su perfil\n\t(5)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Importar clase\n\t(2)Editar su perfil\n\t(3)Atras\n");
                                             switcherad = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherad)
@@ -1662,30 +1745,11 @@ namespace Spotflix
                                                 case "1": //importar videos
                                                     teacher.ImportLesson(mediaPlayer);
                                                     break;
-                                                case "2": //añadir y eliminar archivos al curso 
-                                                    /*
-                                                    Console.WriteLine("Si desea agregar un video a su curso presione a y si desea eliminarlo presione e");
-                                                    string whata = Console.ReadLine();
-                                                    if (whata.ToLower() == "a")
-                                                    {
-                                                        mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID], "agregar");
-                                                    }
-                                                    if (whata.ToLower() == "e")
-                                                    {
-                                                        mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID], "eleminar");
-                                                    }
-                                                    else { Console.WriteLine("Comando no encontrado"); }
-                                                    break;
-                                                    */
-                                                case "3":
-                                                    Gate.ChangePassword();
-                                                    break;
-                                                case "4":
+                                                case "2":
                                                     Gate.ChangeTeacher(Gate.Teachers[posiciont]);
                                                     break;
-                                                case "5":
+                                                case "3":
                                                     break;
-
                                                 default:
                                                     Console.WriteLine("Ingrese una opcion valida");
                                                     break;

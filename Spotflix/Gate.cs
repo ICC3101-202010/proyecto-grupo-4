@@ -279,7 +279,7 @@ namespace Spotflix
                 Console.Clear();
             }
         }
-       
+
         public static void ChangePassword2(string usr, string newpsswd)
         {
             foreach (User user in Users)
@@ -439,7 +439,7 @@ namespace Spotflix
                         }
                         break;
                     case "2": //Course
-                        Console.WriteLine("Ingrese su nuevo curso");
+                        Console.WriteLine("Ingrese su nuevo curso(PK,K,1-8,I,II,II,IV)");
                         string nuevocurso = Console.ReadLine();
                         teacher.Course = nuevocurso;
                         break;

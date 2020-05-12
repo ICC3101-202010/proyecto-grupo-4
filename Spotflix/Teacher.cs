@@ -91,25 +91,25 @@ namespace Spotflix
             else
             {
                 TimeSpan lenght = GetVideoDuration(route);
-                Console.WriteLine("A continuacion ingrese los datos del video:\n");
-                Console.WriteLine("Ingrese el nombre del profesor\n");
+                Console.WriteLine("A continuacion ingrese los datos del video:");
+                Console.WriteLine("\nIngrese el nombre del profesor");
                 string director = Console.ReadLine();
                 string studio = "colegio";
                 string genre = "clase";
-                Console.WriteLine("Ingrese el año del video");
+                Console.WriteLine("\nIngrese el año del video:");
                 int year = int.Parse(Console.ReadLine());
-                Console.WriteLine("Ingrese el nombre del video");
+                Console.WriteLine("\nIngrese el nombre del video:");
                 string name = Console.ReadLine();
                 string image = null;
-                string stopper = "0";
+                string stopper = "";
                 List<String> actors = new List<string>(); //Los actores del colegio son contenidos
-                while (stopper == "0")
+                while (stopper != "0")
                 {
-                    Console.WriteLine("Ingrese los contenidos:(Ingrese 0 cuando haya terminado)\n");
+                    Console.WriteLine("\nIngrese los contenidos:(Ingrese 0 cuando haya terminado)");
                     string temp = Console.ReadLine();
                     if (temp != "0") actors.Append(temp);
                 }
-                Console.WriteLine("Ingrese desde que edad se puede ver el video: \n");
+                Console.WriteLine("\nIngrese desde que edad se puede ver el video: ");
                 string age = Console.ReadLine();
                 string destination = Path.Combine(Environment.CurrentDirectory + @"\Lessons", Path.GetFileName(filePaths[choice - 1]));
                 System.IO.File.Copy(route, destination, true);
@@ -120,7 +120,7 @@ namespace Spotflix
                 Console.WriteLine("A continuación, ingrese los datos de la clase");
                 Console.WriteLine("Ingrese la asignatura de la clase");
                 string subject= Console.ReadLine();
-                Console.WriteLine("Ingrese el curso de la clase");
+                Console.WriteLine("Ingrese el curso de la clase(PK,K,1-8,I,II,II,IV)");
                 string coursec = Console.ReadLine();
                 Lesson lesson = new Lesson(name, subject, coursec, 0, video, this);
                 if (mediaPlayer.Lessons.Count() == 0)

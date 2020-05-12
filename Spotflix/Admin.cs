@@ -226,7 +226,7 @@ namespace Spotflix
                 Thread.Sleep(2000);
                 Console.Clear();
             }
-            
+            Console.Clear();
         }//Listo
         private  TimeSpan GetVideoDuration(string filePath)
         {
@@ -411,13 +411,15 @@ namespace Spotflix
                     }
                 }
             }
+
             else
             {
                 Console.WriteLine("\nNo hay videos en el directorio solicitado\nVolviendo al menu...");
                 Thread.Sleep(2000);
                 Console.Clear();
             }
-            
+            Console.Clear();
+
         }//Listo
         public void ImportKaraoke(MediaPlayer mediaPlayer)
         {
@@ -434,7 +436,7 @@ namespace Spotflix
             List<Karaoke> karaokesa = new List<Karaoke>();
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             Console.WriteLine("Para añadir canciones de forma mas facil, estas deben estar en el siguiente directorio\n{0}\n", dir);
-            string[] filters = new[] { "*.mp3", "*.wav" };
+            string[] filters = new[] {"*.wav" };
             string[] filePaths = filters.SelectMany(f => Directory.GetFiles(dir, f)).ToArray();
 
             Console.WriteLine("Seleccione la cancion de karaoke a añadir:\n");
@@ -488,8 +490,19 @@ namespace Spotflix
                 }
                 Console.WriteLine("\nIngrese el genero de la cancion");
                 string genre = Console.ReadLine();
-                Console.WriteLine("\nIngrese el año de la cancion");
-                int year = int.Parse(Console.ReadLine());
+                bool numcheck = false;
+                int year=0;
+                while (!numcheck)
+                {
+                    Console.WriteLine("\nIngrese el año de la cancion");
+                    numcheck = int.TryParse(Console.ReadLine(),out year);
+                    if (!numcheck)
+                    {
+                        Console.WriteLine("\nInput invalido, Ingrese un numero...");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    }
+                }
                 Console.WriteLine("\nIngrese el nombre de la cancion");
                 string name = Console.ReadLine();
                 string image = null;
@@ -501,6 +514,7 @@ namespace Spotflix
                 Console.WriteLine("\nIngrese la ruta del archivo txt con la letra de la canción que quiere agregar");
                 string file = Console.ReadLine();
                 List<string> lyrics = System.IO.File.ReadLines(file).ToList();
+                string text = Path.Combine(Environment.CurrentDirectory + @"\Karaoke", Path.GetFileName(file));
 
 
                 Karaoke karaoke = new Karaoke(lyrics, artist, album, aux, name, genre, year, image, destination);

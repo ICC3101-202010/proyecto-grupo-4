@@ -94,7 +94,7 @@ namespace Spotflix
                 int count4=0;
                 foreach (Video v in videos)
                 {
-                    if (videoName==video.Name && videoDirector == video.Director)
+                    if (videoName==v.Name && videoDirector == v.Director)
                     {
                         video = v;
                         count4++;
@@ -176,6 +176,8 @@ namespace Spotflix
             int choice = 0;
             Console.WriteLine("Ingrese el nombre de su playlist");
             string namePlayList = Console.ReadLine();
+            
+
             while (choice == 0)
             {
                 Console.WriteLine("Ingrese el nombre de la canción");
@@ -228,11 +230,40 @@ namespace Spotflix
                         string option = Console.ReadLine();
                         if (option == "1" || option == "Sí")
                         {
+                            Console.WriteLine("Ingrese si su playlist es publica o privada\n(1) Publica\n(2) Privada");
+                            string choice5 = Console.ReadLine();
+                            string type;
+                            if (choice5 == "1" || choice5.ToLower() == "publica")
+                            {
+                                if (user.MembershipType == "pago")
+                                {
+                                    type = "public";
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Usted no es premium por lo tanto no puede añadir playlist públicas. Se añadirá su playlist como privada.");
+                                    type = "private";
+                                }
+                            }
+                            else if (choice5 == "2" || choice5.ToLower() == "privada")
+                            {
+                                type = "private";
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error, opción inválida. Su playlist se guardará como privada");
+                                type = "private";
+                            }
+                           
                             newPlaylist.PlaylistName = namePlayList;
+                            newPlaylist.Publicornot = type;
                             playlists.Add(newPlaylist);
                             user.MyPlaylist.Add(newPlaylist);
                             OnAddSong(newSong, newPlaylist);
                         }
+                        else Console.WriteLine("No se ha creado la playlist");
+
                     }
                     else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");
                 }
@@ -326,13 +357,42 @@ namespace Spotflix
                         string option = Console.ReadLine();
                         if (option == "1" || option == "Sí")
                         {
+
+                            Console.WriteLine("Ingrese si su playlist es publica o privada\n(1) Publica\n(2) Privada");
+                            string choice5 = Console.ReadLine();
+                            string type;
+                            if (choice5 == "1" || choice5.ToLower() == "publica")
+                            {
+                                if (user.MembershipType == "pago")
+                                {
+                                    type = "public";
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Usted no es premium por lo tanto no puede añadir playlist públicas. Se añadirá su playlist como privada.");
+                                    type = "private";
+                                }
+                            }
+                            else if (choice5 == "2" || choice5.ToLower() == "privada")
+                            {
+                                type = "private";
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error, opción inválida. Su playlist se guardará como privada");
+                                type = "private";
+                            }
+
                             newPlaylist.PlaylistName = namePlayList;
+                            newPlaylist.Publicornot = type;
                             playlists.Add(newPlaylist);
                             user.MyPlaylist.Add(newPlaylist);
                             OnAddVideo(newVideo, newPlaylist);
                         }
+                        else Console.WriteLine("No se ha creado la playlist");
                     }
-                    else Console.WriteLine("No se ha podido eliminar la canción. La PlayList no existe");
+                    else Console.WriteLine("No se ha podido eliminar el video. La PlayList no existe");
                 }
                 Console.WriteLine($"¿Desea agregar otro video a su playlist {newPlaylist.PlaylistName}\n1: Si\n2: No");
                 string ans = Console.ReadLine();
@@ -859,38 +919,138 @@ namespace Spotflix
 
         public void Play(Playlist playlist, User user)
         {
-            if (playlist.Videos.Count() != 0)
+            if (playlist.Publicornot=="public" && user.MembershipType=="no pago")
             {
-                Console.WriteLine("ADVERTENCIA\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
-                string choice = Console.ReadLine();
-                if (choice == "Y")
+                Console.WriteLine("No se puede reproducir la playlist, ya que esta es pública y usted no es premium");
+                Console.Clear();
+            }
+            else
+            {
+                if (playlist.Videos.Count() != 0)
                 {
-                    for (int i = 0; i < playlist.Videos.Count(); i++)
+                    Console.WriteLine("ADVERTENCIA\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
+                    string choice = Console.ReadLine();
+                    if (choice == "Y")
                     {
-                        playlist.Videos[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(playlist.Videos[i].Route));
-                        System.Diagnostics.Process.Start(playlist.Videos[i].Route);
-                        playlist.Videos[i].NumberOfReproductions += 1;
-                        bool bruteforce = true;
-
-                        while (stopper.Elapsed.TotalSeconds != playlist.Videos[i].Length.TotalSeconds && bruteforce)
+                        for (int i = 0; i < playlist.Videos.Count(); i++)
                         {
-                            Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\n()Ingrese cualquier otro caracter para salir\n");
+                            playlist.Videos[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(playlist.Videos[i].Route));
+                            System.Diagnostics.Process.Start(playlist.Videos[i].Route);
+                            playlist.Videos[i].NumberOfReproductions += 1;
+                            bool bruteforce = true;
+
+                            while (stopper.Elapsed.TotalSeconds != playlist.Videos[i].Length.TotalSeconds && bruteforce)
+                            {
+                                Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\n()Ingrese cualquier otro caracter para salir\n");
+                                string switcher = Console.ReadLine();
+                                Console.Clear();
+                                switch (switcher)
+                                {
+                                    case "1":
+                                        i++;
+                                        bruteforce = false;
+                                        stopper.Reset();
+                                        break;
+                                    case "2":
+                                        i--;
+                                        bruteforce = false;
+                                        stopper.Reset();
+                                        break;
+                                    case "3":
+                                        user.AddToFavorite(playlist.Videos[i]);
+                                        break;
+                                    default:
+                                        bruteforce = false;
+                                        break;
+                                }
+
+                            }
+                            if (i == playlist.Videos.Count())
+                            {
+                                i = 0;
+                            }
+                        }
+                    }
+                    if (choice == "N")
+                    {
+                        Console.WriteLine("Selecciono no, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opcion invalida, volviendo al menu...\n");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+
+                    }
+
+
+                }
+                if (playlist.Songs.Count() != 0)
+                {
+                    for (int i = 0; i < playlist.Songs.Count(); i++)
+                    {
+                        playlist.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(playlist.Songs[i].Route));
+                        SoundPlayer.SoundLocation = playlist.Songs[i].Route;
+                        SoundPlayer.Play();
+                        playlist.Songs[i].NumberOfReproductions += 1;
+                        stopper.Start();
+                        bool bruteforce = true;
+                        while (stopper.Elapsed.TotalSeconds != playlist.Songs[i].Length.TotalSeconds && bruteforce)
+                        {
+                            Console.WriteLine("(1)Detener cancion\n(2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion()Ingrese cualquier otro caracter para salir\n");
                             string switcher = Console.ReadLine();
                             Console.Clear();
                             switch (switcher)
                             {
                                 case "1":
-                                    i++;
-                                    bruteforce = false;
-                                    stopper.Reset();
+                                    SoundPlayer.Stop();
+                                    stopper.Stop();
+                                    Console.WriteLine("(1)Volver a empezar cancion\n2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion\n()Ingrese cualquier caracter para detener y salir\n");
+                                    string choice = Console.ReadLine();
+                                    Console.Clear();
+                                    if (choice == "1")
+                                    {
+                                        SoundPlayer.Play();
+                                        stopper.Start();
+                                    }
+                                    else if (choice == "2")
+                                    {
+                                        i++;
+                                        stopper.Reset();
+                                        bruteforce = false;
+                                    }
+                                    else if (choice == "3")
+                                    {
+                                        i--;
+                                        stopper.Reset();
+                                        bruteforce = false;
+                                    }
+                                    else if (choice == "4")
+                                    {
+                                        user.AddToFavorite(playlist.Songs[i]);
+                                    }
+                                    else
+                                    {
+                                        stopper.Reset();
+                                        bruteforce = false;
+                                    }
                                     break;
                                 case "2":
-                                    i--;
-                                    bruteforce = false;
+                                    i++;
+                                    SoundPlayer.Stop();
                                     stopper.Reset();
+                                    bruteforce = false;
                                     break;
                                 case "3":
-                                    user.AddToFavorite(playlist.Videos[i]);
+                                    i--;
+                                    SoundPlayer.Stop();
+                                    stopper.Reset();
+                                    bruteforce = false;
+                                    break;
+                                case "4":
+                                    user.AddToFavorite(playlist.Songs[i]);
                                     break;
                                 default:
                                     bruteforce = false;
@@ -898,111 +1058,20 @@ namespace Spotflix
                             }
 
                         }
-                        if (i == playlist.Videos.Count())
+                        if (i == playlist.Songs.Count())
                         {
                             i = 0;
                         }
+
                     }
                 }
-                if (choice == "N")
+                if (playlist.Videos.Count() == 0 && playlist.Songs.Count() == 0)
                 {
-                    Console.WriteLine("Selecciono no, volviendo al menu...\n");
-                    Thread.Sleep(1000);
+                    Console.WriteLine("Playlist vacia, volviendo al menu...\n");
                     Console.Clear();
                 }
-                else
-                {
-                    Console.WriteLine("Opcion invalida, volviendo al menu...\n");
-                    Thread.Sleep(1000);
-                    Console.Clear();
-
-                }
-
-
             }
-            if (playlist.Songs.Count() != 0)
-            {
-                for (int i = 0; i < playlist.Songs.Count(); i++)
-                {
-                    playlist.Songs[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Songs\", Path.GetFileName(playlist.Songs[i].Route));
-                    SoundPlayer.SoundLocation = playlist.Songs[i].Route;
-                    SoundPlayer.Play();
-                    playlist.Songs[i].NumberOfReproductions += 1;
-                    stopper.Start();
-                    bool bruteforce = true;
-                    while (stopper.Elapsed.TotalSeconds != playlist.Songs[i].Length.TotalSeconds && bruteforce)
-                    {
-                        Console.WriteLine("(1)Detener cancion\n(2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion()Ingrese cualquier otro caracter para salir\n");
-                        string switcher = Console.ReadLine();
-                        Console.Clear();
-                        switch (switcher)
-                        {
-                            case "1":
-                                SoundPlayer.Stop();
-                                stopper.Stop();
-                                Console.WriteLine("(1)Volver a empezar cancion\n2)Siguiente Cancion(3)Cancion anterior\n(4)Darle me gusta a la cancion\n()Ingrese cualquier caracter para detener y salir\n");
-                                string choice = Console.ReadLine();
-                                Console.Clear();
-                                if (choice == "1")
-                                {
-                                    SoundPlayer.Play();
-                                    stopper.Start();
-                                }
-                                else if (choice == "2")
-                                {
-                                    i++;
-                                    stopper.Reset();
-                                    bruteforce = false;
-                                }
-                                else if (choice == "3")
-                                {
-                                    i--;
-                                    stopper.Reset();
-                                    bruteforce = false;
-                                }
-                                else if (choice == "4")
-                                {
-                                    user.AddToFavorite(playlist.Songs[i]);
-                                }
-                                else
-                                {
-                                    stopper.Reset();
-                                    bruteforce = false;
-                                }
-                                break;
-                            case "2":
-                                i++;
-                                SoundPlayer.Stop();
-                                stopper.Reset();
-                                bruteforce = false;
-                                break;
-                            case "3":
-                                i--;
-                                SoundPlayer.Stop();
-                                stopper.Reset();
-                                bruteforce = false;
-                                break;
-                            case "4":
-                                user.AddToFavorite(playlist.Songs[i]);
-                                break;
-                            default:
-                                bruteforce = false;
-                                break;
-                        }
-
-                    }
-                    if (i == playlist.Songs.Count())
-                    {
-                        i = 0;
-                    }
-
-                }
-            }
-            if (playlist.Videos.Count() == 0 && playlist.Songs.Count() == 0)
-            {
-                Console.WriteLine("Playlist vacia, volviendo al menu...\n");
-                Console.Clear();
-            }
+            
         }
         public void Play(Lesson lessons, User user)
         {
@@ -2997,6 +3066,14 @@ namespace Spotflix
 
                         if (p != null)
                         {
+                            int countplay = 0;
+                            foreach (Playlist playlist in users[choice2 - 1].MyPlaylist)
+                            {
+                                if (playlist.Publicornot == "private")
+                                {
+                                    countplay += 1;
+                                }
+                            }
                             if (caller.FollowUsers.Contains(users[choice2 - 1]))
                             {
                                 Console.WriteLine("Ya esta siguiendo a esta playlist");
@@ -3019,23 +3096,69 @@ namespace Spotflix
                             }
                             else
                             {
-                                caller.FollowUsers.Add(users[choice2 - 1]);
-                                Console.WriteLine("Follow realizado correctamente");
-                                Console.WriteLine("¿Desea seguir a otro usuario?\n(1) Si\n(2) No");
-                                choice3 = Console.ReadLine();
-                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                if (caller.MembershipType == "pago")
                                 {
-                                    choice4 = 0;
+                                    caller.FollowUsers.Add(users[choice2 - 1]);
+                                    Console.WriteLine("Follow realizado correctamente");
+                                    Console.WriteLine("¿Desea seguir a otro usuario?\n(1) Si\n(2) No");
+                                    choice3 = Console.ReadLine();
+                                    if (choice3 == "1" || choice3.ToLower() == "si")
+                                    {
+                                        choice4 = 0;
+                                    }
+                                    else if (choice3 == "2" || choice3.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("Saliendo al menú");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion inválida, volviendo al menú");
+                                        break;
+                                    }
                                 }
-                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                               else if (caller.MembershipType =="no pago" && countplay==0)
                                 {
-                                    Console.WriteLine("Saliendo al menú");
-                                    break;
+                                    caller.FollowUsers.Add(users[choice2 - 1]);
+                                    Console.WriteLine("Follow realizado correctamente");
+                                    Console.WriteLine("¿Desea seguir a otro usuario?\n(1) Si\n(2) No");
+                                    choice3 = Console.ReadLine();
+                                    if (choice3 == "1" || choice3.ToLower() == "si")
+                                    {
+                                        choice4 = 0;
+                                    }
+                                    else if (choice3 == "2" || choice3.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("Saliendo al menú");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion inválida, volviendo al menú");
+                                        break;
+                                    }
                                 }
-                                else
+                                else 
                                 {
-                                    Console.WriteLine("Opcion inválida, volviendo al menú");
-                                    break;
+                                    Console.WriteLine("No puede seguir este usuario, ya que usted no es premium y el usuario contiene listas privadas");
+                                    Console.WriteLine("¿Desea intentar seguir a otro usuario?\n(1) Si\n(2) No");
+                                    choice3 = Console.ReadLine();
+                                    if (choice3 == "1" || choice3.ToLower() == "si")
+                                    {
+                                        choice4 = 0;
+                                    }
+                                    else if (choice3 == "2" || choice3.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("Saliendo al menú");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion inválida, volviendo al menú");
+                                        break;
+                                    }
+                                    
+
                                 }
 
                             }
@@ -3198,23 +3321,69 @@ namespace Spotflix
                             }
                             else
                             {
-                                caller.FollowPlaylist.Add(p);
-                                Console.WriteLine("Follow realizado correctamente");
-                                Console.WriteLine("¿Desea seguir otra playlist?\n(1) Si\n(2) No");
-                                choice3 = Console.ReadLine();
-                                if (choice3 == "1" || choice3.ToLower() == "si")
+                                if (caller.MembershipType == "pago")
                                 {
-                                    choice4 = 0;
+                                    caller.FollowPlaylist.Add(p);
+                                    Console.WriteLine("Follow realizado correctamente");
+                                    Console.WriteLine("¿Desea seguir a otra playlist?\n(1) Si\n(2) No");
+                                    choice3 = Console.ReadLine();
+                                    if (choice3 == "1" || choice3.ToLower() == "si")
+                                    {
+                                        choice4 = 0;
+                                    }
+                                    else if (choice3 == "2" || choice3.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("Saliendo al menú");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion inválida, volviendo al menú");
+                                        break;
+                                    }
                                 }
-                                else if (choice3 == "2" || choice3.ToLower() == "no")
+                                else if (caller.MembershipType == "no pago" && p.Publicornot == "public")
                                 {
-                                    Console.WriteLine("Saliendo al menú");
-                                    break;
+                                    caller.FollowUsers.Add(users[choice2 - 1]);
+                                    Console.WriteLine("Follow realizado correctamente");
+                                    Console.WriteLine("¿Desea seguir a otro usuario?\n(1) Si\n(2) No");
+                                    choice3 = Console.ReadLine();
+                                    if (choice3 == "1" || choice3.ToLower() == "si")
+                                    {
+                                        choice4 = 0;
+                                    }
+                                    else if (choice3 == "2" || choice3.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("Saliendo al menú");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion inválida, volviendo al menú");
+                                        break;
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Opcion inválida, volviendo al menú");
-                                    break;
+                                    Console.WriteLine("No puede seguir esta playlist, ya que usted no es premium y la playlist es privada");
+                                    Console.WriteLine("¿Desea intentar seguir a otra playlist?\n(1) Si\n(2) No");
+                                    choice3 = Console.ReadLine();
+                                    if (choice3 == "1" || choice3.ToLower() == "si")
+                                    {
+                                        choice4 = 0;
+                                    }
+                                    else if (choice3 == "2" || choice3.ToLower() == "no")
+                                    {
+                                        Console.WriteLine("Saliendo al menú");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion inválida, volviendo al menú");
+                                        break;
+                                    }
+                                    
+
                                 }
 
                             }
