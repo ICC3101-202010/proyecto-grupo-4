@@ -11,7 +11,6 @@ using WMPLib;
 using System.IO;
 using System.Timers;
 using System.Configuration;
-using System.Media;
 
 namespace Spotflix
 {

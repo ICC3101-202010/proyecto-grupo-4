@@ -843,15 +843,22 @@ namespace Spotflix
                                                                 break;
                                                             case "3":
                                                                 Console.WriteLine("Si desea:\n\t(1)Para cancion\n\t(2)Para video\n\t()Cualquier caracter para volver al menu anterior");
-                                                                string videoorsong = Console.ReadLine();                                                               
-                                                                if (videoorsong=="1")
+                                                                string videoorsong = Console.ReadLine();
+                                                                string mode;
+                                                                string up;
+                                                                bool up1;
+                                                                string namep1;
+                                                                string mode1;
+                                                                string up2;
+                                                                bool up3;
+                                                                string namep2;
+                                                                if (videoorsong == "1")
                                                                 {
                                                                     Console.WriteLine("Si desea:\n\t(1)Ordernar alfabeticamente\n\t(2)ordenar por fecha\n\t(3)Por duracion\n\t(4)Por calificacion\n\t()Cualquier caracter para volver al menu anterior");
-                                                                    string mode= Console.ReadLine();
+                                                                    mode = Console.ReadLine();
                                                                     Console.WriteLine("Si desea: \n\t(1)Ordenar mayor a menor\n\t()Cualquier otro caracter para menor a mayor\n");
-                                                                    string up = Console.ReadLine();
-                                                                    bool up1;
-                                                                    if (up=="1")
+                                                                    up = Console.ReadLine();
+                                                                    if (up == "1")
                                                                     {
                                                                         up1 = true;
                                                                     }
@@ -859,32 +866,31 @@ namespace Spotflix
                                                                     {
                                                                         up1 = false;
                                                                     }
-                                                                    Console.WriteLine("Ingrese el nombre de la playlist a ordenar o crear");
-                                                                    string name = Console.ReadLine();
-                                                                    if (mode=="1")
+                                                                    Console.WriteLine("Ingrese el nombre de la playlist a ordenar");
+                                                                    namep1 = Console.ReadLine();
+                                                                    if (mode == "1")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("song", "name", up1, "Alphabet", user);
+                                                                        mediaPlayer.PlayListStarter("song", namep1, up1, "Alphabet", user);
                                                                     }
                                                                     if (mode == "2")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("song", "name", up1, "Date", user);
+                                                                        mediaPlayer.PlayListStarter("song", namep1, up1, "Date", user);
                                                                     }
                                                                     if (mode == "3")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("song", "name", up1, "Lenght", user);
+                                                                        mediaPlayer.PlayListStarter("song", namep1, up1, "Lenght", user);
                                                                     }
                                                                     if (mode == "4")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("song", "name", up1, "Qualification", user);
+                                                                        mediaPlayer.PlayListStarter("song", namep1, up1, "Qualification", user);
                                                                     }
                                                                 }
-                                                                else if (videoorsong=="2")
+                                                                else if (videoorsong == "2")
                                                                 {
                                                                     Console.WriteLine("Si desea:\n\t(1)Ordernar alfabeticamente\n\t(2)ordenar por fecha\n\t(3)Por duracion\n\t(4)Por calificacion\n\t()Cualquier caracter para volver al menu anterior");
-                                                                    string mode1 = Console.ReadLine();
+                                                                    mode1 = Console.ReadLine();
                                                                     Console.WriteLine("Si desea: \n\t(1)Ordenar mayor a menor\n\t()Cualquier otro caracter para menor a mayor\n");
-                                                                    string up2 = Console.ReadLine();
-                                                                    bool up3;
+                                                                    up2 = Console.ReadLine();
                                                                     if (up2 == "1")
                                                                     {
                                                                         up3 = true;
@@ -894,56 +900,57 @@ namespace Spotflix
                                                                         up3 = false;
                                                                     }
                                                                     Console.WriteLine("Ingrese el nombre de la playlist a ordenar o crear");
-                                                                    string namea = Console.ReadLine();
+                                                                    namep2 = Console.ReadLine();
                                                                     if (mode1 == "1")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Alphabet", user);
+                                                                        mediaPlayer.PlayListStarter("video", namep2, up3, "Alphabet", user);
                                                                     }
                                                                     if (mode1 == "2")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Date", user);
+                                                                        mediaPlayer.PlayListStarter("video", namep2, up3, "Date", user);
                                                                     }
                                                                     if (mode1 == "3")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Lenght", user);
+                                                                        mediaPlayer.PlayListStarter("video", namep2, up3, "Lenght", user);
                                                                     }
                                                                     if (mode1 == "4")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Qualification", user);
+                                                                        mediaPlayer.PlayListStarter("video", namep2, up3, "Qualification", user);
                                                                     }
                                                                 }
                                                                 break;
                                                             case "4":
                                                                 Console.WriteLine("Si desea:\n\t(1)Ordernar alfabeticamente\n\t(2)ordenar por fecha\n\t(3)Por duracion\n\t(4)Por calificacion\n\t()Cualquier caracter para volver al menu anterior");
-                                                                string mode = Console.ReadLine();
+                                                                string modea = Console.ReadLine();
                                                                 Console.WriteLine("Si desea: \n\t(1)Ordenar mayor a menor\n\t()Cualquier otro caracter para menor a mayor\n");
-                                                                string up = Console.ReadLine();
-                                                                bool up1;
-                                                                if (up == "1")
+                                                                string upa = Console.ReadLine();
+                                                                string namea;
+                                                                bool upa1;
+                                                                if (upa == "1")
                                                                 {
-                                                                    up1 = true;
+                                                                    upa1 = true;
                                                                 }
                                                                 else
                                                                 {
-                                                                    up1 = false;
+                                                                    upa1 = false;
                                                                 }
-                                                                Console.WriteLine("Ingrese el nombre de la playlist a ordenar o crear");
-                                                                string name = Console.ReadLine();
-                                                                if (mode == "1")
+                                                                Console.WriteLine("Ingrese el nombre del album a ordenar");
+                                                                namea = Console.ReadLine();
+                                                                if (modea == "1")
                                                                 {
-                                                                    mediaPlayer.AlbumStarter("name", up1, "Alphabet");
+                                                                    mediaPlayer.AlbumStarter(namea, upa1, "Alphabet");
                                                                 }
-                                                                if (mode == "2")
+                                                                if (modea == "2")
                                                                 {
-                                                                    mediaPlayer.AlbumStarter("name", up1, "Date");
+                                                                    mediaPlayer.AlbumStarter(namea, upa1, "Date");
                                                                 }
-                                                                if (mode == "3")
+                                                                if (modea == "3")
                                                                 {
-                                                                    mediaPlayer.AlbumStarter("name", up1, "Lenght");
+                                                                    mediaPlayer.AlbumStarter(namea, upa1, "Lenght");
                                                                 }
-                                                                if (mode == "4")
+                                                                if (modea == "4")
                                                                 {
-                                                                    mediaPlayer.AlbumStarter("name", up1, "Qualification");
+                                                                    mediaPlayer.AlbumStarter(namea, upa1, "Qualification");
                                                                 }
                                                                 break;
                                                             default:
@@ -952,19 +959,19 @@ namespace Spotflix
                                                         }
                                                     }
                                                     break;
-                                              /*& = case "5":
-                                                    bool followstopper = false;
-                                                    while (!followstopper)
-                                                    {
-                                                        Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t()Cualquier otro caracter para volver al menu anterior\n");
-                                                        string followfilter = Console.ReadLine();
-                                                        switch (playlistfilter)
-                                                    }
-                                                    Console.WriteLine("Si desea:\n\t(1)Reproducir Playlist de tu seguidas\n\t(2)Reproducir favoritos de tus usarios seguidos\n\t(3)Reproducir album de tus seguidss\n\t(5)Reproducir canciones de tus artistas seguidos\n\t(6)Reproducir videos de tus series seguidas\n\t(7)Reproducir clases de tus profesores seguidos\n\t(8)Volver al menu principal\n");
+                                                    /*& = case "5":
+                                                          bool followstopper = false;
+                                                          while (!followstopper)
+                                                          {
+                                                              Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t()Cualquier otro caracter para volver al menu anterior\n");
+                                                              string followfilter = Console.ReadLine();
+                                                              switch (playlistfilter)
+                                                          }
+                                                          Console.WriteLine("Si desea:\n\t(1)Reproducir Playlist de tu seguidas\n\t(2)Reproducir favoritos de tus usarios seguidos\n\t(3)Reproducir album de tus seguidss\n\t(5)Reproducir canciones de tus artistas seguidos\n\t(6)Reproducir videos de tus series seguidas\n\t(7)Reproducir clases de tus profesores seguidos\n\t(8)Volver al menu principal\n");
 
-                                                default:
-                                                    Console.WriteLine("Ingrese una opcion valida");
-                                                    break;*/
+                                                      default:
+                                                          Console.WriteLine("Ingrese una opcion valida");
+                                                          break;*/
                                             }
                                         }
                                     }
