@@ -424,8 +424,7 @@ namespace Spotflix
                 }   
             }
         }
-        /*
-        public static void ChangeTeacher()
+        public static void ChangeTeacher(Teacher teacher)
         {
             string switu = "0";
             string stopu = "4";
@@ -439,7 +438,7 @@ namespace Spotflix
                     case "1"://Nickname
                         Console.WriteLine("Ingrese su nuevo nombre de usuario");
                         string nuevonusuariot = Console.ReadLine();
-                        foreach (Teacher t in teachers)
+                        foreach (Teacher t in Teachers)
                         {
                             if (t.Nickname == nuevonusuariot)
                             {
@@ -454,13 +453,12 @@ namespace Spotflix
                     case "2": //LastName
                         Console.WriteLine("Ingrese su nuevo apellido");
                         string nuevoapellidot = Console.ReadLine();
-                        t.Lastname = nuevoapellidot;
+                        teacher.Lastname = nuevoapellidot;
                         break;
-                    case "3": //Age int
+                    case "3": //Course
                         Console.WriteLine("Ingrese su nuevo curso");
                         string nuevocurso = Console.ReadLine();
-                        int nuevoCurso = Convert.ToInt32(nuevocurso);
-                        t.Course = nuevoCurso;
+                        teacher.Course = nuevocurso;
                         break;
                     case "4":
                         Console.WriteLine("Se ha actualizado correctamente");
@@ -469,6 +467,6 @@ namespace Spotflix
                         break;
                 }
             }
-        }*/
+        }
     }
 }

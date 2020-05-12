@@ -518,31 +518,31 @@ namespace Spotflix
 
                                                         if (choice[0] == 1)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Videos[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Videos[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                         else if (choice[0] == 2)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Songs[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Songs[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                         else if (choice[0] == 3)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Lessons[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Lessons[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                         else if (choice[0] == 4)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Karaokes[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Karaokes[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                         else if (choice[0] == 5)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Playlists[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Playlists[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                         else if (choice[0] == 6)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Albums[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Albums[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                         else if (choice[0] == 7)
                                                         {
-                                                            //mediaPlayer.Play(mediaPlayer.Series[choice[1]],users[user.UserID]);
+                                                            mediaPlayer.Play(mediaPlayer.Series[choice[1]],Gate.Users[user.UserID]);
                                                         }
                                                     }
 
@@ -622,7 +622,7 @@ namespace Spotflix
                                                     }
                                                     break;
                                                 case "12"://descargar cancion
-                                                    foreach (User userr in users)
+                                                    foreach (User userr in Gate.Users)
                                                     {
                                                         if ((n == userr.Nickname) || (n == userr.Gmail))
                                                         {
@@ -633,7 +633,7 @@ namespace Spotflix
                                                                 if (variableads == -1) break;
                                                                 else
                                                                 {
-                                                                    mediaPlayer.Download(mediaPlayer.Songs[variableads]);
+                                                                    mediaPlayer.Download(mediaPlayer.Songs[variableads],Gate.Users[user.UserID]);
                                                                 }
                                                             }
                                                             else { Console.WriteLine("Usted no es Premiun"); break; }
@@ -662,13 +662,41 @@ namespace Spotflix
                                                     }
                                                     break;
                                                 case "16": //crear playlist de canciones
-                                                    mediaPlayer.CreatePlaylistS(users[user.UserID]);
+                                                    Console.WriteLine("Si desea agregar una cancion presione a y si desea eliminarla presione e");
+                                                    string what = Console.ReadLine();
+                                                    if (what.ToLower() == "a")
+                                                    {
+                                                        mediaPlayer.CreatePlaylistS(Gate.Users[user.UserID],"agregar");
+                                                    }
+                                                    if (what.ToLower() == "e")
+                                                    {
+                                                        mediaPlayer.CreatePlaylistS(Gate.Users[user.UserID], "eliminar");
+                                                    }
+                                                    else { Console.WriteLine("Comando no encontrado"); }
+                                                    
                                                     break;
                                                 case "17": //crear playlist de videos
-                                                    mediaPlayer.CreatePlaylistV(users[user.UserID]);
+                                                    Console.WriteLine("Si desea agregar una cancion presione a y si desea eliminarla presione e");
+                                                    string whata = Console.ReadLine();
+                                                    if (whata.ToLower() == "a")
+                                                    {
+                                                        mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID],"agregar");
+                                                    }
+                                                    if (whata.ToLower() == "e")
+                                                    {
+                                                        mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID],"eleminar");
+                                                    }
+                                                    else { Console.WriteLine("Comando no encontrado"); }
+                                                    
                                                     break;
                                                 case "18": //añadir a la cola
-                                           //         mediaPlayer.AddToQueue(users[user.UserID]);
+                                                    mediaPlayer.Search("2");
+                                                    int variableq = mediaPlayer.Search("2");
+                                                    if (variableq == -1) break;
+                                                    else
+                                                    {
+                                                        mediaPlayer.AddToQueue(Gate.Users[user.UserID], mediaPlayer.Songs[variableq]);
+                                                    }
                                                     break;
                                                 case "19": //seguir
                                                     string swi = "0";
@@ -681,22 +709,22 @@ namespace Spotflix
                                                         switch (swi)
                                                         {
                                                             case "1":
-                                                    //            mediaPlayer.Follow("Users",users,user,teachers);
+                                                                mediaPlayer.Follow("Users",Gate.Users,user,Gate.Teachers);
                                                                 break;
                                                             case "2":
-                                                    //            mediaPlayer.Follow("Albums", users, user,teachers);
+                                                                mediaPlayer.Follow("Albums", Gate.Users, user,Gate.Teachers);
                                                                 break;
                                                             case "3":
-                                                    //            mediaPlayer.Follow("Playlists", users, user,teachers);
+                                                                mediaPlayer.Follow("Playlists", Gate.Users, user,Gate.Teachers);
                                                                 break;
                                                             case "4":
-                                                    //            mediaPlayer.Follow("Artists", users, user,teachers);
+                                                                mediaPlayer.Follow("Artists", Gate.Users, user, Gate.Teachers);
                                                                 break;
                                                             case "5":
-                                                    //            mediaPlayer.Follow("Series", users, user,teachers);
+                                                                mediaPlayer.Follow("Series", Gate.Users, user, Gate.Teachers);
                                                                 break;
                                                             case "6":
-                                                    //            mediaPlayer.Follow("Teachers", users, user,teachers);
+                                                                mediaPlayer.Follow("Teachers", Gate.Users, user, Gate.Teachers);
                                                                 break;
                                                             case "7":
                                                                 break;
@@ -785,7 +813,7 @@ namespace Spotflix
                                                     Gate.NoMemberShip();
                                                     break;
                                                 case "29":
-                                                    Gate.ChangeProfile(users[user.UserID]);
+                                                    Gate.ChangeProfile(Gate.Users[user.UserID]);
                                                     break;
 
 
@@ -810,10 +838,10 @@ namespace Spotflix
                                     if (Gate.LogAsAdmin(nn, pp))
                                     {
                                         string switcherad = "0";
-                                        string stopperad = "7";
+                                        string stopperad = "6";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Descargar cancion\n\t(5)Añadir video existente a una Serien\t(6)Cambiar su contraseña\n\t(7)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir video existente a una Serien\t(5)Cambiar su contraseña\n\t(6)Atras\n");
                                             switcherad = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherad)
@@ -827,16 +855,7 @@ namespace Spotflix
                                                 case "3": //importar karaoke
                                                     admin.ImportKaraoke(mediaPlayer);
                                                     break;
-                                                case "4": //descargar canciones
-                                                    mediaPlayer.Search("2");
-                                                    int variabledows = mediaPlayer.Search("2");
-                                                    if (variabledows == -1) break;
-                                                    else
-                                                    {
-                                                        mediaPlayer.Download(mediaPlayer.Songs[variabledows]);
-                                                    }
-                                                    break;
-                                                case "5":
+                                                case "4":
                                                     Console.WriteLine("Diga Add si quiere añadir o Delete si quiere eliminar");
                                                     string op = Console.ReadLine();
                                                     Console.WriteLine("Diga el nombre de la serie");
@@ -845,12 +864,12 @@ namespace Spotflix
                                                     string dir = Console.ReadLine();
                                                     Console.WriteLine("Ingrese el nombre del video ya existente");
                                                     string vide = Console.ReadLine();
-                                         //           mediaPlayer.VideoSerieStarter(op, ser, vide, dir, mediaPlayer);
+                                                    mediaPlayer.VideoSerieStarter(op, ser, vide, dir, mediaPlayer);
                                                     break;
-                                                case "6": //cambiar contraseña
+                                                case "5": //cambiar contraseña
                                                     Gate.ChangePassword();
                                                     break;
-                                                case "7":
+                                                case "6":
                                                     break;
 
                                                 default:
@@ -866,25 +885,27 @@ namespace Spotflix
 
                                     Console.WriteLine("Ingrese su codigo de profesor");
                                     string mm = Console.ReadLine();
+                                    Console.WriteLine("Ingrese su Gmail");
+                                    string gm = Console.ReadLine();
                                     Console.WriteLine("Ingrese su contraseña");
                                     string ññ = Console.ReadLine();
                                     Console.Clear();
                                     if (Gate.LogAsTeacher(mm, ññ))
-                                    {/*
+                                    {
                                         int posiciont = -1;
-                                        foreach (Teacher te in teachers)
+                                        foreach (Teacher te in Gate.Teachers)
                                         {
-                                            posiciona++;
-                                            if (nn == ad.Namea || nn == ad.Gmaila)
+                                            posiciont++;
+                                            if (gm == te.Gmail)
                                             {
                                                 break;
                                             }
-                                        } */
+                                        } 
                                         string switcherad = "0";
-                                        string stopperad = "6";
+                                        string stopperad = "5";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Importar video\n\t(2)Descargar cancion\n\t(3)Añadir archivo a curso\n\t(4)Eliminar archivos del curso\n\t(5)Cambiar su contraseña\n\t(6)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Importar video\n\t(2)Añadir o eliminar archivo a curso\n\t(3)Cambiar su contraseña\n\t(4)Editar su perfil\n\t(5)Atras\n");
                                             switcherad = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherad)
@@ -892,25 +913,28 @@ namespace Spotflix
                                                 case "1": //importar videos
                                                     teacher.ImportLesson(mediaPlayer);
                                                     break;
-                                                case "2": //descargar canciones
-                                                    mediaPlayer.Search("2");
-                                                    int variabledows = mediaPlayer.Search("2");
-                                                    if (variabledows == -1) break;
-                                                    else
+                                                case "2": //añadir y eliminar archivos al curso 
+                                                    /*
+                                                    Console.WriteLine("Si desea agregar un video a su curso presione a y si desea eliminarlo presione e");
+                                                    string whata = Console.ReadLine();
+                                                    if (whata.ToLower() == "a")
                                                     {
-                                                        mediaPlayer.Download(mediaPlayer.Songs[variabledows]);
+                                                        mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID], "agregar");
                                                     }
+                                                    if (whata.ToLower() == "e")
+                                                    {
+                                                        mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID], "eleminar");
+                                                    }
+                                                    else { Console.WriteLine("Comando no encontrado"); }
                                                     break;
-                                                case "3": //añadir archivos al curso 
-                                                    //teacher.Add(MediaFile,course);
-                                                    break;
-                                                case "4": //eliminar archivos de curso
-                                                    //teacher.Delete(MediaFile, course);
-                                                    break;
-                                                case "5":
+                                                    */
+                                                case "3":
                                                     Gate.ChangePassword();
                                                     break;
-                                                case "6":
+                                                case "4":
+                                                    Gate.ChangeTeacher(Gate.Teachers[posiciont]);
+                                                    break;
+                                                case "5":
                                                     break;
 
                                                 default:
