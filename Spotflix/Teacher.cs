@@ -22,7 +22,7 @@ namespace Spotflix
         private string passw;
         private string gmail;
         private string nickname;
-        List<Lesson> lessons = new List<Lesson>();
+        private List<Lesson> lessons = new List<Lesson>();
         private List<Song> downloadSongs = new List<Song>();
 
 

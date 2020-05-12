@@ -84,11 +84,11 @@ namespace Spotflix
                 {
                     if (a.Up)
                     {
-                        this.songs = a.Album.songs.OrderBy(song => song.Qualification).ToList();
+                        this.songs = a.Album.songs.OrderBy(song => song.Qualification.Average()).ToList();
                     }
                     else
                     {
-                        this.songs = a.Album.songs.OrderByDescending(song => song.Qualification).ToList();
+                        this.songs = a.Album.songs.OrderByDescending(song => song.Qualification.Average()).ToList();
                     }
                 }
                 else Console.WriteLine("No se han encontrado canciones");

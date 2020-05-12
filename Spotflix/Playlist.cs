@@ -161,11 +161,11 @@ namespace Spotflix
                 {
                     if (o.Up)
                     {
-                        this.songs = o.PlayList.songs.OrderBy(song => song.Qualification).ToList();
+                        this.songs = o.PlayList.songs.OrderBy(song => song.Qualification.Average()).ToList();
                     }
                     else
                     {
-                        this.songs = o.PlayList.songs.OrderByDescending(song => song.Qualification).ToList();
+                        this.songs = o.PlayList.songs.OrderByDescending(song => song.Qualification.Average()).ToList();
                     }
                 }
                 else Console.WriteLine("No se han encontrado canciones");
@@ -176,11 +176,11 @@ namespace Spotflix
                 {
                     if (o.Up)
                     {
-                        this.videos = o.PlayList.videos.OrderBy(video => video.Qualification).ToList();
+                        this.videos = o.PlayList.videos.OrderBy(video => video.Qualification.Average()).ToList();
                     }
                     else
                     {
-                        this.videos = o.PlayList.videos.OrderByDescending(video => video.Qualification).ToList();
+                        this.videos = o.PlayList.videos.OrderByDescending(video => video.Qualification.Average()).ToList();
                     }
                 }
                 else Console.WriteLine("No se han encontrado videos");
@@ -203,7 +203,7 @@ namespace Spotflix
                     Console.WriteLine("{0} {1} {2} {3}\n", videos.IndexOf(v) + 1, v.Name, v.Director, v.Gender);
                 }
 
-                Console.WriteLine($"¿Desea agregar esa playlist o desea ver más opciones\nOpción 1: Agregar playlist {playlistName}\nOpción 2: Ver más palylists");
+                Console.WriteLine($"¿Desea agregar esa playlist o desea ver más opciones\nOpción 1: Agregar playlist {playlistName}\nOpción 2: Ver más playlists");
 
                 while (choice2 == 0)
                 {

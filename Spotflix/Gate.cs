@@ -391,7 +391,7 @@ namespace Spotflix
                         break;
                     case "8": //Código Postal
                         Console.WriteLine("Ingrese su nuevo codigo postal");
-                        string nuevocodigo = Console.ReadLine();
+                        int  nuevocodigo = int.Parse(Console.ReadLine());
                         user.PostalCode = nuevocodigo;
                         break;
                     case "9":

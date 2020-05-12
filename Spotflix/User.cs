@@ -15,15 +15,11 @@ namespace Spotflix
         private string gmail;
         private string nickname;
         private string membershipType;
-        private bool premiunSongs;
-        private bool premiunVideo;
         private List<Song> likedSongs = new List<Song>();
         private List<Video> likedVideos = new List<Video>();
         private List<Song> downloadSongs = new List<Song>();
         private List<Song> queque = new List<Song>();
 
-
-        private int screenNumber;
         private List<Playlist> myPlaylist = new List<Playlist>();
         private List<User> followUsers = new List<User>();
         private List<Album> followAlbums = new List<Album>();
@@ -54,11 +50,8 @@ namespace Spotflix
         public string Gmail { get => gmail; set => gmail = value; }
         public string Nickname { get => nickname; set => nickname = value; }
         public string MembershipType { get => membershipType; set => membershipType = value; }
-        public bool PremiunSongs { get => premiunSongs; set => premiunSongs = value; }
-        public bool PremiunVideo { get => premiunVideo; set => premiunVideo = value; }
         public List<Song> LikedSongs { get => likedSongs; set => likedSongs = value; }
         public List<Video> LikedVideos { get => likedVideos; set => likedVideos = value; }
-        public int ScreenNumber { get => screenNumber; set => screenNumber = value; }
         public List<Playlist> MyPlaylist { get => myPlaylist; set => myPlaylist = value; }
         public List<User> FollowUsers { get => followUsers; set => followUsers = value; }
         public List<Album> FollowAlbums { get => followAlbums; set => followAlbums = value; }

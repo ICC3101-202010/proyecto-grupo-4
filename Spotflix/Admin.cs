@@ -133,6 +133,7 @@ namespace Spotflix
                     if (mediaPlayer.Songs.Count() == 0)
                     {
                         mediaPlayer.Songs.Add(song);
+                        Console.WriteLine("\nCancion añadida correctamente\n");
                         foreach (Artist a in mediaPlayer.Artists)
                         {
                             if (a.Name == song.Artist) count3++;

@@ -355,7 +355,7 @@ namespace Spotflix
             }
         }
 
-        public void PlayListStarter(string mediaFile, string playListName, bool up, string option)
+        public void PlayListStarter(string mediaFile, string playListName, bool up, string option,User user)
         {
             Playlist newPlayList = null;
             int count = 0;
@@ -380,6 +380,7 @@ namespace Spotflix
                 {
                     newPlayList.PlaylistName = playListName;
                     playlists.Add(newPlayList);
+                    user.MyPlaylist.Add(newPlayList);
                 }
             }
         }
@@ -727,7 +728,7 @@ namespace Spotflix
             bool bruteforce = true;
             while (stopper.Elapsed.TotalSeconds != song.Length.TotalSeconds && bruteforce)
             {
-                Console.WriteLine("(1)Detener cancion\n(2)Ponerle me gusta a la cancion\nIngrese cualquier otro caracter para salir\n");
+                Console.WriteLine("(1)Detener cancion\n(2)Ponerle me gusta a la cancion\n()Ingrese cualquier otro caracter para salir\n");
                 string switcher = Console.ReadLine();
                 Console.Clear();
                 switch (switcher)
@@ -735,7 +736,7 @@ namespace Spotflix
                     case "1":
                         SoundPlayer.Stop();
                         stopper.Stop();
-                        Console.WriteLine("(1)Volver a empezar cancion\nIngrese cualquier caracter para detener y salir\n");
+                        Console.WriteLine("(1)Volver a empezar cancion\n()Ingrese cualquier caracter para detener y salir\n");
                         string choice = Console.ReadLine();
                         Console.Clear();
                         if (choice == "1")
@@ -805,7 +806,7 @@ namespace Spotflix
                         bool bruteforce = true;
                         while (stopper.Elapsed.TotalSeconds != serie.Episodes[i].Length.TotalSeconds && bruteforce)
                         {
-                            Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\nIngrese cualquier otro caracter para salir\n");
+                            Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\n()Ingrese cualquier otro caracter para salir\n");
                             string switcher = Console.ReadLine();
                             Console.Clear();
                             switch (switcher)
@@ -1004,8 +1005,6 @@ namespace Spotflix
                 Console.Clear();
             }
         }
-
-
         public void Play(Lesson lessons, User user)
         {
             Console.WriteLine("ADVERTENCIA\n una vez incializado la clase no podra detenerlo desde la consola, Desea continuar Y/N");
@@ -1166,7 +1165,6 @@ namespace Spotflix
 
             }
         }
-
         public void Play(User user)
         {
             int choice = 0;
@@ -1312,178 +1310,10 @@ namespace Spotflix
                 Thread.Sleep(1000);
                 Console.Clear();
             }
+
+
+
         }
-
-        public Video ShowVideos()
-        {
-            int choice = 0;
-
-            if (this.Videos.Count() != 0)
-            {
-                Console.WriteLine("Seleccione un video:\n");
-                while (choice != -1)
-                {
-                    foreach (Video video in this.Videos)
-                    {
-                        Console.WriteLine("\t{0} {1}\n", this.Videos.IndexOf(video) + 1, video.Name);
-                    }
-                    try
-                    {
-                        choice = int.Parse(Console.ReadLine());
-                        if (choice == -1)
-                        {
-                            return null;
-                        }
-                        try
-                        {
-                            return this.Videos[choice - 1];
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            Console.WriteLine("Ingrese un valor valido\n");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine("Ingrese un numero para seleccionar o -1 para salir\n");
-                    }
-                }
-                return null;
-            }
-            else
-            {
-                Console.WriteLine("No se encontraron videos");
-                return null;
-            }
-        }//Listo
-        public Song ShowSongs()
-        {
-            int choice = 0;
-
-            if (Songs.Count() != 0)
-            {
-                Console.WriteLine("Seleccione una cancion:\n");
-                while (choice != -1)
-                {
-                    foreach (Song song in this.Songs)
-                    {
-                        Console.WriteLine("\t{0} {1}\n", this.Songs.IndexOf(song) + 1, song.Name);
-                    }
-                    try
-                    {
-                        choice = int.Parse(Console.ReadLine());
-                        if (choice == -1)
-                        {
-                            return null;
-                        }
-                        try
-                        {
-                            return this.Songs[choice - 1];
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            Console.WriteLine("Ingrese un valor valido\n");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine("Ingrese un numero para seleccionar o -1 para salir\n");
-                    }
-                }
-                return null;
-            }
-            else
-            {
-                Console.WriteLine("No se encontraron canciones");
-                return null;
-            }
-        }//Listo
-        public Playlist ShowPlaylists()
-        {
-            int choice = 0;
-
-            if (this.Playlists.Count() != 0)
-            {
-                Console.WriteLine("Seleccione una playlist:\n");
-                while (choice != -1)
-                {
-                    foreach (Playlist playlist in this.Playlists)
-                    {
-                        Console.WriteLine("\t{0} {1}\n", this.Playlists.IndexOf(playlist) + 1, playlist.PlaylistName);
-                    }
-                    try
-                    {
-                        choice = int.Parse(Console.ReadLine());
-                        if (choice == -1)
-                        {
-                            return null;
-                        }
-                        try
-                        {
-                            return this.Playlists[choice - 1];
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            Console.WriteLine("Ingrese un valor valido\n");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine("Ingrese un numero para seleccionar o -1 para salir\n");
-                    }
-                }
-                return null;
-            }
-            else
-            {
-                Console.WriteLine("No se encontraron playlists");
-                return null;
-            }
-        }//Listo
-        public Series ShowSeries()
-        {
-            int choice = 0;
-
-            if (this.Series.Count() != 0)
-            {
-                Console.WriteLine("Seleccione una serie:\n");
-                while (choice != -1)
-                {
-                    foreach (Series series in this.Series)
-                    {
-                        Console.WriteLine("\t{0} {1}\n", this.Series.IndexOf(series) + 1, series.SerieName);
-                    }
-                    try
-                    {
-                        choice = int.Parse(Console.ReadLine());
-                        if (choice == -1)
-                        {
-                            return null;
-                        }
-                        try
-                        {
-                            return this.Series[choice - 1];
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            Console.WriteLine("Ingrese un valor valido\n");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine("Ingrese un numero para seleccionar o -1 para salir\n");
-                    }
-                }
-                return null;
-            }
-            else
-            {
-                Console.WriteLine("No se encontraron series");
-                return null;
-            }
-        }//Listo
-
-
         public List<int> GenericSearch()
         {
             List<int> choice = new List<int>();
@@ -2196,7 +2026,7 @@ namespace Spotflix
                         }
 
                     }
-                    if (catchsSongs.Count() != 0&&choice!=-1&&!baduser)
+                    if (catchsSongs.Count() != 0 && choice != -1 && !baduser)
                     {
                         foreach (Song song in catchsSongs)
                         {
@@ -2893,7 +2723,7 @@ namespace Spotflix
 
         }
 
-        
+
 
         public void AddToQueue(User user, Song song)
         {
@@ -3005,7 +2835,7 @@ namespace Spotflix
             Console.WriteLine("\tLa calificacion que posee la cancion solicitada es:{0\n}", this.GetQualification(song));
         }//listo
 
-        public void Follow(string key, List<User> users, User caller, List<Teacher> teachers)//Falta Trabajo
+        public void Follow(string key, List<User> users, User caller, List<Teacher> teachers)
         {
             int choice = 0;
             int choice2 = 0;
