@@ -21,7 +21,7 @@ namespace Spotflix
         protected int mediaId;
         protected List<int> qualification = new List<int>(); //Calificación (1-5)
         protected string quality;
-        protected string dimension;
+        protected int dimension;
         protected object image;
         protected string route;
         protected int currentSecond=0;
@@ -39,7 +39,7 @@ namespace Spotflix
         public int MediaId { get => mediaId; set => mediaId = value; }
         public List<int> Qualification { get => qualification; set => qualification = value; }
         public string Quality { get => quality; set => quality = value; }
-        public string Dimension { get => dimension; set => dimension = value; }
+        public int Dimension { get => dimension; set => dimension = value; }
         public object Image { get => image; set => image = value; }
         public int Likes { get => likes; set => likes = value; }
     }
