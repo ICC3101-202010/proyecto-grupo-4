@@ -135,7 +135,7 @@ namespace Spotflix
             }
             else
             {
-                Console.WriteLine("La canción ya se encuentra en su playList. ¿Desea agregarla de todas formas?\nOpción 1: Sí\nOpción 2: No");
+                Console.WriteLine("La canción ya se encuentra en su playList. ¿Desea agregarla de todas formas?\n(1) Sí\n(2) No");
                 string answer = Console.ReadLine();
                 if (answer == "1" || answer == "Sí")
                 {
@@ -197,7 +197,7 @@ namespace Spotflix
             }
             else
             {
-                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarlo de todas formas?\nOpción 1: Sí\nOpción 2: No");
+                Console.WriteLine("El video ya se encuentra en su playList. ¿Desea agregarlo de todas formas?\n(1) Sí\n(2) No");
                 string answer = Console.ReadLine();
                 if (answer == "1" || answer == "Sí")
                 {
@@ -248,7 +248,7 @@ namespace Spotflix
                     Console.WriteLine("Selecione una playlist para ver sus canciones o -1 para salir:\n");
                     foreach (Playlist play in this.MyPlaylist)
                     {
-                        Console.WriteLine("\t{0} {1}\n", this.MyPlaylist.IndexOf(play) + 1, play.PlaylistName);
+                        Console.WriteLine("\t{0}: {1}\n", this.MyPlaylist.IndexOf(play) + 1, play.PlaylistName);
                     }
 
                     while (choice == 0)
@@ -266,7 +266,7 @@ namespace Spotflix
                     {
                         foreach (Song playy in MyPlaylist[choice - 1].Songs)
                         {
-                            Console.WriteLine("\t{0} {1} {2}\n", this.MyPlaylist[choice - 1].Songs.IndexOf(playy) + 1, playy.Name, playy.Artist);
+                            Console.WriteLine("\t{0}: {1}-{2}\n", this.MyPlaylist[choice - 1].Songs.IndexOf(playy) + 1, playy.Name, playy.Artist);
                         }
                     }
                     catch (ArgumentOutOfRangeException)
@@ -279,7 +279,7 @@ namespace Spotflix
                         choice = 0;
                     }
 
-                    Console.WriteLine($"¿Desea agregar esa Playlist o desea ver más opciones\nOpción 1: Agregar playlist {MyPlaylist[choice - 1].PlaylistName}\nOpción 2: Ver más playlists de {name} {lastname}\n Opción 3:Ver otros usuarios");
+                    Console.WriteLine($"¿Desea agregar esa Playlist o desea ver más opciones\n(1) Agregar playlist {MyPlaylist[choice - 1].PlaylistName}\n(2) Ver más playlists de {name} {lastname}\n Opción 3:Ver otros usuarios");
 
                     while (choice2 == 0)
                     {

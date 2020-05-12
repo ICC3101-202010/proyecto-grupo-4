@@ -153,15 +153,15 @@ namespace Spotflix
         {
             int choice = 0;
             int choice2 = 0;
-            if (lessons.Count() != 0)
+            if (lessons.Count() > 0)
             {
 
                 foreach (Lesson l in lessons)
                 {
-                    Console.WriteLine("{0} {1} {2} {3}\n", lessons.IndexOf(l) + 1, l.Course, l.Name, l.Subject);
+                    Console.WriteLine("{0}: {1}-{2}-{3}\n", lessons.IndexOf(l) + 1, l.Course, l.Name, l.Subject);
                 }
 
-                Console.WriteLine($"¿Desea agregar este profesor o desea ver más opciones\nOpción 1: Seguir profesor {name} {lastname}\nOpción 2: Ver más profesores");
+                Console.WriteLine($"¿Desea agregar este profesor o desea ver más opciones\n(1) Seguir profesor {name} {lastname}\n(2) Ver más profesores");
 
                 while (choice2 == 0)
                 {
@@ -191,7 +191,6 @@ namespace Spotflix
                         return null;
                     }
                     Console.WriteLine("Seleccione una opción  dentro del rango o ingrese -1 para salir\n");
-                    choice = 0;
                 }
                 return null;
 

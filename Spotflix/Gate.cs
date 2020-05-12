@@ -34,7 +34,7 @@ namespace Spotflix
                 {
                     if (user_T.Nickname == userName)
                     {
-                        Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
+                        Console.WriteLine("El nombre de usuario {0} ya está en uso\n", userName);
                         return false;
                     }
                     else
@@ -57,7 +57,7 @@ namespace Spotflix
                 {
                     if (user_T.Gmail == gmail)
                     {
-                        Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
+                        Console.WriteLine("El mail {0} ya está en uso\n", gmail);
                         return false;
                     }
                 }
@@ -76,7 +76,7 @@ namespace Spotflix
                 {
                     if (admin_T.Namea == userName)
                     {
-                        Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
+                        Console.WriteLine("El nombre de usuario {0} ya está en uso\n", userName);
                         return false;
                     }
                     else
@@ -99,7 +99,7 @@ namespace Spotflix
                 {
                     if (admin_T.Gmaila == gmail)
                     {
-                        Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
+                        Console.WriteLine("El mail {0} ya está en uso\n", gmail);
                         return false;
                     }
                 }
@@ -118,7 +118,7 @@ namespace Spotflix
                 {
                     if (teacher_T.Nickname == userName)
                     {
-                        Console.WriteLine("El nombre de usuario {0} ya esta en uso\n", userName);
+                        Console.WriteLine("El nombre de usuario {0} ya está en uso\n", userName);
                         return false;
                     }
                     else
@@ -141,7 +141,7 @@ namespace Spotflix
                 {
                     if (teacher_T.Gmail == gmail)
                     {
-                        Console.WriteLine("El mail {0} ya esta en uso\n", gmail);
+                        Console.WriteLine("El mail {0} ya está en uso\n", gmail);
                         return false;
                     }
                 }
@@ -158,13 +158,14 @@ namespace Spotflix
             {
                 if (manager_T.Code == code)
                 {
-                    Console.WriteLine("El Administrador con este codigo ya existe\n");
+                    Console.WriteLine("El Administrador con este código ya existe\n"); //Parece que se puede sacar
                     return false;
                 }
 
             }
             return true;
         }//True si es valido False si ya existe
+
         public static bool CheckCodeP(string code)
         {
             if (Teachers.Count() == 0)
@@ -175,27 +176,31 @@ namespace Spotflix
             {
                 if (teacher_T.Code == code)
                 {
-                    Console.WriteLine("El Profesor con este codigo ya existe\n");
+                    Console.WriteLine("El Profesor con este codigo ya existe\n"); //Parece que se puede sacar
                     return false;
                 }
             }
             return true;
         }
+
         public static void SingUser(User user)//listo
         {
             Users.Add(user);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
+
         public static void SingAdmin(Admin manager) //Listo
         {
             Managers.Add(manager);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
+
         public static void SingTeacher(Teacher teacher)
         {
             Teachers.Add(teacher);
             Console.WriteLine("Se ha registrado correctamente!\n");
         }
+
         public static User LogAsUser(string email_nickname, string password) //listo
         {
             if (Users.Count() == 0)
@@ -216,6 +221,7 @@ namespace Spotflix
                 return null;
             }
         }
+
         public static bool LogAsAdmin(string code, string password) //listo
         {
             if (Managers.Count() == 0)
@@ -233,6 +239,7 @@ namespace Spotflix
             Console.WriteLine("Nombre de usuario o contraseña incorrecta\n");
             return false;
         }
+
         public static bool LogAsTeacher(string code, string password) //listo
         {
             if (Teachers.Count() == 0)
@@ -267,7 +274,7 @@ namespace Spotflix
             else
             {
                 // Mostramos el error
-                Console.WriteLine("[!] ERROR: No se logro cambiar la contraseña\n");
+                Console.WriteLine("[!] ERROR: No se logró cambiar la contraseña\n");
                 Thread.Sleep(1000);
                 Console.Clear();
             }
@@ -308,6 +315,7 @@ namespace Spotflix
                 else { Console.WriteLine("Gmail o contraseña incorrecta"); }
             }
         }
+
         public static void NoMemberShip()
         {
             Console.WriteLine("Ingresa tu Gmail");
@@ -332,6 +340,7 @@ namespace Spotflix
                 else { Console.WriteLine("Gmail o contraseña incorrecta"); }
             }
         }
+
         public static void ChangeProfile(User user)
         {
             string switu = "0";
@@ -402,13 +411,14 @@ namespace Spotflix
                 }
             }
         }
+
         public static void ChangeTeacher(Teacher teacher)
         {
             string switu = "0";
             string stopu = "4";
             while (switu != stopu)
             {
-                Console.WriteLine("Desea cambiar:\n\t(1)Su nombre de usuario\n\t(2)Su apellido\n\t(3)Su curso\n\t(4)Actualizar");
+                Console.WriteLine("Desea cambiar:\n\t(1)Su nombre de usuario\n\t(2)Su curso\n\t(3)Actualizar");
                 string opcion = Console.ReadLine();
                 Console.Clear();
                 switch (switu)
@@ -428,17 +438,12 @@ namespace Spotflix
                             }
                         }
                         break;
-                    case "2": //LastName
-                        Console.WriteLine("Ingrese su nuevo apellido");
-                        string nuevoapellidot = Console.ReadLine();
-                        teacher.Lastname = nuevoapellidot;
-                        break;
-                    case "3": //Course
+                    case "2": //Course
                         Console.WriteLine("Ingrese su nuevo curso");
                         string nuevocurso = Console.ReadLine();
                         teacher.Course = nuevocurso;
                         break;
-                    case "4":
+                    case "3":
                         Console.WriteLine("Se ha actualizado correctamente");
                         Thread.Sleep(1000);
                         Console.Clear();

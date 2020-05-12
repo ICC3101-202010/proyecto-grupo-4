@@ -194,19 +194,19 @@ namespace Spotflix
         {
             int choice = 0;
             int choice2 = 0;
-            if (songs.Count() != 0 || videos.Count!=0)
+            if (songs.Count() > 0 || videos.Count> 0)
             {
 
                 foreach (Song s in songs)
                 {
-                    Console.WriteLine("{0} {1} {2} {3}\n", songs.IndexOf(s) + 1, s.Name, s.Artist, s.Gender);
+                    Console.WriteLine("{0}: {1}-{2}-{3}\n", songs.IndexOf(s) + 1, s.Name, s.Artist, s.Gender);
                 }
                 foreach (Video v in videos)
                 {
-                    Console.WriteLine("{0} {1} {2} {3}\n", videos.IndexOf(v) + 1, v.Name, v.Director, v.Gender);
+                    Console.WriteLine("{0}: {1}-{2}-{3}\n", videos.IndexOf(v) + 1, v.Name, v.Director, v.Gender);
                 }
 
-                Console.WriteLine($"¿Desea agregar esa playlist o desea ver más opciones\nOpción 1: Agregar playlist {playlistName}\nOpción 2: Ver más playlists");
+                Console.WriteLine($"¿Desea agregar esa playlist o desea ver más opciones\n(1) Agregar playlist {playlistName}\n(2) Ver más playlists");
 
                 while (choice2 == 0)
                 {
@@ -236,7 +236,6 @@ namespace Spotflix
                         return null;
                     }
                     Console.WriteLine("Seleccione una opción  dentro del rango o ingrese -1 para salir\n");
-                    choice = 0;
                 }
                 return null;
 
