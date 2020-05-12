@@ -67,7 +67,6 @@
     <Compile Include="Gate.cs" />
     <Compile Include="IGo.cs" />
     <Compile Include="Karaoke.cs" />
-    <Compile Include="KaraokeEventArgs.cs" />
     <Compile Include="Lesson.cs" />
     <Compile Include="MediaPlayer.cs" />
     <Compile Include="MediaFile.cs" />

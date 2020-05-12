@@ -402,31 +402,6 @@ namespace Spotflix
                 }
             }
         }
-        public static void ChangeAdmin()
-        {
-            Console.WriteLine("Ingrese su antiguo nombre");
-            string antoguonombre = Console.ReadLine();
-
-            foreach (Admin a in Managers)
-            {
-                if (a.Namea == antoguonombre)
-                {
-                    Console.WriteLine("Ingrese su nuevo nombre");
-                    string nuevonombre = Console.ReadLine();
-                    foreach (Admin b in Managers)
-                    {
-                        if (b.Namea == nuevonombre)
-                        {
-                            Console.WriteLine("Ese nombre ya esta utilizado");
-                        }
-                        else
-                        {
-                            b.Namea = nuevonombre;
-                        }
-                    }
-                }   
-            }
-        }
         public static void ChangeTeacher(Teacher teacher)
         {
             string switu = "0";

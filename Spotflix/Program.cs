@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
+using System.Runtime.InteropServices;
 
 namespace Spotflix
 {
@@ -754,30 +755,10 @@ namespace Spotflix
                                                                 switch (profile)
                                                                 {
                                                                     case "1":
-                                                                        if (user.MembershipType=="'no pago")
-                                                                        {
-                                                                            user.MembershipType = "pago";
-                                                                            Console.WriteLine("Pago exitoso");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            Console.WriteLine("El usuario ya es premium,volviendo al menu...\n");
-                                                                            Thread.Sleep(1000);
-                                                                            Console.Clear();
-                                                                        }
+                                                                        Gate.MemberShip();
                                                                         break;
                                                                     case "2":
-                                                                        if (user.MembershipType == "'pago")
-                                                                        {
-                                                                            user.MembershipType = "no pago";
-                                                                            Console.WriteLine("Cancelacion de la subscripcion exitosa");
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            Console.WriteLine("El usuario no es premium,volviendo al menu...\n");
-                                                                            Thread.Sleep(1000);
-                                                                            Console.Clear();
-                                                                        }
+                                                                        Gate.NoMemberShip();
                                                                         break;
                                                                     case "3":
                                                                         Gate.ChangePassword();
@@ -822,6 +803,7 @@ namespace Spotflix
 
                                                                 break;
                                                             default:
+                                                                comunitystopper = false;
                                                                 break;
                                                         }
                                                     }
@@ -899,35 +881,35 @@ namespace Spotflix
                                                                 else if (videoorsong=="2")
                                                                 {
                                                                     Console.WriteLine("Si desea:\n\t(1)Ordernar alfabeticamente\n\t(2)ordenar por fecha\n\t(3)Por duracion\n\t(4)Por calificacion\n\t()Cualquier caracter para volver al menu anterior");
-                                                                    string mode = Console.ReadLine();
+                                                                    string mode1 = Console.ReadLine();
                                                                     Console.WriteLine("Si desea: \n\t(1)Ordenar mayor a menor\n\t()Cualquier otro caracter para menor a mayor\n");
-                                                                    string up = Console.ReadLine();
-                                                                    bool up1;
-                                                                    if (up == "1")
+                                                                    string up2 = Console.ReadLine();
+                                                                    bool up3;
+                                                                    if (up2 == "1")
                                                                     {
-                                                                        up1 = true;
+                                                                        up3 = true;
                                                                     }
                                                                     else
                                                                     {
-                                                                        up1 = false;
+                                                                        up3 = false;
                                                                     }
                                                                     Console.WriteLine("Ingrese el nombre de la playlist a ordenar o crear");
-                                                                    string name = Console.ReadLine();
-                                                                    if (mode == "1")
+                                                                    string namea = Console.ReadLine();
+                                                                    if (mode1 == "1")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up1, "Alphabet", user);
+                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Alphabet", user);
                                                                     }
-                                                                    if (mode == "2")
+                                                                    if (mode1 == "2")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up1, "Date", user);
+                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Date", user);
                                                                     }
-                                                                    if (mode == "3")
+                                                                    if (mode1 == "3")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up1, "Lenght", user);
+                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Lenght", user);
                                                                     }
-                                                                    if (mode == "4")
+                                                                    if (mode1 == "4")
                                                                     {
-                                                                        mediaPlayer.PlayListStarter("video", "name", up1, "Qualification", user);
+                                                                        mediaPlayer.PlayListStarter("video", "name", up3, "Qualification", user);
                                                                     }
                                                                 }
                                                                 break;
@@ -965,21 +947,24 @@ namespace Spotflix
                                                                 }
                                                                 break;
                                                             default:
+                                                                playliststopper = false;
                                                                 break;
                                                         }
                                                     }
                                                     break;
-                                                case "5":
+                                              /*& = case "5":
                                                     bool followstopper = false;
                                                     while (!followstopper)
                                                     {
-
+                                                        Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t()Cualquier otro caracter para volver al menu anterior\n");
+                                                        string followfilter = Console.ReadLine();
+                                                        switch (playlistfilter)
                                                     }
                                                     Console.WriteLine("Si desea:\n\t(1)Reproducir Playlist de tu seguidas\n\t(2)Reproducir favoritos de tus usarios seguidos\n\t(3)Reproducir album de tus seguidss\n\t(5)Reproducir canciones de tus artistas seguidos\n\t(6)Reproducir videos de tus series seguidas\n\t(7)Reproducir clases de tus profesores seguidos\n\t(8)Volver al menu principal\n");
 
                                                 default:
                                                     Console.WriteLine("Ingrese una opcion valida");
-                                                    break;
+                                                    break;*/
                                             }
                                         }
                                     }
