@@ -231,8 +231,12 @@ namespace Spotflix
         }//Listo
         private TimeSpan AudioDuration(string FileFullPath)
         {
-            TagLib.File file = TagLib.File.Create(FileFullPath);
-            return TimeSpan.Parse(file.Properties.Duration.TotalSeconds.ToString());
+            using (var shell = ShellObject.FromParsingName(FileFullPath))
+            {
+                IShellProperty prop = shell.Properties.System.Media.Duration;
+                var t = (ulong)prop.ValueAsObject;
+                return TimeSpan.FromTicks((long)t);
+            }
         }
         private TimeSpan GetVideoDuration(string filePath)
         {
