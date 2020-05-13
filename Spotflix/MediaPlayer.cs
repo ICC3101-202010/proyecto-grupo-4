@@ -77,7 +77,7 @@ namespace Spotflix
                     {
                         count += 1;
                         serie = s;
-                        video = v;
+                        video = new Video(v.Actors, v.AgeFilter, v.Director, v.Studio, v.Name, v.Gender, v.Image, v.Year, v.Route);
 
                     }
                 }
@@ -86,18 +86,18 @@ namespace Spotflix
                     cont2++;
                 }
             }
-            if (count != 0 && option == "add")
+            if (count != 0 && option == "add"&& cont2!=0)
             {
                 Console.WriteLine($"El video {videoName} ya existe en la serie {serieName}");
             }
-            else if (count == 0 && option == "add")
+            else if (count == 0 && option == "add"&&cont2!=0)
             {
                 int count4=0;
                 foreach (Video v in videos)
                 {
                     if (videoName==v.Name || videoDirector == v.Director)
                     {
-                        video = v;
+                        video = new Video(v.Actors, v.AgeFilter, v.Director, v.Studio, v.Name, v.Gender, v.Image, v.Year, v.Route);
                         count4++;
                     }
                 }
@@ -105,11 +105,11 @@ namespace Spotflix
                 else Console.WriteLine("No se ha encontrado el video deseado");
             }
 
-            else if (count != 0 && option == "delete")
+            else if (count != 0 && option == "delete"&&cont2 != 0)
             {
                 OnDeleteVideoSerie(video, serie, mediaPlayer);
             }
-            else if (count == 0 && option == "delete")
+            else if (count == 0 && option == "delete"&&cont2 != 0)
             {
                 Console.WriteLine($"El video {videoName} no existe en la serie {serieName}");
             }
@@ -129,7 +129,7 @@ namespace Spotflix
                     {
                         if (v.Director == videoDirector && v.Name == videoName)
                         {
-                            video = v;
+                            video = new Video(v.Actors, v.AgeFilter, v.Director, v.Studio, v.Name, v.Gender, v.Image, v.Year, v.Route);
                             counter++;
                         }
                     }
@@ -844,61 +844,10 @@ namespace Spotflix
         {
             if (serie.Episodes.Count() != 0)
             {
-                Console.WriteLine("ADVERTENCIA\n una vez incializado un video no podra detenerlo desde la consola, Desea continuar Y/N");
-                string choice = Console.ReadLine();
-                if (choice == "Y")
+                foreach (Video item in serie.Episodes)
                 {
-                    for (int i = 0; i < serie.NofVideos; i++)
-                    {
-                        serie.Episodes[i].Route = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\Video\", Path.GetFileName(serie.Episodes[i].Route));
-                        System.Diagnostics.Process.Start(serie.Episodes[i].Route);
-                        serie.Episodes[i].NumberOfReproductions += 1;
-                        bool bruteforce = true;
-                        while (stopper.Elapsed.TotalSeconds != serie.Episodes[i].Length.TotalSeconds && bruteforce)
-                        {
-                            Console.WriteLine("\n(1)Siguiente video\n(2)Video anterior\n(3)Darle me gusta al video\n()Ingrese cualquier otro caracter para salir\n");
-                            string switcher = Console.ReadLine();
-                            Console.Clear();
-                            switch (switcher)
-                            {
-                                case "1":
-                                    i++;
-                                    bruteforce = false;
-                                    stopper.Reset();
-                                    break;
-                                case "2":
-                                    i--;
-                                    bruteforce = false;
-                                    stopper.Reset();
-                                    break;
-                                case "3":
-                                    user.AddToFavorite(serie.Episodes[i]);
-                                    break;
-                                default:
-                                    bruteforce = false;
-                                    break;
-                            }
-
-                        }
-                        if (i == serie.NofVideos-1)
-                        {
-                            i = 0;
-                        }
-                    }
-
-                }
-                if (choice == "N")
-                {
-                    Console.WriteLine("Selecciono no, volviendo al menu...\n");
-                    Thread.Sleep(1000);
-                    Console.Clear();
-                }
-                else
-                {
-                    Console.WriteLine("Opcion invalida, volviendo al menu...\n");
-                    Thread.Sleep(1000);
-                    Console.Clear();
-
+                    this.Play(item, user);
+                    Console.WriteLine("Reproduciendo Siguiente video\n");
                 }
             }
             else
