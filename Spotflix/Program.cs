@@ -72,6 +72,7 @@ namespace Spotflix
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("ArchivosProfesores.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
             List<Teacher> teachers = (List<Teacher>)formatter.Deserialize(stream);
+            stream.Close();
             return teachers;
         }
         static private void SaveSong(List<Song> Songs)
@@ -300,9 +301,6 @@ namespace Spotflix
             }
             else { }
             
-            
-              
-            
 
             mediaPlayer.AddVideoSerie += admin.OnAddVideoSerie;
             mediaPlayer.DeleteVideoSerie += admin.OnDeleteVideoSerie;
@@ -313,7 +311,7 @@ namespace Spotflix
             mediaPlayer.OrderBy += play.OnOrderBy;
             mediaPlayer.OrderByA += album.OnOrderByA;
 
-            int num = 0;
+            
             string switcher = "0";
             string stopper = "3";
 
@@ -414,6 +412,7 @@ namespace Spotflix
 
                                 if (nickcheck && mailcheck)
                                 {
+                                    int num = Gate.Users.Count() - 1;
                                     User u1 = new User(num, gmail, nickName, passWord, "no pago", name, lastName, age, country, city, street, PostalCode);
                                     Gate.SingUser(u1);
                                     Thread.Sleep(1000);
@@ -693,19 +692,53 @@ namespace Spotflix
                                                             case "1":
                                                                 Console.WriteLine("Si desea:\n\t(1)Ver calificacion de una cancion\n\t(2)Ver informacion de una cancion\n\t(3)Ver informacion intrinseca de una cancion\n\t(4)Ver informacion de la plataforma de una cancion\n\t()Cualquier otro caracter para volver al Menu anterior\n");
                                                                 string songfilter = Console.ReadLine();
+                                                                int var = 0;
                                                                 switch (songfilter)
                                                                 {
+
                                                                     case "1":
-                                                                        mediaPlayer.GetQualification(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        var = mediaPlayer.Search("2");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetQualification(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        }
                                                                         break;
                                                                     case "2":
-                                                                        mediaPlayer.GetMetadata(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        var= mediaPlayer.Search("2");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetMetadata(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        }
                                                                         break;
                                                                     case "3":
-                                                                        mediaPlayer.GetInstrinsicInformation(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        var = mediaPlayer.Search("2");
+                                                                        if (var==-1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetInstrinsicInformation(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        }
                                                                         break;
                                                                     case "4":
-                                                                        mediaPlayer.GetPlataformInformation(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        var = mediaPlayer.Search("2");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetPlataformInformation(mediaPlayer.Songs[mediaPlayer.Search("2")]);
+                                                                        }
                                                                         break;
                                                                     default:
                                                                         Console.Clear();
@@ -713,21 +746,53 @@ namespace Spotflix
                                                                 }
                                                                 break;
                                                             case"2":
-                                                                Console.WriteLine("Si desea:\n\t(1)Ver calificacion de un video\n\t(2)Ver informacion de un video(3)\n\tVer informacion intrinseca de un video\n\t(4)Ver informacion de la plataforma de un video\n\t()Cualquier otro caracter para volver al Menu anterior\n");
+                                                                Console.WriteLine("Si desea:\n\t(1)Ver calificacion de un video\n\t(2)Ver informacion de un video\n\t(3)Ver informacion intrinseca de un video\n\t(4)Ver informacion de la plataforma de un video\n\t()Cualquier otro caracter para volver al Menu anterior\n");
                                                                 string videofilter = Console.ReadLine();
                                                                 switch (videofilter)
                                                                 {
                                                                     case "1":
-                                                                        mediaPlayer.GetQualification(mediaPlayer.Videos[mediaPlayer.Search("1")]);
+                                                                        var = mediaPlayer.Search("1");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetQualification(mediaPlayer.Songs[mediaPlayer.Search("1")]);
+                                                                        }
                                                                         break;
                                                                     case "2":
-                                                                        mediaPlayer.GetMetadata(mediaPlayer.Videos[mediaPlayer.Search("1")]);
+                                                                        var = mediaPlayer.Search("1");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetMetadata(mediaPlayer.Songs[mediaPlayer.Search("1")]);
+                                                                        }
                                                                         break;
                                                                     case "3":
-                                                                        mediaPlayer.GetInstrinsicInformation(mediaPlayer.Videos[mediaPlayer.Search("1")]);
+                                                                        var = mediaPlayer.Search("1");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetInstrinsicInformation(mediaPlayer.Songs[mediaPlayer.Search("1")]);
+                                                                        }
                                                                         break;
                                                                     case "4":
-                                                                        mediaPlayer.GetPlataformInformation(mediaPlayer.Videos[mediaPlayer.Search("1")]);
+                                                                        var = mediaPlayer.Search("1");
+                                                                        if (var == -1)
+                                                                        {
+                                                                            Console.WriteLine("No se encontraron coincidencias");
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mediaPlayer.GetPlataformInformation(mediaPlayer.Songs[mediaPlayer.Search("1")]);
+                                                                        }
                                                                         break;
                                                                     default:
                                                                         Console.Clear();
@@ -766,10 +831,10 @@ namespace Spotflix
                                                                         mediaPlayer.Follow("Albums", Gate.Users, user, Gate.Teachers);
                                                                         break;
                                                                     case "3":
-                                                                        mediaPlayer.Follow("Playlist", Gate.Users, user, Gate.Teachers);
+                                                                        mediaPlayer.Follow("Playlists", Gate.Users, user, Gate.Teachers);
                                                                         break;
                                                                     case "4":
-                                                                        mediaPlayer.Follow("Artist", Gate.Users, user, Gate.Teachers);
+                                                                        mediaPlayer.Follow("Artists", Gate.Users, user, Gate.Teachers);
                                                                         break;
                                                                     case "5":
                                                                         mediaPlayer.Follow("Series", Gate.Users, user, Gate.Teachers);
@@ -852,30 +917,31 @@ namespace Spotflix
                                                     bool playliststopper = false;
                                                     while (!playliststopper)
                                                     {
-                                                        Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t(5)Crear playlist de canciones basada en tus preferencias(6)\nCrear playlist de videos basada en tus preferencias(7)Para volver al menu anterior\n");
+                                                        Console.WriteLine("Si desea:\n\t(1)Crear o editar playlist de canciones\n\t(2)Crear o editar playlist de videos\n\t(3)Ordernar Playlist\n\t(4)Ordenar album\n\t(5)Crear playlist de canciones basada en tus preferencias\n\t(6)Crear playlist de videos basada en tus preferencias\n\t(7)Para volver al menu anterior\n");
                                                         string playlistfilter = Console.ReadLine();
                                                         switch (playlistfilter)
                                                         {
                                                             case "1":
+                                                                Console.WriteLine("Si desea agregar una cancion presione a y si desea eliminarla presione e");
                                                                 string what = Console.ReadLine();
                                                                 if (what.ToLower() == "a")
                                                                 {
                                                                     mediaPlayer.CreatePlaylistS(Gate.Users[user.UserID], "agregar");
                                                                 }
-                                                                if (what.ToLower() == "e")
+                                                                else  if (what.ToLower() == "e")
                                                                 {
                                                                     mediaPlayer.CreatePlaylistS(Gate.Users[user.UserID], "eliminar");
                                                                 }
                                                                 else { Console.WriteLine("Comando no encontrado"); }
                                                                 break;
                                                             case "2":
-                                                                Console.WriteLine("Si desea agregar una cancion presione a y si desea eliminarla presione e");
+                                                                Console.WriteLine("Si desea agregar un video presione a y si desea eliminarla presione e");
                                                                 string whata = Console.ReadLine();
                                                                 if (whata.ToLower() == "a")
                                                                 {
                                                                     mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID], "agregar");
                                                                 }
-                                                                if (whata.ToLower() == "e")
+                                                                else if (whata.ToLower() == "e")
                                                                 {
                                                                     mediaPlayer.CreatePlaylistV(Gate.Users[user.UserID], "eleminar");
                                                                 }
@@ -1014,7 +1080,7 @@ namespace Spotflix
                                                                             Console.WriteLine("Ingrese el nombre de la playlist:\n");
                                                                             name = Console.ReadLine();
                                                                             nullcheck = !String.IsNullOrEmpty(name);
-                                                                            if (nullcheck)
+                                                                            if (!nullcheck)
                                                                             {
                                                                                 Console.WriteLine("Ingreso un nombre vacio, Intente nuevamete...\n");
                                                                             }
@@ -1069,7 +1135,7 @@ namespace Spotflix
                                                                             Console.WriteLine("Ingrese el nombre de la playlist:\n");
                                                                             name = Console.ReadLine();
                                                                             nullcheck = !String.IsNullOrEmpty(name);
-                                                                            if (nullcheck)
+                                                                            if (!nullcheck)
                                                                             {
                                                                                 Console.WriteLine("Ingreso un nombre vacio, Intente nuevamete...\n");
                                                                             }
@@ -1105,6 +1171,8 @@ namespace Spotflix
                                                                 break;
                                                             case "7":
                                                                 playliststopper = true;
+                                                                Thread.Sleep(1000);
+                                                                Console.Clear();
                                                                 break;
                                                             default:
                                                                 Console.WriteLine("Opcion invalida intente nuevamente...");
@@ -1123,14 +1191,14 @@ namespace Spotflix
                                                         switch (followfilter)
                                                         {
                                                             case "1"://Listo
-                                                                if (user.FollowPlaylist.Count()!=0)
+                                                                if (user.MyPlaylist.Count()!=0)
                                                                 {
                                                                     bool success = false;
                                                                     int pchoice = 0;
                                                                     Console.WriteLine("Seleccione la playlist a escuchar:\n");
-                                                                    foreach (Playlist playlist in user.FollowPlaylist)
+                                                                    foreach (Playlist playlist in user.MyPlaylist)
                                                                     {
-                                                                        Console.WriteLine("({0}) {1}\n", user.FollowPlaylist.IndexOf(playlist), playlist.PlaylistName);
+                                                                        Console.WriteLine("({0}) {1}\n", user.MyPlaylist.IndexOf(playlist)+1, playlist.PlaylistName);
                                                                     }
                                                                     while (!success)
                                                                     {
@@ -1139,28 +1207,27 @@ namespace Spotflix
                                                                         {
                                                                             Console.WriteLine("Formato invalido, ingrese un numero...\n");
                                                                             Thread.Sleep(1000);
-                                                                            Console.Clear();
                                                                         }
                                                                         else
                                                                         {
                                                                             pchoice--;
                                                                         }
-                                                                        if (user.FollowPlaylist.Count() >= pchoice)
+                                                                        if (user.MyPlaylist.Count() >= Math.Abs(pchoice))
                                                                         {
-                                                                            mediaPlayer.Play((user.FollowPlaylist[pchoice]), user);
+                                                                            Console.WriteLine("Hola");
+                                                                            mediaPlayer.Play((user.MyPlaylist[pchoice]), user);
                                                                         }
                                                                         else
                                                                         {
                                                                             Console.WriteLine("Seleccione una opcion dentro del rango...\n");
                                                                             Thread.Sleep(1000);
-                                                                            Console.Clear();
                                                                             success = false;
                                                                         }
                                                                     }
                                                                 }
                                                                 else
                                                                 {
-                                                                    Console.WriteLine("No tienes playlist seguida, volviendo al menu anterior...\n");
+                                                                    Console.WriteLine("No tienes playlists, volviendo al menu anterior...\n");
                                                                     Thread.Sleep(1000);
                                                                     Console.Clear();
                                                                 }                                
@@ -1173,7 +1240,7 @@ namespace Spotflix
                                                                     Console.WriteLine("Seleccione el usuario:\n");
                                                                     foreach (User followed in user.FollowUsers)
                                                                     {
-                                                                        Console.WriteLine("({0}) {1}\n", user.FollowUsers.IndexOf(followed), followed.Name);
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowUsers.IndexOf(followed)+1, followed.Name);
                                                                     }
                                                                     while (!success2)
                                                                     {
@@ -1188,7 +1255,7 @@ namespace Spotflix
                                                                         {
                                                                             uchoice--;
                                                                         }
-                                                                        if (user.FollowUsers.Count() >= uchoice)
+                                                                        if (user.FollowUsers.Count() >= Math.Abs(uchoice))
                                                                         {
                                                                             if (user.FollowUsers[uchoice].MyPlaylist.Count()!=0)
                                                                             {
@@ -1197,7 +1264,7 @@ namespace Spotflix
                                                                                 Console.WriteLine("Seleccione la playlist a escuchar:\n");
                                                                                 foreach (Playlist playlist in user.FollowUsers[uchoice].MyPlaylist)
                                                                                 {
-                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowUsers[uchoice].MyPlaylist.IndexOf(playlist), playlist.PlaylistName);
+                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowUsers[uchoice].MyPlaylist.IndexOf(playlist)+1, playlist.PlaylistName);
                                                                                 }
                                                                                 while (!internesuccess)
                                                                                 {
@@ -1260,7 +1327,7 @@ namespace Spotflix
                                                                         Console.WriteLine("Seleccione el artista a escuchar:\n");
                                                                         foreach (Artist artist in user.FollowArtist)
                                                                         {
-                                                                            Console.WriteLine("({0}) {1}\n", user.FollowArtist.IndexOf(artist), artist.Name);
+                                                                            Console.WriteLine("({0}) {1}\n", user.FollowArtist.IndexOf(artist)+1, artist.Name);
                                                                         }
                                                                         while (!success3)
                                                                         {
@@ -1275,7 +1342,7 @@ namespace Spotflix
                                                                             {
                                                                                 achoice--;
                                                                             }
-                                                                            if (user.FollowArtist.Count() >= achoice)
+                                                                            if (user.FollowArtist.Count() >= Math.Abs(achoice))
                                                                             {
                                                                                 if (user.FollowArtist[achoice].Videos.Count() != 0)
                                                                                 {
@@ -1337,7 +1404,7 @@ namespace Spotflix
                                                                         Console.WriteLine("Seleccione el artista a escuchar:\n");
                                                                         foreach (Artist artist in user.FollowArtist)
                                                                         {
-                                                                            Console.WriteLine("({0}) {1}\n", user.FollowArtist.IndexOf(artist), artist.Name);
+                                                                            Console.WriteLine("({0}) {1}\n", user.FollowArtist.IndexOf(artist)+1, artist.Name);
                                                                         }
                                                                         while (!success3)
                                                                         {
@@ -1352,7 +1419,7 @@ namespace Spotflix
                                                                             {
                                                                                 achoice--;
                                                                             }
-                                                                            if (user.FollowPlaylist.Count() >= achoice)
+                                                                            if (user.FollowPlaylist.Count() >= Math.Abs(achoice))
                                                                             {
                                                                                 if (user.FollowArtist[achoice].Songs.Count() != 0)
                                                                                 {
@@ -1361,7 +1428,7 @@ namespace Spotflix
                                                                                     Console.WriteLine("Seleccione la cancion a escuchar:\n");
                                                                                     foreach (Song song in user.FollowArtist[achoice].Songs)
                                                                                     {
-                                                                                        Console.WriteLine("({0}) {1}\n", user.FollowArtist[achoice].Songs.IndexOf(song), song.Name);
+                                                                                        Console.WriteLine("({0}) {1}\n", user.FollowArtist[achoice].Songs.IndexOf(song)+1, song.Name);
                                                                                     }
                                                                                     while (!successintern)
                                                                                     {
@@ -1430,7 +1497,7 @@ namespace Spotflix
                                                                     Console.WriteLine("Seleccione el album a escuchar:\n");
                                                                     foreach (Album item in user.FollowAlbums)
                                                                     {
-                                                                        Console.WriteLine("({0}) {1}\n", user.FollowAlbums.IndexOf(item), item.Name);
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowAlbums.IndexOf(item)+1, item.Name);
                                                                     }
                                                                     while (!success3)
                                                                     {
@@ -1445,7 +1512,7 @@ namespace Spotflix
                                                                         {
                                                                             achoice--;
                                                                         }
-                                                                        if (user.FollowAlbums.Count() >= achoice)
+                                                                        if (user.FollowAlbums.Count() >= Math.Abs(achoice))
                                                                         {
                                                                             if (user.FollowAlbums[achoice].Songs.Count() != 0)
                                                                             {
@@ -1454,7 +1521,7 @@ namespace Spotflix
                                                                                 Console.WriteLine("Seleccione la cancion a escuchar:\n");
                                                                                 foreach (Song song in user.FollowAlbums[achoice].Songs)
                                                                                 {
-                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowAlbums[achoice].Songs.IndexOf(song), song.Name);
+                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowAlbums[achoice].Songs.IndexOf(song)+1, song.Name);
                                                                                 }
                                                                                 while (!successintern)
                                                                                 {
@@ -1469,7 +1536,7 @@ namespace Spotflix
                                                                                     {
                                                                                         schoiceintern--;
                                                                                     }
-                                                                                    if (user.FollowAlbums.Count() >= schoiceintern)
+                                                                                    if (user.FollowAlbums.Count() >= Math.Abs(schoiceintern))
                                                                                     {
                                                                                         mediaPlayer.Play((user.FollowAlbums[achoice].Songs[schoiceintern]), user);
                                                                                     }
@@ -1513,7 +1580,7 @@ namespace Spotflix
                                                                     Console.WriteLine("Seleccione la serie a ver:\n");
                                                                     foreach (Series serie in user.FollowSeries)
                                                                     {
-                                                                        Console.WriteLine("({0}) {1}\n", user.FollowSeries.IndexOf(serie), serie.SerieName);
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowSeries.IndexOf(serie)+1, serie.SerieName);
                                                                     }
                                                                     while (!success)
                                                                     {
@@ -1528,7 +1595,7 @@ namespace Spotflix
                                                                         {
                                                                             pchoice--;
                                                                         }
-                                                                        if (user.FollowSeries.Count() >= pchoice)
+                                                                        if (user.FollowSeries.Count() >= Math.Abs(pchoice))
                                                                         {
                                                                             mediaPlayer.Play((user.FollowSeries[pchoice]), user);
                                                                         }
@@ -1556,7 +1623,7 @@ namespace Spotflix
                                                                     Console.WriteLine("Seleccione el profesor:\n");
                                                                     foreach (Teacher item in user.FollowTeachers)
                                                                     {
-                                                                        Console.WriteLine("({0}) {1}\n", user.FollowTeachers.IndexOf(item), item.Name);
+                                                                        Console.WriteLine("({0}) {1}\n", user.FollowTeachers.IndexOf(item)+1, item.Name);
                                                                     }
                                                                     while (!success3)
                                                                     {
@@ -1571,7 +1638,7 @@ namespace Spotflix
                                                                         {
                                                                             achoice--;
                                                                         }
-                                                                        if (user.FollowTeachers.Count() >= achoice)
+                                                                        if (user.FollowTeachers.Count() >= Math.Abs(achoice))
                                                                         {
                                                                             if (user.FollowTeachers[achoice].Lessons.Count() != 0)
                                                                             {
@@ -1580,7 +1647,7 @@ namespace Spotflix
                                                                                 Console.WriteLine("Seleccione el video a ver:\n");
                                                                                 foreach (Lesson les in user.FollowTeachers[achoice].Lessons)
                                                                                 {
-                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowTeachers[achoice].Lessons.IndexOf(les), les.Name);
+                                                                                    Console.WriteLine("({0}) {1}\n", user.FollowTeachers[achoice].Lessons.IndexOf(les)+1, les.Name);
                                                                                 }
                                                                                 while (!successintern)
                                                                                 {
@@ -1672,7 +1739,7 @@ namespace Spotflix
                                         string stopperad = "6";
                                         while (switcherad != stopperad)
                                         {
-                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir video existente a una Serie\n\t(5)Cambiar su contraseña\n\t(6)Atras\n");
+                                            Console.WriteLine("Si desea:\n\t(1)Importar cancion\n\t(2)Importar video\n\t(3)Importar un karaoke\n\t(4)Añadir o eliminar video existente a una Serie\n\t(5)Cambiar su contraseña\n\t(6)Atras\n");
                                             switcherad = Console.ReadLine();
                                             Console.Clear();
                                             switch (switcherad)
@@ -1688,7 +1755,7 @@ namespace Spotflix
                                                     break;
                                                 case "4":
                                                     Console.WriteLine("Diga Add si quiere añadir o Delete si quiere eliminar");
-                                                    string op = Console.ReadLine();
+                                                    string op = Console.ReadLine().ToLower() ;
                                                     Console.WriteLine("Diga el nombre de la serie");
                                                     string ser = Console.ReadLine();
                                                     Console.WriteLine("Diga el nombre del director");

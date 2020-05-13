@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TagLib;
 
 
 
@@ -79,7 +80,7 @@ namespace Spotflix
                 }
                 else
                 {
-                    TimeSpan lenght = GetVideoDuration(route);
+                    TimeSpan lenght = AudioDuration(route);
                     Console.WriteLine("\nA continuacion ingrese los datos de la cancion:");
                     Console.WriteLine("\nIngrese el nombre del artista:");
                     string artist = Console.ReadLine();
@@ -228,7 +229,12 @@ namespace Spotflix
             }
             Console.Clear();
         }//Listo
-        private  TimeSpan GetVideoDuration(string filePath)
+        private TimeSpan AudioDuration(string FileFullPath)
+        {
+            TagLib.File file = TagLib.File.Create(FileFullPath);
+            return TimeSpan.Parse(file.Properties.Duration.TotalSeconds.ToString());
+        }
+        private TimeSpan GetVideoDuration(string filePath)
         {
             using (var shell = ShellObject.FromParsingName(filePath))
             {
@@ -461,7 +467,7 @@ namespace Spotflix
             }
             else
             {
-                TimeSpan lenght = GetVideoDuration(route);
+                TimeSpan lenght = AudioDuration(route);
                 Console.WriteLine("\nA continuacion ingrese los datos de la cancion del karaoke:");
                 Console.WriteLine("\nIngrese el nombre del artista:");
                 string artist = Console.ReadLine();
@@ -515,7 +521,7 @@ namespace Spotflix
                 string line;
                 string file = Console.ReadLine();
                 List<string> lyrics = new List<string>();
-                if (File.Exists(file))
+                if (System.IO.File.Exists(file))
                 {
                     System.IO.StreamReader reader = new System.IO.StreamReader(file);
                     while ((line = reader.ReadLine()) != null)

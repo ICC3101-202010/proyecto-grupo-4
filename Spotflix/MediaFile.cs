@@ -21,7 +21,7 @@ namespace Spotflix
         protected int mediaId;
         protected List<int> qualification = new List<int>(); //Calificación (1-5)
         protected string quality;
-        protected int dimension;
+        protected int dimension = 0;
         protected object image;
         protected string route;
         protected int currentSecond=0;

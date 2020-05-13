@@ -32,3 +32,6 @@ C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\policy.2.0.taglib-sharp.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\taglib-sharp.dll
+C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\policy.2.0.taglib-sharp.config

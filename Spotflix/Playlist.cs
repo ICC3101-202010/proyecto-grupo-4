@@ -52,14 +52,14 @@ namespace Spotflix
             }
         }
 
-        
-        public void OnOrderBy(object source,  OrderByEventArgs o)
+
+        public void OnOrderBy(object source, OrderByEventArgs o)
         {
             if (o.Option == "Alphabet")
             {
                 if (o.MediaFile == "song")
                 {
-                    if (o.PlayList.Songs.Count != 0)
+                    if (o.PlayList.Songs.Count() > 0)
                     {
                         if (o.Up)
                         {
@@ -74,7 +74,7 @@ namespace Spotflix
                 }
                 else if (o.MediaFile == "video")
                 {
-                    if (o.PlayList.Videos.Count != 0)
+                    if (o.PlayList.Videos.Count() > 0)
                     {
                         if (o.Up)
                         {
@@ -87,13 +87,14 @@ namespace Spotflix
                     }
                     else Console.WriteLine("No se han encontrado videos");
                 }
+                else Console.WriteLine("Esa opsión no es válida");
 
             }
             else if (o.Option == "Date")
             {
                 if (o.MediaFile == "song")
                 {
-                    if (o.PlayList.Songs.Count != 0)
+                    if (o.PlayList.Songs.Count() > 0)
                     {
                         if (o.Up)
                         {
@@ -108,7 +109,7 @@ namespace Spotflix
                 }
                 else if (o.MediaFile == "video")
                 {
-                    if (o.PlayList.Videos.Count != 0)
+                    if (o.PlayList.Videos.Count() > 0)
                     {
                         if (o.Up)
                         {
@@ -122,12 +123,13 @@ namespace Spotflix
                     else Console.WriteLine("No se han encontrado videos");
 
                 }
+                else Console.WriteLine("Esa opción no existe");
             }
             else if (o.Option == "Length")
             {
                 if (o.MediaFile == "song")
                 {
-                    if (o.PlayList.Songs.Count != 0)
+                    if (o.PlayList.Songs.Count() > 0)
                     {
                         if (o.Up)
                         {
@@ -142,7 +144,7 @@ namespace Spotflix
                 }
                 else if (o.MediaFile == "video")
                 {
-                    if (o.PlayList.Videos.Count != 0)
+                    if (o.PlayList.Videos.Count() > 0)
                     {
                         if (o.Up)
                         {
@@ -155,44 +157,44 @@ namespace Spotflix
                     }
                     else Console.WriteLine("No se han encontrado videos");
                 }
-            } 
+                else Console.WriteLine("Esa opción no existe");
+            }
             else if (o.Option == "Qualification")
             {
-
-            }
-            if (o.MediaFile == "song")
-            {
-                if (o.PlayList.Songs.Count != 0)
+                if (o.MediaFile == "song")
                 {
-                    if (o.Up)
+                    if (o.PlayList.Songs.Count() > 0)
                     {
-                        this.songs = o.PlayList.songs.OrderBy(song => song.Qualification.Average()).ToList();
+                        if (o.Up)
+                        {
+                            this.songs = o.PlayList.songs.OrderBy(song => song.Qualification.Average()).ToList();
+                        }
+                        else
+                        {
+                            this.songs = o.PlayList.songs.OrderByDescending(song => song.Qualification.Average()).ToList();
+                        }
                     }
-                    else
-                    {
-                        this.songs = o.PlayList.songs.OrderByDescending(song => song.Qualification.Average()).ToList();
-                    }
+                    else Console.WriteLine("No se han encontrado canciones");
                 }
-                else Console.WriteLine("No se han encontrado canciones");
-            }
-            else if (o.MediaFile == "video")
-            {
-                if (o.PlayList.Videos.Count != 0)
+                else if (o.MediaFile == "video")
                 {
-                    if (o.Up)
+                    if (o.PlayList.Videos.Count() > 0)
                     {
-                        this.videos = o.PlayList.videos.OrderBy(video => video.Qualification.Average()).ToList();
+                        if (o.Up)
+                        {
+                            this.videos = o.PlayList.videos.OrderBy(video => video.Qualification.Average()).ToList();
+                        }
+                        else
+                        {
+                            this.videos = o.PlayList.videos.OrderByDescending(video => video.Qualification.Average()).ToList();
+                        }
                     }
-                    else
-                    {
-                        this.videos = o.PlayList.videos.OrderByDescending(video => video.Qualification.Average()).ToList();
-                    }
+                    else Console.WriteLine("No se han encontrado videos");
                 }
-                else Console.WriteLine("No se han encontrado videos");
+                else Console.WriteLine("Esa opción no existe");
             }
-
         }
-        public Playlist ShowPlaylist()
+            public Playlist ShowPlaylist()
         {
             int choice = 0;
             int choice2 = 0;

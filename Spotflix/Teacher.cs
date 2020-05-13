@@ -120,7 +120,8 @@ namespace Spotflix
                 Console.WriteLine("Ingrese la asignatura de la clase");
                 string subject= Console.ReadLine();
                 string coursec = this.course;
-                Lesson lesson = new Lesson(name, subject, coursec, 0, video, this);
+                Teacher teacher = new Teacher(this.Nickname, this.Name, this.lastname, this.Gmail, this.Code, this.course, this.Passw);
+                Lesson lesson = new Lesson(name, subject, coursec, 0, video, teacher);
                 if (mediaPlayer.Lessons.Count() == 0)
                 {
                     mediaPlayer.Lessons.Add(lesson);

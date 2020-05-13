@@ -77,11 +77,13 @@ namespace Spotflix
                     {
                         LikedSongs.Remove(song);
                         Console.WriteLine("Se ha eliminado la cancion de tus favoritos\n");
+                        break;
                     }
                     else
                     {
                         LikedSongs.Add(song);
                         Console.WriteLine("Se ha agregado la cancion a tus favoritos\n");
+                        break;
                     }
                 }
             }
@@ -102,12 +104,14 @@ namespace Spotflix
                     {
                         likedVideos.Remove(video);
                         Console.WriteLine("Se ha eliminado el video de tus favoritos\n");
+                        break;
 
                     }
                     else
                     {
                         LikedVideos.Add(video);
                         Console.WriteLine("Se ha agregado la cancion a tus favoritos\n");
+                        break;
                     }
                 }
             }
