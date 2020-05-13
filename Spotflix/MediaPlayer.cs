@@ -1604,7 +1604,7 @@ namespace Spotflix
                     List<Video> catchs = new List<Video>();
                     foreach (Video video in this.Videos)
                     {
-                        catchs.Add(video);
+                        catchs.Add(video); 
                     }
                     Console.WriteLine("Ingrese el criterio de filtro para el video");
                     Console.WriteLine("(1) Nombre\n(2) Género\n(3) Director\n(4) Actor\n(5) Estudio\n(6) Resolución\n(7) Evaluación\n(-1) Salir");
