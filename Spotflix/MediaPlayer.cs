@@ -115,7 +115,7 @@ namespace Spotflix
             }
             else if (cont2==0 && option  =="add")
             {
-                Console.WriteLine("La playlist no existe, ¿desea crearla?\n Opción 1: Si\n Opción 2: No");
+                Console.WriteLine("La serie no existe, ¿desea crearla?\n Opción 1: Si\n Opción 2: No");
                 string optionc = Console.ReadLine(); 
                 if (optionc=="1" || optionc.ToLower()=="si")
                 {
@@ -2211,7 +2211,6 @@ namespace Spotflix
                                     return choice - 1;
                                 }
                                 Console.WriteLine("Seleccione una serie dentro del rango o ingrese -1 para salir\n");
-                                choice = 0;
                             }
                         }
                     }
