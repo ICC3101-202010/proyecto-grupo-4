@@ -23,7 +23,7 @@ namespace Spotflix.Media_Related
         {
 
         }
-        public Video(List<string> actors, int ageFilter, string director, string studio, string name, string genre, Image image, int year, byte[] bytes, TimeSpan lenght, long size, int code)
+        public Video(List<string> actors, int ageFilter, string director, string studio, string name, string genre, Image image, int year, byte[] bytes, TimeSpan lenght, long size, int code,string dimension)
         {
             this.code = code;
             this.actors = actors;
@@ -38,6 +38,7 @@ namespace Spotflix.Media_Related
             this.length = lenght;
             this.fileSize = size;
             this.Letter = "V";
+            this.dimension = dimension;
         }
         public Video(List<string> actors, int ageFilter, string director, string studio, string name, string genre, int year, byte[] bytes, TimeSpan lenght, long size,int chapter,int code)
         {

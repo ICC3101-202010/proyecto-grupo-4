@@ -33,9 +33,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Songs.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Songs);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Songs);
+                    stream.Close();
+                }
+
+
             }
             catch (IOException)
             {
@@ -61,9 +65,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Videos.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Videos);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Videos);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -89,9 +97,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\VideosT.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Lesson);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Lesson);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -117,9 +129,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Lesson.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Lessons);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Lessons);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -145,9 +161,12 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Karaokes.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Karaokes);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Karaokes);
+                    stream.Close();
+                }
+
             }
             catch (IOException)
             {
@@ -173,9 +192,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Series.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Series);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+
+                    formatter.Serialize(stream, mediaPlayer.Series);
+                    stream.Close();
+                }
+
             }
             catch (System.IO.IOException)
             {
@@ -206,9 +229,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Playlists.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Playlists);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Playlists);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -235,9 +262,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Artists.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Artists);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Artists);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -263,9 +294,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Albums.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Albums);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Albums);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -290,13 +325,15 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\User.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, Gate.Users);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, Gate.Users);
+                    stream.Close();
+                }
+
             }
             catch (IOException)
             {
-
                 throw;
             }
 
@@ -318,9 +355,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Teacher.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, Gate.Teachers);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, Gate.Teachers);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -346,9 +387,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Student.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, Gate.Students);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, Gate.Students);
+                    stream.Close();
+                }
+                
+
             }
             catch (IOException)
             {
@@ -374,9 +419,13 @@ namespace Spotflix
             {
                 string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\Files\Homework.bin"));
                 IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, mediaPlayer.Homeworks);
-                stream.Close();
+                using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(stream, mediaPlayer.Homeworks);
+                    stream.Close();
+                }   
+                
+
             }
             catch (IOException)
             {
@@ -527,6 +576,7 @@ namespace Spotflix
                 CodeTextBox2.Text = "";
                 CodeTextBox2.BackColor = System.Drawing.Color.Silver;
                 NewCredentialsPanel.Visible = false;
+                TeacherStudentButton.Tag = "off";
                 TeacherStudentButton.BackgroundImage = Spotflix.Properties.Resources.study_red;
 
             }
@@ -589,6 +639,14 @@ namespace Spotflix
             {
                 EditProfilePanel.Visible = false;
                 PlayerPanel.Visible = true;
+                tableLayoutPanel2.Visible = true;
+                tableLayoutPanel2.BringToFront();
+                PlayerBack.Visible = true;
+                PlayerBack.BringToFront();
+                EditProfilUnderButton.Visible = true;
+                EditProfilUnderButton.BringToFront();
+                EditProfileButton.Visible = true;
+                EditProfileButton.BringToFront();
                 EditPrivateButton.Visible = false;
                 EditPublicButton.Visible = false;
                 EditCButton.Visible = false;
@@ -628,7 +686,7 @@ namespace Spotflix
             string name = UserNameTextBox.Text;
             string password = PasswordTextBoxLogIn.Text;
             User user = Gate.LogAsUser(name, password);
-            if (name == "Spotflix" && password == "MbJcMm2020")
+            if (name == "Spotflix" && password == "123")
             {
                 LogInPanel.Visible = false;
                 AdminPanel.Visible = true;
@@ -643,6 +701,14 @@ namespace Spotflix
                 this.currentUser = user;
                 LogInPanel.Visible = false;
                 PlayerPanel.Visible = true;
+                tableLayoutPanel2.Visible = true;
+                tableLayoutPanel2.BringToFront();
+                PlayerBack.Visible = true;
+                PlayerBack.BringToFront();
+                EditProfilUnderButton.Visible = true;
+                EditProfilUnderButton.BringToFront();
+                EditProfileButton.Visible = true;
+                EditProfileButton.BringToFront();
                 NewPlaylistTable.Visible = false;
                 FullandMinimizeScreenButtom.Tag = "full";
                 FullandMinimizeScreenButtom.BackgroundImage = Spotflix.Properties.Resources.full_screen;
@@ -837,6 +903,14 @@ namespace Spotflix
             PreferencesPanel.Visible = false;
             PlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             PlayerPanel.Visible = true;
+            tableLayoutPanel2.Visible = true;
+            tableLayoutPanel2.BringToFront();
+            PlayerBack.Visible = true;
+            PlayerBack.BringToFront();
+            EditProfilUnderButton.Visible = true;
+            EditProfilUnderButton.BringToFront();
+            EditProfileButton.Visible = true;
+            EditProfileButton.BringToFront();
             NewPlaylistTable.Visible = false;
             FullandMinimizeScreenButtom.Tag = "full";
             FullandMinimizeScreenButtom.BackgroundImage = Spotflix.Properties.Resources.full_screen;
@@ -1909,6 +1983,9 @@ namespace Spotflix
                 SaveStudent();
                 ClassRoomLogInPanel.Visible = false;
                 StudentPanel.Visible = true;
+                Teachernamestudentlabel.Text = "";
+                VideoCurseLabel.Text = "";
+                VideoSubjectLabel.Text = "";
                 UploadHomeWorkPanel.Visible = false;
                 TeacherProfilTable.Visible = false;
                 SuccessDownloadLael.Visible = false;
@@ -2632,6 +2709,14 @@ namespace Spotflix
             {
 
                 PlayerPanel.Visible = true;
+                tableLayoutPanel2.Visible = true;
+                tableLayoutPanel2.BringToFront();
+                PlayerBack.Visible = true;
+                PlayerBack.BringToFront();
+                EditProfilUnderButton.Visible = true;
+                EditProfilUnderButton.BringToFront();
+                EditProfileButton.Visible = true;
+                EditProfileButton.BringToFront();
                 PlayerPanel.BringToFront();
             }
             else
@@ -2740,8 +2825,30 @@ namespace Spotflix
             
 
         }
+        public void videoChecker()
+        {
+            foreach (Video video in mediaPlayer.Videos)
+            {
+                mediaPlayer.Play(video);
+                Player.URL = video.Name + ".mp4";
+                Player.Ctlcontrols.play();
+                Player.Dock= System.Windows.Forms.DockStyle.Fill;
+                video.Dimension = Player.Width.ToString() + "x" + Player.Height.ToString();
+                Player.Ctlcontrols.stop();
+            }
+            foreach (Video video in mediaPlayer.VideoChapters)
+            {
+                mediaPlayer.Play(video);
+                Player.URL = video.Name + ".mp4";
+                Player.Ctlcontrols.play();
+                Player.Dock = System.Windows.Forms.DockStyle.Fill;
+                video.Dimension = Player.Width.ToString() + "x" + Player.Height.ToString();
+                Player.Ctlcontrols.stop();
+            }
+        }
         public void initializePlayer()
         {
+            videoChecker();
             ToArtist.Text = "";
             ToAlbum.Text = "";
             ToName.Text = "";
@@ -2754,6 +2861,9 @@ namespace Spotflix
                 mediaPlayer.Queue.Add(currentUser.Lastsong);
                 CustomPlay();
                 Player.Ctlcontrols.stop();
+                CurrentSong.Stop();
+                NextSong.Stop();
+                KaraokeTimer.Stop();
                 Player.Ctlcontrols.currentPosition += currentUser.CurrentSec;
                 if (progressBar1.Value + currentUser.CurrentSec > progressBar1.Maximum)
                 {
@@ -2767,6 +2877,7 @@ namespace Spotflix
                 PlayPausaButtom.Tag = "play";
 
             }
+            PlaylistsDataGrid.Rows.Clear();
             foreach (Playlist playlist in currentUser.MyPlaylist)
             {
                 PlaylistsDataGrid.Rows.Add(playlist.Image, playlist.PlaylistName, playlist.Songs.Count() + playlist.Videos.Count());
@@ -2970,8 +3081,29 @@ namespace Spotflix
             }
             else
             {
+                MediaSearcherData.Rows.Clear();
+                ArtistSearcherData.Rows.Clear();
+                PlaylistSearcherData.Rows.Clear();
+                AlbumsSearcherData.Rows.Clear();
+                SearcherUsersData.Rows.Clear();
+
                 SearchPanel.BringToFront();
-                SearchTextBox.Text = "";
+                SearchTextBox.Text = "Search";
+                SearcherTableResults.Visible = false;
+                QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
+                QuequeButton.Tag = "no";
+                ForYouButton.Tag = "no";
+                ForYouButton.BackColor = System.Drawing.Color.Black;
+                LikesButtom.Tag = "no";
+                LikesButtom.BackColor = System.Drawing.Color.Black;
+                ForYouButtom.Tag = "no";
+                ForYouButtom.BackColor = System.Drawing.Color.Black;
+                AlbumsButtom.Tag = "no";
+                AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                ArtistsButtom.Tag = "no";
+                ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                FollowsButtom.Tag = "no";
+                FollowsButtom.BackColor = System.Drawing.Color.Black;
             }
         }
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
@@ -2991,7 +3123,6 @@ namespace Spotflix
                 ArtistSearcherData.Rows.Clear();
 
                 Searcher.Brain(SearchTextBox.Text);
-                HashSet<Song> songs = mediaPlayer.Foundsongs;
                 foreach (Song song in mediaPlayer.Foundsongs)
                 {
                     string output = string.Format("{0}:{1:00}", (int)song.Length.TotalMinutes, song.Length.Seconds);
@@ -3096,7 +3227,7 @@ namespace Spotflix
                 {
                     MediaSearcherData.Visible = true;
                 }
-                if (mediaPlayer.Foundplaylist.Count() == 0 && mediaPlayer.Foundseries.Count() == 0)
+                if (PlaylistSearcherData.RowCount==0)
                 {
                     PlaylistSearcherData.Visible = false;
                 }
@@ -3112,7 +3243,7 @@ namespace Spotflix
                 {
                     AlbumsSearcherData.Visible = true;
                 }
-                if (Gate.Foundusers.Count() == 0)
+                if (SearcherUsersData.RowCount==0)
                 {
                     SearcherUsersData.Visible = false;
                 }
@@ -3132,12 +3263,6 @@ namespace Spotflix
                 SearcherImagePanel.Visible = true;
                 SearcherTableResults.Visible = true;
             }
-            if (SearchTextBox.Text == "Search")
-            {
-                SearcherTableResults.Visible = true;
-                SearchTextBox.Text = "";
-            }
-
 
         }
 
@@ -3670,11 +3795,6 @@ namespace Spotflix
                 FollowsButtom.Tag = "no";
                 FollowsButtom.BackColor = System.Drawing.Color.Black;
             }
-            MediaSearcherData.Rows.Clear();
-            ArtistSearcherData.Rows.Clear();
-            PlaylistSearcherData.Rows.Clear();
-            AlbumsSearcherData.Rows.Clear();
-            SearcherUsersData.Rows.Clear();
             
 
         }
@@ -3806,11 +3926,7 @@ namespace Spotflix
                 }
 
             }
-            MediaSearcherData.Rows.Clear();
-            ArtistSearcherData.Rows.Clear();
-            PlaylistSearcherData.Rows.Clear();
-            AlbumsSearcherData.Rows.Clear();
-            SearcherUsersData.Rows.Clear();
+
         }
         private void right_clicked_artist(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -3965,10 +4081,7 @@ namespace Spotflix
                     SavePlaylist();
                     break;
                 case "Make playlist private":
-                    playlist = mediaPlayer.Playlists.Where(u => u.PlaylistName == e.ClickedItem.Name.ToString()).FirstOrDefault();
-                    playlist.Publicornot = "private";
-                    playlist = currentUser.MyPlaylist.Where(u => u.PlaylistName == e.ClickedItem.Name.ToString()).FirstOrDefault();
-                    playlist.Publicornot = "private";
+                    playlist = mediaPlayer.Playlists.Where(u => u.PlaylistName == e.ClickedItem.Name.ToString()).FirstOrDefault();                 
                     foreach (User user in Gate.Users)
                     {
                         if (user.FollowPlaylist.Any(u => u.Equals(playlist)))
@@ -3976,6 +4089,9 @@ namespace Spotflix
                             user.FollowPlaylist.Remove(playlist);
                         }
                     }
+                    playlist.Publicornot = "private";
+                    playlist = currentUser.MyPlaylist.Where(u => u.PlaylistName == e.ClickedItem.Name.ToString()).FirstOrDefault();
+                    playlist.Publicornot = "private";
                     SaveUser();
                     SavePlaylist();
                     break;
@@ -4715,46 +4831,67 @@ namespace Spotflix
             int count = 0;
             int count1 = 0;
             int count2 = 0;
-            if (currentStudent.Curse == currentlyLessonPlaying.Course)
+            if (DownloadHomeworkButton2.Tag.ToString() == "no")
             {
-                count1++;
-            }
-            foreach (string subject in currentStudent.Subjects)
-            {
-                if (subject == currentlyLessonPlaying.Subject)
+                DownloadHomeworkButton2.Tag = "si";
+                DownloadHomeworkButton2.BackColor = System.Drawing.Color.Silver;
+                if (currentlyLessonPlaying == null)
                 {
-                    count2++;
-                }
-            }
-            if (count1!=0 && count2 != 0)
-            {
-                try
-                {
-                    string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Path.GetFileName(currentlyLessonPlaying.Name) + ".pdf");
-                    System.IO.File.WriteAllBytes(path, currentlyLessonPlaying.Bytes);
-                    count += 1;
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    SuccessDownloadLael.Text = "Error! Couldn´t find suitable Path.";
                     SuccessDownloadLael.Visible = true;
-                    count += 1;
+                    SuccessDownloadLael.Text = "You have to reproduce a lesson!";
                 }
-                if (count != 0)
+                else if (currentStudent.Curse == currentlyLessonPlaying.Course)
                 {
-                    SuccessDownloadLael.Text = "The homework has been downloaded";
-                    SuccessDownloadLael.Visible = true;
+                    count1++;
                 }
-                else
+                else if (currentlyLessonPlaying != null)
                 {
-                    SuccessDownloadLael.Text = "This lesson has no homework";
-                    SuccessDownloadLael.Visible = true;
+                    foreach (string subject in currentStudent.Subjects)
+                    {
+                        if (subject == currentlyLessonPlaying.Subject)
+                        {
+                            count2++;
+                        }
+                    }
+                }
+                if (count1 != 0 && count2 != 0)
+                {
+                    try
+                    {
+                        string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Path.GetFileName(currentlyLessonPlaying.Name) + ".pdf");
+                        System.IO.File.WriteAllBytes(path, currentlyLessonPlaying.Bytes);
+                        count += 1;
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        SuccessDownloadLael.Text = "Error! Couldn´t find suitable Path.";
+                        SuccessDownloadLael.Visible = true;
+                        count += 1;
+                    }
+                    if (count != 0)
+                    {
+                        SuccessDownloadLael.Text = "The homework has been downloaded";
+                        SuccessDownloadLael.Visible = true;
+                    }
+                    else
+                    {
+                        SuccessDownloadLael.Text = "This lesson has no homework";
+                        SuccessDownloadLael.Visible = true;
+                    }
+                }
+                else if (currentlyLessonPlaying != null)
+                {
+                    SuccessDownloadLael.Text = "You cannot download this homework because they are not for you!";
                 }
             }
             else
             {
-                SuccessDownloadLael.Text = "You cannot download this homework because they are not for you!";
+                DownloadHomeworkButton2.Tag = "no";
+                DownloadHomeworkButton2.BackColor = System.Drawing.Color.Black;
+                SuccessDownloadLael.Visible = false;
+
             }
+
         }
 
         private void PlayLesson_Click(object sender, EventArgs e)
@@ -5217,7 +5354,16 @@ namespace Spotflix
 
         private void UploadHomeworkButton2_Click(object sender, EventArgs e)
         {
-            if (TeacherprofileButton.Tag.ToString() == "si")
+
+            if (UploadHomeworkButton2.Tag.ToString() == "si")
+            {
+                UploadHomeWorkPanel.Visible = false;
+                UploadHomeworkButton2.Tag = "no";
+                UploadHomeworkButton2.BackColor = System.Drawing.Color.Black;
+                SuccessDownloadLael.Visible = false;
+
+            }
+            else
             {
                 WrongEmailLabel.Visible = false;
                 PDFSuccessStudentLabel.Visible = false;
@@ -5225,37 +5371,47 @@ namespace Spotflix
                 ErrorHomeworkLabel.Visible = false;
                 UploadHomeWorkPanel.Visible = true;
                 UploadHomeWorkPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+                EditorsStudentPanel.BringToFront();
+                UploadHomeWorkPanel.BringToFront();
                 TeacherprofileButton.Tag = "no";
-                TeacherProfilTable.Visible = true;
-                TeacherProfilTable.Dock = System.Windows.Forms.DockStyle.Fill;
+                TeacherprofileButton.BackColor = System.Drawing.Color.Black;
                 UploadHomeworkButton2.Tag = "si";
-                TeacherEmailtextBox.BackColor=System.Drawing.Color.Silver;
-
-            }
-            else if (UploadHomeworkButton2.Tag.ToString() == "si")
-            {
-                UploadHomeWorkPanel.Visible = false;
-                UploadHomeWorkPanel.Tag = "no";
+                UploadHomeworkButton2.BackColor = System.Drawing.Color.Silver;
+                TeacherEmailtextBox.BackColor = System.Drawing.Color.Silver;
+                TeacherEmailtextBox.Text = "";
             }
         }
 
         private void TeacherprofileButton_Click(object sender, EventArgs e)
         {
-            if (UploadHomeworkButton2.Tag.ToString() == "si")
+            SuccessDownloadLael.Visible = false;
+
+            if (TeacherprofileButton.Tag.ToString() == "si")
+            {
+                TeacherProfilTable.Visible = false;
+                TeacherprofileButton.Tag = "no";
+                SuccessDownloadLael.Visible = false;
+                TeacherprofileButton.BackColor = System.Drawing.Color.Black;
+
+
+            }
+            else if (currentlyLessonPlaying != null)
             {
                 TeacherProfilTable.Visible = true;
                 TeacherProfilTable.Dock = System.Windows.Forms.DockStyle.Fill;
                 UploadHomeworkButton2.Tag = "no";
-                UploadHomeWorkPanel.Visible = true;
+                UploadHomeworkButton2.BackColor = System.Drawing.Color.Black;
+                UploadHomeWorkPanel.Visible = false;
                 UploadHomeWorkPanel.Dock = System.Windows.Forms.DockStyle.Fill;
                 TeacherprofileButton.Tag = "si";
+                TeacherprofileButton.BackColor = System.Drawing.Color.Silver;
                 TeacherNameTextBox.Text = currentlyLessonPlaying.Teacher.Name;
                 TeacherMailTextBox.Text = currentlyLessonPlaying.Teacher.Gmail;
                 string aux1 = String.Join(",", currentlyLessonPlaying.Teacher.Course);
                 string aux2 = String.Join(",", currentlyLessonPlaying.Teacher.Subjects);
                 foreach (User u in Gate.Users)
                 {
-                    if (u.Gmail== currentlyLessonPlaying.Teacher.Gmail)
+                    if (u.Gmail == currentlyLessonPlaying.Teacher.Gmail)
                     {
                         TeacherSPictureBox.BackgroundImage = u.Profileimage;
                     }
@@ -5263,23 +5419,28 @@ namespace Spotflix
                 TSCurseTextBox.Text = aux1;
                 TSSubjectsTextBox.Text = aux2;
             }
-            else if (TeacherprofileButton.Tag.ToString() == "si")
+            else
             {
-                TeacherProfilTable.Visible = false;
-                TeacherprofileButton.Tag = "no";
+                SuccessDownloadLael.Visible = true;
+                SuccessDownloadLael.Text = "You have to reproduce a lesson for view your teacher profil!";
+                TeacherprofileButton.Tag = "si";
+                TeacherprofileButton.BackColor = System.Drawing.Color.Silver;
+
             }
-            
+
 
         }
 
         private void UploadHomeWorkButton_Click(object sender, EventArgs e)
         {
+            WrongEmailLabel.Visible = false;
             string mail = TeacherEmailtextBox.Text;
             bool suceesemail;
             bool succespdf;
             if (mail == "")
             {
                 WrongEmailLabel.Text = "You have to put a email!";
+                WrongEmailLabel.Visible = true;
                 suceesemail = false;
             }
             else
@@ -5295,6 +5456,8 @@ namespace Spotflix
                 if (count == 0)
                 {
                     WrongEmailLabel.Text = "This email doesn´t exist!";
+                    WrongEmailLabel.Visible = true;
+
                     suceesemail = false;
                 }
                 else
@@ -5305,15 +5468,16 @@ namespace Spotflix
             if (PdfSecretLabel.Text == "")
             {
                 PDFSuccessStudentLabel.Text = "You have to upload a PDF";
+                WrongEmailLabel.Visible = true;
                 succespdf = false;
             }
             else
             {
-                PDFSuccessStudentLabel.Visible = false; 
+                PDFSuccessStudentLabel.Visible = false;
                 succespdf = true;
 
             }
-            if(succespdf && suceesemail)
+            if (succespdf && suceesemail)
             {
                 byte[] bytes = File.ReadAllBytes(PdfSecretLabel.Text);
                 HomeWork homeWork = new HomeWork(currentStudent, mail, bytes);
@@ -5335,21 +5499,8 @@ namespace Spotflix
 
             }
         }
-        private void ReproductorPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void ToAlbum_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
 
         private void SeerachSmartTextBox_Click(object sender, EventArgs e)
         {
@@ -5357,6 +5508,20 @@ namespace Spotflix
             {
                 SeerachSmartTextBox.Text = "";
             }
+        }
+
+        private void SearchTextBox_Click(object sender, EventArgs e)
+        {
+            if (SearchTextBox.Text == "Search")
+            {
+                SearcherTableResults.Visible = true;
+                SearchTextBox.Text = "";
+            }
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+
         }
 
         //ME falta todo lo de data grid clicked

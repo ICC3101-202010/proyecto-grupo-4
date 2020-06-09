@@ -135,8 +135,6 @@
             this.SearchTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.SearcherTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonsSearchTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.LButton = new System.Windows.Forms.Button();
-            this.RButtom = new System.Windows.Forms.Button();
             this.SearchPanelContainer = new System.Windows.Forms.TableLayoutPanel();
             this.SearchTableConten = new System.Windows.Forms.TableLayoutPanel();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
@@ -557,9 +555,9 @@
             this.SuccessDownloadLael = new System.Windows.Forms.Label();
             this.DownloadHomeworkButton2 = new System.Windows.Forms.Button();
             this.StudentFavoritesButton = new System.Windows.Forms.Button();
-            this.YourLessonsButton = new System.Windows.Forms.Button();
-            this.UploadHomeworkButton2 = new System.Windows.Forms.Button();
             this.TeacherprofileButton = new System.Windows.Forms.Button();
+            this.UploadHomeworkButton2 = new System.Windows.Forms.Button();
+            this.YourLessonsButton = new System.Windows.Forms.Button();
             this.LeftUpStudentTable = new System.Windows.Forms.TableLayoutPanel();
             this.ExploreStudentButton = new System.Windows.Forms.Button();
             this.HomeStudentButton = new System.Windows.Forms.Button();
@@ -961,7 +959,7 @@
             this.StudytableLayoutPanel.Controls.Add(this.ClassroomInitialButtom, 0, 1);
             this.StudytableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StudytableLayoutPanel.Location = new System.Drawing.Point(2, 2);
-            this.StudytableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.StudytableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StudytableLayoutPanel.Name = "StudytableLayoutPanel";
             this.StudytableLayoutPanel.RowCount = 2;
             this.StudytableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -993,7 +991,7 @@
             this.InitialSignnIntableLayoutPanel.Controls.Add(this.SignInButtom, 0, 0);
             this.InitialSignnIntableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InitialSignnIntableLayoutPanel.Location = new System.Drawing.Point(61, 2);
-            this.InitialSignnIntableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.InitialSignnIntableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.InitialSignnIntableLayoutPanel.Name = "InitialSignnIntableLayoutPanel";
             this.InitialSignnIntableLayoutPanel.RowCount = 2;
             this.InitialSignnIntableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.39877F));
@@ -1075,10 +1073,9 @@
             this.PlayerPanel.BackColor = System.Drawing.Color.Black;
             this.PlayerPanel.Controls.Add(this.Interface);
             this.PlayerPanel.Controls.Add(this.TopPlayerPanelHolder);
-            this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlayerPanel.Location = new System.Drawing.Point(0, 0);
+            this.PlayerPanel.Location = new System.Drawing.Point(9, 133);
             this.PlayerPanel.Name = "PlayerPanel";
-            this.PlayerPanel.Size = new System.Drawing.Size(1011, 540);
+            this.PlayerPanel.Size = new System.Drawing.Size(179, 109);
             this.PlayerPanel.TabIndex = 8;
             this.PlayerPanel.Visible = false;
             // 
@@ -1102,7 +1099,7 @@
             this.Interface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.Interface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.Interface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.Interface.Size = new System.Drawing.Size(1011, 421);
+            this.Interface.Size = new System.Drawing.Size(179, 0);
             this.Interface.TabIndex = 0;
             // 
             // OptionsPanelPlayer
@@ -1119,7 +1116,7 @@
             this.OptionsPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.91542F));
             this.OptionsPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.99005F));
             this.OptionsPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.OptionsPanelPlayer.Size = new System.Drawing.Size(196, 330);
+            this.OptionsPanelPlayer.Size = new System.Drawing.Size(29, 1);
             this.OptionsPanelPlayer.TabIndex = 1;
             // 
             // PanelLibrary
@@ -1134,7 +1131,7 @@
             this.PanelLibrary.Controls.Add(this.LibraryLabel, 0, 0);
             this.PanelLibrary.Controls.Add(this.ForYouButtom, 0, 3);
             this.PanelLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelLibrary.Location = new System.Drawing.Point(3, 105);
+            this.PanelLibrary.Location = new System.Drawing.Point(3, 3);
             this.PanelLibrary.Name = "PanelLibrary";
             this.PanelLibrary.RowCount = 7;
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
@@ -1145,7 +1142,7 @@
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.PanelLibrary.Size = new System.Drawing.Size(190, 215);
+            this.PanelLibrary.Size = new System.Drawing.Size(23, 1);
             this.PanelLibrary.TabIndex = 2;
             // 
             // ForYouButton
@@ -1156,10 +1153,10 @@
             this.ForYouButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ForYouButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForYouButton.ForeColor = System.Drawing.Color.White;
-            this.ForYouButton.Location = new System.Drawing.Point(2, 36);
-            this.ForYouButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ForYouButton.Location = new System.Drawing.Point(2, 2);
+            this.ForYouButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ForYouButton.Name = "ForYouButton";
-            this.ForYouButton.Size = new System.Drawing.Size(186, 26);
+            this.ForYouButton.Size = new System.Drawing.Size(19, 1);
             this.ForYouButton.TabIndex = 6;
             this.ForYouButton.Tag = "no";
             this.ForYouButton.Text = "For you";
@@ -1174,10 +1171,10 @@
             this.ArtistsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ArtistsButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistsButtom.ForeColor = System.Drawing.Color.White;
-            this.ArtistsButtom.Location = new System.Drawing.Point(2, 186);
-            this.ArtistsButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistsButtom.Location = new System.Drawing.Point(2, 2);
+            this.ArtistsButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistsButtom.Name = "ArtistsButtom";
-            this.ArtistsButtom.Size = new System.Drawing.Size(186, 27);
+            this.ArtistsButtom.Size = new System.Drawing.Size(19, 1);
             this.ArtistsButtom.TabIndex = 8;
             this.ArtistsButtom.Tag = "no";
             this.ArtistsButtom.Text = "Artist";
@@ -1192,10 +1189,10 @@
             this.AlbumsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AlbumsButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlbumsButtom.ForeColor = System.Drawing.Color.White;
-            this.AlbumsButtom.Location = new System.Drawing.Point(2, 156);
-            this.AlbumsButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.AlbumsButtom.Location = new System.Drawing.Point(2, 2);
+            this.AlbumsButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AlbumsButtom.Name = "AlbumsButtom";
-            this.AlbumsButtom.Size = new System.Drawing.Size(186, 26);
+            this.AlbumsButtom.Size = new System.Drawing.Size(19, 1);
             this.AlbumsButtom.TabIndex = 7;
             this.AlbumsButtom.Tag = "no";
             this.AlbumsButtom.Text = "Albums";
@@ -1210,10 +1207,10 @@
             this.LikesButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LikesButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LikesButtom.ForeColor = System.Drawing.Color.White;
-            this.LikesButtom.Location = new System.Drawing.Point(2, 66);
-            this.LikesButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.LikesButtom.Location = new System.Drawing.Point(2, 2);
+            this.LikesButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LikesButtom.Name = "LikesButtom";
-            this.LikesButtom.Size = new System.Drawing.Size(186, 26);
+            this.LikesButtom.Size = new System.Drawing.Size(19, 1);
             this.LikesButtom.TabIndex = 5;
             this.LikesButtom.Tag = "no";
             this.LikesButtom.Text = "Favorites";
@@ -1228,10 +1225,10 @@
             this.FollowsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FollowsButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FollowsButtom.ForeColor = System.Drawing.Color.White;
-            this.FollowsButtom.Location = new System.Drawing.Point(2, 126);
-            this.FollowsButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.FollowsButtom.Location = new System.Drawing.Point(2, 2);
+            this.FollowsButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FollowsButtom.Name = "FollowsButtom";
-            this.FollowsButtom.Size = new System.Drawing.Size(186, 26);
+            this.FollowsButtom.Size = new System.Drawing.Size(19, 1);
             this.FollowsButtom.TabIndex = 6;
             this.FollowsButtom.Tag = "no";
             this.FollowsButtom.Text = "Users";
@@ -1247,7 +1244,7 @@
             this.LibraryLabel.Location = new System.Drawing.Point(2, 0);
             this.LibraryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LibraryLabel.Name = "LibraryLabel";
-            this.LibraryLabel.Size = new System.Drawing.Size(186, 34);
+            this.LibraryLabel.Size = new System.Drawing.Size(19, 1);
             this.LibraryLabel.TabIndex = 3;
             this.LibraryLabel.Text = "Library";
             this.LibraryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1260,10 +1257,10 @@
             this.ForYouButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ForYouButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForYouButtom.ForeColor = System.Drawing.Color.White;
-            this.ForYouButtom.Location = new System.Drawing.Point(2, 96);
-            this.ForYouButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.ForYouButtom.Location = new System.Drawing.Point(2, 2);
+            this.ForYouButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ForYouButtom.Name = "ForYouButtom";
-            this.ForYouButtom.Size = new System.Drawing.Size(186, 26);
+            this.ForYouButtom.Size = new System.Drawing.Size(19, 1);
             this.ForYouButtom.TabIndex = 4;
             this.ForYouButtom.Tag = "no";
             this.ForYouButtom.Text = "Playlist/Series";
@@ -1278,12 +1275,12 @@
             this.HometableLayoutPanel.Controls.Add(this.HomeButtom, 0, 0);
             this.HometableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HometableLayoutPanel.Location = new System.Drawing.Point(2, 2);
-            this.HometableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.HometableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HometableLayoutPanel.Name = "HometableLayoutPanel";
             this.HometableLayoutPanel.RowCount = 2;
             this.HometableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.HometableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HometableLayoutPanel.Size = new System.Drawing.Size(192, 98);
+            this.HometableLayoutPanel.Size = new System.Drawing.Size(25, 1);
             this.HometableLayoutPanel.TabIndex = 5;
             // 
             // ExploreButtom
@@ -1294,10 +1291,10 @@
             this.ExploreButtom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExploreButtom.FlatAppearance.BorderSize = 0;
             this.ExploreButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExploreButtom.Location = new System.Drawing.Point(2, 51);
-            this.ExploreButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.ExploreButtom.Location = new System.Drawing.Point(2, 2);
+            this.ExploreButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ExploreButtom.Name = "ExploreButtom";
-            this.ExploreButtom.Size = new System.Drawing.Size(188, 45);
+            this.ExploreButtom.Size = new System.Drawing.Size(21, 1);
             this.ExploreButtom.TabIndex = 1;
             this.ExploreButtom.UseVisualStyleBackColor = false;
             this.ExploreButtom.Click += new System.EventHandler(this.ExploreButtom_Click);
@@ -1311,9 +1308,9 @@
             this.HomeButtom.FlatAppearance.BorderSize = 0;
             this.HomeButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButtom.Location = new System.Drawing.Point(2, 2);
-            this.HomeButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HomeButtom.Name = "HomeButtom";
-            this.HomeButtom.Size = new System.Drawing.Size(188, 45);
+            this.HomeButtom.Size = new System.Drawing.Size(21, 1);
             this.HomeButtom.TabIndex = 0;
             this.HomeButtom.UseVisualStyleBackColor = false;
             this.HomeButtom.Click += new System.EventHandler(this.HomeButtom_Click);
@@ -1328,12 +1325,12 @@
             this.ButtonsPlayer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ButtonsPlayer.Controls.Add(this.ReproductionButtomstableLayoutPanel, 0, 0);
             this.ButtonsPlayer.Controls.Add(this.progressBar1, 0, 1);
-            this.ButtonsPlayer.Location = new System.Drawing.Point(205, 339);
+            this.ButtonsPlayer.Location = new System.Drawing.Point(38, 3);
             this.ButtonsPlayer.Name = "ButtonsPlayer";
             this.ButtonsPlayer.RowCount = 2;
             this.ButtonsPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.19149F));
             this.ButtonsPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.80851F));
-            this.ButtonsPlayer.Size = new System.Drawing.Size(600, 79);
+            this.ButtonsPlayer.Size = new System.Drawing.Size(101, 1);
             this.ButtonsPlayer.TabIndex = 2;
             // 
             // ReproductionButtomstableLayoutPanel
@@ -1365,7 +1362,7 @@
             this.ReproductionButtomstableLayoutPanel.Name = "ReproductionButtomstableLayoutPanel";
             this.ReproductionButtomstableLayoutPanel.RowCount = 1;
             this.ReproductionButtomstableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ReproductionButtomstableLayoutPanel.Size = new System.Drawing.Size(594, 36);
+            this.ReproductionButtomstableLayoutPanel.Size = new System.Drawing.Size(95, 1);
             this.ReproductionButtomstableLayoutPanel.TabIndex = 2;
             // 
             // Star4Button
@@ -1376,10 +1373,10 @@
             this.Star4Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star4Button.FlatAppearance.BorderSize = 0;
             this.Star4Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star4Button.Location = new System.Drawing.Point(89, 2);
-            this.Star4Button.Margin = new System.Windows.Forms.Padding(2);
+            this.Star4Button.Location = new System.Drawing.Point(14, 2);
+            this.Star4Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Star4Button.Name = "Star4Button";
-            this.Star4Button.Size = new System.Drawing.Size(25, 32);
+            this.Star4Button.Size = new System.Drawing.Size(1, 1);
             this.Star4Button.TabIndex = 15;
             this.Star4Button.Tag = "no";
             this.Star4Button.UseVisualStyleBackColor = false;
@@ -1393,10 +1390,10 @@
             this.Star5Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star5Button.FlatAppearance.BorderSize = 0;
             this.Star5Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star5Button.Location = new System.Drawing.Point(118, 2);
-            this.Star5Button.Margin = new System.Windows.Forms.Padding(2);
+            this.Star5Button.Location = new System.Drawing.Point(18, 2);
+            this.Star5Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Star5Button.Name = "Star5Button";
-            this.Star5Button.Size = new System.Drawing.Size(25, 32);
+            this.Star5Button.Size = new System.Drawing.Size(1, 1);
             this.Star5Button.TabIndex = 14;
             this.Star5Button.Tag = "no";
             this.Star5Button.UseVisualStyleBackColor = false;
@@ -1410,10 +1407,10 @@
             this.Star3Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star3Button.FlatAppearance.BorderSize = 0;
             this.Star3Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star3Button.Location = new System.Drawing.Point(60, 2);
-            this.Star3Button.Margin = new System.Windows.Forms.Padding(2);
+            this.Star3Button.Location = new System.Drawing.Point(10, 2);
+            this.Star3Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Star3Button.Name = "Star3Button";
-            this.Star3Button.Size = new System.Drawing.Size(25, 32);
+            this.Star3Button.Size = new System.Drawing.Size(1, 1);
             this.Star3Button.TabIndex = 13;
             this.Star3Button.Tag = "no";
             this.Star3Button.UseVisualStyleBackColor = false;
@@ -1428,9 +1425,9 @@
             this.Star1Button.FlatAppearance.BorderSize = 0;
             this.Star1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Star1Button.Location = new System.Drawing.Point(2, 2);
-            this.Star1Button.Margin = new System.Windows.Forms.Padding(2);
+            this.Star1Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Star1Button.Name = "Star1Button";
-            this.Star1Button.Size = new System.Drawing.Size(25, 32);
+            this.Star1Button.Size = new System.Drawing.Size(1, 1);
             this.Star1Button.TabIndex = 12;
             this.Star1Button.Tag = "no";
             this.Star1Button.UseVisualStyleBackColor = false;
@@ -1444,10 +1441,10 @@
             this.Star2Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star2Button.FlatAppearance.BorderSize = 0;
             this.Star2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star2Button.Location = new System.Drawing.Point(31, 2);
-            this.Star2Button.Margin = new System.Windows.Forms.Padding(2);
+            this.Star2Button.Location = new System.Drawing.Point(6, 2);
+            this.Star2Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Star2Button.Name = "Star2Button";
-            this.Star2Button.Size = new System.Drawing.Size(25, 32);
+            this.Star2Button.Size = new System.Drawing.Size(1, 1);
             this.Star2Button.TabIndex = 11;
             this.Star2Button.Tag = "no";
             this.Star2Button.UseVisualStyleBackColor = false;
@@ -1461,10 +1458,10 @@
             this.FullandMinimizeScreenButtom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FullandMinimizeScreenButtom.FlatAppearance.BorderSize = 0;
             this.FullandMinimizeScreenButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FullandMinimizeScreenButtom.Location = new System.Drawing.Point(530, 2);
-            this.FullandMinimizeScreenButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.FullandMinimizeScreenButtom.Location = new System.Drawing.Point(80, 2);
+            this.FullandMinimizeScreenButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FullandMinimizeScreenButtom.Name = "FullandMinimizeScreenButtom";
-            this.FullandMinimizeScreenButtom.Size = new System.Drawing.Size(25, 32);
+            this.FullandMinimizeScreenButtom.Size = new System.Drawing.Size(1, 1);
             this.FullandMinimizeScreenButtom.TabIndex = 10;
             this.FullandMinimizeScreenButtom.Tag = "full";
             this.FullandMinimizeScreenButtom.UseVisualStyleBackColor = false;
@@ -1478,10 +1475,10 @@
             this.PlayPausaButtom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayPausaButtom.FlatAppearance.BorderSize = 0;
             this.PlayPausaButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayPausaButtom.Location = new System.Drawing.Point(279, 2);
-            this.PlayPausaButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.PlayPausaButtom.Location = new System.Drawing.Point(42, 2);
+            this.PlayPausaButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlayPausaButtom.Name = "PlayPausaButtom";
-            this.PlayPausaButtom.Size = new System.Drawing.Size(25, 32);
+            this.PlayPausaButtom.Size = new System.Drawing.Size(1, 1);
             this.PlayPausaButtom.TabIndex = 9;
             this.PlayPausaButtom.Tag = "pause";
             this.PlayPausaButtom.UseVisualStyleBackColor = false;
@@ -1495,10 +1492,10 @@
             this.BackPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackPlayer.FlatAppearance.BorderSize = 0;
             this.BackPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackPlayer.Location = new System.Drawing.Point(250, 2);
-            this.BackPlayer.Margin = new System.Windows.Forms.Padding(2);
+            this.BackPlayer.Location = new System.Drawing.Point(38, 2);
+            this.BackPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BackPlayer.Name = "BackPlayer";
-            this.BackPlayer.Size = new System.Drawing.Size(25, 32);
+            this.BackPlayer.Size = new System.Drawing.Size(1, 1);
             this.BackPlayer.TabIndex = 7;
             this.BackPlayer.UseVisualStyleBackColor = false;
             this.BackPlayer.Click += new System.EventHandler(this.BackPlayer_Click);
@@ -1511,10 +1508,10 @@
             this.NextPlay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NextPlay.FlatAppearance.BorderSize = 0;
             this.NextPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextPlay.Location = new System.Drawing.Point(308, 2);
-            this.NextPlay.Margin = new System.Windows.Forms.Padding(2);
+            this.NextPlay.Location = new System.Drawing.Point(46, 2);
+            this.NextPlay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NextPlay.Name = "NextPlay";
-            this.NextPlay.Size = new System.Drawing.Size(25, 32);
+            this.NextPlay.Size = new System.Drawing.Size(1, 1);
             this.NextPlay.TabIndex = 8;
             this.NextPlay.UseVisualStyleBackColor = false;
             this.NextPlay.Click += new System.EventHandler(this.NextPlay_Click);
@@ -1523,19 +1520,19 @@
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.ForeColor = System.Drawing.Color.DimGray;
-            this.progressBar1.Location = new System.Drawing.Point(3, 45);
+            this.progressBar1.Location = new System.Drawing.Point(3, 3);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(594, 1);
+            this.progressBar1.Size = new System.Drawing.Size(95, 1);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 1;
             // 
             // trackBar1
             // 
             this.trackBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.trackBar1.Location = new System.Drawing.Point(811, 339);
+            this.trackBar1.Location = new System.Drawing.Point(145, 3);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(197, 45);
+            this.trackBar1.Size = new System.Drawing.Size(31, 1);
             this.trackBar1.TabIndex = 4;
             this.trackBar1.Value = 20;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -1547,13 +1544,13 @@
             this.PlayListLayOutPanel.Controls.Add(this.MyPlaylistsPanel, 0, 1);
             this.PlayListLayOutPanel.Controls.Add(this.PlaylistTitleTable, 0, 0);
             this.PlayListLayOutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlayListLayOutPanel.Location = new System.Drawing.Point(810, 2);
-            this.PlayListLayOutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.PlayListLayOutPanel.Location = new System.Drawing.Point(144, 2);
+            this.PlayListLayOutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlayListLayOutPanel.Name = "PlayListLayOutPanel";
             this.PlayListLayOutPanel.RowCount = 2;
             this.PlayListLayOutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.316771F));
             this.PlayListLayOutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.68323F));
-            this.PlayListLayOutPanel.Size = new System.Drawing.Size(199, 332);
+            this.PlayListLayOutPanel.Size = new System.Drawing.Size(33, 1);
             this.PlayListLayOutPanel.TabIndex = 5;
             // 
             // MyPlaylistsPanel
@@ -1561,10 +1558,10 @@
             this.MyPlaylistsPanel.Controls.Add(this.NewPlaylistTable);
             this.MyPlaylistsPanel.Controls.Add(this.PlaylistsDataGrid);
             this.MyPlaylistsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MyPlaylistsPanel.Location = new System.Drawing.Point(2, 32);
-            this.MyPlaylistsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.MyPlaylistsPanel.Location = new System.Drawing.Point(2, 2);
+            this.MyPlaylistsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MyPlaylistsPanel.Name = "MyPlaylistsPanel";
-            this.MyPlaylistsPanel.Size = new System.Drawing.Size(195, 298);
+            this.MyPlaylistsPanel.Size = new System.Drawing.Size(29, 1);
             this.MyPlaylistsPanel.TabIndex = 4;
             // 
             // NewPlaylistTable
@@ -1582,7 +1579,7 @@
             this.NewPlaylistTable.Controls.Add(this.ChoosePrivacityTable, 0, 3);
             this.NewPlaylistTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NewPlaylistTable.Location = new System.Drawing.Point(0, 0);
-            this.NewPlaylistTable.Margin = new System.Windows.Forms.Padding(2);
+            this.NewPlaylistTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewPlaylistTable.Name = "NewPlaylistTable";
             this.NewPlaylistTable.RowCount = 9;
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.433421F));
@@ -1594,7 +1591,7 @@
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.660053F));
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.660053F));
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.99989F));
-            this.NewPlaylistTable.Size = new System.Drawing.Size(195, 298);
+            this.NewPlaylistTable.Size = new System.Drawing.Size(29, 1);
             this.NewPlaylistTable.TabIndex = 5;
             this.NewPlaylistTable.Visible = false;
             // 
@@ -1607,12 +1604,12 @@
             this.SearchSmartTable2.Controls.Add(this.SeerachSmartTextBox, 1, 0);
             this.SearchSmartTable2.Controls.Add(this.SearchSmartImage, 0, 0);
             this.SearchSmartTable2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchSmartTable2.Location = new System.Drawing.Point(2, 274);
-            this.SearchSmartTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchSmartTable2.Location = new System.Drawing.Point(2, 2);
+            this.SearchSmartTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchSmartTable2.Name = "SearchSmartTable2";
             this.SearchSmartTable2.RowCount = 1;
             this.SearchSmartTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.SearchSmartTable2.Size = new System.Drawing.Size(191, 22);
+            this.SearchSmartTable2.Size = new System.Drawing.Size(25, 1);
             this.SearchSmartTable2.TabIndex = 2;
             this.SearchSmartTable2.Visible = false;
             // 
@@ -1620,10 +1617,10 @@
             // 
             this.SeerachSmartTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SeerachSmartTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SeerachSmartTextBox.Location = new System.Drawing.Point(30, 2);
-            this.SeerachSmartTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SeerachSmartTextBox.Location = new System.Drawing.Point(5, 2);
+            this.SeerachSmartTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SeerachSmartTextBox.Name = "SeerachSmartTextBox";
-            this.SeerachSmartTextBox.Size = new System.Drawing.Size(159, 20);
+            this.SeerachSmartTextBox.Size = new System.Drawing.Size(18, 20);
             this.SeerachSmartTextBox.TabIndex = 3;
             this.SeerachSmartTextBox.Text = "Search";
             this.SeerachSmartTextBox.Click += new System.EventHandler(this.SeerachSmartTextBox_Click);
@@ -1634,9 +1631,9 @@
             this.SearchSmartImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SearchSmartImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchSmartImage.Location = new System.Drawing.Point(2, 2);
-            this.SearchSmartImage.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchSmartImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchSmartImage.Name = "SearchSmartImage";
-            this.SearchSmartImage.Size = new System.Drawing.Size(24, 18);
+            this.SearchSmartImage.Size = new System.Drawing.Size(1, 1);
             this.SearchSmartImage.TabIndex = 0;
             // 
             // ChooseanameLabel
@@ -1644,10 +1641,10 @@
             this.ChooseanameLabel.AutoSize = true;
             this.ChooseanameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChooseanameLabel.ForeColor = System.Drawing.Color.Red;
-            this.ChooseanameLabel.Location = new System.Drawing.Point(2, 256);
+            this.ChooseanameLabel.Location = new System.Drawing.Point(2, 0);
             this.ChooseanameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ChooseanameLabel.Name = "ChooseanameLabel";
-            this.ChooseanameLabel.Size = new System.Drawing.Size(191, 16);
+            this.ChooseanameLabel.Size = new System.Drawing.Size(25, 1);
             this.ChooseanameLabel.TabIndex = 16;
             this.ChooseanameLabel.Text = "Empty Field Name";
             this.ChooseanameLabel.Visible = false;
@@ -1657,10 +1654,10 @@
             this.ChoosePublic.AutoSize = true;
             this.ChoosePublic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChoosePublic.ForeColor = System.Drawing.Color.Red;
-            this.ChoosePublic.Location = new System.Drawing.Point(2, 240);
+            this.ChoosePublic.Location = new System.Drawing.Point(2, 0);
             this.ChoosePublic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ChoosePublic.Name = "ChoosePublic";
-            this.ChoosePublic.Size = new System.Drawing.Size(191, 16);
+            this.ChoosePublic.Size = new System.Drawing.Size(25, 1);
             this.ChoosePublic.TabIndex = 15;
             this.ChoosePublic.Text = "You have to choose Public or Private";
             this.ChoosePublic.Visible = false;
@@ -1670,9 +1667,9 @@
             this.PlaylistpictureBox.BackgroundImage = global::Spotflix.Properties.Resources.chooseImage;
             this.PlaylistpictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PlaylistpictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlaylistpictureBox.Location = new System.Drawing.Point(3, 31);
+            this.PlaylistpictureBox.Location = new System.Drawing.Point(3, 3);
             this.PlaylistpictureBox.Name = "PlaylistpictureBox";
-            this.PlaylistpictureBox.Size = new System.Drawing.Size(189, 85);
+            this.PlaylistpictureBox.Size = new System.Drawing.Size(23, 1);
             this.PlaylistpictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PlaylistpictureBox.TabIndex = 14;
             this.PlaylistpictureBox.TabStop = false;
@@ -1686,11 +1683,11 @@
             this.PlayListNameTable.Controls.Add(this.PlaylistNameTextBox, 1, 0);
             this.PlayListNameTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayListNameTable.Location = new System.Drawing.Point(2, 2);
-            this.PlayListNameTable.Margin = new System.Windows.Forms.Padding(2);
+            this.PlayListNameTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlayListNameTable.Name = "PlayListNameTable";
             this.PlayListNameTable.RowCount = 1;
             this.PlayListNameTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PlayListNameTable.Size = new System.Drawing.Size(191, 24);
+            this.PlayListNameTable.Size = new System.Drawing.Size(25, 1);
             this.PlayListNameTable.TabIndex = 7;
             // 
             // PlayListNameLabel
@@ -1702,7 +1699,7 @@
             this.PlayListNameLabel.Location = new System.Drawing.Point(2, 0);
             this.PlayListNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PlayListNameLabel.Name = "PlayListNameLabel";
-            this.PlayListNameLabel.Size = new System.Drawing.Size(91, 24);
+            this.PlayListNameLabel.Size = new System.Drawing.Size(8, 1);
             this.PlayListNameLabel.TabIndex = 6;
             this.PlayListNameLabel.Text = "Playlist Name";
             this.PlayListNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1713,10 +1710,10 @@
             this.PlaylistNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlaylistNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlaylistNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaylistNameTextBox.Location = new System.Drawing.Point(97, 2);
-            this.PlaylistNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.PlaylistNameTextBox.Location = new System.Drawing.Point(14, 2);
+            this.PlaylistNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlaylistNameTextBox.Name = "PlaylistNameTextBox";
-            this.PlaylistNameTextBox.Size = new System.Drawing.Size(92, 17);
+            this.PlaylistNameTextBox.Size = new System.Drawing.Size(9, 17);
             this.PlaylistNameTextBox.TabIndex = 7;
             this.PlaylistNameTextBox.Click += new System.EventHandler(this.TextBoxChanged);
             // 
@@ -1725,10 +1722,10 @@
             this.NameUseLabel.AutoSize = true;
             this.NameUseLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NameUseLabel.ForeColor = System.Drawing.Color.Red;
-            this.NameUseLabel.Location = new System.Drawing.Point(2, 224);
+            this.NameUseLabel.Location = new System.Drawing.Point(2, 0);
             this.NameUseLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameUseLabel.Name = "NameUseLabel";
-            this.NameUseLabel.Size = new System.Drawing.Size(191, 16);
+            this.NameUseLabel.Size = new System.Drawing.Size(25, 1);
             this.NameUseLabel.TabIndex = 8;
             this.NameUseLabel.Text = "Playlist name already in use";
             this.NameUseLabel.Visible = false;
@@ -1742,12 +1739,12 @@
             this.LoadIMageTable.Controls.Add(this.PlayListImagePathTextBox, 0, 0);
             this.LoadIMageTable.Controls.Add(this.LoadImageButton, 1, 0);
             this.LoadIMageTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LoadIMageTable.Location = new System.Drawing.Point(2, 121);
-            this.LoadIMageTable.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadIMageTable.Location = new System.Drawing.Point(2, 2);
+            this.LoadIMageTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LoadIMageTable.Name = "LoadIMageTable";
             this.LoadIMageTable.RowCount = 1;
             this.LoadIMageTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.LoadIMageTable.Size = new System.Drawing.Size(191, 29);
+            this.LoadIMageTable.Size = new System.Drawing.Size(25, 1);
             this.LoadIMageTable.TabIndex = 8;
             // 
             // PlayListImagePathTextBox
@@ -1756,7 +1753,7 @@
             this.PlayListImagePathTextBox.Location = new System.Drawing.Point(3, 3);
             this.PlayListImagePathTextBox.Name = "PlayListImagePathTextBox";
             this.PlayListImagePathTextBox.ReadOnly = true;
-            this.PlayListImagePathTextBox.Size = new System.Drawing.Size(57, 20);
+            this.PlayListImagePathTextBox.Size = new System.Drawing.Size(2, 20);
             this.PlayListImagePathTextBox.TabIndex = 13;
             this.PlayListImagePathTextBox.Visible = false;
             // 
@@ -1767,10 +1764,10 @@
             this.LoadImageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoadImageButton.FlatAppearance.BorderSize = 0;
             this.LoadImageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoadImageButton.Location = new System.Drawing.Point(65, 2);
-            this.LoadImageButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadImageButton.Location = new System.Drawing.Point(10, 2);
+            this.LoadImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LoadImageButton.Name = "LoadImageButton";
-            this.LoadImageButton.Size = new System.Drawing.Size(59, 25);
+            this.LoadImageButton.Size = new System.Drawing.Size(4, 1);
             this.LoadImageButton.TabIndex = 0;
             this.LoadImageButton.UseVisualStyleBackColor = true;
             this.LoadImageButton.Click += new System.EventHandler(this.LoadImageButton_Click);
@@ -1783,12 +1780,12 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel7.Controls.Add(this.UploadButton, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 187);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(191, 35);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(25, 1);
             this.tableLayoutPanel7.TabIndex = 10;
             // 
             // UploadButton
@@ -1798,10 +1795,10 @@
             this.UploadButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UploadButton.FlatAppearance.BorderSize = 0;
             this.UploadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UploadButton.Location = new System.Drawing.Point(65, 2);
-            this.UploadButton.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadButton.Location = new System.Drawing.Point(10, 2);
+            this.UploadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadButton.Name = "UploadButton";
-            this.UploadButton.Size = new System.Drawing.Size(59, 31);
+            this.UploadButton.Size = new System.Drawing.Size(4, 1);
             this.UploadButton.TabIndex = 2;
             this.UploadButton.UseVisualStyleBackColor = true;
             this.UploadButton.Click += new System.EventHandler(this.UploadButton_Click);
@@ -1815,12 +1812,12 @@
             this.ChoosePrivacityTable.Controls.Add(this.PublicButton, 2, 0);
             this.ChoosePrivacityTable.Controls.Add(this.PrivateButton, 0, 0);
             this.ChoosePrivacityTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChoosePrivacityTable.Location = new System.Drawing.Point(2, 154);
-            this.ChoosePrivacityTable.Margin = new System.Windows.Forms.Padding(2);
+            this.ChoosePrivacityTable.Location = new System.Drawing.Point(2, 2);
+            this.ChoosePrivacityTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ChoosePrivacityTable.Name = "ChoosePrivacityTable";
             this.ChoosePrivacityTable.RowCount = 1;
             this.ChoosePrivacityTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ChoosePrivacityTable.Size = new System.Drawing.Size(191, 29);
+            this.ChoosePrivacityTable.Size = new System.Drawing.Size(25, 1);
             this.ChoosePrivacityTable.TabIndex = 9;
             // 
             // PublicButton
@@ -1830,10 +1827,10 @@
             this.PublicButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PublicButton.FlatAppearance.BorderSize = 0;
             this.PublicButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PublicButton.Location = new System.Drawing.Point(128, 2);
-            this.PublicButton.Margin = new System.Windows.Forms.Padding(2);
+            this.PublicButton.Location = new System.Drawing.Point(18, 2);
+            this.PublicButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PublicButton.Name = "PublicButton";
-            this.PublicButton.Size = new System.Drawing.Size(61, 25);
+            this.PublicButton.Size = new System.Drawing.Size(5, 1);
             this.PublicButton.TabIndex = 3;
             this.PublicButton.Tag = "off";
             this.PublicButton.UseVisualStyleBackColor = true;
@@ -1847,9 +1844,9 @@
             this.PrivateButton.FlatAppearance.BorderSize = 0;
             this.PrivateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrivateButton.Location = new System.Drawing.Point(2, 2);
-            this.PrivateButton.Margin = new System.Windows.Forms.Padding(2);
+            this.PrivateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PrivateButton.Name = "PrivateButton";
-            this.PrivateButton.Size = new System.Drawing.Size(59, 25);
+            this.PrivateButton.Size = new System.Drawing.Size(4, 1);
             this.PrivateButton.TabIndex = 1;
             this.PrivateButton.Tag = "off";
             this.PrivateButton.UseVisualStyleBackColor = true;
@@ -1895,7 +1892,7 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.PlaylistsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.PlaylistsDataGrid.Size = new System.Drawing.Size(195, 298);
+            this.PlaylistsDataGrid.Size = new System.Drawing.Size(29, 1);
             this.PlaylistsDataGrid.TabIndex = 6;
             this.PlaylistsDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
             this.PlaylistsDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridMouseClick);
@@ -1939,11 +1936,11 @@
             this.PlaylistTitleTable.Controls.Add(this.AddPlaylistButton, 1, 0);
             this.PlaylistTitleTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlaylistTitleTable.Location = new System.Drawing.Point(2, 2);
-            this.PlaylistTitleTable.Margin = new System.Windows.Forms.Padding(2);
+            this.PlaylistTitleTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlaylistTitleTable.Name = "PlaylistTitleTable";
             this.PlaylistTitleTable.RowCount = 1;
             this.PlaylistTitleTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.PlaylistTitleTable.Size = new System.Drawing.Size(195, 26);
+            this.PlaylistTitleTable.Size = new System.Drawing.Size(29, 1);
             this.PlaylistTitleTable.TabIndex = 3;
             // 
             // AddSmartListButton
@@ -1953,10 +1950,10 @@
             this.AddSmartListButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddSmartListButton.FlatAppearance.BorderSize = 0;
             this.AddSmartListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddSmartListButton.Location = new System.Drawing.Point(138, 2);
-            this.AddSmartListButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddSmartListButton.Location = new System.Drawing.Point(22, 2);
+            this.AddSmartListButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSmartListButton.Name = "AddSmartListButton";
-            this.AddSmartListButton.Size = new System.Drawing.Size(25, 22);
+            this.AddSmartListButton.Size = new System.Drawing.Size(1, 1);
             this.AddSmartListButton.TabIndex = 6;
             this.AddSmartListButton.UseVisualStyleBackColor = true;
             this.AddSmartListButton.Click += new System.EventHandler(this.AddSmartListButton_Click);
@@ -1970,7 +1967,7 @@
             this.PlayListLabel.Location = new System.Drawing.Point(2, 0);
             this.PlayListLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PlayListLabel.Name = "PlayListLabel";
-            this.PlayListLabel.Size = new System.Drawing.Size(132, 26);
+            this.PlayListLabel.Size = new System.Drawing.Size(16, 1);
             this.PlayListLabel.TabIndex = 4;
             this.PlayListLabel.Text = "My Playlists";
             this.PlayListLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1982,10 +1979,10 @@
             this.AddPlaylistButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddPlaylistButton.FlatAppearance.BorderSize = 0;
             this.AddPlaylistButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddPlaylistButton.Location = new System.Drawing.Point(167, 2);
-            this.AddPlaylistButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddPlaylistButton.Location = new System.Drawing.Point(26, 2);
+            this.AddPlaylistButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddPlaylistButton.Name = "AddPlaylistButton";
-            this.AddPlaylistButton.Size = new System.Drawing.Size(26, 22);
+            this.AddPlaylistButton.Size = new System.Drawing.Size(1, 1);
             this.AddPlaylistButton.TabIndex = 5;
             this.AddPlaylistButton.UseVisualStyleBackColor = true;
             this.AddPlaylistButton.Click += new System.EventHandler(this.AddPlaylistButton_Click);
@@ -1998,9 +1995,9 @@
             this.CentralPlayerPanel.Controls.Add(this.Player);
             this.CentralPlayerPanel.Controls.Add(this.karaokeText);
             this.CentralPlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CentralPlayerPanel.Location = new System.Drawing.Point(205, 3);
+            this.CentralPlayerPanel.Location = new System.Drawing.Point(38, 3);
             this.CentralPlayerPanel.Name = "CentralPlayerPanel";
-            this.CentralPlayerPanel.Size = new System.Drawing.Size(600, 330);
+            this.CentralPlayerPanel.Size = new System.Drawing.Size(101, 1);
             this.CentralPlayerPanel.TabIndex = 0;
             // 
             // SearchPanel
@@ -2008,9 +2005,9 @@
             this.SearchPanel.Controls.Add(this.SearchTablePanel);
             this.SearchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchPanel.Location = new System.Drawing.Point(0, 0);
-            this.SearchPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(600, 276);
+            this.SearchPanel.Size = new System.Drawing.Size(101, 0);
             this.SearchPanel.TabIndex = 2;
             // 
             // SearchTablePanel
@@ -2022,12 +2019,12 @@
             this.SearchTablePanel.Controls.Add(this.SearcherImagePanel, 0, 1);
             this.SearchTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchTablePanel.Location = new System.Drawing.Point(0, 0);
-            this.SearchTablePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchTablePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchTablePanel.Name = "SearchTablePanel";
             this.SearchTablePanel.RowCount = 2;
             this.SearchTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.44025F));
             this.SearchTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.55975F));
-            this.SearchTablePanel.Size = new System.Drawing.Size(600, 276);
+            this.SearchTablePanel.Size = new System.Drawing.Size(101, 0);
             this.SearchTablePanel.TabIndex = 0;
             // 
             // SearcherTablePanel
@@ -2039,60 +2036,30 @@
             this.SearcherTablePanel.Controls.Add(this.RememberTextBox, 0, 0);
             this.SearcherTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearcherTablePanel.Location = new System.Drawing.Point(2, 2);
-            this.SearcherTablePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.SearcherTablePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearcherTablePanel.Name = "SearcherTablePanel";
             this.SearcherTablePanel.RowCount = 2;
             this.SearcherTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.07547F));
             this.SearcherTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.92453F));
-            this.SearcherTablePanel.Size = new System.Drawing.Size(596, 52);
+            this.SearcherTablePanel.Size = new System.Drawing.Size(97, 1);
             this.SearcherTablePanel.TabIndex = 1;
             // 
             // ButtonsSearchTablePanel
             // 
-            this.ButtonsSearchTablePanel.ColumnCount = 4;
-            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.ButtonsSearchTablePanel.Controls.Add(this.LButton, 1, 0);
-            this.ButtonsSearchTablePanel.Controls.Add(this.RButtom, 0, 0);
-            this.ButtonsSearchTablePanel.Controls.Add(this.SearchPanelContainer, 3, 0);
+            this.ButtonsSearchTablePanel.ColumnCount = 1;
+            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ButtonsSearchTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ButtonsSearchTablePanel.Controls.Add(this.SearchPanelContainer, 0, 0);
             this.ButtonsSearchTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsSearchTablePanel.Location = new System.Drawing.Point(2, 18);
-            this.ButtonsSearchTablePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonsSearchTablePanel.Location = new System.Drawing.Point(2, 2);
+            this.ButtonsSearchTablePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonsSearchTablePanel.Name = "ButtonsSearchTablePanel";
             this.ButtonsSearchTablePanel.RowCount = 1;
             this.ButtonsSearchTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ButtonsSearchTablePanel.Size = new System.Drawing.Size(294, 32);
+            this.ButtonsSearchTablePanel.Size = new System.Drawing.Size(44, 1);
             this.ButtonsSearchTablePanel.TabIndex = 0;
-            // 
-            // LButton
-            // 
-            this.LButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LButton.BackgroundImage")));
-            this.LButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.LButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LButton.FlatAppearance.BorderSize = 0;
-            this.LButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LButton.Location = new System.Drawing.Point(31, 2);
-            this.LButton.Margin = new System.Windows.Forms.Padding(2);
-            this.LButton.Name = "LButton";
-            this.LButton.Size = new System.Drawing.Size(25, 28);
-            this.LButton.TabIndex = 1;
-            this.LButton.UseVisualStyleBackColor = true;
-            // 
-            // RButtom
-            // 
-            this.RButtom.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RButtom.BackgroundImage")));
-            this.RButtom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.RButtom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RButtom.FlatAppearance.BorderSize = 0;
-            this.RButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RButtom.Location = new System.Drawing.Point(2, 2);
-            this.RButtom.Margin = new System.Windows.Forms.Padding(2);
-            this.RButtom.Name = "RButtom";
-            this.RButtom.Size = new System.Drawing.Size(25, 28);
-            this.RButtom.TabIndex = 0;
-            this.RButtom.UseVisualStyleBackColor = true;
             // 
             // SearchPanelContainer
             // 
@@ -2100,13 +2067,13 @@
             this.SearchPanelContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.SearchPanelContainer.Controls.Add(this.SearchTableConten, 0, 0);
             this.SearchPanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchPanelContainer.Location = new System.Drawing.Point(89, 2);
-            this.SearchPanelContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchPanelContainer.Location = new System.Drawing.Point(2, 2);
+            this.SearchPanelContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchPanelContainer.Name = "SearchPanelContainer";
-            this.SearchPanelContainer.RowCount = 2;
-            this.SearchPanelContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.SearchPanelContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.SearchPanelContainer.Size = new System.Drawing.Size(203, 28);
+            this.SearchPanelContainer.RowCount = 1;
+            this.SearchPanelContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.SearchPanelContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.SearchPanelContainer.Size = new System.Drawing.Size(40, 1);
             this.SearchPanelContainer.TabIndex = 2;
             // 
             // SearchTableConten
@@ -2119,24 +2086,25 @@
             this.SearchTableConten.Controls.Add(this.LupaPanel, 0, 0);
             this.SearchTableConten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchTableConten.Location = new System.Drawing.Point(2, 2);
-            this.SearchTableConten.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchTableConten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchTableConten.Name = "SearchTableConten";
             this.SearchTableConten.RowCount = 1;
             this.SearchTableConten.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.SearchTableConten.Size = new System.Drawing.Size(199, 15);
+            this.SearchTableConten.Size = new System.Drawing.Size(36, 1);
             this.SearchTableConten.TabIndex = 2;
             // 
             // SearchTextBox
             // 
             this.SearchTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SearchTextBox.Location = new System.Drawing.Point(31, 2);
-            this.SearchTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchTextBox.Location = new System.Drawing.Point(7, 2);
+            this.SearchTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(166, 20);
+            this.SearchTextBox.Size = new System.Drawing.Size(27, 29);
             this.SearchTextBox.TabIndex = 3;
             this.SearchTextBox.Text = "Search";
-            this.SearchTextBox.Click += new System.EventHandler(this.SearchTextBox_TextChanged);
+            this.SearchTextBox.Click += new System.EventHandler(this.SearchTextBox_Click);
             this.SearchTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SearchTextBox_TextChanged);
             this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
@@ -2146,9 +2114,9 @@
             this.LupaPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.LupaPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LupaPanel.Location = new System.Drawing.Point(2, 2);
-            this.LupaPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.LupaPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LupaPanel.Name = "LupaPanel";
-            this.LupaPanel.Size = new System.Drawing.Size(25, 11);
+            this.LupaPanel.Size = new System.Drawing.Size(1, 1);
             this.LupaPanel.TabIndex = 0;
             // 
             // RememberTextBox
@@ -2159,9 +2127,9 @@
             this.RememberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RememberTextBox.ForeColor = System.Drawing.Color.Red;
             this.RememberTextBox.Location = new System.Drawing.Point(2, 2);
-            this.RememberTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.RememberTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RememberTextBox.Name = "RememberTextBox";
-            this.RememberTextBox.Size = new System.Drawing.Size(294, 17);
+            this.RememberTextBox.Size = new System.Drawing.Size(44, 17);
             this.RememberTextBox.TabIndex = 1;
             this.RememberTextBox.Text = "¡Remember Format! Artist: XX AND Genre: XX  OR...";
             this.RememberTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -2172,10 +2140,10 @@
             this.SearcherImagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SearcherImagePanel.Controls.Add(this.SearcherTableResults);
             this.SearcherImagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearcherImagePanel.Location = new System.Drawing.Point(2, 58);
-            this.SearcherImagePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.SearcherImagePanel.Location = new System.Drawing.Point(2, 2);
+            this.SearcherImagePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearcherImagePanel.Name = "SearcherImagePanel";
-            this.SearcherImagePanel.Size = new System.Drawing.Size(596, 216);
+            this.SearcherImagePanel.Size = new System.Drawing.Size(97, 1);
             this.SearcherImagePanel.TabIndex = 2;
             // 
             // SearcherTableResults
@@ -2196,7 +2164,7 @@
             this.SearcherTableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.SearcherTableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.SearcherTableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.SearcherTableResults.Size = new System.Drawing.Size(596, 216);
+            this.SearcherTableResults.Size = new System.Drawing.Size(97, 1);
             this.SearcherTableResults.TabIndex = 2;
             this.SearcherTableResults.Visible = false;
             // 
@@ -2223,7 +2191,7 @@
             this.SearcherUsersData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearcherUsersData.EnableHeadersVisualStyles = false;
             this.SearcherUsersData.GridColor = System.Drawing.Color.Black;
-            this.SearcherUsersData.Location = new System.Drawing.Point(3, 146);
+            this.SearcherUsersData.Location = new System.Drawing.Point(3, 3);
             this.SearcherUsersData.Name = "SearcherUsersData";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
@@ -2240,7 +2208,7 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             this.SearcherUsersData.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.SearcherUsersData.Size = new System.Drawing.Size(292, 67);
+            this.SearcherUsersData.Size = new System.Drawing.Size(42, 1);
             this.SearcherUsersData.TabIndex = 14;
             this.SearcherUsersData.Visible = false;
             this.SearcherUsersData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
@@ -2313,7 +2281,7 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
             this.MediaSearcherData.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.MediaSearcherData.Size = new System.Drawing.Size(292, 65);
+            this.MediaSearcherData.Size = new System.Drawing.Size(42, 1);
             this.MediaSearcherData.TabIndex = 9;
             this.MediaSearcherData.Visible = false;
             this.MediaSearcherData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
@@ -2369,7 +2337,7 @@
             this.ArtistSearcherData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtistSearcherData.EnableHeadersVisualStyles = false;
             this.ArtistSearcherData.GridColor = System.Drawing.Color.Black;
-            this.ArtistSearcherData.Location = new System.Drawing.Point(301, 3);
+            this.ArtistSearcherData.Location = new System.Drawing.Point(51, 3);
             this.ArtistSearcherData.Name = "ArtistSearcherData";
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
@@ -2386,7 +2354,7 @@
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
             this.ArtistSearcherData.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.ArtistSearcherData.Size = new System.Drawing.Size(292, 65);
+            this.ArtistSearcherData.Size = new System.Drawing.Size(43, 1);
             this.ArtistSearcherData.TabIndex = 10;
             this.ArtistSearcherData.Visible = false;
             this.ArtistSearcherData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
@@ -2443,7 +2411,7 @@
             this.AlbumsSearcherData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AlbumsSearcherData.EnableHeadersVisualStyles = false;
             this.AlbumsSearcherData.GridColor = System.Drawing.Color.Black;
-            this.AlbumsSearcherData.Location = new System.Drawing.Point(3, 74);
+            this.AlbumsSearcherData.Location = new System.Drawing.Point(3, 3);
             this.AlbumsSearcherData.Name = "AlbumsSearcherData";
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.Black;
@@ -2460,7 +2428,7 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
             this.AlbumsSearcherData.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.AlbumsSearcherData.Size = new System.Drawing.Size(292, 66);
+            this.AlbumsSearcherData.Size = new System.Drawing.Size(42, 1);
             this.AlbumsSearcherData.TabIndex = 11;
             this.AlbumsSearcherData.Visible = false;
             this.AlbumsSearcherData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
@@ -2516,7 +2484,7 @@
             this.PlaylistSearcherData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlaylistSearcherData.EnableHeadersVisualStyles = false;
             this.PlaylistSearcherData.GridColor = System.Drawing.Color.Black;
-            this.PlaylistSearcherData.Location = new System.Drawing.Point(301, 74);
+            this.PlaylistSearcherData.Location = new System.Drawing.Point(51, 3);
             this.PlaylistSearcherData.Name = "PlaylistSearcherData";
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
@@ -2533,7 +2501,7 @@
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
             this.PlaylistSearcherData.RowsDefaultCellStyle = dataGridViewCellStyle18;
-            this.PlaylistSearcherData.Size = new System.Drawing.Size(292, 66);
+            this.PlaylistSearcherData.Size = new System.Drawing.Size(43, 1);
             this.PlaylistSearcherData.TabIndex = 12;
             this.PlaylistSearcherData.Visible = false;
             this.PlaylistSearcherData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
@@ -2664,10 +2632,10 @@
             this.karaokeText.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.karaokeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.karaokeText.ForeColor = System.Drawing.Color.White;
-            this.karaokeText.Location = new System.Drawing.Point(0, 276);
+            this.karaokeText.Location = new System.Drawing.Point(0, -53);
             this.karaokeText.Name = "karaokeText";
             this.karaokeText.ReadOnly = true;
-            this.karaokeText.Size = new System.Drawing.Size(600, 54);
+            this.karaokeText.Size = new System.Drawing.Size(101, 54);
             this.karaokeText.TabIndex = 3;
             this.karaokeText.Text = "";
             this.karaokeText.TextChanged += new System.EventHandler(this.karaokeText_TextChanged);
@@ -2680,12 +2648,12 @@
             this.PictureHolderPanel.Controls.Add(this.ReproductorPictureBox, 0, 0);
             this.PictureHolderPanel.Controls.Add(this.InferiorButtonsTable, 1, 0);
             this.PictureHolderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureHolderPanel.Location = new System.Drawing.Point(2, 338);
-            this.PictureHolderPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolderPanel.Location = new System.Drawing.Point(2, 2);
+            this.PictureHolderPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolderPanel.Name = "PictureHolderPanel";
             this.PictureHolderPanel.RowCount = 1;
             this.PictureHolderPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PictureHolderPanel.Size = new System.Drawing.Size(198, 81);
+            this.PictureHolderPanel.Size = new System.Drawing.Size(31, 1);
             this.PictureHolderPanel.TabIndex = 6;
             // 
             // ReproductorPictureBox
@@ -2693,11 +2661,10 @@
             this.ReproductorPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ReproductorPictureBox.Location = new System.Drawing.Point(3, 3);
             this.ReproductorPictureBox.Name = "ReproductorPictureBox";
-            this.ReproductorPictureBox.Size = new System.Drawing.Size(77, 75);
+            this.ReproductorPictureBox.Size = new System.Drawing.Size(7, 1);
             this.ReproductorPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ReproductorPictureBox.TabIndex = 0;
             this.ReproductorPictureBox.TabStop = false;
-            this.ReproductorPictureBox.Click += new System.EventHandler(this.ReproductorPictureBox_Click);
             // 
             // InferiorButtonsTable
             // 
@@ -2710,15 +2677,15 @@
             this.InferiorButtonsTable.Controls.Add(this.ToAlbum, 0, 1);
             this.InferiorButtonsTable.Controls.Add(this.ToArtist, 0, 2);
             this.InferiorButtonsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InferiorButtonsTable.Location = new System.Drawing.Point(85, 2);
-            this.InferiorButtonsTable.Margin = new System.Windows.Forms.Padding(2);
+            this.InferiorButtonsTable.Location = new System.Drawing.Point(15, 2);
+            this.InferiorButtonsTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.InferiorButtonsTable.Name = "InferiorButtonsTable";
             this.InferiorButtonsTable.RowCount = 3;
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.InferiorButtonsTable.Size = new System.Drawing.Size(111, 77);
+            this.InferiorButtonsTable.Size = new System.Drawing.Size(14, 1);
             this.InferiorButtonsTable.TabIndex = 1;
             // 
             // LikeSongorVideo
@@ -2728,10 +2695,10 @@
             this.LikeSongorVideo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LikeSongorVideo.FlatAppearance.BorderSize = 0;
             this.LikeSongorVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LikeSongorVideo.Location = new System.Drawing.Point(79, 2);
-            this.LikeSongorVideo.Margin = new System.Windows.Forms.Padding(2);
+            this.LikeSongorVideo.Location = new System.Drawing.Point(11, 2);
+            this.LikeSongorVideo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LikeSongorVideo.Name = "LikeSongorVideo";
-            this.LikeSongorVideo.Size = new System.Drawing.Size(30, 21);
+            this.LikeSongorVideo.Size = new System.Drawing.Size(1, 1);
             this.LikeSongorVideo.TabIndex = 4;
             this.LikeSongorVideo.Tag = "no";
             this.LikeSongorVideo.UseVisualStyleBackColor = true;
@@ -2747,10 +2714,10 @@
             this.QuequeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuequeButton.ForeColor = System.Drawing.Color.Black;
             this.QuequeButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.QuequeButton.Location = new System.Drawing.Point(79, 52);
-            this.QuequeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.QuequeButton.Location = new System.Drawing.Point(11, 2);
+            this.QuequeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.QuequeButton.Name = "QuequeButton";
-            this.QuequeButton.Size = new System.Drawing.Size(30, 23);
+            this.QuequeButton.Size = new System.Drawing.Size(1, 1);
             this.QuequeButton.TabIndex = 6;
             this.QuequeButton.Tag = "no";
             this.QuequeButton.Text = "                         QuequeButtom";
@@ -2767,7 +2734,7 @@
             this.ToName.LinkColor = System.Drawing.Color.Gray;
             this.ToName.Location = new System.Drawing.Point(3, 0);
             this.ToName.Name = "ToName";
-            this.ToName.Size = new System.Drawing.Size(71, 25);
+            this.ToName.Size = new System.Drawing.Size(3, 1);
             this.ToName.TabIndex = 7;
             this.ToName.TabStop = true;
             this.ToName.Text = "a";
@@ -2781,15 +2748,14 @@
             this.ToAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToAlbum.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ToAlbum.LinkColor = System.Drawing.Color.Gray;
-            this.ToAlbum.Location = new System.Drawing.Point(3, 25);
+            this.ToAlbum.Location = new System.Drawing.Point(3, 0);
             this.ToAlbum.Name = "ToAlbum";
-            this.ToAlbum.Size = new System.Drawing.Size(71, 25);
+            this.ToAlbum.Size = new System.Drawing.Size(3, 1);
             this.ToAlbum.TabIndex = 8;
             this.ToAlbum.TabStop = true;
             this.ToAlbum.Text = "a";
             this.ToAlbum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ToAlbum.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ToAlbum.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ToAlbum_LinkClicked_1);
             // 
             // ToArtist
             // 
@@ -2798,9 +2764,9 @@
             this.ToArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToArtist.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ToArtist.LinkColor = System.Drawing.Color.Gray;
-            this.ToArtist.Location = new System.Drawing.Point(3, 50);
+            this.ToArtist.Location = new System.Drawing.Point(3, 0);
             this.ToArtist.Name = "ToArtist";
-            this.ToArtist.Size = new System.Drawing.Size(71, 27);
+            this.ToArtist.Size = new System.Drawing.Size(3, 1);
             this.ToArtist.TabIndex = 9;
             this.ToArtist.TabStop = true;
             this.ToArtist.Text = "a";
@@ -2815,7 +2781,7 @@
             this.TopPlayerPanelHolder.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPlayerPanelHolder.Location = new System.Drawing.Point(0, 0);
             this.TopPlayerPanelHolder.Name = "TopPlayerPanelHolder";
-            this.TopPlayerPanelHolder.Size = new System.Drawing.Size(1011, 119);
+            this.TopPlayerPanelHolder.Size = new System.Drawing.Size(179, 119);
             this.TopPlayerPanelHolder.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -2827,15 +2793,14 @@
             this.tableLayoutPanel2.Controls.Add(this.EditProfilUnderButton, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(218, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(793, 119);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(0, 119);
             this.tableLayoutPanel2.TabIndex = 2;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // EditProfileButton
             // 
@@ -2845,9 +2810,9 @@
             this.EditProfileButton.FlatAppearance.BorderSize = 0;
             this.EditProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditProfileButton.Location = new System.Drawing.Point(693, 3);
+            this.EditProfileButton.Location = new System.Drawing.Point(3, 3);
             this.EditProfileButton.Name = "EditProfileButton";
-            this.EditProfileButton.Size = new System.Drawing.Size(97, 77);
+            this.EditProfileButton.Size = new System.Drawing.Size(1, 77);
             this.EditProfileButton.TabIndex = 1;
             this.EditProfileButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.EditProfileButton.UseVisualStyleBackColor = true;
@@ -2858,10 +2823,10 @@
             this.EditProfilUnderButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditProfilUnderButton.BackgroundImage")));
             this.EditProfilUnderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.EditProfilUnderButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditProfilUnderButton.Location = new System.Drawing.Point(692, 85);
-            this.EditProfilUnderButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EditProfilUnderButton.Location = new System.Drawing.Point(2, 85);
+            this.EditProfilUnderButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditProfilUnderButton.Name = "EditProfilUnderButton";
-            this.EditProfilUnderButton.Size = new System.Drawing.Size(99, 19);
+            this.EditProfilUnderButton.Size = new System.Drawing.Size(1, 19);
             this.EditProfilUnderButton.TabIndex = 2;
             // 
             // PlayerBack
@@ -2898,7 +2863,7 @@
             this.PreferencesInternPanel.Controls.Add(this.PreferencestableLayoutPanel);
             this.PreferencesInternPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PreferencesInternPanel.Location = new System.Drawing.Point(0, 119);
-            this.PreferencesInternPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.PreferencesInternPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreferencesInternPanel.Name = "PreferencesInternPanel";
             this.PreferencesInternPanel.Size = new System.Drawing.Size(179, 0);
             this.PreferencesInternPanel.TabIndex = 4;
@@ -2943,7 +2908,7 @@
             this.PreferencestableLayoutPanel.Controls.Add(this.MovieTable1, 2, 1);
             this.PreferencestableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PreferencestableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.PreferencestableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.PreferencestableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreferencestableLayoutPanel.Name = "PreferencestableLayoutPanel";
             this.PreferencestableLayoutPanel.RowCount = 6;
             this.PreferencestableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
@@ -2964,7 +2929,7 @@
             this.SongTable5.Controls.Add(this.SongButtom9, 0, 0);
             this.SongTable5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongTable5.Location = new System.Drawing.Point(142, 2);
-            this.SongTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.SongTable5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongTable5.Name = "SongTable5";
             this.SongTable5.RowCount = 1;
             this.SongTable5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2979,7 +2944,7 @@
             this.SongButtom10.FlatAppearance.BorderSize = 0;
             this.SongButtom10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom10.Location = new System.Drawing.Point(19, 2);
-            this.SongButtom10.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom10.Name = "SongButtom10";
             this.SongButtom10.Size = new System.Drawing.Size(14, 1);
             this.SongButtom10.TabIndex = 23;
@@ -2996,7 +2961,7 @@
             this.SongButtom9.FlatAppearance.BorderSize = 0;
             this.SongButtom9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom9.Location = new System.Drawing.Point(2, 2);
-            this.SongButtom9.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom9.Name = "SongButtom9";
             this.SongButtom9.Size = new System.Drawing.Size(13, 1);
             this.SongButtom9.TabIndex = 22;
@@ -3014,7 +2979,7 @@
             this.SongTable4.Controls.Add(this.SongButtom7, 0, 0);
             this.SongTable4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongTable4.Location = new System.Drawing.Point(142, 2);
-            this.SongTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.SongTable4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongTable4.Name = "SongTable4";
             this.SongTable4.RowCount = 1;
             this.SongTable4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3029,7 +2994,7 @@
             this.SongButtom8.FlatAppearance.BorderSize = 0;
             this.SongButtom8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom8.Location = new System.Drawing.Point(19, 2);
-            this.SongButtom8.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom8.Name = "SongButtom8";
             this.SongButtom8.Size = new System.Drawing.Size(14, 1);
             this.SongButtom8.TabIndex = 23;
@@ -3046,7 +3011,7 @@
             this.SongButtom7.FlatAppearance.BorderSize = 0;
             this.SongButtom7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom7.Location = new System.Drawing.Point(2, 2);
-            this.SongButtom7.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom7.Name = "SongButtom7";
             this.SongButtom7.Size = new System.Drawing.Size(13, 1);
             this.SongButtom7.TabIndex = 22;
@@ -3064,7 +3029,7 @@
             this.SongTable3.Controls.Add(this.SongButtom5, 0, 0);
             this.SongTable3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongTable3.Location = new System.Drawing.Point(142, 2);
-            this.SongTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.SongTable3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongTable3.Name = "SongTable3";
             this.SongTable3.RowCount = 1;
             this.SongTable3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3079,7 +3044,7 @@
             this.SongButtom6.FlatAppearance.BorderSize = 0;
             this.SongButtom6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom6.Location = new System.Drawing.Point(19, 2);
-            this.SongButtom6.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom6.Name = "SongButtom6";
             this.SongButtom6.Size = new System.Drawing.Size(14, 1);
             this.SongButtom6.TabIndex = 23;
@@ -3096,7 +3061,7 @@
             this.SongButtom5.FlatAppearance.BorderSize = 0;
             this.SongButtom5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom5.Location = new System.Drawing.Point(2, 2);
-            this.SongButtom5.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom5.Name = "SongButtom5";
             this.SongButtom5.Size = new System.Drawing.Size(13, 1);
             this.SongButtom5.TabIndex = 22;
@@ -3114,7 +3079,7 @@
             this.SongTable2.Controls.Add(this.SongButtom3, 0, 0);
             this.SongTable2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongTable2.Location = new System.Drawing.Point(142, 2);
-            this.SongTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.SongTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongTable2.Name = "SongTable2";
             this.SongTable2.RowCount = 1;
             this.SongTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3129,7 +3094,7 @@
             this.SongButtom4.FlatAppearance.BorderSize = 0;
             this.SongButtom4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom4.Location = new System.Drawing.Point(19, 2);
-            this.SongButtom4.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom4.Name = "SongButtom4";
             this.SongButtom4.Size = new System.Drawing.Size(14, 1);
             this.SongButtom4.TabIndex = 23;
@@ -3146,7 +3111,7 @@
             this.SongButtom3.FlatAppearance.BorderSize = 0;
             this.SongButtom3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom3.Location = new System.Drawing.Point(2, 2);
-            this.SongButtom3.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom3.Name = "SongButtom3";
             this.SongButtom3.Size = new System.Drawing.Size(13, 1);
             this.SongButtom3.TabIndex = 22;
@@ -3164,7 +3129,7 @@
             this.SongTable1.Controls.Add(this.SongButtom1, 0, 0);
             this.SongTable1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongTable1.Location = new System.Drawing.Point(142, 2);
-            this.SongTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.SongTable1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongTable1.Name = "SongTable1";
             this.SongTable1.RowCount = 1;
             this.SongTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3179,7 +3144,7 @@
             this.SongButtom2.FlatAppearance.BorderSize = 0;
             this.SongButtom2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom2.Location = new System.Drawing.Point(19, 2);
-            this.SongButtom2.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom2.Name = "SongButtom2";
             this.SongButtom2.Size = new System.Drawing.Size(14, 1);
             this.SongButtom2.TabIndex = 23;
@@ -3196,7 +3161,7 @@
             this.SongButtom1.FlatAppearance.BorderSize = 0;
             this.SongButtom1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SongButtom1.Location = new System.Drawing.Point(2, 2);
-            this.SongButtom1.Margin = new System.Windows.Forms.Padding(2);
+            this.SongButtom1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongButtom1.Name = "SongButtom1";
             this.SongButtom1.Size = new System.Drawing.Size(13, 1);
             this.SongButtom1.TabIndex = 22;
@@ -3214,7 +3179,7 @@
             this.MovieTable5.Controls.Add(this.MovieButton9, 0, 0);
             this.MovieTable5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieTable5.Location = new System.Drawing.Point(72, 2);
-            this.MovieTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieTable5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieTable5.Name = "MovieTable5";
             this.MovieTable5.RowCount = 1;
             this.MovieTable5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3229,7 +3194,7 @@
             this.MovieButton10.FlatAppearance.BorderSize = 0;
             this.MovieButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton10.Location = new System.Drawing.Point(17, 2);
-            this.MovieButton10.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton10.Name = "MovieButton10";
             this.MovieButton10.Size = new System.Drawing.Size(12, 1);
             this.MovieButton10.TabIndex = 24;
@@ -3246,7 +3211,7 @@
             this.MovieButton9.FlatAppearance.BorderSize = 0;
             this.MovieButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton9.Location = new System.Drawing.Point(2, 2);
-            this.MovieButton9.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton9.Name = "MovieButton9";
             this.MovieButton9.Size = new System.Drawing.Size(11, 1);
             this.MovieButton9.TabIndex = 23;
@@ -3264,7 +3229,7 @@
             this.MovieTable4.Controls.Add(this.MovieButton7, 0, 0);
             this.MovieTable4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieTable4.Location = new System.Drawing.Point(72, 2);
-            this.MovieTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieTable4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieTable4.Name = "MovieTable4";
             this.MovieTable4.RowCount = 1;
             this.MovieTable4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3279,7 +3244,7 @@
             this.MovieButton8.FlatAppearance.BorderSize = 0;
             this.MovieButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton8.Location = new System.Drawing.Point(17, 2);
-            this.MovieButton8.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton8.Name = "MovieButton8";
             this.MovieButton8.Size = new System.Drawing.Size(12, 1);
             this.MovieButton8.TabIndex = 24;
@@ -3296,7 +3261,7 @@
             this.MovieButton7.FlatAppearance.BorderSize = 0;
             this.MovieButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton7.Location = new System.Drawing.Point(2, 2);
-            this.MovieButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton7.Name = "MovieButton7";
             this.MovieButton7.Size = new System.Drawing.Size(11, 1);
             this.MovieButton7.TabIndex = 23;
@@ -3314,7 +3279,7 @@
             this.MovieTable3.Controls.Add(this.MovieButton5, 0, 0);
             this.MovieTable3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieTable3.Location = new System.Drawing.Point(72, 2);
-            this.MovieTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieTable3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieTable3.Name = "MovieTable3";
             this.MovieTable3.RowCount = 1;
             this.MovieTable3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3329,7 +3294,7 @@
             this.MovieButton6.FlatAppearance.BorderSize = 0;
             this.MovieButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton6.Location = new System.Drawing.Point(17, 2);
-            this.MovieButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton6.Name = "MovieButton6";
             this.MovieButton6.Size = new System.Drawing.Size(12, 1);
             this.MovieButton6.TabIndex = 24;
@@ -3346,7 +3311,7 @@
             this.MovieButton5.FlatAppearance.BorderSize = 0;
             this.MovieButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton5.Location = new System.Drawing.Point(2, 2);
-            this.MovieButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton5.Name = "MovieButton5";
             this.MovieButton5.Size = new System.Drawing.Size(11, 1);
             this.MovieButton5.TabIndex = 23;
@@ -3364,7 +3329,7 @@
             this.MovieTable2.Controls.Add(this.MovieButton3, 0, 0);
             this.MovieTable2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieTable2.Location = new System.Drawing.Point(72, 2);
-            this.MovieTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieTable2.Name = "MovieTable2";
             this.MovieTable2.RowCount = 1;
             this.MovieTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3379,7 +3344,7 @@
             this.MovieButton4.FlatAppearance.BorderSize = 0;
             this.MovieButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton4.Location = new System.Drawing.Point(17, 2);
-            this.MovieButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton4.Name = "MovieButton4";
             this.MovieButton4.Size = new System.Drawing.Size(12, 1);
             this.MovieButton4.TabIndex = 24;
@@ -3396,7 +3361,7 @@
             this.MovieButton3.FlatAppearance.BorderSize = 0;
             this.MovieButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton3.Location = new System.Drawing.Point(2, 2);
-            this.MovieButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton3.Name = "MovieButton3";
             this.MovieButton3.Size = new System.Drawing.Size(11, 1);
             this.MovieButton3.TabIndex = 23;
@@ -3413,7 +3378,7 @@
             this.SongGenresTable5.Controls.Add(this.GenreSongButton9, 0, 0);
             this.SongGenresTable5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongGenresTable5.Location = new System.Drawing.Point(107, 2);
-            this.SongGenresTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.SongGenresTable5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongGenresTable5.Name = "SongGenresTable5";
             this.SongGenresTable5.RowCount = 2;
             this.SongGenresTable5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3429,7 +3394,7 @@
             this.GenreSongButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton10.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton10.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton10.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton10.Name = "GenreSongButton10";
             this.GenreSongButton10.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton10.TabIndex = 2;
@@ -3447,7 +3412,7 @@
             this.GenreSongButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton9.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton9.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton9.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton9.Name = "GenreSongButton9";
             this.GenreSongButton9.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton9.TabIndex = 1;
@@ -3465,7 +3430,7 @@
             this.SongGenresTable2.Controls.Add(this.GenreSongButton3, 0, 0);
             this.SongGenresTable2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongGenresTable2.Location = new System.Drawing.Point(107, 2);
-            this.SongGenresTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.SongGenresTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongGenresTable2.Name = "SongGenresTable2";
             this.SongGenresTable2.RowCount = 2;
             this.SongGenresTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3481,7 +3446,7 @@
             this.GenreSongButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton4.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton4.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton4.Name = "GenreSongButton4";
             this.GenreSongButton4.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton4.TabIndex = 2;
@@ -3499,7 +3464,7 @@
             this.GenreSongButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton3.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton3.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton3.Name = "GenreSongButton3";
             this.GenreSongButton3.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton3.TabIndex = 1;
@@ -3517,7 +3482,7 @@
             this.MovieGenresTable2.Controls.Add(this.GenreMovieButton3, 0, 0);
             this.MovieGenresTable2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieGenresTable2.Location = new System.Drawing.Point(37, 2);
-            this.MovieGenresTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieGenresTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieGenresTable2.Name = "MovieGenresTable2";
             this.MovieGenresTable2.RowCount = 2;
             this.MovieGenresTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3533,7 +3498,7 @@
             this.GenreMovieButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton4.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton4.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton4.Name = "GenreMovieButton4";
             this.GenreMovieButton4.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton4.TabIndex = 2;
@@ -3551,7 +3516,7 @@
             this.GenreMovieButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton3.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton3.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton3.Name = "GenreMovieButton3";
             this.GenreMovieButton3.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton3.TabIndex = 1;
@@ -3569,7 +3534,7 @@
             this.ArtistsTable2.Controls.Add(this.ArtistButton3, 0, 0);
             this.ArtistsTable2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtistsTable2.Location = new System.Drawing.Point(2, 2);
-            this.ArtistsTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistsTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistsTable2.Name = "ArtistsTable2";
             this.ArtistsTable2.RowCount = 2;
             this.ArtistsTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3585,7 +3550,7 @@
             this.ArtistButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton4.ForeColor = System.Drawing.Color.White;
             this.ArtistButton4.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton4.Name = "ArtistButton4";
             this.ArtistButton4.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton4.TabIndex = 2;
@@ -3603,7 +3568,7 @@
             this.ArtistButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton3.ForeColor = System.Drawing.Color.White;
             this.ArtistButton3.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton3.Name = "ArtistButton3";
             this.ArtistButton3.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton3.TabIndex = 1;
@@ -3621,7 +3586,7 @@
             this.SongGenresTable1.Controls.Add(this.GenreSongButton1, 0, 0);
             this.SongGenresTable1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongGenresTable1.Location = new System.Drawing.Point(107, 2);
-            this.SongGenresTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.SongGenresTable1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongGenresTable1.Name = "SongGenresTable1";
             this.SongGenresTable1.RowCount = 2;
             this.SongGenresTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3637,7 +3602,7 @@
             this.GenreSongButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton2.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton2.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton2.Name = "GenreSongButton2";
             this.GenreSongButton2.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton2.TabIndex = 2;
@@ -3655,7 +3620,7 @@
             this.GenreSongButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton1.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton1.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton1.Name = "GenreSongButton1";
             this.GenreSongButton1.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton1.TabIndex = 1;
@@ -3673,7 +3638,7 @@
             this.ArtistTable1.Controls.Add(this.ArtistButton1, 0, 0);
             this.ArtistTable1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtistTable1.Location = new System.Drawing.Point(2, 2);
-            this.ArtistTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistTable1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistTable1.Name = "ArtistTable1";
             this.ArtistTable1.RowCount = 2;
             this.ArtistTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3690,7 +3655,7 @@
             this.ArtistButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton2.ForeColor = System.Drawing.Color.White;
             this.ArtistButton2.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton2.Name = "ArtistButton2";
             this.ArtistButton2.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton2.TabIndex = 1;
@@ -3708,7 +3673,7 @@
             this.ArtistButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton1.ForeColor = System.Drawing.Color.White;
             this.ArtistButton1.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton1.Name = "ArtistButton1";
             this.ArtistButton1.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton1.TabIndex = 0;
@@ -3726,7 +3691,7 @@
             this.FavoriteSongsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FavoriteSongsTextBox.ForeColor = System.Drawing.Color.White;
             this.FavoriteSongsTextBox.Location = new System.Drawing.Point(142, 2);
-            this.FavoriteSongsTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FavoriteSongsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FavoriteSongsTextBox.Name = "FavoriteSongsTextBox";
             this.FavoriteSongsTextBox.ReadOnly = true;
             this.FavoriteSongsTextBox.Size = new System.Drawing.Size(35, 24);
@@ -3742,7 +3707,7 @@
             this.FavoriteMoviesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FavoriteMoviesTextBox.ForeColor = System.Drawing.Color.White;
             this.FavoriteMoviesTextBox.Location = new System.Drawing.Point(72, 2);
-            this.FavoriteMoviesTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FavoriteMoviesTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FavoriteMoviesTextBox.Name = "FavoriteMoviesTextBox";
             this.FavoriteMoviesTextBox.ReadOnly = true;
             this.FavoriteMoviesTextBox.Size = new System.Drawing.Size(31, 24);
@@ -3758,7 +3723,7 @@
             this.GenresPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenresPTextBox.ForeColor = System.Drawing.Color.White;
             this.GenresPTextBox.Location = new System.Drawing.Point(37, 2);
-            this.GenresPTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.GenresPTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenresPTextBox.Name = "GenresPTextBox";
             this.GenresPTextBox.ReadOnly = true;
             this.GenresPTextBox.Size = new System.Drawing.Size(31, 24);
@@ -3774,7 +3739,7 @@
             this.ArtistsPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistsPTextBox.ForeColor = System.Drawing.Color.White;
             this.ArtistsPTextBox.Location = new System.Drawing.Point(2, 2);
-            this.ArtistsPTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistsPTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistsPTextBox.Name = "ArtistsPTextBox";
             this.ArtistsPTextBox.ReadOnly = true;
             this.ArtistsPTextBox.Size = new System.Drawing.Size(31, 24);
@@ -3790,7 +3755,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.Location = new System.Drawing.Point(107, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(31, 24);
@@ -3806,7 +3771,7 @@
             this.MovieGenresTable1.Controls.Add(this.GenreMovieButton1, 0, 0);
             this.MovieGenresTable1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieGenresTable1.Location = new System.Drawing.Point(37, 2);
-            this.MovieGenresTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieGenresTable1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieGenresTable1.Name = "MovieGenresTable1";
             this.MovieGenresTable1.RowCount = 2;
             this.MovieGenresTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3822,7 +3787,7 @@
             this.GenreMovieButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton2.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton2.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton2.Name = "GenreMovieButton2";
             this.GenreMovieButton2.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton2.TabIndex = 2;
@@ -3840,7 +3805,7 @@
             this.GenreMovieButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton1.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton1.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton1.Name = "GenreMovieButton1";
             this.GenreMovieButton1.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton1.TabIndex = 1;
@@ -3858,7 +3823,7 @@
             this.MovieGenresTable3.Controls.Add(this.GenreMovieButton5, 0, 0);
             this.MovieGenresTable3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieGenresTable3.Location = new System.Drawing.Point(37, 2);
-            this.MovieGenresTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieGenresTable3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieGenresTable3.Name = "MovieGenresTable3";
             this.MovieGenresTable3.RowCount = 2;
             this.MovieGenresTable3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3874,7 +3839,7 @@
             this.GenreMovieButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton6.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton6.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton6.Name = "GenreMovieButton6";
             this.GenreMovieButton6.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton6.TabIndex = 2;
@@ -3892,7 +3857,7 @@
             this.GenreMovieButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton5.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton5.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton5.Name = "GenreMovieButton5";
             this.GenreMovieButton5.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton5.TabIndex = 1;
@@ -3910,7 +3875,7 @@
             this.MovieGenresTable4.Controls.Add(this.GenreMovieButton7, 0, 0);
             this.MovieGenresTable4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieGenresTable4.Location = new System.Drawing.Point(37, 2);
-            this.MovieGenresTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieGenresTable4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieGenresTable4.Name = "MovieGenresTable4";
             this.MovieGenresTable4.RowCount = 2;
             this.MovieGenresTable4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3926,7 +3891,7 @@
             this.GenreMovieButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton8.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton8.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton8.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton8.Name = "GenreMovieButton8";
             this.GenreMovieButton8.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton8.TabIndex = 2;
@@ -3944,7 +3909,7 @@
             this.GenreMovieButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton7.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton7.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton7.Name = "GenreMovieButton7";
             this.GenreMovieButton7.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton7.TabIndex = 1;
@@ -3962,7 +3927,7 @@
             this.SongGenresTable3.Controls.Add(this.GenreSongButton5, 0, 0);
             this.SongGenresTable3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongGenresTable3.Location = new System.Drawing.Point(107, 2);
-            this.SongGenresTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.SongGenresTable3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongGenresTable3.Name = "SongGenresTable3";
             this.SongGenresTable3.RowCount = 2;
             this.SongGenresTable3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -3978,7 +3943,7 @@
             this.GenreSongButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton6.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton6.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton6.Name = "GenreSongButton6";
             this.GenreSongButton6.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton6.TabIndex = 2;
@@ -3996,7 +3961,7 @@
             this.GenreSongButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton5.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton5.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton5.Name = "GenreSongButton5";
             this.GenreSongButton5.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton5.TabIndex = 1;
@@ -4014,7 +3979,7 @@
             this.SongGenresTable4.Controls.Add(this.GenreSongButton7, 0, 0);
             this.SongGenresTable4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SongGenresTable4.Location = new System.Drawing.Point(107, 2);
-            this.SongGenresTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.SongGenresTable4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SongGenresTable4.Name = "SongGenresTable4";
             this.SongGenresTable4.RowCount = 2;
             this.SongGenresTable4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4030,7 +3995,7 @@
             this.GenreSongButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton8.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton8.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton8.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton8.Name = "GenreSongButton8";
             this.GenreSongButton8.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton8.TabIndex = 2;
@@ -4048,7 +4013,7 @@
             this.GenreSongButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreSongButton7.ForeColor = System.Drawing.Color.White;
             this.GenreSongButton7.Location = new System.Drawing.Point(2, 2);
-            this.GenreSongButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreSongButton7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreSongButton7.Name = "GenreSongButton7";
             this.GenreSongButton7.Size = new System.Drawing.Size(27, 1);
             this.GenreSongButton7.TabIndex = 1;
@@ -4066,7 +4031,7 @@
             this.MovieGenresTable5.Controls.Add(this.GenreMovieButton9, 0, 0);
             this.MovieGenresTable5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieGenresTable5.Location = new System.Drawing.Point(37, 2);
-            this.MovieGenresTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieGenresTable5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieGenresTable5.Name = "MovieGenresTable5";
             this.MovieGenresTable5.RowCount = 2;
             this.MovieGenresTable5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4082,7 +4047,7 @@
             this.GenreMovieButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton10.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton10.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton10.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton10.Name = "GenreMovieButton10";
             this.GenreMovieButton10.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton10.TabIndex = 2;
@@ -4100,7 +4065,7 @@
             this.GenreMovieButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenreMovieButton9.ForeColor = System.Drawing.Color.White;
             this.GenreMovieButton9.Location = new System.Drawing.Point(2, 2);
-            this.GenreMovieButton9.Margin = new System.Windows.Forms.Padding(2);
+            this.GenreMovieButton9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreMovieButton9.Name = "GenreMovieButton9";
             this.GenreMovieButton9.Size = new System.Drawing.Size(27, 1);
             this.GenreMovieButton9.TabIndex = 1;
@@ -4118,7 +4083,7 @@
             this.ArtistsTable3.Controls.Add(this.ArtistButton5, 0, 0);
             this.ArtistsTable3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtistsTable3.Location = new System.Drawing.Point(2, 2);
-            this.ArtistsTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistsTable3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistsTable3.Name = "ArtistsTable3";
             this.ArtistsTable3.RowCount = 2;
             this.ArtistsTable3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4134,7 +4099,7 @@
             this.ArtistButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton6.ForeColor = System.Drawing.Color.White;
             this.ArtistButton6.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton6.Name = "ArtistButton6";
             this.ArtistButton6.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton6.TabIndex = 2;
@@ -4152,7 +4117,7 @@
             this.ArtistButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton5.ForeColor = System.Drawing.Color.White;
             this.ArtistButton5.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton5.Name = "ArtistButton5";
             this.ArtistButton5.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton5.TabIndex = 1;
@@ -4170,7 +4135,7 @@
             this.ArtistsTable4.Controls.Add(this.ArtistButton7, 0, 0);
             this.ArtistsTable4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtistsTable4.Location = new System.Drawing.Point(2, 2);
-            this.ArtistsTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistsTable4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistsTable4.Name = "ArtistsTable4";
             this.ArtistsTable4.RowCount = 2;
             this.ArtistsTable4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4186,7 +4151,7 @@
             this.ArtistButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton8.ForeColor = System.Drawing.Color.White;
             this.ArtistButton8.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton8.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton8.Name = "ArtistButton8";
             this.ArtistButton8.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton8.TabIndex = 2;
@@ -4204,7 +4169,7 @@
             this.ArtistButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton7.ForeColor = System.Drawing.Color.White;
             this.ArtistButton7.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton7.Name = "ArtistButton7";
             this.ArtistButton7.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton7.TabIndex = 1;
@@ -4222,7 +4187,7 @@
             this.ArtistsTable5.Controls.Add(this.ArtistButton9, 0, 0);
             this.ArtistsTable5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtistsTable5.Location = new System.Drawing.Point(2, 2);
-            this.ArtistsTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistsTable5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistsTable5.Name = "ArtistsTable5";
             this.ArtistsTable5.RowCount = 2;
             this.ArtistsTable5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4238,7 +4203,7 @@
             this.ArtistButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton10.ForeColor = System.Drawing.Color.White;
             this.ArtistButton10.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton10.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton10.Name = "ArtistButton10";
             this.ArtistButton10.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton10.TabIndex = 2;
@@ -4256,7 +4221,7 @@
             this.ArtistButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistButton9.ForeColor = System.Drawing.Color.White;
             this.ArtistButton9.Location = new System.Drawing.Point(2, 2);
-            this.ArtistButton9.Margin = new System.Windows.Forms.Padding(2);
+            this.ArtistButton9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtistButton9.Name = "ArtistButton9";
             this.ArtistButton9.Size = new System.Drawing.Size(27, 1);
             this.ArtistButton9.TabIndex = 1;
@@ -4275,7 +4240,7 @@
             this.MovieTable1.Controls.Add(this.MovieButton1, 0, 0);
             this.MovieTable1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieTable1.Location = new System.Drawing.Point(72, 2);
-            this.MovieTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieTable1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieTable1.Name = "MovieTable1";
             this.MovieTable1.RowCount = 1;
             this.MovieTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4290,7 +4255,7 @@
             this.MovieButton2.FlatAppearance.BorderSize = 0;
             this.MovieButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton2.Location = new System.Drawing.Point(17, 2);
-            this.MovieButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton2.Name = "MovieButton2";
             this.MovieButton2.Size = new System.Drawing.Size(12, 1);
             this.MovieButton2.TabIndex = 23;
@@ -4307,7 +4272,7 @@
             this.MovieButton1.FlatAppearance.BorderSize = 0;
             this.MovieButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MovieButton1.Location = new System.Drawing.Point(2, 2);
-            this.MovieButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.MovieButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MovieButton1.Name = "MovieButton1";
             this.MovieButton1.Size = new System.Drawing.Size(11, 1);
             this.MovieButton1.TabIndex = 22;
@@ -4353,7 +4318,7 @@
             this.PreferencesContinueButtomPanel.Controls.Add(this.ContinueButtom, 1, 0);
             this.PreferencesContinueButtomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PreferencesContinueButtomPanel.Location = new System.Drawing.Point(2, 47);
-            this.PreferencesContinueButtomPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.PreferencesContinueButtomPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreferencesContinueButtomPanel.Name = "PreferencesContinueButtomPanel";
             this.PreferencesContinueButtomPanel.RowCount = 1;
             this.PreferencesContinueButtomPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -4369,7 +4334,7 @@
             this.ContinueButtom.FlatAppearance.BorderSize = 0;
             this.ContinueButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ContinueButtom.Location = new System.Drawing.Point(2, 2);
-            this.ContinueButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.ContinueButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ContinueButtom.Name = "ContinueButtom";
             this.ContinueButtom.Size = new System.Drawing.Size(1, 66);
             this.ContinueButtom.TabIndex = 10;
@@ -4383,7 +4348,7 @@
             this.CautionTablePanel.Controls.Add(this.CautionLabel, 0, 0);
             this.CautionTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CautionTablePanel.Location = new System.Drawing.Point(2, 47);
-            this.CautionTablePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.CautionTablePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CautionTablePanel.Name = "CautionTablePanel";
             this.CautionTablePanel.RowCount = 2;
             this.CautionTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.44444F));
@@ -4897,7 +4862,7 @@
             this.SignInSignIntableLayout.Controls.Add(this.SignInSignInButtom, 0, 0);
             this.SignInSignIntableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SignInSignIntableLayout.Location = new System.Drawing.Point(61, 2);
-            this.SignInSignIntableLayout.Margin = new System.Windows.Forms.Padding(2);
+            this.SignInSignIntableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SignInSignIntableLayout.Name = "SignInSignIntableLayout";
             this.SignInSignIntableLayout.RowCount = 2;
             this.SignInSignIntableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.95834F));
@@ -4927,7 +4892,7 @@
             this.ProfilePicturePanelHolder.Controls.Add(this.ProfilePicture);
             this.ProfilePicturePanelHolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfilePicturePanelHolder.Location = new System.Drawing.Point(2, 2);
-            this.ProfilePicturePanelHolder.Margin = new System.Windows.Forms.Padding(2);
+            this.ProfilePicturePanelHolder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ProfilePicturePanelHolder.Name = "ProfilePicturePanelHolder";
             this.ProfilePicturePanelHolder.Size = new System.Drawing.Size(55, 1);
             this.ProfilePicturePanelHolder.TabIndex = 3;
@@ -4982,7 +4947,7 @@
             this.ProfilePictureButtom.FlatAppearance.BorderSize = 0;
             this.ProfilePictureButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfilePictureButtom.Location = new System.Drawing.Point(24, 2);
-            this.ProfilePictureButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.ProfilePictureButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ProfilePictureButtom.Name = "ProfilePictureButtom";
             this.ProfilePictureButtom.Size = new System.Drawing.Size(5, 1);
             this.ProfilePictureButtom.TabIndex = 11;
@@ -5013,7 +4978,7 @@
             this.ProfilepictureTitleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfilepictureTitleTextBox.ForeColor = System.Drawing.Color.White;
             this.ProfilepictureTitleTextBox.Location = new System.Drawing.Point(2, 2);
-            this.ProfilepictureTitleTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ProfilepictureTitleTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ProfilepictureTitleTextBox.Name = "ProfilepictureTitleTextBox";
             this.ProfilepictureTitleTextBox.ReadOnly = true;
             this.ProfilepictureTitleTextBox.Size = new System.Drawing.Size(49, 19);
@@ -5031,7 +4996,7 @@
             this.TeacherStudentNormalUserPanel.Controls.Add(this.CButtontableLayoutPanel, 1, 1);
             this.TeacherStudentNormalUserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeacherStudentNormalUserPanel.Location = new System.Drawing.Point(143, 2);
-            this.TeacherStudentNormalUserPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherStudentNormalUserPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherStudentNormalUserPanel.Name = "TeacherStudentNormalUserPanel";
             this.TeacherStudentNormalUserPanel.RowCount = 3;
             this.TeacherStudentNormalUserPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.00738F));
@@ -5048,7 +5013,7 @@
             this.studentteachertextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentteachertextbox.ForeColor = System.Drawing.Color.White;
             this.studentteachertextbox.Location = new System.Drawing.Point(5, 2);
-            this.studentteachertextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.studentteachertextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.studentteachertextbox.Name = "studentteachertextbox";
             this.studentteachertextbox.ReadOnly = true;
             this.studentteachertextbox.Size = new System.Drawing.Size(23, 1);
@@ -5064,7 +5029,7 @@
             this.CButtontableLayoutPanel.Controls.Add(this.TeacherStudentButton, 1, 0);
             this.CButtontableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CButtontableLayoutPanel.Location = new System.Drawing.Point(5, 2);
-            this.CButtontableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.CButtontableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CButtontableLayoutPanel.Name = "CButtontableLayoutPanel";
             this.CButtontableLayoutPanel.RowCount = 1;
             this.CButtontableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -5080,7 +5045,7 @@
             this.TeacherStudentButton.FlatAppearance.BorderSize = 0;
             this.TeacherStudentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TeacherStudentButton.Location = new System.Drawing.Point(7, 2);
-            this.TeacherStudentButton.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherStudentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherStudentButton.Name = "TeacherStudentButton";
             this.TeacherStudentButton.Size = new System.Drawing.Size(7, 1);
             this.TeacherStudentButton.TabIndex = 14;
@@ -5102,7 +5067,7 @@
             this.NewCredentialsPanel.Controls.Add(this.WrongCodeLabel, 1, 4);
             this.NewCredentialsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NewCredentialsPanel.Location = new System.Drawing.Point(61, 2);
-            this.NewCredentialsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.NewCredentialsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewCredentialsPanel.Name = "NewCredentialsPanel";
             this.NewCredentialsPanel.RowCount = 5;
             this.NewCredentialsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
@@ -5292,7 +5257,7 @@
             this.PictureHolder7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder7.Location = new System.Drawing.Point(92, 43);
-            this.PictureHolder7.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder7.Name = "PictureHolder7";
             this.PictureHolder7.Size = new System.Drawing.Size(41, 37);
             this.PictureHolder7.TabIndex = 10;
@@ -5333,7 +5298,7 @@
             this.PictureHolder9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder9.Location = new System.Drawing.Point(2, 84);
-            this.PictureHolder9.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder9.Name = "PictureHolder9";
             this.PictureHolder9.Size = new System.Drawing.Size(41, 37);
             this.PictureHolder9.TabIndex = 7;
@@ -5344,7 +5309,7 @@
             this.PictureHolder6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder6.Location = new System.Drawing.Point(47, 43);
-            this.PictureHolder6.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder6.Name = "PictureHolder6";
             this.PictureHolder6.Size = new System.Drawing.Size(41, 37);
             this.PictureHolder6.TabIndex = 8;
@@ -5355,7 +5320,7 @@
             this.PictureHolder10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder10.Location = new System.Drawing.Point(47, 84);
-            this.PictureHolder10.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder10.Name = "PictureHolder10";
             this.PictureHolder10.Size = new System.Drawing.Size(41, 37);
             this.PictureHolder10.TabIndex = 9;
@@ -5366,7 +5331,7 @@
             this.PictureHolder11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder11.Location = new System.Drawing.Point(92, 84);
-            this.PictureHolder11.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder11.Name = "PictureHolder11";
             this.PictureHolder11.Size = new System.Drawing.Size(41, 37);
             this.PictureHolder11.TabIndex = 11;
@@ -5377,7 +5342,7 @@
             this.PictureHolder8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder8.Location = new System.Drawing.Point(137, 43);
-            this.PictureHolder8.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder8.Name = "PictureHolder8";
             this.PictureHolder8.Size = new System.Drawing.Size(44, 37);
             this.PictureHolder8.TabIndex = 12;
@@ -5388,7 +5353,7 @@
             this.PictureHolder12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder12.Location = new System.Drawing.Point(137, 84);
-            this.PictureHolder12.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder12.Name = "PictureHolder12";
             this.PictureHolder12.Size = new System.Drawing.Size(44, 37);
             this.PictureHolder12.TabIndex = 13;
@@ -5399,7 +5364,7 @@
             this.PictureHolder5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureHolder5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureHolder5.Location = new System.Drawing.Point(2, 43);
-            this.PictureHolder5.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureHolder5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PictureHolder5.Name = "PictureHolder5";
             this.PictureHolder5.Size = new System.Drawing.Size(41, 37);
             this.PictureHolder5.TabIndex = 6;
@@ -5443,7 +5408,7 @@
             this.AddSongtableLayoutPanel.Controls.Add(this.AddSongButton, 1, 0);
             this.AddSongtableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddSongtableLayoutPanel.Location = new System.Drawing.Point(2, 23);
-            this.AddSongtableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AddSongtableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSongtableLayoutPanel.Name = "AddSongtableLayoutPanel";
             this.AddSongtableLayoutPanel.RowCount = 1;
             this.AddSongtableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -5459,7 +5424,7 @@
             this.AddSongButton.FlatAppearance.BorderSize = 0;
             this.AddSongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddSongButton.Location = new System.Drawing.Point(2, 2);
-            this.AddSongButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddSongButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSongButton.Name = "AddSongButton";
             this.AddSongButton.Size = new System.Drawing.Size(1, 90);
             this.AddSongButton.TabIndex = 8;
@@ -5474,7 +5439,7 @@
             this.AddVideotableLayoutPanel.Controls.Add(this.AddVideoButtom, 1, 0);
             this.AddVideotableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddVideotableLayoutPanel.Location = new System.Drawing.Point(2, 23);
-            this.AddVideotableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AddVideotableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddVideotableLayoutPanel.Name = "AddVideotableLayoutPanel";
             this.AddVideotableLayoutPanel.RowCount = 1;
             this.AddVideotableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -5490,7 +5455,7 @@
             this.AddVideoButtom.FlatAppearance.BorderSize = 0;
             this.AddVideoButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddVideoButtom.Location = new System.Drawing.Point(2, 2);
-            this.AddVideoButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.AddVideoButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddVideoButtom.Name = "AddVideoButtom";
             this.AddVideoButtom.Size = new System.Drawing.Size(1, 90);
             this.AddVideoButtom.TabIndex = 8;
@@ -5505,7 +5470,7 @@
             this.AddKaraoketableLayoutPanel.Controls.Add(this.AddKaraokeButtom, 1, 0);
             this.AddKaraoketableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddKaraoketableLayoutPanel.Location = new System.Drawing.Point(2, 23);
-            this.AddKaraoketableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AddKaraoketableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddKaraoketableLayoutPanel.Name = "AddKaraoketableLayoutPanel";
             this.AddKaraoketableLayoutPanel.RowCount = 1;
             this.AddKaraoketableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -5521,7 +5486,7 @@
             this.AddKaraokeButtom.FlatAppearance.BorderSize = 0;
             this.AddKaraokeButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddKaraokeButtom.Location = new System.Drawing.Point(2, 2);
-            this.AddKaraokeButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.AddKaraokeButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddKaraokeButtom.Name = "AddKaraokeButtom";
             this.AddKaraokeButtom.Size = new System.Drawing.Size(1, 90);
             this.AddKaraokeButtom.TabIndex = 9;
@@ -5536,7 +5501,7 @@
             this.AddSeriestableLayoutPanel.Controls.Add(this.AddSeriesButtom, 1, 0);
             this.AddSeriestableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddSeriestableLayoutPanel.Location = new System.Drawing.Point(2, 23);
-            this.AddSeriestableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.AddSeriestableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSeriestableLayoutPanel.Name = "AddSeriestableLayoutPanel";
             this.AddSeriestableLayoutPanel.RowCount = 1;
             this.AddSeriestableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -5552,7 +5517,7 @@
             this.AddSeriesButtom.FlatAppearance.BorderSize = 0;
             this.AddSeriesButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddSeriesButtom.Location = new System.Drawing.Point(2, 2);
-            this.AddSeriesButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.AddSeriesButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSeriesButtom.Name = "AddSeriesButtom";
             this.AddSeriesButtom.Size = new System.Drawing.Size(1, 90);
             this.AddSeriesButtom.TabIndex = 10;
@@ -5629,7 +5594,7 @@
             this.ButtonTable12.Controls.Add(this.AddVideoToSerieButtom, 1, 2);
             this.ButtonTable12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable12.Location = new System.Drawing.Point(119, 90);
-            this.ButtonTable12.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable12.Name = "ButtonTable12";
             this.ButtonTable12.RowCount = 3;
             this.ButtonTable12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -5647,7 +5612,7 @@
             this.SelectedVideoButtom.FlatAppearance.BorderSize = 0;
             this.SelectedVideoButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectedVideoButtom.Location = new System.Drawing.Point(24, 2);
-            this.SelectedVideoButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectedVideoButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SelectedVideoButtom.Name = "SelectedVideoButtom";
             this.SelectedVideoButtom.Size = new System.Drawing.Size(6, 12);
             this.SelectedVideoButtom.TabIndex = 11;
@@ -5663,7 +5628,7 @@
             this.AddVideoToSerieButtom.FlatAppearance.BorderSize = 0;
             this.AddVideoToSerieButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddVideoToSerieButtom.Location = new System.Drawing.Point(24, 26);
-            this.AddVideoToSerieButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.AddVideoToSerieButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddVideoToSerieButtom.Name = "AddVideoToSerieButtom";
             this.AddVideoToSerieButtom.Size = new System.Drawing.Size(6, 14);
             this.AddVideoToSerieButtom.TabIndex = 13;
@@ -5679,7 +5644,7 @@
             this.ButtonTable11.Controls.Add(this.UploadSerieButtom, 1, 0);
             this.ButtonTable11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable11.Location = new System.Drawing.Point(60, 90);
-            this.ButtonTable11.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable11.Name = "ButtonTable11";
             this.ButtonTable11.RowCount = 3;
             this.ButtonTable11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -5699,7 +5664,7 @@
             this.UploadSerieButtom.FlatAppearance.BorderSize = 0;
             this.UploadSerieButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UploadSerieButtom.Location = new System.Drawing.Point(23, 2);
-            this.UploadSerieButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadSerieButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadSerieButtom.Name = "UploadSerieButtom";
             this.UploadSerieButtom.Size = new System.Drawing.Size(6, 12);
             this.UploadSerieButtom.TabIndex = 9;
@@ -6061,7 +6026,7 @@
             this.ButtonTable10.Controls.Add(this.SelectedImageButtomVideoSerie, 1, 0);
             this.ButtonTable10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable10.Location = new System.Drawing.Point(2, 90);
-            this.ButtonTable10.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable10.Name = "ButtonTable10";
             this.ButtonTable10.RowCount = 2;
             this.ButtonTable10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -6080,7 +6045,7 @@
             this.SelectedImageButtomVideoSerie.FlatAppearance.BorderSize = 0;
             this.SelectedImageButtomVideoSerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectedImageButtomVideoSerie.Location = new System.Drawing.Point(23, 2);
-            this.SelectedImageButtomVideoSerie.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectedImageButtomVideoSerie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SelectedImageButtomVideoSerie.Name = "SelectedImageButtomVideoSerie";
             this.SelectedImageButtomVideoSerie.Size = new System.Drawing.Size(6, 12);
             this.SelectedImageButtomVideoSerie.TabIndex = 10;
@@ -6092,7 +6057,7 @@
             this.SeasonAndSerieNamePanel.Controls.Add(this.SerieUpTableSet);
             this.SeasonAndSerieNamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SeasonAndSerieNamePanel.Location = new System.Drawing.Point(60, 2);
-            this.SeasonAndSerieNamePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.SeasonAndSerieNamePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SeasonAndSerieNamePanel.Name = "SeasonAndSerieNamePanel";
             this.SeasonAndSerieNamePanel.Size = new System.Drawing.Size(55, 14);
             this.SeasonAndSerieNamePanel.TabIndex = 18;
@@ -6207,7 +6172,7 @@
             this.ButtonTable3.Controls.Add(this.SelectSongButtom, 1, 0);
             this.ButtonTable3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable3.Location = new System.Drawing.Point(122, 84);
-            this.ButtonTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable3.Name = "ButtonTable3";
             this.ButtonTable3.RowCount = 2;
             this.ButtonTable3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -6224,7 +6189,7 @@
             this.SelectSongButtom.FlatAppearance.BorderSize = 0;
             this.SelectSongButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectSongButtom.Location = new System.Drawing.Point(25, 2);
-            this.SelectSongButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectSongButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SelectSongButtom.Name = "SelectSongButtom";
             this.SelectSongButtom.Size = new System.Drawing.Size(7, 11);
             this.SelectSongButtom.TabIndex = 11;
@@ -6240,7 +6205,7 @@
             this.ButtonTable2.Controls.Add(this.UploadSongButtom, 1, 0);
             this.ButtonTable2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable2.Location = new System.Drawing.Point(62, 84);
-            this.ButtonTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable2.Name = "ButtonTable2";
             this.ButtonTable2.RowCount = 2;
             this.ButtonTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -6257,7 +6222,7 @@
             this.UploadSongButtom.FlatAppearance.BorderSize = 0;
             this.UploadSongButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UploadSongButtom.Location = new System.Drawing.Point(24, 2);
-            this.UploadSongButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadSongButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadSongButtom.Name = "UploadSongButtom";
             this.UploadSongButtom.Size = new System.Drawing.Size(6, 11);
             this.UploadSongButtom.TabIndex = 9;
@@ -6567,7 +6532,7 @@
             this.ButtonTable1.Controls.Add(this.ImageSongButton, 1, 0);
             this.ButtonTable1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable1.Location = new System.Drawing.Point(2, 84);
-            this.ButtonTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable1.Name = "ButtonTable1";
             this.ButtonTable1.RowCount = 2;
             this.ButtonTable1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -6584,7 +6549,7 @@
             this.ImageSongButton.FlatAppearance.BorderSize = 0;
             this.ImageSongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ImageSongButton.Location = new System.Drawing.Point(24, 2);
-            this.ImageSongButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ImageSongButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ImageSongButton.Name = "ImageSongButton";
             this.ImageSongButton.Size = new System.Drawing.Size(7, 11);
             this.ImageSongButton.TabIndex = 10;
@@ -6638,7 +6603,7 @@
             this.ButtonTable4.Controls.Add(this.SelectVideoButtom, 1, 0);
             this.ButtonTable4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable4.Location = new System.Drawing.Point(122, 84);
-            this.ButtonTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable4.Name = "ButtonTable4";
             this.ButtonTable4.RowCount = 2;
             this.ButtonTable4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -6657,7 +6622,7 @@
             this.SelectVideoButtom.FlatAppearance.BorderSize = 0;
             this.SelectVideoButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectVideoButtom.Location = new System.Drawing.Point(25, 2);
-            this.SelectVideoButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectVideoButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SelectVideoButtom.Name = "SelectVideoButtom";
             this.SelectVideoButtom.Size = new System.Drawing.Size(7, 11);
             this.SelectVideoButtom.TabIndex = 11;
@@ -6673,7 +6638,7 @@
             this.ButtonTable5.Controls.Add(this.UploadVideoButtom, 1, 0);
             this.ButtonTable5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable5.Location = new System.Drawing.Point(62, 84);
-            this.ButtonTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable5.Name = "ButtonTable5";
             this.ButtonTable5.RowCount = 2;
             this.ButtonTable5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -6692,7 +6657,7 @@
             this.UploadVideoButtom.FlatAppearance.BorderSize = 0;
             this.UploadVideoButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UploadVideoButtom.Location = new System.Drawing.Point(24, 2);
-            this.UploadVideoButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadVideoButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadVideoButtom.Name = "UploadVideoButtom";
             this.UploadVideoButtom.Size = new System.Drawing.Size(6, 11);
             this.UploadVideoButtom.TabIndex = 9;
@@ -7024,7 +6989,7 @@
             this.ButtonTable6.Controls.Add(this.SelectedImageButtomVideo, 1, 0);
             this.ButtonTable6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable6.Location = new System.Drawing.Point(2, 84);
-            this.ButtonTable6.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable6.Name = "ButtonTable6";
             this.ButtonTable6.RowCount = 2;
             this.ButtonTable6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -7043,7 +7008,7 @@
             this.SelectedImageButtomVideo.FlatAppearance.BorderSize = 0;
             this.SelectedImageButtomVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectedImageButtomVideo.Location = new System.Drawing.Point(24, 2);
-            this.SelectedImageButtomVideo.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectedImageButtomVideo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SelectedImageButtomVideo.Name = "SelectedImageButtomVideo";
             this.SelectedImageButtomVideo.Size = new System.Drawing.Size(6, 11);
             this.SelectedImageButtomVideo.TabIndex = 10;
@@ -7088,7 +7053,7 @@
             this.ButtonTable8.Controls.Add(this.KaraokeUpLoadButton, 1, 2);
             this.ButtonTable8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable8.Location = new System.Drawing.Point(69, 82);
-            this.ButtonTable8.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable8.Name = "ButtonTable8";
             this.ButtonTable8.RowCount = 3;
             this.ButtonTable8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -7108,7 +7073,7 @@
             this.KaraokeLyricsButtom.FlatAppearance.BorderSize = 0;
             this.KaraokeLyricsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.KaraokeLyricsButtom.Location = new System.Drawing.Point(27, 2);
-            this.KaraokeLyricsButtom.Margin = new System.Windows.Forms.Padding(2);
+            this.KaraokeLyricsButtom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.KaraokeLyricsButtom.Name = "KaraokeLyricsButtom";
             this.KaraokeLyricsButtom.Size = new System.Drawing.Size(8, 10);
             this.KaraokeLyricsButtom.TabIndex = 12;
@@ -7126,7 +7091,7 @@
             this.KaraokeUpLoadButton.FlatAppearance.BorderSize = 0;
             this.KaraokeUpLoadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.KaraokeUpLoadButton.Location = new System.Drawing.Point(27, 23);
-            this.KaraokeUpLoadButton.Margin = new System.Windows.Forms.Padding(2);
+            this.KaraokeUpLoadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.KaraokeUpLoadButton.Name = "KaraokeUpLoadButton";
             this.KaraokeUpLoadButton.Size = new System.Drawing.Size(8, 12);
             this.KaraokeUpLoadButton.TabIndex = 9;
@@ -7142,7 +7107,7 @@
             this.ButtonTable9.Controls.Add(this.LoadSongKaraokeButton, 1, 0);
             this.ButtonTable9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable9.Location = new System.Drawing.Point(136, 82);
-            this.ButtonTable9.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable9.Name = "ButtonTable9";
             this.ButtonTable9.RowCount = 2;
             this.ButtonTable9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -7161,7 +7126,7 @@
             this.LoadSongKaraokeButton.FlatAppearance.BorderSize = 0;
             this.LoadSongKaraokeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadSongKaraokeButton.Location = new System.Drawing.Point(27, 2);
-            this.LoadSongKaraokeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadSongKaraokeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LoadSongKaraokeButton.Name = "LoadSongKaraokeButton";
             this.LoadSongKaraokeButton.Size = new System.Drawing.Size(8, 10);
             this.LoadSongKaraokeButton.TabIndex = 11;
@@ -7469,7 +7434,7 @@
             this.ButtonTable7.Controls.Add(this.KaraokeLyricsPathTextBox, 2, 1);
             this.ButtonTable7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonTable7.Location = new System.Drawing.Point(2, 82);
-            this.ButtonTable7.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonTable7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonTable7.Name = "ButtonTable7";
             this.ButtonTable7.RowCount = 2;
             this.ButtonTable7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -7488,7 +7453,7 @@
             this.ImageKaraokeButton.FlatAppearance.BorderSize = 0;
             this.ImageKaraokeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ImageKaraokeButton.Location = new System.Drawing.Point(27, 2);
-            this.ImageKaraokeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ImageKaraokeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ImageKaraokeButton.Name = "ImageKaraokeButton";
             this.ImageKaraokeButton.Size = new System.Drawing.Size(8, 10);
             this.ImageKaraokeButton.TabIndex = 10;
@@ -7549,7 +7514,7 @@
             this.TableInitialClassrrommSignInPanel.Controls.Add(this.LogInClassRommButtom, 0, 0);
             this.TableInitialClassrrommSignInPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableInitialClassrrommSignInPanel.Location = new System.Drawing.Point(61, 2);
-            this.TableInitialClassrrommSignInPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.TableInitialClassrrommSignInPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TableInitialClassrrommSignInPanel.Name = "TableInitialClassrrommSignInPanel";
             this.TableInitialClassrrommSignInPanel.RowCount = 2;
             this.TableInitialClassrrommSignInPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.10959F));
@@ -7579,7 +7544,7 @@
             this.ClassImagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClassImagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ClassImagePanel.Location = new System.Drawing.Point(61, 2);
-            this.ClassImagePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.ClassImagePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ClassImagePanel.Name = "ClassImagePanel";
             this.ClassImagePanel.Size = new System.Drawing.Size(55, 1);
             this.ClassImagePanel.TabIndex = 5;
@@ -7628,7 +7593,7 @@
             this.BackButtomC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackButtomC.Image = global::Spotflix.Properties.Resources.op2flechamod;
             this.BackButtomC.Location = new System.Drawing.Point(0, 0);
-            this.BackButtomC.Margin = new System.Windows.Forms.Padding(2);
+            this.BackButtomC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BackButtomC.Name = "BackButtomC";
             this.BackButtomC.Size = new System.Drawing.Size(229, 119);
             this.BackButtomC.TabIndex = 0;
@@ -8002,7 +7967,7 @@
             this.EditProfilTable.Controls.Add(this.EditPrivacyButton, 1, 6);
             this.EditProfilTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditProfilTable.Location = new System.Drawing.Point(46, 38);
-            this.EditProfilTable.Margin = new System.Windows.Forms.Padding(2);
+            this.EditProfilTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditProfilTable.Name = "EditProfilTable";
             this.EditProfilTable.RowCount = 10;
             this.EditProfilTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.84797F));
@@ -8130,7 +8095,7 @@
             this.TextBoxEditProfilTable.Controls.Add(this.EditPrivacyLabel, 1, 10);
             this.TextBoxEditProfilTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextBoxEditProfilTable.Location = new System.Drawing.Point(90, 38);
-            this.TextBoxEditProfilTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxEditProfilTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TextBoxEditProfilTable.Name = "TextBoxEditProfilTable";
             this.TextBoxEditProfilTable.RowCount = 14;
             this.TextBoxEditProfilTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.792793F));
@@ -8295,7 +8260,7 @@
             this.Membershiptable.Controls.Add(this.EditMembershipClaveTextBox, 1, 0);
             this.Membershiptable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Membershiptable.Location = new System.Drawing.Point(8, 27);
-            this.Membershiptable.Margin = new System.Windows.Forms.Padding(2);
+            this.Membershiptable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Membershiptable.Name = "Membershiptable";
             this.Membershiptable.RowCount = 1;
             this.Membershiptable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -8390,7 +8355,7 @@
             this.EditTeacherLabelTable.Controls.Add(this.SLabel, 1, 0);
             this.EditTeacherLabelTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditTeacherLabelTable.Location = new System.Drawing.Point(8, 54);
-            this.EditTeacherLabelTable.Margin = new System.Windows.Forms.Padding(2);
+            this.EditTeacherLabelTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditTeacherLabelTable.Name = "EditTeacherLabelTable";
             this.EditTeacherLabelTable.RowCount = 1;
             this.EditTeacherLabelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -8514,20 +8479,19 @@
             this.ButtonsStudenTable.Controls.Add(this.SuccessDownloadLael, 0, 5);
             this.ButtonsStudenTable.Controls.Add(this.DownloadHomeworkButton2, 0, 4);
             this.ButtonsStudenTable.Controls.Add(this.StudentFavoritesButton, 0, 1);
-            this.ButtonsStudenTable.Controls.Add(this.YourLessonsButton, 0, 2);
+            this.ButtonsStudenTable.Controls.Add(this.TeacherprofileButton, 0, 2);
             this.ButtonsStudenTable.Controls.Add(this.UploadHomeworkButton2, 0, 3);
-            this.ButtonsStudenTable.Controls.Add(this.TeacherprofileButton, 0, 0);
+            this.ButtonsStudenTable.Controls.Add(this.YourLessonsButton, 0, 0);
             this.ButtonsStudenTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonsStudenTable.Location = new System.Drawing.Point(3, 3);
             this.ButtonsStudenTable.Name = "ButtonsStudenTable";
             this.ButtonsStudenTable.RowCount = 6;
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.60232F));
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.77778F));
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.22222F));
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.11111F));
-            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
+            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
+            this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.ButtonsStudenTable.Size = new System.Drawing.Size(23, 1);
             this.ButtonsStudenTable.TabIndex = 2;
             // 
@@ -8555,7 +8519,7 @@
             this.DownloadHomeworkButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DownloadHomeworkButton2.ForeColor = System.Drawing.Color.White;
             this.DownloadHomeworkButton2.Location = new System.Drawing.Point(2, 2);
-            this.DownloadHomeworkButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.DownloadHomeworkButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DownloadHomeworkButton2.Name = "DownloadHomeworkButton2";
             this.DownloadHomeworkButton2.Size = new System.Drawing.Size(19, 1);
             this.DownloadHomeworkButton2.TabIndex = 8;
@@ -8568,12 +8532,13 @@
             // 
             this.StudentFavoritesButton.BackColor = System.Drawing.Color.Transparent;
             this.StudentFavoritesButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StudentFavoritesButton.Enabled = false;
             this.StudentFavoritesButton.FlatAppearance.BorderSize = 0;
             this.StudentFavoritesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StudentFavoritesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StudentFavoritesButton.ForeColor = System.Drawing.Color.White;
             this.StudentFavoritesButton.Location = new System.Drawing.Point(2, 2);
-            this.StudentFavoritesButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StudentFavoritesButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StudentFavoritesButton.Name = "StudentFavoritesButton";
             this.StudentFavoritesButton.Size = new System.Drawing.Size(19, 1);
             this.StudentFavoritesButton.TabIndex = 5;
@@ -8581,42 +8546,6 @@
             this.StudentFavoritesButton.Text = "Favorites";
             this.StudentFavoritesButton.UseVisualStyleBackColor = false;
             this.StudentFavoritesButton.Click += new System.EventHandler(this.ShowDataButton_Click);
-            // 
-            // YourLessonsButton
-            // 
-            this.YourLessonsButton.BackColor = System.Drawing.Color.Transparent;
-            this.YourLessonsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.YourLessonsButton.FlatAppearance.BorderSize = 0;
-            this.YourLessonsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.YourLessonsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YourLessonsButton.ForeColor = System.Drawing.Color.White;
-            this.YourLessonsButton.Location = new System.Drawing.Point(2, 2);
-            this.YourLessonsButton.Margin = new System.Windows.Forms.Padding(2);
-            this.YourLessonsButton.Name = "YourLessonsButton";
-            this.YourLessonsButton.Size = new System.Drawing.Size(19, 1);
-            this.YourLessonsButton.TabIndex = 4;
-            this.YourLessonsButton.Tag = "no";
-            this.YourLessonsButton.Text = "Your Lessons";
-            this.YourLessonsButton.UseVisualStyleBackColor = false;
-            this.YourLessonsButton.Click += new System.EventHandler(this.ShowDataButton_Click);
-            // 
-            // UploadHomeworkButton2
-            // 
-            this.UploadHomeworkButton2.BackColor = System.Drawing.Color.Transparent;
-            this.UploadHomeworkButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UploadHomeworkButton2.FlatAppearance.BorderSize = 0;
-            this.UploadHomeworkButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UploadHomeworkButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UploadHomeworkButton2.ForeColor = System.Drawing.Color.White;
-            this.UploadHomeworkButton2.Location = new System.Drawing.Point(2, 2);
-            this.UploadHomeworkButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.UploadHomeworkButton2.Name = "UploadHomeworkButton2";
-            this.UploadHomeworkButton2.Size = new System.Drawing.Size(19, 1);
-            this.UploadHomeworkButton2.TabIndex = 6;
-            this.UploadHomeworkButton2.Tag = "no";
-            this.UploadHomeworkButton2.Text = "Upload Homework";
-            this.UploadHomeworkButton2.UseVisualStyleBackColor = false;
-            this.UploadHomeworkButton2.Click += new System.EventHandler(this.UploadHomeworkButton2_Click);
             // 
             // TeacherprofileButton
             // 
@@ -8627,7 +8556,7 @@
             this.TeacherprofileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TeacherprofileButton.ForeColor = System.Drawing.Color.White;
             this.TeacherprofileButton.Location = new System.Drawing.Point(2, 2);
-            this.TeacherprofileButton.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherprofileButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherprofileButton.Name = "TeacherprofileButton";
             this.TeacherprofileButton.Size = new System.Drawing.Size(19, 1);
             this.TeacherprofileButton.TabIndex = 7;
@@ -8635,6 +8564,43 @@
             this.TeacherprofileButton.Text = "Teacher Profil";
             this.TeacherprofileButton.UseVisualStyleBackColor = false;
             this.TeacherprofileButton.Click += new System.EventHandler(this.TeacherprofileButton_Click);
+            // 
+            // UploadHomeworkButton2
+            // 
+            this.UploadHomeworkButton2.BackColor = System.Drawing.Color.Transparent;
+            this.UploadHomeworkButton2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UploadHomeworkButton2.FlatAppearance.BorderSize = 0;
+            this.UploadHomeworkButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UploadHomeworkButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UploadHomeworkButton2.ForeColor = System.Drawing.Color.White;
+            this.UploadHomeworkButton2.Location = new System.Drawing.Point(2, 2);
+            this.UploadHomeworkButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UploadHomeworkButton2.Name = "UploadHomeworkButton2";
+            this.UploadHomeworkButton2.Size = new System.Drawing.Size(19, 1);
+            this.UploadHomeworkButton2.TabIndex = 6;
+            this.UploadHomeworkButton2.Tag = "no";
+            this.UploadHomeworkButton2.Text = "Upload Homework";
+            this.UploadHomeworkButton2.UseVisualStyleBackColor = false;
+            this.UploadHomeworkButton2.Click += new System.EventHandler(this.UploadHomeworkButton2_Click);
+            // 
+            // YourLessonsButton
+            // 
+            this.YourLessonsButton.BackColor = System.Drawing.Color.Transparent;
+            this.YourLessonsButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.YourLessonsButton.Enabled = false;
+            this.YourLessonsButton.FlatAppearance.BorderSize = 0;
+            this.YourLessonsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.YourLessonsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YourLessonsButton.ForeColor = System.Drawing.Color.White;
+            this.YourLessonsButton.Location = new System.Drawing.Point(2, 2);
+            this.YourLessonsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.YourLessonsButton.Name = "YourLessonsButton";
+            this.YourLessonsButton.Size = new System.Drawing.Size(19, 1);
+            this.YourLessonsButton.TabIndex = 4;
+            this.YourLessonsButton.Tag = "no";
+            this.YourLessonsButton.Text = "Your Lessons";
+            this.YourLessonsButton.UseVisualStyleBackColor = false;
+            this.YourLessonsButton.Click += new System.EventHandler(this.ShowDataButton_Click);
             // 
             // LeftUpStudentTable
             // 
@@ -8644,7 +8610,7 @@
             this.LeftUpStudentTable.Controls.Add(this.HomeStudentButton, 0, 0);
             this.LeftUpStudentTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LeftUpStudentTable.Location = new System.Drawing.Point(2, 2);
-            this.LeftUpStudentTable.Margin = new System.Windows.Forms.Padding(2);
+            this.LeftUpStudentTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LeftUpStudentTable.Name = "LeftUpStudentTable";
             this.LeftUpStudentTable.RowCount = 2;
             this.LeftUpStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -8658,10 +8624,11 @@
             this.ExploreStudentButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExploreStudentButton.BackgroundImage")));
             this.ExploreStudentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ExploreStudentButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExploreStudentButton.Enabled = false;
             this.ExploreStudentButton.FlatAppearance.BorderSize = 0;
             this.ExploreStudentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExploreStudentButton.Location = new System.Drawing.Point(2, 2);
-            this.ExploreStudentButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ExploreStudentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ExploreStudentButton.Name = "ExploreStudentButton";
             this.ExploreStudentButton.Size = new System.Drawing.Size(21, 1);
             this.ExploreStudentButton.TabIndex = 1;
@@ -8677,7 +8644,7 @@
             this.HomeStudentButton.FlatAppearance.BorderSize = 0;
             this.HomeStudentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeStudentButton.Location = new System.Drawing.Point(2, 2);
-            this.HomeStudentButton.Margin = new System.Windows.Forms.Padding(2);
+            this.HomeStudentButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HomeStudentButton.Name = "HomeStudentButton";
             this.HomeStudentButton.Size = new System.Drawing.Size(21, 1);
             this.HomeStudentButton.TabIndex = 0;
@@ -8743,7 +8710,7 @@
             this.SS4.FlatAppearance.BorderSize = 0;
             this.SS4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SS4.Location = new System.Drawing.Point(14, 2);
-            this.SS4.Margin = new System.Windows.Forms.Padding(2);
+            this.SS4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SS4.Name = "SS4";
             this.SS4.Size = new System.Drawing.Size(1, 1);
             this.SS4.TabIndex = 15;
@@ -8759,7 +8726,7 @@
             this.SS5.FlatAppearance.BorderSize = 0;
             this.SS5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SS5.Location = new System.Drawing.Point(18, 2);
-            this.SS5.Margin = new System.Windows.Forms.Padding(2);
+            this.SS5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SS5.Name = "SS5";
             this.SS5.Size = new System.Drawing.Size(1, 1);
             this.SS5.TabIndex = 14;
@@ -8775,7 +8742,7 @@
             this.SS3.FlatAppearance.BorderSize = 0;
             this.SS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SS3.Location = new System.Drawing.Point(10, 2);
-            this.SS3.Margin = new System.Windows.Forms.Padding(2);
+            this.SS3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SS3.Name = "SS3";
             this.SS3.Size = new System.Drawing.Size(1, 1);
             this.SS3.TabIndex = 13;
@@ -8791,7 +8758,7 @@
             this.SS1.FlatAppearance.BorderSize = 0;
             this.SS1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SS1.Location = new System.Drawing.Point(2, 2);
-            this.SS1.Margin = new System.Windows.Forms.Padding(2);
+            this.SS1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SS1.Name = "SS1";
             this.SS1.Size = new System.Drawing.Size(1, 1);
             this.SS1.TabIndex = 12;
@@ -8807,7 +8774,7 @@
             this.SS2.FlatAppearance.BorderSize = 0;
             this.SS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SS2.Location = new System.Drawing.Point(6, 2);
-            this.SS2.Margin = new System.Windows.Forms.Padding(2);
+            this.SS2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SS2.Name = "SS2";
             this.SS2.Size = new System.Drawing.Size(1, 1);
             this.SS2.TabIndex = 11;
@@ -8823,7 +8790,7 @@
             this.FullScreenLesson.FlatAppearance.BorderSize = 0;
             this.FullScreenLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FullScreenLesson.Location = new System.Drawing.Point(80, 2);
-            this.FullScreenLesson.Margin = new System.Windows.Forms.Padding(2);
+            this.FullScreenLesson.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FullScreenLesson.Name = "FullScreenLesson";
             this.FullScreenLesson.Size = new System.Drawing.Size(1, 1);
             this.FullScreenLesson.TabIndex = 10;
@@ -8840,7 +8807,7 @@
             this.PlayLesson.FlatAppearance.BorderSize = 0;
             this.PlayLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlayLesson.Location = new System.Drawing.Point(42, 2);
-            this.PlayLesson.Margin = new System.Windows.Forms.Padding(2);
+            this.PlayLesson.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PlayLesson.Name = "PlayLesson";
             this.PlayLesson.Size = new System.Drawing.Size(1, 1);
             this.PlayLesson.TabIndex = 9;
@@ -8857,7 +8824,7 @@
             this.PreviusLesson.FlatAppearance.BorderSize = 0;
             this.PreviusLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreviusLesson.Location = new System.Drawing.Point(38, 2);
-            this.PreviusLesson.Margin = new System.Windows.Forms.Padding(2);
+            this.PreviusLesson.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreviusLesson.Name = "PreviusLesson";
             this.PreviusLesson.Size = new System.Drawing.Size(1, 1);
             this.PreviusLesson.TabIndex = 7;
@@ -8873,7 +8840,7 @@
             this.NextLesson.FlatAppearance.BorderSize = 0;
             this.NextLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextLesson.Location = new System.Drawing.Point(46, 2);
-            this.NextLesson.Margin = new System.Windows.Forms.Padding(2);
+            this.NextLesson.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NextLesson.Name = "NextLesson";
             this.NextLesson.Size = new System.Drawing.Size(1, 1);
             this.NextLesson.TabIndex = 8;
@@ -8916,7 +8883,7 @@
             // 
             this.StudentSearchPanel.Controls.Add(this.tableLayoutPanel45);
             this.StudentSearchPanel.Location = new System.Drawing.Point(329, 107);
-            this.StudentSearchPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.StudentSearchPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StudentSearchPanel.Name = "StudentSearchPanel";
             this.StudentSearchPanel.Size = new System.Drawing.Size(180, 144);
             this.StudentSearchPanel.TabIndex = 2;
@@ -8931,7 +8898,7 @@
             this.tableLayoutPanel45.Controls.Add(this.StudentSearcherImagePanel, 0, 1);
             this.tableLayoutPanel45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel45.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel45.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel45.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel45.Name = "tableLayoutPanel45";
             this.tableLayoutPanel45.RowCount = 2;
             this.tableLayoutPanel45.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.44025F));
@@ -8948,7 +8915,7 @@
             this.tableLayoutPanel46.Controls.Add(this.textBox68, 0, 0);
             this.tableLayoutPanel46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel46.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel46.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel46.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel46.Name = "tableLayoutPanel46";
             this.tableLayoutPanel46.RowCount = 2;
             this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.07547F));
@@ -8966,7 +8933,7 @@
             this.tableLayoutPanel47.Controls.Add(this.tableLayoutPanel48, 3, 0);
             this.tableLayoutPanel47.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel47.Location = new System.Drawing.Point(2, 10);
-            this.tableLayoutPanel47.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel47.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel47.Name = "tableLayoutPanel47";
             this.tableLayoutPanel47.RowCount = 1;
             this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -8980,7 +8947,7 @@
             this.tableLayoutPanel48.Controls.Add(this.tableLayoutPanel49, 0, 0);
             this.tableLayoutPanel48.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel48.Location = new System.Drawing.Point(26, 2);
-            this.tableLayoutPanel48.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel48.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel48.Name = "tableLayoutPanel48";
             this.tableLayoutPanel48.RowCount = 2;
             this.tableLayoutPanel48.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -8998,7 +8965,7 @@
             this.tableLayoutPanel49.Controls.Add(this.panel27, 0, 0);
             this.tableLayoutPanel49.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel49.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel49.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel49.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel49.Name = "tableLayoutPanel49";
             this.tableLayoutPanel49.RowCount = 1;
             this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -9010,7 +8977,7 @@
             this.Searchstextbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Searchstextbox.ForeColor = System.Drawing.Color.Black;
             this.Searchstextbox.Location = new System.Drawing.Point(9, 2);
-            this.Searchstextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.Searchstextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Searchstextbox.Name = "Searchstextbox";
             this.Searchstextbox.Size = new System.Drawing.Size(41, 20);
             this.Searchstextbox.TabIndex = 3;
@@ -9024,7 +8991,7 @@
             this.panel27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel27.Location = new System.Drawing.Point(2, 2);
-            this.panel27.Margin = new System.Windows.Forms.Padding(2);
+            this.panel27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(3, 1);
             this.panel27.TabIndex = 0;
@@ -9037,7 +9004,7 @@
             this.textBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox68.ForeColor = System.Drawing.Color.Red;
             this.textBox68.Location = new System.Drawing.Point(2, 2);
-            this.textBox68.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox68.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox68.Name = "textBox68";
             this.textBox68.Size = new System.Drawing.Size(84, 17);
             this.textBox68.TabIndex = 1;
@@ -9051,7 +9018,7 @@
             this.StudentSearcherImagePanel.Controls.Add(this.StudentSearcherTableResult);
             this.StudentSearcherImagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StudentSearcherImagePanel.Location = new System.Drawing.Point(2, 31);
-            this.StudentSearcherImagePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.StudentSearcherImagePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StudentSearcherImagePanel.Name = "StudentSearcherImagePanel";
             this.StudentSearcherImagePanel.Size = new System.Drawing.Size(176, 111);
             this.StudentSearcherImagePanel.TabIndex = 2;
@@ -9352,7 +9319,7 @@
             // 
             this.StudentPlayer.Controls.Add(this.SPlayer);
             this.StudentPlayer.Location = new System.Drawing.Point(69, 196);
-            this.StudentPlayer.Margin = new System.Windows.Forms.Padding(2);
+            this.StudentPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StudentPlayer.Name = "StudentPlayer";
             this.StudentPlayer.Size = new System.Drawing.Size(133, 65);
             this.StudentPlayer.TabIndex = 4;
@@ -9458,7 +9425,7 @@
             this.LeftDownDownTable.Controls.Add(this.ButtonsStudentTable, 1, 0);
             this.LeftDownDownTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LeftDownDownTable.Location = new System.Drawing.Point(2, 2);
-            this.LeftDownDownTable.Margin = new System.Windows.Forms.Padding(2);
+            this.LeftDownDownTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LeftDownDownTable.Name = "LeftDownDownTable";
             this.LeftDownDownTable.RowCount = 1;
             this.LeftDownDownTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -9488,7 +9455,7 @@
             this.ButtonsStudentTable.Controls.Add(this.AdLessonQuequeButton, 1, 2);
             this.ButtonsStudentTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonsStudentTable.Location = new System.Drawing.Point(15, 2);
-            this.ButtonsStudentTable.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonsStudentTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonsStudentTable.Name = "ButtonsStudentTable";
             this.ButtonsStudentTable.RowCount = 3;
             this.ButtonsStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -9509,7 +9476,7 @@
             this.Teachernamestudentlabel.Size = new System.Drawing.Size(3, 1);
             this.Teachernamestudentlabel.TabIndex = 3;
             this.Teachernamestudentlabel.TabStop = true;
-            this.Teachernamestudentlabel.Text = "linkLabel1";
+            this.Teachernamestudentlabel.Text = "a";
             // 
             // VideoSubjectLabel
             // 
@@ -9523,7 +9490,7 @@
             this.VideoSubjectLabel.Size = new System.Drawing.Size(3, 1);
             this.VideoSubjectLabel.TabIndex = 1;
             this.VideoSubjectLabel.TabStop = true;
-            this.VideoSubjectLabel.Text = "linkLabel1";
+            this.VideoSubjectLabel.Text = "a";
             // 
             // VideoCurseLabel
             // 
@@ -9538,7 +9505,7 @@
             this.VideoCurseLabel.Size = new System.Drawing.Size(3, 1);
             this.VideoCurseLabel.TabIndex = 2;
             this.VideoCurseLabel.TabStop = true;
-            this.VideoCurseLabel.Text = "linkLabel2";
+            this.VideoCurseLabel.Text = "a";
             // 
             // LikeLessonButton
             // 
@@ -9548,7 +9515,7 @@
             this.LikeLessonButton.FlatAppearance.BorderSize = 0;
             this.LikeLessonButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LikeLessonButton.Location = new System.Drawing.Point(11, 2);
-            this.LikeLessonButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LikeLessonButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LikeLessonButton.Name = "LikeLessonButton";
             this.LikeLessonButton.Size = new System.Drawing.Size(1, 1);
             this.LikeLessonButton.TabIndex = 4;
@@ -9564,7 +9531,7 @@
             this.FollowTeacherButton.FlatAppearance.BorderSize = 0;
             this.FollowTeacherButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FollowTeacherButton.Location = new System.Drawing.Point(11, 2);
-            this.FollowTeacherButton.Margin = new System.Windows.Forms.Padding(2);
+            this.FollowTeacherButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FollowTeacherButton.Name = "FollowTeacherButton";
             this.FollowTeacherButton.Size = new System.Drawing.Size(1, 1);
             this.FollowTeacherButton.TabIndex = 5;
@@ -9580,7 +9547,7 @@
             this.AdLessonQuequeButton.FlatAppearance.BorderSize = 0;
             this.AdLessonQuequeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AdLessonQuequeButton.Location = new System.Drawing.Point(11, 2);
-            this.AdLessonQuequeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AdLessonQuequeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AdLessonQuequeButton.Name = "AdLessonQuequeButton";
             this.AdLessonQuequeButton.Size = new System.Drawing.Size(1, 1);
             this.AdLessonQuequeButton.TabIndex = 6;
@@ -9595,7 +9562,7 @@
             this.EditorsStudentPanel.Controls.Add(this.TeacherProfilTable);
             this.EditorsStudentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditorsStudentPanel.Location = new System.Drawing.Point(144, 2);
-            this.EditorsStudentPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.EditorsStudentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditorsStudentPanel.Name = "EditorsStudentPanel";
             this.EditorsStudentPanel.Size = new System.Drawing.Size(33, 1);
             this.EditorsStudentPanel.TabIndex = 7;
@@ -9610,9 +9577,8 @@
             this.UploadHomeWorkPanel.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.UploadHomeWorkPanel.Controls.Add(this.UploadHomeworkButtonTable, 0, 4);
             this.UploadHomeWorkPanel.Controls.Add(this.WrongEmailLabel, 0, 1);
-            this.UploadHomeWorkPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UploadHomeWorkPanel.Location = new System.Drawing.Point(0, 0);
-            this.UploadHomeWorkPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadHomeWorkPanel.Location = new System.Drawing.Point(37, 179);
+            this.UploadHomeWorkPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadHomeWorkPanel.Name = "UploadHomeWorkPanel";
             this.UploadHomeWorkPanel.RowCount = 7;
             this.UploadHomeWorkPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
@@ -9623,7 +9589,7 @@
             this.UploadHomeWorkPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.UploadHomeWorkPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.UploadHomeWorkPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.UploadHomeWorkPanel.Size = new System.Drawing.Size(33, 1);
+            this.UploadHomeWorkPanel.Size = new System.Drawing.Size(83, 83);
             this.UploadHomeWorkPanel.TabIndex = 7;
             this.UploadHomeWorkPanel.Visible = false;
             // 
@@ -9633,10 +9599,10 @@
             this.ErrorHomeworkLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ErrorHomeworkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ErrorHomeworkLabel.ForeColor = System.Drawing.Color.Red;
-            this.ErrorHomeworkLabel.Location = new System.Drawing.Point(2, 0);
+            this.ErrorHomeworkLabel.Location = new System.Drawing.Point(2, 47);
             this.ErrorHomeworkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ErrorHomeworkLabel.Name = "ErrorHomeworkLabel";
-            this.ErrorHomeworkLabel.Size = new System.Drawing.Size(29, 1);
+            this.ErrorHomeworkLabel.Size = new System.Drawing.Size(79, 8);
             this.ErrorHomeworkLabel.TabIndex = 13;
             this.ErrorHomeworkLabel.Text = "Error!";
             this.ErrorHomeworkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -9648,10 +9614,10 @@
             this.PDFSuccessStudentLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PDFSuccessStudentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PDFSuccessStudentLabel.ForeColor = System.Drawing.Color.Red;
-            this.PDFSuccessStudentLabel.Location = new System.Drawing.Point(2, 0);
+            this.PDFSuccessStudentLabel.Location = new System.Drawing.Point(2, 27);
             this.PDFSuccessStudentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PDFSuccessStudentLabel.Name = "PDFSuccessStudentLabel";
-            this.PDFSuccessStudentLabel.Size = new System.Drawing.Size(29, 1);
+            this.PDFSuccessStudentLabel.Size = new System.Drawing.Size(79, 8);
             this.PDFSuccessStudentLabel.TabIndex = 12;
             this.PDFSuccessStudentLabel.Text = "PDF upload success";
             this.PDFSuccessStudentLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -9666,11 +9632,11 @@
             this.tableLayoutPanel5.Controls.Add(this.TeacherEmailtextBox, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(29, 1);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(79, 5);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
             // TeacherEmail
@@ -9682,7 +9648,7 @@
             this.TeacherEmail.Location = new System.Drawing.Point(2, 0);
             this.TeacherEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TeacherEmail.Name = "TeacherEmail";
-            this.TeacherEmail.Size = new System.Drawing.Size(10, 1);
+            this.TeacherEmail.Size = new System.Drawing.Size(35, 5);
             this.TeacherEmail.TabIndex = 6;
             this.TeacherEmail.Text = "Teacher Email";
             // 
@@ -9692,10 +9658,10 @@
             this.TeacherEmailtextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TeacherEmailtextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeacherEmailtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TeacherEmailtextBox.Location = new System.Drawing.Point(16, 2);
-            this.TeacherEmailtextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherEmailtextBox.Location = new System.Drawing.Point(41, 2);
+            this.TeacherEmailtextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherEmailtextBox.Name = "TeacherEmailtextBox";
-            this.TeacherEmailtextBox.Size = new System.Drawing.Size(11, 17);
+            this.TeacherEmailtextBox.Size = new System.Drawing.Size(36, 17);
             this.TeacherEmailtextBox.TabIndex = 7;
             this.TeacherEmailtextBox.Click += new System.EventHandler(this.TextBoxChanged);
             // 
@@ -9708,12 +9674,12 @@
             this.tableLayoutPanel6.Controls.Add(this.PdfSecretLabel, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.UploadPdfButton, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 19);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(29, 1);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(79, 6);
             this.tableLayoutPanel6.TabIndex = 8;
             // 
             // PdfSecretLabel
@@ -9722,7 +9688,7 @@
             this.PdfSecretLabel.Location = new System.Drawing.Point(3, 3);
             this.PdfSecretLabel.Name = "PdfSecretLabel";
             this.PdfSecretLabel.ReadOnly = true;
-            this.PdfSecretLabel.Size = new System.Drawing.Size(3, 20);
+            this.PdfSecretLabel.Size = new System.Drawing.Size(20, 20);
             this.PdfSecretLabel.TabIndex = 13;
             this.PdfSecretLabel.Visible = false;
             // 
@@ -9733,10 +9699,10 @@
             this.UploadPdfButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UploadPdfButton.FlatAppearance.BorderSize = 0;
             this.UploadPdfButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UploadPdfButton.Location = new System.Drawing.Point(11, 2);
-            this.UploadPdfButton.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadPdfButton.Location = new System.Drawing.Point(28, 2);
+            this.UploadPdfButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadPdfButton.Name = "UploadPdfButton";
-            this.UploadPdfButton.Size = new System.Drawing.Size(5, 1);
+            this.UploadPdfButton.Size = new System.Drawing.Size(22, 2);
             this.UploadPdfButton.TabIndex = 0;
             this.UploadPdfButton.UseVisualStyleBackColor = true;
             this.UploadPdfButton.Click += new System.EventHandler(this.UploadPdfButton_Click);
@@ -9749,12 +9715,12 @@
             this.UploadHomeworkButtonTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.UploadHomeworkButtonTable.Controls.Add(this.UploadHomeWorkButton, 1, 0);
             this.UploadHomeworkButtonTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UploadHomeworkButtonTable.Location = new System.Drawing.Point(2, 2);
-            this.UploadHomeworkButtonTable.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadHomeworkButtonTable.Location = new System.Drawing.Point(2, 37);
+            this.UploadHomeworkButtonTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadHomeworkButtonTable.Name = "UploadHomeworkButtonTable";
             this.UploadHomeworkButtonTable.RowCount = 1;
             this.UploadHomeworkButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.UploadHomeworkButtonTable.Size = new System.Drawing.Size(29, 1);
+            this.UploadHomeworkButtonTable.Size = new System.Drawing.Size(79, 8);
             this.UploadHomeworkButtonTable.TabIndex = 10;
             // 
             // UploadHomeWorkButton
@@ -9764,10 +9730,10 @@
             this.UploadHomeWorkButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UploadHomeWorkButton.FlatAppearance.BorderSize = 0;
             this.UploadHomeWorkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UploadHomeWorkButton.Location = new System.Drawing.Point(11, 2);
-            this.UploadHomeWorkButton.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadHomeWorkButton.Location = new System.Drawing.Point(28, 2);
+            this.UploadHomeWorkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadHomeWorkButton.Name = "UploadHomeWorkButton";
-            this.UploadHomeWorkButton.Size = new System.Drawing.Size(5, 1);
+            this.UploadHomeWorkButton.Size = new System.Drawing.Size(22, 4);
             this.UploadHomeWorkButton.TabIndex = 2;
             this.UploadHomeWorkButton.UseVisualStyleBackColor = true;
             this.UploadHomeWorkButton.Click += new System.EventHandler(this.UploadHomeWorkButton_Click);
@@ -9778,10 +9744,10 @@
             this.WrongEmailLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WrongEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WrongEmailLabel.ForeColor = System.Drawing.Color.Red;
-            this.WrongEmailLabel.Location = new System.Drawing.Point(2, 0);
+            this.WrongEmailLabel.Location = new System.Drawing.Point(2, 9);
             this.WrongEmailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WrongEmailLabel.Name = "WrongEmailLabel";
-            this.WrongEmailLabel.Size = new System.Drawing.Size(29, 1);
+            this.WrongEmailLabel.Size = new System.Drawing.Size(79, 8);
             this.WrongEmailLabel.TabIndex = 11;
             this.WrongEmailLabel.Text = "This email doesn´t exist!";
             this.WrongEmailLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -9794,7 +9760,7 @@
             this.TeacherProfilTable.Controls.Add(this.TeacherUnderTable, 0, 1);
             this.TeacherProfilTable.Controls.Add(this.TeacherProfileDescriprionNTable, 0, 0);
             this.TeacherProfilTable.Location = new System.Drawing.Point(19, 10);
-            this.TeacherProfilTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherProfilTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherProfilTable.Name = "TeacherProfilTable";
             this.TeacherProfilTable.RowCount = 2;
             this.TeacherProfilTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.316771F));
@@ -9814,7 +9780,7 @@
             this.TeacherUnderTable.Controls.Add(this.TSSubjectsTable, 0, 4);
             this.TeacherUnderTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeacherUnderTable.Location = new System.Drawing.Point(2, 12);
-            this.TeacherUnderTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherUnderTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherUnderTable.Name = "TeacherUnderTable";
             this.TeacherUnderTable.RowCount = 6;
             this.TeacherUnderTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
@@ -9848,7 +9814,7 @@
             this.tableLayoutPanel41.Controls.Add(this.TeacherNameTextBox, 1, 0);
             this.tableLayoutPanel41.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel41.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel41.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel41.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel41.Name = "tableLayoutPanel41";
             this.tableLayoutPanel41.RowCount = 1;
             this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -9876,7 +9842,7 @@
             this.TeacherNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeacherNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TeacherNameTextBox.Location = new System.Drawing.Point(49, 2);
-            this.TeacherNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherNameTextBox.Name = "TeacherNameTextBox";
             this.TeacherNameTextBox.ReadOnly = true;
             this.TeacherNameTextBox.Size = new System.Drawing.Size(44, 17);
@@ -9891,7 +9857,7 @@
             this.TSMailTable.Controls.Add(this.TeacherMailTextBox, 1, 0);
             this.TSMailTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TSMailTable.Location = new System.Drawing.Point(2, 64);
-            this.TSMailTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TSMailTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TSMailTable.Name = "TSMailTable";
             this.TSMailTable.RowCount = 1;
             this.TSMailTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -9920,7 +9886,7 @@
             this.TeacherMailTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeacherMailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TeacherMailTextBox.Location = new System.Drawing.Point(49, 2);
-            this.TeacherMailTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherMailTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherMailTextBox.Name = "TeacherMailTextBox";
             this.TeacherMailTextBox.ReadOnly = true;
             this.TeacherMailTextBox.Size = new System.Drawing.Size(44, 17);
@@ -9935,7 +9901,7 @@
             this.TSCursesTable.Controls.Add(this.TSCurseTextBox, 1, 0);
             this.TSCursesTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TSCursesTable.Location = new System.Drawing.Point(2, 74);
-            this.TSCursesTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TSCursesTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TSCursesTable.Name = "TSCursesTable";
             this.TSCursesTable.RowCount = 1;
             this.TSCursesTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -9963,7 +9929,7 @@
             this.TSCurseTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TSCurseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TSCurseTextBox.Location = new System.Drawing.Point(49, 2);
-            this.TSCurseTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TSCurseTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TSCurseTextBox.Name = "TSCurseTextBox";
             this.TSCurseTextBox.ReadOnly = true;
             this.TSCurseTextBox.Size = new System.Drawing.Size(44, 17);
@@ -9978,7 +9944,7 @@
             this.TSSubjectsTable.Controls.Add(this.TSSubjectsTextBox, 1, 0);
             this.TSSubjectsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TSSubjectsTable.Location = new System.Drawing.Point(2, 84);
-            this.TSSubjectsTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TSSubjectsTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TSSubjectsTable.Name = "TSSubjectsTable";
             this.TSSubjectsTable.RowCount = 1;
             this.TSSubjectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -10006,7 +9972,7 @@
             this.TSSubjectsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TSSubjectsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TSSubjectsTextBox.Location = new System.Drawing.Point(49, 2);
-            this.TSSubjectsTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TSSubjectsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TSSubjectsTextBox.Name = "TSSubjectsTextBox";
             this.TSSubjectsTextBox.ReadOnly = true;
             this.TSSubjectsTextBox.Size = new System.Drawing.Size(44, 17);
@@ -10020,7 +9986,7 @@
             this.TeacherProfileDescriprionNTable.Controls.Add(this.TeacherProfile, 0, 0);
             this.TeacherProfileDescriprionNTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeacherProfileDescriprionNTable.Location = new System.Drawing.Point(2, 2);
-            this.TeacherProfileDescriprionNTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherProfileDescriprionNTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TeacherProfileDescriprionNTable.Name = "TeacherProfileDescriprionNTable";
             this.TeacherProfileDescriprionNTable.RowCount = 1;
             this.TeacherProfileDescriprionNTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -10123,7 +10089,7 @@
             this.VideoLButtonTable.Controls.Add(this.VideoLButton, 1, 0);
             this.VideoLButtonTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.VideoLButtonTable.Location = new System.Drawing.Point(120, 2);
-            this.VideoLButtonTable.Margin = new System.Windows.Forms.Padding(2);
+            this.VideoLButtonTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.VideoLButtonTable.Name = "VideoLButtonTable";
             this.VideoLButtonTable.RowCount = 2;
             this.VideoLButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -10140,7 +10106,7 @@
             this.VideoLButton.FlatAppearance.BorderSize = 0;
             this.VideoLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VideoLButton.Location = new System.Drawing.Point(24, 2);
-            this.VideoLButton.Margin = new System.Windows.Forms.Padding(2);
+            this.VideoLButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.VideoLButton.Name = "VideoLButton";
             this.VideoLButton.Size = new System.Drawing.Size(6, 1);
             this.VideoLButton.TabIndex = 11;
@@ -10156,7 +10122,7 @@
             this.UploadLButtonTable.Controls.Add(this.UploadLButton, 1, 0);
             this.UploadLButtonTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UploadLButtonTable.Location = new System.Drawing.Point(61, 2);
-            this.UploadLButtonTable.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadLButtonTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadLButtonTable.Name = "UploadLButtonTable";
             this.UploadLButtonTable.RowCount = 2;
             this.UploadLButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -10173,7 +10139,7 @@
             this.UploadLButton.FlatAppearance.BorderSize = 0;
             this.UploadLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UploadLButton.Location = new System.Drawing.Point(23, 2);
-            this.UploadLButton.Margin = new System.Windows.Forms.Padding(2);
+            this.UploadLButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UploadLButton.Name = "UploadLButton";
             this.UploadLButton.Size = new System.Drawing.Size(6, 1);
             this.UploadLButton.TabIndex = 9;
@@ -10379,7 +10345,7 @@
             this.PDFLButtonTable.Controls.Add(this.PDFLButton, 1, 0);
             this.PDFLButtonTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PDFLButtonTable.Location = new System.Drawing.Point(2, 2);
-            this.PDFLButtonTable.Margin = new System.Windows.Forms.Padding(2);
+            this.PDFLButtonTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PDFLButtonTable.Name = "PDFLButtonTable";
             this.PDFLButtonTable.RowCount = 2;
             this.PDFLButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -10396,7 +10362,7 @@
             this.PDFLButton.FlatAppearance.BorderSize = 0;
             this.PDFLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PDFLButton.Location = new System.Drawing.Point(24, 2);
-            this.PDFLButton.Margin = new System.Windows.Forms.Padding(2);
+            this.PDFLButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PDFLButton.Name = "PDFLButton";
             this.PDFLButton.Size = new System.Drawing.Size(7, 1);
             this.PDFLButton.TabIndex = 10;
@@ -10442,7 +10408,7 @@
             this.MailTable.Controls.Add(this.DownloadHomeWorkButton, 1, 0);
             this.MailTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MailTable.Location = new System.Drawing.Point(2, 25);
-            this.MailTable.Margin = new System.Windows.Forms.Padding(2);
+            this.MailTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MailTable.Name = "MailTable";
             this.MailTable.RowCount = 1;
             this.MailTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -10458,7 +10424,7 @@
             this.DownloadHomeWorkButton.FlatAppearance.BorderSize = 0;
             this.DownloadHomeWorkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DownloadHomeWorkButton.Location = new System.Drawing.Point(2, 2);
-            this.DownloadHomeWorkButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DownloadHomeWorkButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DownloadHomeWorkButton.Name = "DownloadHomeWorkButton";
             this.DownloadHomeWorkButton.Size = new System.Drawing.Size(1, 63);
             this.DownloadHomeWorkButton.TabIndex = 8;
@@ -10473,7 +10439,7 @@
             this.AddLessonTable.Controls.Add(this.AddLessonButton, 1, 0);
             this.AddLessonTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddLessonTable.Location = new System.Drawing.Point(2, 25);
-            this.AddLessonTable.Margin = new System.Windows.Forms.Padding(2);
+            this.AddLessonTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddLessonTable.Name = "AddLessonTable";
             this.AddLessonTable.RowCount = 1;
             this.AddLessonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -10489,7 +10455,7 @@
             this.AddLessonButton.FlatAppearance.BorderSize = 0;
             this.AddLessonButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddLessonButton.Location = new System.Drawing.Point(2, 2);
-            this.AddLessonButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddLessonButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddLessonButton.Name = "AddLessonButton";
             this.AddLessonButton.Size = new System.Drawing.Size(1, 63);
             this.AddLessonButton.TabIndex = 8;
@@ -10533,8 +10499,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1011, 540);
-            this.Controls.Add(this.PlayerPanel);
             this.Controls.Add(this.StudentPanel);
+            this.Controls.Add(this.PlayerPanel);
             this.Controls.Add(this.TeacherPanel);
             this.Controls.Add(this.AdminPanel);
             this.Controls.Add(this.EditProfilePanel);
@@ -11212,12 +11178,6 @@
         private System.Windows.Forms.Panel SearchPanel;
         private System.Windows.Forms.TableLayoutPanel SearchTablePanel;
         private System.Windows.Forms.TableLayoutPanel SearcherTablePanel;
-        private System.Windows.Forms.TableLayoutPanel ButtonsSearchTablePanel;
-        private System.Windows.Forms.Button LButton;
-        private System.Windows.Forms.Button RButtom;
-        private System.Windows.Forms.TableLayoutPanel SearchTableConten;
-        private System.Windows.Forms.TextBox SearchTextBox;
-        private System.Windows.Forms.Panel LupaPanel;
         private System.Windows.Forms.TextBox RememberTextBox;
         private System.Windows.Forms.TableLayoutPanel SearcherTableResults;
         private System.Windows.Forms.DataGridView SearcherUsersData;
@@ -11264,7 +11224,6 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.TableLayoutPanel SearchPanelContainer;
         private System.Windows.Forms.TableLayoutPanel EditProfilTable;
         private System.Windows.Forms.Button EditNicknameButton;
         private System.Windows.Forms.Button EditCButton;
@@ -11445,6 +11404,11 @@
         private System.Windows.Forms.LinkLabel ToName;
         private System.Windows.Forms.LinkLabel ToAlbum;
         private System.Windows.Forms.LinkLabel ToArtist;
+        private System.Windows.Forms.TableLayoutPanel ButtonsSearchTablePanel;
+        private System.Windows.Forms.TableLayoutPanel SearchPanelContainer;
+        private System.Windows.Forms.TableLayoutPanel SearchTableConten;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Panel LupaPanel;
     }
 }
 

@@ -287,7 +287,7 @@ namespace Spotflix
                 series.UnionWith(SearchSeries(bigfilter));
                 playlist.UnionWith(SearchPlaylist(bigfilter));
                 albums.UnionWith(SearchAlbum(bigfilter));
-                karaokes.UnionWith(SearchKaraoke(bigfilter));
+               karaokes.UnionWith(SearchKaraoke(bigfilter));
             }
             MediaPlayer.Foundartists = artist;
             MediaPlayer.Foundsongs = songs;
@@ -411,11 +411,10 @@ namespace Spotflix
                         {
                             if (caser[1].Contains("<") && caser[1].Contains("="))
                             {
-                                caser[1] = caser[1].Remove('<');
-                                caser[1] = caser[1].Remove('=');
+                                string case1 = caser[1].Trim('=', '<');
                                 try
                                 {
-                                    if (song.Qualification.Average() <= Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() <= Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -427,10 +426,10 @@ namespace Spotflix
                             }
                             else if (caser[1].Contains("<"))
                             {
-                                caser[1] = caser[1].Remove('<');
+                                string case1 = caser[1].Trim('<');
                                 try
                                 {
-                                    if (song.Qualification.Average() < Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() < Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -442,11 +441,10 @@ namespace Spotflix
                             }
                             else if (caser[1].Contains(">") && caser[1].Contains("="))
                             {
-                                caser[1] = caser[1].Remove('>');
-                                caser[1] = caser[1].Remove('=');
+                                string case1 = caser[1].Trim('=', '>');
                                 try
                                 {
-                                    if (song.Qualification.Average() >= Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() >= Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -458,10 +456,10 @@ namespace Spotflix
                             }
                             else if (caser[1].Contains(">"))
                             {
-                                caser[1] = caser[1].Remove('>');
+                                string case1 = caser[1].Trim('>');
                                 try
                                 {
-                                    if (song.Qualification.Average() > Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() > Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -473,10 +471,10 @@ namespace Spotflix
                             }
                             else
                             {
-                                caser[1] = caser[1].Remove('=');
+                                string case1 = caser[1].Trim('=');
                                 try
                                 {
-                                    if (song.Qualification.Average() == Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() == Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -513,9 +511,23 @@ namespace Spotflix
                                 found.Add(video);
                             }
                         }
+                        foreach (Video video in MediaPlayer.VideoChapters)
+                        {
+                            if (video.Director.ToLower().Contains(caser[1]))
+                            {
+                                found.Add(video);
+                            }
+                        }
                         break;
                     case "name":
                         foreach (Video video in MediaPlayer.Videos)
+                        {
+                            if (video.Name.ToLower().Contains(caser[1]))
+                            {
+                                found.Add(video);
+                            }
+                        }
+                        foreach (Video video in MediaPlayer.VideoChapters)
                         {
                             if (video.Name.ToLower().Contains(caser[1]))
                             {
@@ -531,8 +543,22 @@ namespace Spotflix
                                 found.Add(video);
                             }
                         }
+                        foreach (Video video in MediaPlayer.VideoChapters)
+                        {
+                            if (video.Genre.ToLower().Contains(caser[1]))
+                            {
+                                found.Add(video);
+                            }
+                        }
                         break;
                     case "studio":
+                        foreach (Video video in MediaPlayer.VideoChapters)
+                        {
+                            if (video.Studio.ToLower().Contains(caser[1]))
+                            {
+                                found.Add(video);
+                            }
+                        }
                         foreach (Video video in MediaPlayer.Videos)
                         {
                             if (video.Studio.ToLower().Contains(caser[1]))
@@ -542,6 +568,13 @@ namespace Spotflix
                         }
                         break;
                     case "actor":
+                        foreach (Video video in MediaPlayer.VideoChapters)
+                        {
+                            if (video.Actors.Contains(caser[1]))
+                            {
+                                found.Add(video);
+                            }
+                        }
                         foreach (Video video in MediaPlayer.Videos)
                         {
                             if (video.Actors.Contains(caser[1]))
@@ -550,19 +583,15 @@ namespace Spotflix
                             }
                         }
                         break;
-                    case "resolution":
-
-                        break;
                     case "stars":
-                        foreach (Video song in MediaPlayer.Videos)
+                        foreach (Video song in MediaPlayer.VideoChapters)
                         {
                             if (caser[1].Contains("<") && caser[1].Contains("="))
                             {
-                                caser[1] = caser[1].Remove('<');
-                                caser[1] = caser[1].Remove('=');
+                                string case1 = caser[1].Trim('=', '<');
                                 try
                                 {
-                                    if (song.Qualification.Average() <= Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() <= Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -574,10 +603,10 @@ namespace Spotflix
                             }
                             else if (caser[1].Contains("<"))
                             {
-                                caser[1] = caser[1].Remove('<');
+                                string case1 = caser[1].Trim('<');
                                 try
                                 {
-                                    if (song.Qualification.Average() < Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() < Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -589,11 +618,10 @@ namespace Spotflix
                             }
                             else if (caser[1].Contains(">") && caser[1].Contains("="))
                             {
-                                caser[1] = caser[1].Remove('>');
-                                caser[1] = caser[1].Remove('=');
+                                string case1 = caser[1].Trim('>', '=');
                                 try
                                 {
-                                    if (song.Qualification.Average() >= Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() >= Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -605,10 +633,10 @@ namespace Spotflix
                             }
                             else if (caser[1].Contains(">"))
                             {
-                                caser[1] = caser[1].Remove('>');
+                                string case1 = caser[1].Trim('>');
                                 try
                                 {
-                                    if (song.Qualification.Average() > Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() > Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -620,10 +648,10 @@ namespace Spotflix
                             }
                             else
                             {
-                                caser[1] = caser[1].Remove('=');
+                                string case1 = caser[1].Trim('=');
                                 try
                                 {
-                                    if (song.Qualification.Average() == Convert.ToInt32(caser[1]))
+                                    if (song.Qualification.Average() == Convert.ToInt32(case1))
                                     {
                                         found.Add(song);
                                     }
@@ -631,6 +659,335 @@ namespace Spotflix
                                 catch (FormatException)
                                 {
                                     throw;
+                                }
+                            }
+                        }
+                        foreach (Video song in MediaPlayer.Videos)
+                        {
+                            if (caser[1].Contains("<") && caser[1].Contains("="))
+                            {
+                                string case1 = caser[1].Trim('=','<');
+                                try
+                                {
+                                    if (song.Qualification.Average() <= Convert.ToInt32(case1))
+                                    {
+                                        found.Add(song);
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    throw;
+                                }
+                            }
+                            else if (caser[1].Contains("<"))
+                            {
+                                string case1 = caser[1].Trim('<');
+                                try
+                                {
+                                    if (song.Qualification.Average() < Convert.ToInt32(case1))
+                                    {
+                                        found.Add(song);
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    throw;
+                                }
+                            }
+                            else if (caser[1].Contains(">") && caser[1].Contains("="))
+                            {
+                                string case1 = caser[1].Trim('>','=');
+                                try
+                                {
+                                    if (song.Qualification.Average() >= Convert.ToInt32(case1))
+                                    {
+                                        found.Add(song);
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    throw;
+                                }
+                            }
+                            else if (caser[1].Contains(">"))
+                            {
+                                string case1 = caser[1].Trim('>');
+                                try
+                                {
+                                    if (song.Qualification.Average() > Convert.ToInt32(case1))
+                                    {
+                                        found.Add(song);
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    throw;
+                                }
+                            }
+                            else
+                            {
+                                string case1 = caser[1].Trim('=');
+                                try
+                                {
+                                    if (song.Qualification.Average() == Convert.ToInt32(case1))
+                                    {
+                                        found.Add(song);
+                                    }
+                                }
+                                catch (FormatException)
+                                {
+                                    throw;
+                                }
+                            }
+                        }
+                        break;
+                    case "resolution":
+                        foreach (Video song in MediaPlayer.VideoChapters)
+                        {
+                            if (caser[1].Contains("<") && caser[1].Contains("="))
+                            {
+                                string case1 = caser[1].Trim('=', '<');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 9)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) <= Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) <= Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                                
+                            }
+                            else if (caser[1].Contains("<"))
+                            {
+                                string case1 = caser[1].Trim('<');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 8)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) < Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) < Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+
+                            }
+                            else if (caser[1].Contains(">") && caser[1].Contains("="))
+                            {
+                                string case1 = caser[1].Trim('=', '>');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 9)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) >= Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) >= Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                            else if (caser[1].Contains(">"))
+                            {
+                                string case1 = caser[1].Trim('>');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 8)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) > Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) > Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                string case1 = caser[1].Trim('=');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 8)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) == Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) == Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                        }
+                        foreach (Video song in MediaPlayer.Videos)
+                        {
+                            if (caser[1].Contains("<") && caser[1].Contains("="))
+                            {
+                                string case1 = caser[1].Trim('=', '<');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count()>=9)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) <= Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) <= Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                            else if (caser[1].Contains("<"))
+                            {
+                                string case1 = caser[1].Trim('<');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 8)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) < Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) < Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                            else if (caser[1].Contains(">") && caser[1].Contains("="))
+                            {
+                                string case1 = caser[1].Trim('=', '>');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 9)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) >= Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) >= Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                            else if (caser[1].Contains(">"))
+                            {
+                                string case1 = caser[1].Trim('>');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 8)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) > Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) > Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+                                }
+                            }
+                            else
+                            {
+
+                                string case1 = caser[1].Trim('=');
+                                string[] aux = { "0", "0" };
+                                if (case1.Contains("x"))
+                                {
+                                    aux = case1.Split('x');
+                                }
+                                if (case1.Count() >= 8)
+                                {
+                                    try
+                                    {
+                                        string[] checker = song.Dimension.Split('x');
+                                        if (Convert.ToInt32(checker[0]) == Convert.ToInt32(aux[0]) && Convert.ToInt32(checker[1]) == Convert.ToInt32(aux[1]))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
                                 }
                             }
                         }
@@ -914,92 +1271,109 @@ namespace Spotflix
                             }
                         }
                         break;
-                    case "stars"://Pendiente
+                    case "stars":
                         foreach (Karaoke song in MediaPlayer.Karaokes)
                         {
-                            if (caser[1].Contains("<")&& caser[1].Contains("="))
+                            if (caser[1].Contains("<") && caser[1].Contains("="))
                             {
-                                caser[1] = caser[1].Remove('<');
-                                caser[1]=caser[1].Remove('=');
-                                try
+                                if (caser[1].Count()>2)
                                 {
-                                    if (song.Qualification.Average() <= Convert.ToInt32(caser[1]))
+                                    string case1 = caser[1].Trim('<', '=');
+                                    try
                                     {
-                                        found.Add(song);
+                                        if (song.Qualification.Average() <= Convert.ToInt32(case1))
+                                        {
+                                            found.Add(song);
+                                        }
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        throw;
                                     }
                                 }
-                                catch (FormatException)
-                                {
-                                    throw;
-                                }
+
                             }
                             else if (caser[1].Contains("<"))
                             {
-                                caser[1]=caser[1].Remove('<');
-                                try
+                                if (caser[1].Count()>1)
                                 {
-                                    if (song.Qualification.Average() < Convert.ToInt32(caser[1]))
+                                    string case1 = caser[1].Trim('<');
+                                    try
                                     {
-                                        found.Add(song);
+                                        if (song.Qualification.Average() < Convert.ToInt32(case1))
+                                        {
+                                            found.Add(song);
+                                        }
                                     }
-                                }
-                                catch (FormatException)
-                                {
-                                    throw;
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
+
                                 }
                             }
-                            else if (caser[1].Contains(">")&& caser[1].Contains("="))
+                            else if (caser[1].Contains(">") && caser[1].Contains("="))
                             {
-                                caser[1] = caser[1].Remove('>');
-                                caser[1] = caser[1].Remove('=');
-                                try
+                                if (caser[1].Count() > 2)
                                 {
-                                    if (song.Qualification.Average() >= Convert.ToInt32(caser[1]))
+                                    string case1 = caser[1].Trim('>','=');
+                                    try
                                     {
-                                        found.Add(song);
+                                        if (song.Qualification.Average() >= Convert.ToInt32(case1))
+                                        {
+                                            found.Add(song);
+                                        }
                                     }
-                                }
-                                catch (FormatException)
-                                {
-                                    throw;
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
                                 }
                             }
                             else if (caser[1].Contains(">"))
                             {
-                                caser[1] = caser[1].Remove('>');
-                                try
+                                if (caser[1].Count() > 1)
                                 {
-                                    if (song.Qualification.Average() > Convert.ToInt32(caser[1]))
+                                    string case1 = caser[1].Trim('>');
+                                    try
                                     {
-                                        found.Add(song);
+                                        if (song.Qualification.Average() > Convert.ToInt32(case1))
+                                        {
+                                            found.Add(song);
+                                        }
                                     }
-                                }
-                                catch (FormatException)
-                                {
-                                    throw;
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
                                 }
                             }
                             else
                             {
-                                caser[1] = caser[1].Remove('=');
-                                try
+                                if (caser[1].Count() > 1)
                                 {
-                                    if (song.Qualification.Average() == Convert.ToInt32(caser[1]))
+                                    string case1 = caser[1].Trim('=');
+                                    try
                                     {
-                                        found.Add(song);
+                                        if (song.Qualification.Average() == Convert.ToInt32(case1))
+                                        {
+                                            found.Add(song);
+                                        }
                                     }
-                                }
-                                catch (FormatException)
-                                {
-                                    throw;
+                                    catch (FormatException)
+                                    {
+                                        throw;
+                                    }
                                 }
                             }
                         }
+                
+
+                break;
+                default:
                         break;
-                    default:
-                        break;
-                }
             }
+        }
 
             return found;
         }

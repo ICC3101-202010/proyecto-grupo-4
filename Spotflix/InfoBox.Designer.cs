@@ -51,10 +51,10 @@
             this.DirectorTExt = new System.Windows.Forms.RichTextBox();
             this.StudioShow = new System.Windows.Forms.Button();
             this.YearShow = new System.Windows.Forms.Button();
-            this.MinimunAgeShow = new System.Windows.Forms.Button();
             this.StudioText = new System.Windows.Forms.RichTextBox();
             this.YearText = new System.Windows.Forms.RichTextBox();
             this.MinimunAgeText = new System.Windows.Forms.RichTextBox();
+            this.MinimunAgeShow = new System.Windows.Forms.Button();
             this.CaserShow = new System.Windows.Forms.TableLayoutPanel();
             this.CaserTExt = new System.Windows.Forms.RichTextBox();
             this.Platforminfo.SuspendLayout();
@@ -150,10 +150,9 @@
             // 
             // RepText
             // 
-            this.RepText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.RepText.BackColor = System.Drawing.Color.Black;
             this.RepText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RepText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RepText.ForeColor = System.Drawing.Color.White;
             this.RepText.Location = new System.Drawing.Point(335, 147);
             this.RepText.Name = "RepText";
@@ -435,21 +434,6 @@
             this.YearShow.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.YearShow.UseVisualStyleBackColor = true;
             // 
-            // MinimunAgeShow
-            // 
-            this.MinimunAgeShow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MinimunAgeShow.FlatAppearance.BorderSize = 0;
-            this.MinimunAgeShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinimunAgeShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimunAgeShow.Location = new System.Drawing.Point(69, 235);
-            this.MinimunAgeShow.Name = "MinimunAgeShow";
-            this.MinimunAgeShow.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.MinimunAgeShow.Size = new System.Drawing.Size(260, 29);
-            this.MinimunAgeShow.TabIndex = 9;
-            this.MinimunAgeShow.Text = "Minimun age:";
-            this.MinimunAgeShow.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.MinimunAgeShow.UseVisualStyleBackColor = true;
-            // 
             // StudioText
             // 
             this.StudioText.BackColor = System.Drawing.Color.Black;
@@ -488,6 +472,21 @@
             this.MinimunAgeText.Size = new System.Drawing.Size(260, 29);
             this.MinimunAgeText.TabIndex = 13;
             this.MinimunAgeText.Text = "";
+            // 
+            // MinimunAgeShow
+            // 
+            this.MinimunAgeShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MinimunAgeShow.FlatAppearance.BorderSize = 0;
+            this.MinimunAgeShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MinimunAgeShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimunAgeShow.Location = new System.Drawing.Point(69, 235);
+            this.MinimunAgeShow.Name = "MinimunAgeShow";
+            this.MinimunAgeShow.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MinimunAgeShow.Size = new System.Drawing.Size(260, 29);
+            this.MinimunAgeShow.TabIndex = 9;
+            this.MinimunAgeShow.Text = "Minimun age:";
+            this.MinimunAgeShow.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.MinimunAgeShow.UseVisualStyleBackColor = true;
             // 
             // CaserShow
             // 
@@ -528,8 +527,8 @@
             this.ClientSize = new System.Drawing.Size(667, 361);
             this.Controls.Add(this.MetaInfo);
             this.Controls.Add(this.InstrinsicInfo);
-            this.Controls.Add(this.Platforminfo);
             this.Controls.Add(this.CaserShow);
+            this.Controls.Add(this.Platforminfo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(5);

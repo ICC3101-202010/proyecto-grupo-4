@@ -1,14 +1,9 @@
-﻿using Microsoft.WindowsAPICodePack.Shell;
-using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
-using NReco.VideoInfo;
-using Spotflix.Media_Related;
+﻿using Spotflix.Media_Related;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Threading;
 
 namespace Spotflix.User_Related
 {
@@ -36,6 +31,7 @@ namespace Spotflix.User_Related
             var songinfo = ffProbe.GetMediaInfo(path);
             TimeSpan duration = songinfo.Duration;
             long size = file.Length;
+
 
 
             Song song = new Song(artistname, albumname, explicit1, name, genre, year, image, bytes, duration, size, mediaPlayer.Songs.Count()+1) ;
@@ -143,19 +139,17 @@ namespace Spotflix.User_Related
             List<Song> songsa = new List<Song>();
             List<Karaoke> karaokesa = new List<Karaoke>();
             List<Serie> seriesa = new List<Serie>();
-
-
+            string dimension="";
             byte[] bytes = File.ReadAllBytes(path);
             TagLib.File file = TagLib.File.Create(path);
             var ffProbe = new NReco.VideoInfo.FFProbe();
             ffProbe.IncludeFormat = true;
             var videoinfo = ffProbe.GetMediaInfo(path);
-            
 
             TimeSpan duration = videoinfo.Duration;
             long size = file.Length;
             long fileSize = new System.IO.FileInfo(path).Length;
-            Video video = new Video(actors, ageFilter,directorname, studio, videoname, genre, PictureVideoHolder, year, bytes, duration,size, mediaPlayer.Videos.Count() +1);
+            Video video = new Video(actors, ageFilter,directorname, studio, videoname, genre, PictureVideoHolder, year, bytes, duration,size, mediaPlayer.Videos.Count() +1,dimension);
             video.FileSize = fileSize;
             if (mediaPlayer.Videos.Count() == 0)
             {
