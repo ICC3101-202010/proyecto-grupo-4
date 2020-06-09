@@ -1,37 +1,172 @@
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe.config
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.pdb
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\Interop.WMPLib.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Interop.WMPLib.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\AxInterop.WMPLib.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe.config
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.exe
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Nombrependiente.pdb
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Interop.WMPLib.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Interop.WMPLib.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\AxInterop.WMPLib.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.exe
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Nombrependiente.pdb
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\policy.2.0.taglib-sharp.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\taglib-sharp.dll
-C:\Users\jick\Desktop\P.O.O\proyecto-grupo-4\Spotflix\bin\Debug\policy.2.0.taglib-sharp.config
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_2\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\marim\Desktop\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\TagLibSharp.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\TagLibSharp.pdb
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\TagLibSharp.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\TagLibSharp.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\TagLibSharp.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\TagLibSharp.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\NReco.VideoInfo.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\NReco.VideoInfo.xml
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\NReco.VideoInfo.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\NReco.VideoInfo.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Proyecto_Semestral\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\NReco.VideoInfo.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\TagLibSharp.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\NReco.VideoInfo.xml
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\TagLibSharp.pdb
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\TagLibSharp.xml
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\marim\Desktop\Spotflix\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\NReco.VideoInfo.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\TagLibSharp.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\NReco.VideoInfo.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\TagLibSharp.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\TagLibSharp.xml
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\Spotflix\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Spotflix.exe.config
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\NReco.VideoInfo.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\TagLibSharp.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\NReco.VideoInfo.xml
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\TagLibSharp.pdb
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\TagLibSharp.xml
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Interop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.BigScreen.resources
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.Form1.resources
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.InfoBox.resources
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.Properties.Resources.resources
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.GenerateResource.cache
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.CoreCompileInputs.cache
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.exe
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\jick\Desktop\P.O.O\Spotflix\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache

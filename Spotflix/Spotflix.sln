@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotflix", "Spotflix.csproj", "{30AF48F5-8B92-4D3E-A915-0E3057635472}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotflix", "Spotflix.csproj", "{4FE28F1D-A2C5-488C-A90D-09953150B591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30AF48F5-8B92-4D3E-A915-0E3057635472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30AF48F5-8B92-4D3E-A915-0E3057635472}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30AF48F5-8B92-4D3E-A915-0E3057635472}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30AF48F5-8B92-4D3E-A915-0E3057635472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE28F1D-A2C5-488C-A90D-09953150B591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE28F1D-A2C5-488C-A90D-09953150B591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE28F1D-A2C5-488C-A90D-09953150B591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE28F1D-A2C5-488C-A90D-09953150B591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A763F4CA-6BCD-4C83-AD62-C63360DAFD6B}
+		SolutionGuid = {CB397294-E3B0-4F35-B032-A3AF8A7309C9}
 	EndGlobalSection
 EndGlobal

@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{30AF48F5-8B92-4D3E-A915-0E3057635472}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Nombrependiente</RootNamespace>
-    <AssemblyName>Nombrependiente</AssemblyName>
+    <ProjectGuid>{4FE28F1D-A2C5-488C-A90D-09953150B591}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Spotflix</RootNamespace>
+    <AssemblyName>Spotflix</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -33,18 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
-    <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
-      <HintPath>packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
+    <Reference Include="NReco.VideoInfo, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8f59ee36d2987295, processorArchitecture=MSIL">
+      <HintPath>packages\NReco.VideoInfo.1.1.1\lib\net35\NReco.VideoInfo.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
       <Private>True</Private>
@@ -55,46 +54,123 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
-      <HintPath>packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
+    <Reference Include="TagLibSharp, Version=2.2.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>packages\TagLibSharp.2.2.0\lib\net45\TagLibSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
-    <Compile Include="Album.cs" />
-    <Compile Include="Artist.cs" />
+    <Compile Include="BigScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BigScreen.Designer.cs">
+      <DependentUpon>BigScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CircleButtom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gate.cs" />
-    <Compile Include="IGo.cs" />
-    <Compile Include="Karaoke.cs" />
-    <Compile Include="Lesson.cs" />
+    <Compile Include="InfoBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoBox.Designer.cs">
+      <DependentUpon>InfoBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Media_Related\HomeWork.cs" />
     <Compile Include="MediaPlayer.cs" />
-    <Compile Include="MediaFile.cs" />
-    <Compile Include="OrderByAEventArgs.cs" />
-    <Compile Include="OrderByEventArgs.cs" />
-    <Compile Include="Playlist.cs" />
+    <Compile Include="Media_Related\Album.cs" />
+    <Compile Include="Media_Related\Artist.cs" />
+    <Compile Include="Media_Related\Karaoke.cs" />
+    <Compile Include="Media_Related\Lessons.cs" />
+    <Compile Include="Media_Related\MediaFile.cs" />
+    <Compile Include="Media_Related\Playlist.cs" />
+    <Compile Include="Media_Related\Series.cs" />
+    <Compile Include="Media_Related\Song.cs" />
+    <Compile Include="Media_Related\Video.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Series.cs" />
-    <Compile Include="Song.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="SongEventArgs.cs" />
-    <Compile Include="Teacher.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Video.cs" />
-    <Compile Include="VideoEventArgs.cs" />
-    <Compile Include="VideoSerieEventArgs.cs" />
+    <Compile Include="Searcher.cs" />
+    <Compile Include="StudentSearcher.cs" />
+    <Compile Include="User_Related\Student.cs" />
+    <Compile Include="User_Related\Admin.cs" />
+    <Compile Include="User_Related\Person.cs" />
+    <Compile Include="User_Related\Teacher.cs" />
+    <Compile Include="User_Related\User.cs" />
+    <EmbeddedResource Include="BigScreen.resx">
+      <DependentUpon>BigScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoBox.resx">
+      <DependentUpon>InfoBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\MediaPlayer.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="bin\Debug\Nombrependiente.exe.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3a91cb1a-7fde-433c-a729-542941bdeff6_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0fc7f4ec-fc1e-4c41-9b3e-328c3e0d691f_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0fc7f4ec-fc1e-4c41-9b3e-328c3e0d691f_200x200 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\principal fondo blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\principal con flecha fondo negro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\principal con flecha fondo blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload blanco mod.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
@@ -105,12 +181,90 @@
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\AxInterop.WMPLib.dll" />
-    <Content Include="bin\Debug\Interop.WMPLib.dll" />
-    <Content Include="bin\Debug\Nombrependiente.exe" />
-    <Content Include="bin\Debug\Nombrependiente.pdb" />
+    <None Include="Resources\pausa white 32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play white 32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pausa white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\full screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play 130.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pausa140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\perfil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\study white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\study red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corazon rojo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corazon blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\follow verde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\follow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo inicial search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chooseImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Others\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\queque azul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\queque blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\op2flechamod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\op2mod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estrella amarilla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estrella.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
