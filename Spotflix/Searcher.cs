@@ -421,7 +421,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains("<"))
@@ -436,7 +440,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains(">") && caser[1].Contains("="))
@@ -451,7 +459,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch  (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains(">"))
@@ -466,7 +478,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else
@@ -481,7 +497,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                         }
@@ -598,7 +618,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains("<"))
@@ -613,7 +637,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains(">") && caser[1].Contains("="))
@@ -628,7 +656,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains(">"))
@@ -643,7 +675,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else
@@ -658,7 +694,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                         }
@@ -676,7 +716,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains("<"))
@@ -691,7 +735,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains(">") && caser[1].Contains("="))
@@ -706,7 +754,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else if (caser[1].Contains(">"))
@@ -721,7 +773,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                             else
@@ -736,7 +792,11 @@ namespace Spotflix
                                 }
                                 catch (FormatException)
                                 {
-                                    throw;
+                                    //invalid format
+                                }
+                                catch (System.InvalidOperationException)
+                                {
+
                                 }
                             }
                         }
@@ -764,7 +824,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                                 
@@ -789,7 +853,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
 
@@ -814,7 +882,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -838,7 +910,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -862,7 +938,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -889,7 +969,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -913,7 +997,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -937,7 +1025,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -961,7 +1053,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -986,7 +1082,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -1288,7 +1388,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
 
@@ -1307,7 +1411,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
 
                                 }
@@ -1326,7 +1434,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -1344,7 +1456,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }
@@ -1362,7 +1478,11 @@ namespace Spotflix
                                     }
                                     catch (FormatException)
                                     {
-                                        throw;
+                                        //invalid format
+                                    }
+                                    catch (System.InvalidOperationException)
+                                    {
+
                                     }
                                 }
                             }

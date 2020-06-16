@@ -113,5 +113,10 @@ namespace Spotflix
         {
 
         }
+
+        private void GenreShow_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

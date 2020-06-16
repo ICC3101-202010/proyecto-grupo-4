@@ -334,6 +334,7 @@
             this.GenreShow.Text = "Genre:";
             this.GenreShow.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.GenreShow.UseVisualStyleBackColor = true;
+            this.GenreShow.Click += new System.EventHandler(this.GenreShow_Click);
             // 
             // ActorsShow
             // 
