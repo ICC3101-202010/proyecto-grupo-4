@@ -1061,6 +1061,92 @@ namespace Spotflix
                     foundvideo.Add(video);
                 }
             }
+            foreach (Video video in mediaPlayer.VideoChapters)
+            {
+                foreach (string actor in video.Actors)
+                {
+                    if (actor == "Zac Efron" && ArtistButton1.Tag.ToString() == "yes")
+                    {
+                        foundvideo.Add(video);
+                    }
+                    if (actor == "Genne Simons" && ArtistButton6.Tag.ToString() == "yes")
+                    {
+                        foundvideo.Add(video);
+                    }
+                    if (actor == "Zendaya" && ArtistButton8.Tag.ToString() == "yes")
+                    {
+                        foundvideo.Add(video);
+                    }
+                    if (actor == "Hugh Jackmann" && ArtistButton7.Tag.ToString() == "yes")
+                    {
+                        foundvideo.Add(video);
+                    }
+                }
+                if (video.Genre == "Comedy" && GenreMovieButton1.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Adventures" && GenreMovieButton2.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Drama" && GenreMovieButton3.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Animation" && GenreMovieButton4.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Family" && GenreMovieButton5.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Documentary" && GenreMovieButton6.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Thriller" && GenreMovieButton7.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Genre == "Action" && GenreMovieButton8.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "Forrest Gump" && MovieButton1.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if ((video.Name == "Orphan" || video.Genre == "Terror") && MovieButton2.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "Miracle in cell N7" && MovieButton3.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "Moana" && MovieButton4.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "The Impossible" && MovieButton7.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "The Greatest Showman" && MovieButton7.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "Da Vinci Code" && MovieButton6.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+                if (video.Name == "Spirit" && MovieButton5.Tag.ToString() == "yes")
+                {
+                    foundvideo.Add(video);
+                }
+            }
             foreach (Song song in mediaPlayer.Songs)
             {
                 if (song.Artist == "Mazapan" && ArtistButton2.Tag.ToString() == "yes")
