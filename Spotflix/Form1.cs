@@ -3488,7 +3488,7 @@ namespace Spotflix
             if (e.RowIndex >= 0)
             {
                 DataGridView dgw = (DataGridView)sender;
-                if (dgw.Columns[0].HeaderText == "Found media" || dgw.Columns[0].HeaderText == "Liked media" || dgw.Columns[0].HeaderText == "Media" || dgw.Columns[0].HeaderText == "Preferences media" || dgw.Columns[0].HeaderText == "Queue")
+                if (dgw.Columns[0].HeaderText == "Playlist Media" || dgw.Columns[0].HeaderText == "Found media" || dgw.Columns[0].HeaderText == "Liked media" || dgw.Columns[0].HeaderText == "Media" || dgw.Columns[0].HeaderText == "Preferences media" || dgw.Columns[0].HeaderText == "Queue")
                 {
                     string name = dgw.Rows[e.RowIndex].Cells[1].Value.ToString();
                     Song song = null;

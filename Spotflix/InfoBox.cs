@@ -74,7 +74,7 @@ namespace Spotflix
 
             MinimunAgeShow.Text = "Explicit content:";
 
-            MinimunAgeShow.Text = explicit1.ToString();
+            MinimunAgeText.Text = explicit1.ToString();
             YearShow.Visible = false;
             MetaInfo.Visible = true;
         }
