@@ -206,18 +206,15 @@ namespace Spotflix
             User user = LogAsUser(usr, pswd);
             if (user != null)
             {
-                foreach (User us in Users)
+                if (user.MembershipType == "no pago")
                 {
-                    if (us.MembershipType == "no pago")
-                    {
-                        us.MembershipType = "pago";
-                        return true;
-                    }
-                    else if (us.MembershipType == "pago")
-                    {
-                        us.MembershipType = "no pago";
-                        return false;
-                    }
+                    user.MembershipType = "pago";
+                    return true;
+                }
+                else if (user.MembershipType == "pago")
+                {
+                    user.MembershipType = "no pago";
+                    return false;
                 }
                 return true;
             }

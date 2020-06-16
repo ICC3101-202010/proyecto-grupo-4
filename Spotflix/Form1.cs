@@ -550,8 +550,11 @@ namespace Spotflix
             {
                 if (PlayerPanel.Visible == true)
                 {
+                    if (mediaPlayer.Queue.Count()>0)
+                    {
+                        currentUser.Lastsong = mediaPlayer.Queue[index];
+                    }
                     currentUser.CurrentSec = progressBar1.Value;
-                    currentUser.Lastsong = mediaPlayer.Queue[index];
                 }
                 AdminPanel.Visible = false;
                 PlayerPanel.Visible = false;
@@ -4467,6 +4470,14 @@ namespace Spotflix
                     SaveSong();
                 }
             }
+            foreach (Video v in mediaPlayer.VideoChapters)
+            {
+                if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
+                {
+                    v.Qualification.Add(1);
+                    SaveVideo();
+                }
+            }
             foreach (Video v in mediaPlayer.Videos)
             {
                 if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
@@ -4527,6 +4538,14 @@ namespace Spotflix
                     SaveVideo();
                 }
             }
+            foreach (Video v in mediaPlayer.VideoChapters)
+            {
+                if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
+                {
+                    v.Qualification.Add(1);
+                    SaveVideo();
+                }
+            }
             foreach (Karaoke k in mediaPlayer.Karaokes)
             {
                 if (currentlyPlaying.Code == k.Code && currentlyPlaying.Letter == k.Letter)
@@ -4577,6 +4596,14 @@ namespace Spotflix
                 if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
                 {
                     v.Qualification.Add(3);
+                    SaveVideo();
+                }
+            }
+            foreach (Video v in mediaPlayer.VideoChapters)
+            {
+                if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
+                {
+                    v.Qualification.Add(1);
                     SaveVideo();
                 }
             }
@@ -4633,6 +4660,14 @@ namespace Spotflix
                     SaveVideo();
                 }
             }
+            foreach (Video v in mediaPlayer.VideoChapters)
+            {
+                if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
+                {
+                    v.Qualification.Add(1);
+                    SaveVideo();
+                }
+            }
             foreach (Karaoke k in mediaPlayer.Karaokes)
             {
                 if (currentlyPlaying.Code == k.Code && currentlyPlaying.Letter == k.Letter)
@@ -4683,6 +4718,14 @@ namespace Spotflix
                 if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
                 {
                     v.Qualification.Add(5);
+                    SaveVideo();
+                }
+            }
+            foreach (Video v in mediaPlayer.VideoChapters)
+            {
+                if (currentlyPlaying.Code == v.Code && currentlyPlaying.Letter == v.Letter)
+                {
+                    v.Qualification.Add(1);
                     SaveVideo();
                 }
             }
