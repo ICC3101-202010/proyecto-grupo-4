@@ -590,12 +590,10 @@ namespace Spotflix
             {
                 EditProfilePanel.Visible = false;
                 PlayerPanel.Visible = true;
-                tableLayoutPanel2.Visible = true;
-                tableLayoutPanel2.BringToFront();
+                ProfilImageMainPictureBox.Image = currentUser.Profileimage;
+                NameLastNameLabel.Text = currentUser.Name + " " + currentUser.Lastname;
                 PlayerBack.Visible = true;
                 PlayerBack.BringToFront();
-                EditProfilUnderButton.Visible = true;
-                EditProfilUnderButton.BringToFront();
                 EditProfileButton.Visible = true;
                 EditProfileButton.BringToFront();
                 EditPrivateButton.Visible = false;
@@ -667,12 +665,10 @@ namespace Spotflix
                 this.currentUser = user;
                 LogInPanel.Visible = false;
                 PlayerPanel.Visible = true;
-                tableLayoutPanel2.Visible = true;
-                tableLayoutPanel2.BringToFront();
+                ProfilImageMainPictureBox.Image = currentUser.Profileimage;
+                NameLastNameLabel.Text = currentUser.Name + " " + currentUser.Lastname;
                 PlayerBack.Visible = true;
                 PlayerBack.BringToFront();
-                EditProfilUnderButton.Visible = true;
-                EditProfilUnderButton.BringToFront();
                 EditProfileButton.Visible = true;
                 EditProfileButton.BringToFront();
                 NewPlaylistTable.Visible = false;
@@ -928,7 +924,7 @@ namespace Spotflix
             }
             else
             {
-                MovieButton1.Tag = "no";
+                button.Tag = "no";
                 button.BackColor = System.Drawing.Color.Black;
             }
         }
@@ -938,12 +934,10 @@ namespace Spotflix
             PreferencesPanel.Visible = false;
             PlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             PlayerPanel.Visible = true;
-            tableLayoutPanel2.Visible = true;
-            tableLayoutPanel2.BringToFront();
+            ProfilImageMainPictureBox.Image = currentUser.Profileimage;
+            NameLastNameLabel.Text = currentUser.Name + " " + currentUser.Lastname;
             PlayerBack.Visible = true;
             PlayerBack.BringToFront();
-            EditProfilUnderButton.Visible = true;
-            EditProfilUnderButton.BringToFront();
             EditProfileButton.Visible = true;
             EditProfileButton.BringToFront();
             NewPlaylistTable.Visible = false;
@@ -2932,12 +2926,8 @@ namespace Spotflix
             if (Player.Tag.ToString() == currentpanel.Text)
             {
                 PlayerPanel.Visible = true;
-                tableLayoutPanel2.Visible = true;
-                tableLayoutPanel2.BringToFront();
                 PlayerBack.Visible = true;
                 PlayerBack.BringToFront();
-                EditProfilUnderButton.Visible = true;
-                EditProfilUnderButton.BringToFront();
                 EditProfileButton.Visible = true;
                 EditProfileButton.BringToFront();
                 PlayerPanel.BringToFront();
