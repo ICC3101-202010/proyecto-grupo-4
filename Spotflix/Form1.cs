@@ -695,17 +695,17 @@ namespace Spotflix
                 QuequeButton.Tag = "no";
                 QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                 ForYouButton.Tag = "no";
-                ForYouButton.BackColor = System.Drawing.Color.Black;
+                ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 LikesButtom.Tag = "no";
-                LikesButtom.BackColor = System.Drawing.Color.Black;
+                LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 ForYouButtom.Tag = "no";
-                ForYouButtom.BackColor = System.Drawing.Color.Black;
+                ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 AlbumsButtom.Tag = "no";
-                AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 ArtistsButtom.Tag = "no";
-                ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 FollowsButtom.Tag = "no";
-                FollowsButtom.BackColor = System.Drawing.Color.Black;
+                FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
 
                 foreach (User i in Gate.Retornar())
                 {
@@ -964,17 +964,17 @@ namespace Spotflix
             QuequeButton.Tag = "no";
             QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
             ForYouButton.Tag = "no";
-            ForYouButton.BackColor = System.Drawing.Color.Black;
+            ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             LikesButtom.Tag = "no";
-            LikesButtom.BackColor = System.Drawing.Color.Black;
+            LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             ForYouButtom.Tag = "no";
-            ForYouButtom.BackColor = System.Drawing.Color.Black;
+            ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             AlbumsButtom.Tag = "no";
-            AlbumsButtom.BackColor = System.Drawing.Color.Black;
+            AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             ArtistsButtom.Tag = "no";
-            ArtistsButtom.BackColor = System.Drawing.Color.Black;
+            ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             FollowsButtom.Tag = "no";
-            FollowsButtom.BackColor = System.Drawing.Color.Black;
+            FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             HashSet<Song> foundsongs = new HashSet<Song>();
             HashSet<Video> foundvideo = new HashSet<Video>();
 
@@ -2671,17 +2671,17 @@ namespace Spotflix
                         QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_azul;
                         QuequeButton.Tag = "si";
                         ForYouButton.Tag = "no";
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesButtom.Tag = "no";
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesdataGrid.Columns[0].HeaderText = "Queue";
                         LikesdataGrid.Columns[1].HeaderText = "Name";
                         LikesdataGrid.Columns[2].HeaderText = "Duration";
@@ -2708,15 +2708,15 @@ namespace Spotflix
                         ForYouButton.Tag = "si";
                         ForYouButton.BackColor = System.Drawing.Color.Silver;
                         LikesButtom.Tag = "no";
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesdataGrid.Columns[0].HeaderText = "Preferences media";
                         LikesdataGrid.Columns[1].HeaderText = "Name";
                         LikesdataGrid.Columns[2].HeaderText = "Duration";
@@ -2734,7 +2734,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButton.Tag = "no";
                         LikedPanel.Visible = false;
                         break;
@@ -2747,15 +2747,15 @@ namespace Spotflix
                         LikesButtom.Tag = "si";
                         LikesButtom.BackColor = System.Drawing.Color.Silver;
                         ForYouButton.Tag = "no";
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesdataGrid.Columns[0].HeaderText = "Liked media";
                         LikesdataGrid.Columns[1].HeaderText = "Name";
                         LikesdataGrid.Columns[2].HeaderText = "Duration";
@@ -2778,7 +2778,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesButtom.Tag = "no";
                         LikedPanel.Visible = false;
                         break;
@@ -2792,15 +2792,15 @@ namespace Spotflix
                         ForYouButtom.Tag = "si";
                         ForYouButtom.BackColor = System.Drawing.Color.Silver;
                         ForYouButton.Tag = "no";
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesButtom.Tag = "no";
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesdataGrid.Columns[0].HeaderText = "Followed playlist/series";
                         LikesdataGrid.Columns[1].HeaderText = "name";
                         LikesdataGrid.Columns[2].HeaderText = "N of mediafiles";
@@ -2816,7 +2816,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
                         LikedPanel.Visible = false;
                         break;
@@ -2830,15 +2830,15 @@ namespace Spotflix
                         QuequeButton.Tag = "no";
                         QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         ForYouButton.Tag = "no";
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesButtom.Tag = "no";
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesdataGrid.Columns[0].HeaderText = "Followed users";
                         LikesdataGrid.Columns[1].HeaderText = "Nickname";
                         LikesdataGrid.Columns[2].HeaderText = "N of playlist";
@@ -2850,7 +2850,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
                         LikedPanel.Visible = false;
                         break;
@@ -2864,15 +2864,15 @@ namespace Spotflix
                         QuequeButton.Tag = "no";
                         QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         ForYouButton.Tag = "no";
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21); 
                         LikesButtom.Tag = "no";
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
 
                         LikesdataGrid.Columns[0].HeaderText = "Followed albums";
                         LikesdataGrid.Columns[1].HeaderText = "name";
@@ -2885,7 +2885,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
                         LikedPanel.Visible = false;
                         break;
@@ -2897,15 +2897,15 @@ namespace Spotflix
                         QuequeButton.Tag = "no";
                         QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         ForYouButton.Tag = "no";
-                        ForYouButton.BackColor = System.Drawing.Color.Black;
+                        ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesButtom.Tag = "no";
-                        LikesButtom.BackColor = System.Drawing.Color.Black;
+                        LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ForYouButtom.Tag = "no";
-                        ForYouButtom.BackColor = System.Drawing.Color.Black;
+                        ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         AlbumsButtom.Tag = "no";
-                        AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                        AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         FollowsButtom.Tag = "no";
-                        FollowsButtom.BackColor = System.Drawing.Color.Black;
+                        FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "si";
                         ArtistsButtom.BackColor = System.Drawing.Color.Silver;
                         LikesdataGrid.Columns[0].HeaderText = "Followed artist";
@@ -2919,7 +2919,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                        ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         ArtistsButtom.Tag = "no";
                         LikedPanel.Visible = false;
                         break;
@@ -3301,17 +3301,17 @@ namespace Spotflix
                 QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                 QuequeButton.Tag = "no";
                 ForYouButton.Tag = "no";
-                ForYouButton.BackColor = System.Drawing.Color.Black;
+                ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 LikesButtom.Tag = "no";
-                LikesButtom.BackColor = System.Drawing.Color.Black;
+                LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 ForYouButtom.Tag = "no";
-                ForYouButtom.BackColor = System.Drawing.Color.Black;
+                ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 AlbumsButtom.Tag = "no";
-                AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 ArtistsButtom.Tag = "no";
-                ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 FollowsButtom.Tag = "no";
-                FollowsButtom.BackColor = System.Drawing.Color.Black;
+                FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             }
         }
 
@@ -3677,17 +3677,17 @@ namespace Spotflix
                 QuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                 QuequeButton.Tag = "no";
                 ForYouButton.Tag = "no";
-                ForYouButton.BackColor = System.Drawing.Color.Black;
+                ForYouButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 LikesButtom.Tag = "no";
-                LikesButtom.BackColor = System.Drawing.Color.Black;
+                LikesButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 ForYouButtom.Tag = "no";
-                ForYouButtom.BackColor = System.Drawing.Color.Black;
+                ForYouButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 AlbumsButtom.Tag = "no";
-                AlbumsButtom.BackColor = System.Drawing.Color.Black;
+                AlbumsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 ArtistsButtom.Tag = "no";
-                ArtistsButtom.BackColor = System.Drawing.Color.Black;
+                ArtistsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 FollowsButtom.Tag = "no";
-                FollowsButtom.BackColor = System.Drawing.Color.Black;
+                FollowsButtom.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             }
         }
 
@@ -4315,8 +4315,8 @@ namespace Spotflix
                 ChooseanameLabel.Visible = false;
                 PublicButton.Tag = "off";
                 PrivateButton.Tag = "off";
-                PublicButton.BackColor = System.Drawing.Color.Black;
-                PrivateButton.BackColor = System.Drawing.Color.Black;
+                PublicButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
+                PrivateButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
                 PlayListImagePathTextBox.Text = "";
                 PlaylistNameTextBox.Text = "";
                 PlaylistNameTextBox.BackColor = System.Drawing.Color.Silver;
@@ -4360,7 +4360,7 @@ namespace Spotflix
             else
             {
                 PrivateButton.Tag = "off";
-                PrivateButton.BackColor = System.Drawing.Color.Black;
+                PrivateButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
             }
         }
 
@@ -4376,7 +4376,7 @@ namespace Spotflix
             else
             {
                 PublicButton.Tag = "off";
-                PublicButton.BackColor = System.Drawing.Color.Black;
+                PublicButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
             }
         }
 
@@ -4402,7 +4402,7 @@ namespace Spotflix
                 ChoosePublic.Text = "Private user. You cannot upload public playlists.";
                 ChoosePublic.Visible = true;
                 PublicButton.Tag = "off";
-                PublicButton.BackColor = System.Drawing.Color.Black;
+                PublicButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
             }
             else if (!string.IsNullOrEmpty(name) && (PrivateButton.Tag.ToString() != "off" || PublicButton.Tag.ToString() != "off"))
             {
@@ -4881,13 +4881,13 @@ namespace Spotflix
                 AdLessonQuequeButton.Tag = "no";
                 AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                 TeacherProfile.Tag = "no";
-                TeacherProfile.BackColor = System.Drawing.Color.Black;
+                TeacherProfile.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 StudentFavoritesButton.Tag = "no";
-                StudentFavoritesButton.BackColor = System.Drawing.Color.Black;
+                StudentFavoritesButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 YourLessonsButton.Tag = "no";
-                YourLessonsButton.BackColor = System.Drawing.Color.Black;
+                YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 UploadHomeWorkButton.Tag = "no";
-                UploadHomeWorkButton.BackColor = System.Drawing.Color.Black;
+                UploadHomeWorkButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 initializeStudentPlayer();
             }
             else
@@ -5047,9 +5047,9 @@ namespace Spotflix
                         AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_azul;
                         AdLessonQuequeButton.Tag = "si";
                         StudentFavoritesButton.Tag = "no";
-                        StudentFavoritesButton.BackColor = System.Drawing.Color.Black;
+                        StudentFavoritesButton.BackColor =System.Drawing.Color.FromArgb(21, 21, 21);
                         YourLessonsButton.Tag = "no";
-                        YourLessonsButton.BackColor = System.Drawing.Color.Black;
+                        YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
 
                         LikesdataGrid.Columns[0].HeaderText = "Queue";
                         LikesdataGrid.Columns[1].HeaderText = "Name";
@@ -5078,12 +5078,12 @@ namespace Spotflix
                 case "Favorites":
                     if (LikesButtom.Tag.ToString() == "no")
                     {
-                        AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_azul;
+                        AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         AdLessonQuequeButton.Tag = "no";
                         StudentFavoritesButton.Tag = "si";
-                        StudentFavoritesButton.BackColor = System.Drawing.Color.Black;
+                        StudentFavoritesButton.BackColor = System.Drawing.Color.Silver;
                         YourLessonsButton.Tag = "no";
-                        YourLessonsButton.BackColor = System.Drawing.Color.Black;
+                        YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         LikesdataGrid.Columns[0].HeaderText = "Liked lesson";
                         LikesdataGrid.Columns[1].HeaderText = "Name";
                         LikesdataGrid.Columns[2].HeaderText = "Duration";
@@ -5102,7 +5102,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        StudentFavoritesButton.BackColor = System.Drawing.Color.Black;
+                        StudentFavoritesButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         StudentFavoritesButton.Tag = "no";
                         DataStudentGrid.Visible = false;
                         break;
@@ -5111,12 +5111,12 @@ namespace Spotflix
                 case "Your Lessons":
                     if (YourLessonsButton.Tag.ToString() == "no")
                     {
-                        AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_azul;
+                        AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         AdLessonQuequeButton.Tag = "no";
                         StudentFavoritesButton.Tag = "no";
-                        StudentFavoritesButton.BackColor = System.Drawing.Color.Black;
+                        StudentFavoritesButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         YourLessonsButton.Tag = "si";
-                        YourLessonsButton.BackColor = System.Drawing.Color.Black;
+                        YourLessonsButton.BackColor = System.Drawing.Color.Silver;
                         LikesdataGrid.Columns[0].HeaderText = "Lessons for you";
                         LikesdataGrid.Columns[1].HeaderText = "Name";
                         LikesdataGrid.Columns[2].HeaderText = "Duration";
@@ -5135,7 +5135,7 @@ namespace Spotflix
                     }
                     else
                     {
-                        YourLessonsButton.BackColor = System.Drawing.Color.Black;
+                        YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         YourLessonsButton.Tag = "no";
                         DataStudentGrid.Visible = false;
                         break;
@@ -5515,7 +5515,7 @@ namespace Spotflix
             else
             {
                 DownloadHomeworkButton2.Tag = "no";
-                DownloadHomeworkButton2.BackColor = System.Drawing.Color.Black;
+                DownloadHomeworkButton2.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 SuccessDownloadLael.Visible = false;
             }
         }
@@ -5527,7 +5527,7 @@ namespace Spotflix
             {
                 UploadHomeWorkPanel.Visible = false;
                 UploadHomeworkButton2.Tag = "no";
-                UploadHomeworkButton2.BackColor = System.Drawing.Color.Black;
+                UploadHomeworkButton2.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 SuccessDownloadLael.Visible = false;
             }
             else
@@ -5541,7 +5541,7 @@ namespace Spotflix
                 EditorsStudentPanel.BringToFront();
                 UploadHomeWorkPanel.BringToFront();
                 TeacherprofileButton.Tag = "no";
-                TeacherprofileButton.BackColor = System.Drawing.Color.Black;
+                TeacherprofileButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 UploadHomeworkButton2.Tag = "si";
                 UploadHomeworkButton2.BackColor = System.Drawing.Color.Silver;
                 TeacherEmailtextBox.BackColor = System.Drawing.Color.Silver;
@@ -5627,14 +5627,14 @@ namespace Spotflix
                 TeacherProfilTable.Visible = false;
                 TeacherprofileButton.Tag = "no";
                 SuccessDownloadLael.Visible = false;
-                TeacherprofileButton.BackColor = System.Drawing.Color.Black;
+                TeacherprofileButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
             }
             else if (currentlyLessonPlaying != null)
             {
                 TeacherProfilTable.Visible = true;
                 TeacherProfilTable.Dock = System.Windows.Forms.DockStyle.Fill;
                 UploadHomeworkButton2.Tag = "no";
-                UploadHomeworkButton2.BackColor = System.Drawing.Color.Black;
+                UploadHomeworkButton2.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 UploadHomeWorkPanel.Visible = false;
                 UploadHomeWorkPanel.Dock = System.Windows.Forms.DockStyle.Fill;
                 TeacherprofileButton.Tag = "si";
