@@ -240,7 +240,6 @@ C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\TagLibSharp.xml
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\Interop.WMPLib.dll
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Interop.WMPLib.dll
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.ResolveComReference.cache
@@ -253,3 +252,4 @@ C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csproj.CopyComplete
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.exe
 C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.pdb
+C:\Users\kikil\Documents\Universidad\Programación orientada a objetos\Proyecto\proyecto-grupo-4\Spotflix\obj\Debug\Spotflix.csprojAssemblyReference.cache

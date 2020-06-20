@@ -93,6 +93,7 @@ namespace Spotflix
                 stream.Close();
              }
         }
+
         private void SaveVideoT()
         {
             try
@@ -124,6 +125,7 @@ namespace Spotflix
                 stream.Close();
             }
         }
+
         private void SaveLesson()
         {
             try
@@ -156,6 +158,7 @@ namespace Spotflix
                 stream.Close();
             }
         }
+
         private void SaveKaroke()
         {
             try
@@ -186,6 +189,7 @@ namespace Spotflix
                 stream.Close();
             }
         }
+
         private void SaveSeries()
         {
             try
@@ -222,6 +226,7 @@ namespace Spotflix
             }
            
         }
+
         private void SavePlaylist()
         {
             try
@@ -285,6 +290,7 @@ namespace Spotflix
                 stream.Close();
             }
         }
+
         private void SaveAlbum()
         {
             try
@@ -2934,7 +2940,7 @@ namespace Spotflix
             }
             else
             {
-                if (CentralPlayerPanel.Controls.GetChildIndex(LikedPanel) != 0)
+                if (ExtraPanel.Controls.GetChildIndex(LikedPanel) != 0)
                 {
                     LikedPanel.BringToFront();
                 }
@@ -3211,51 +3217,59 @@ namespace Spotflix
             karaoke = mediaPlayer.Karaokes.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
             song = mediaPlayer.Songs.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
             video = mediaPlayer.Videos.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
-            if (video is null)
+            if (currentlyPlaying is null)
             {
-                video = mediaPlayer.VideoChapters.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
-            }
-            if (currentUser.LikedSongs.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedVideos.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedKarokes.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)))
-            {
-                if (song is null && karaoke is null)
-                {
-                    currentUser.LikedVideos.Remove(video);
-                    video.Likes--;
-                }
-                else if (karaoke is null)
-                {
-                    song.Likes--;
-                    currentUser.LikedSongs.Remove(song);
-                }
-                else
-                {
-                    karaoke.Likes--;
-                    currentUser.LikedKarokes.Remove(karaoke);
-                }
+                LikeSongorVideo.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
+                LikeSongorVideo.Tag = "no";
             }
             else
             {
-                if (song is null && karaoke is null)
+                if (video is null)
                 {
-                    currentUser.LikedVideos.Add(video);
-                    video.Likes++;
+                    video = mediaPlayer.VideoChapters.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
                 }
-                else if (karaoke is null)
+                if (currentUser.LikedSongs.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedVideos.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedKarokes.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)))
                 {
-                    song.Likes++;
-                    currentUser.LikedSongs.Add(song);
+                    if (song is null && karaoke is null)
+                    {
+                        currentUser.LikedVideos.Remove(video);
+                        video.Likes--;
+                    }
+                    else if (karaoke is null)
+                    {
+                        song.Likes--;
+                        currentUser.LikedSongs.Remove(song);
+                    }
+                    else
+                    {
+                        karaoke.Likes--;
+                        currentUser.LikedKarokes.Remove(karaoke);
+                    }
                 }
                 else
                 {
-                    karaoke.Likes++;
-                    currentUser.LikedKarokes.Add(karaoke);
+                    if (song is null && karaoke is null)
+                    {
+                        currentUser.LikedVideos.Add(video);
+                        video.Likes++;
+                    }
+                    else if (karaoke is null)
+                    {
+                        song.Likes++;
+                        currentUser.LikedSongs.Add(song);
+                    }
+                    else
+                    {
+                        karaoke.Likes++;
+                        currentUser.LikedKarokes.Add(karaoke);
+                    }
                 }
             }
             SaveUser();
             SaveSong();
             SaveVideo();
             SaveKaroke();
-            SaveSeries(); //Falta hacer que le pueda poner me gusta a una serie
+            SaveSeries(); 
         }
 
         //Timer
@@ -3269,7 +3283,7 @@ namespace Spotflix
         private void ExploreButtom_Click(object sender, EventArgs e)
         {
             SearchPanel.Visible = true;
-            if (CentralPlayerPanel.Controls.GetChildIndex(SearchPanel) == 0)
+            if (ExtraPanel.Controls.GetChildIndex(SearchPanel) == 0)
             {
                 Player.BringToFront();
             }
@@ -4276,13 +4290,15 @@ namespace Spotflix
         //Home (se ve lo que se está reproduciendo)
         private void HomeButtom_Click(object sender, EventArgs e)
         {
-            if (CentralPlayerPanel.Controls.GetChildIndex(Player) == 0)
+            if (ExtraPanel.Controls.GetChildIndex(Player) == 0)
             {
                 Player.SendToBack();
+
             }
             else
             {
                 Player.BringToFront();
+
             }
         }
 
@@ -4339,7 +4355,7 @@ namespace Spotflix
                 PrivateButton.Tag = "on";
                 PublicButton.Tag = "off";
                 PrivateButton.BackColor = System.Drawing.Color.Gray;
-                PublicButton.BackColor = System.Drawing.Color.Black;
+                PublicButton.BackColor = System.Drawing.Color.FromArgb(45,45,45) ;
             }
             else
             {
@@ -4355,7 +4371,7 @@ namespace Spotflix
                 PublicButton.Tag = "on";
                 PrivateButton.Tag = "off";
                 PublicButton.BackColor = System.Drawing.Color.Gray;
-                PrivateButton.BackColor = System.Drawing.Color.Black;
+                PrivateButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
             }
             else
             {
