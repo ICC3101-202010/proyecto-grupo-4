@@ -129,7 +129,6 @@
             this.CentralPlayerPanel = new System.Windows.Forms.Panel();
             this.ExtraTable = new System.Windows.Forms.TableLayoutPanel();
             this.ExtraPanel = new System.Windows.Forms.Panel();
-            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.SearchPanel = new System.Windows.Forms.Panel();
             this.SearchTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.SearcherTablePanel = new System.Windows.Forms.TableLayoutPanel();
@@ -574,7 +573,6 @@
             this.ExploreStudentButton = new System.Windows.Forms.Button();
             this.HomeStudentButton = new System.Windows.Forms.Button();
             this.CentralStudentPanel = new System.Windows.Forms.Panel();
-            this.SPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.StudentSearchPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel45 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel46 = new System.Windows.Forms.TableLayoutPanel();
@@ -700,6 +698,8 @@
             this.AddLessonButton = new System.Windows.Forms.Button();
             this.SuccessDownloadEmailLabel = new System.Windows.Forms.Label();
             this.TeacherBackButton = new System.Windows.Forms.Button();
+            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
+            this.SPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.PresentationPanel.SuspendLayout();
             this.StudytableLayoutPanel.SuspendLayout();
             this.InitialSignnIntableLayoutPanel.SuspendLayout();
@@ -730,7 +730,6 @@
             this.CentralPlayerPanel.SuspendLayout();
             this.ExtraTable.SuspendLayout();
             this.ExtraPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SearchPanel.SuspendLayout();
             this.SearchTablePanel.SuspendLayout();
             this.SearcherTablePanel.SuspendLayout();
@@ -878,7 +877,6 @@
             this.ButtonsStudenTable.SuspendLayout();
             this.LeftUpStudentTable.SuspendLayout();
             this.CentralStudentPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SPlayer)).BeginInit();
             this.StudentSearchPanel.SuspendLayout();
             this.tableLayoutPanel45.SuspendLayout();
             this.tableLayoutPanel46.SuspendLayout();
@@ -925,6 +923,8 @@
             this.UpperPanel.SuspendLayout();
             this.MailTable.SuspendLayout();
             this.AddLessonTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // PresentationPanel
@@ -1106,10 +1106,11 @@
             this.PlayerPanel.BackColor = System.Drawing.Color.Black;
             this.PlayerPanel.Controls.Add(this.UpperPlayerPanelK);
             this.PlayerPanel.Controls.Add(this.PpalTPanel);
-            this.PlayerPanel.Location = new System.Drawing.Point(18, 199);
+            this.PlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PlayerPanel.Location = new System.Drawing.Point(0, 0);
             this.PlayerPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PlayerPanel.Name = "PlayerPanel";
-            this.PlayerPanel.Size = new System.Drawing.Size(268, 168);
+            this.PlayerPanel.Size = new System.Drawing.Size(1438, 630);
             this.PlayerPanel.TabIndex = 8;
             this.PlayerPanel.Visible = false;
             // 
@@ -1122,7 +1123,7 @@
             this.UpperPlayerPanelK.Controls.Add(this.UpperoButtonTable);
             this.UpperPlayerPanelK.Location = new System.Drawing.Point(0, 0);
             this.UpperPlayerPanelK.Name = "UpperPlayerPanelK";
-            this.UpperPlayerPanelK.Size = new System.Drawing.Size(268, 110);
+            this.UpperPlayerPanelK.Size = new System.Drawing.Size(1438, 110);
             this.UpperPlayerPanelK.TabIndex = 5;
             // 
             // PlayerBack
@@ -1155,7 +1156,7 @@
             this.UpperoButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.UpperoButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.UpperoButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.UpperoButtonTable.Size = new System.Drawing.Size(268, 110);
+            this.UpperoButtonTable.Size = new System.Drawing.Size(1438, 110);
             this.UpperoButtonTable.TabIndex = 5;
             // 
             // CentralUpperButtonTable
@@ -1173,7 +1174,7 @@
             this.CentralUpperButtonTable.Name = "CentralUpperButtonTable";
             this.CentralUpperButtonTable.RowCount = 1;
             this.CentralUpperButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CentralUpperButtonTable.Size = new System.Drawing.Size(262, 71);
+            this.CentralUpperButtonTable.Size = new System.Drawing.Size(1432, 71);
             this.CentralUpperButtonTable.TabIndex = 0;
             // 
             // EditProfileButton
@@ -1183,9 +1184,9 @@
             this.EditProfileButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditProfileButton.FlatAppearance.BorderSize = 0;
             this.EditProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditProfileButton.Location = new System.Drawing.Point(249, 3);
+            this.EditProfileButton.Location = new System.Drawing.Point(1352, 3);
             this.EditProfileButton.Name = "EditProfileButton";
-            this.EditProfileButton.Size = new System.Drawing.Size(10, 65);
+            this.EditProfileButton.Size = new System.Drawing.Size(77, 65);
             this.EditProfileButton.TabIndex = 2;
             this.EditProfileButton.UseVisualStyleBackColor = true;
             this.EditProfileButton.Click += new System.EventHandler(this.EditProfileButton_Click);
@@ -1196,13 +1197,13 @@
             this.NameLastNameTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.NameLastNameTable.Controls.Add(this.NameLastNameLabel, 0, 1);
             this.NameLastNameTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NameLastNameTable.Location = new System.Drawing.Point(208, 3);
+            this.NameLastNameTable.Location = new System.Drawing.Point(1127, 3);
             this.NameLastNameTable.Name = "NameLastNameTable";
             this.NameLastNameTable.RowCount = 3;
             this.NameLastNameTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.NameLastNameTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.NameLastNameTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.NameLastNameTable.Size = new System.Drawing.Size(35, 65);
+            this.NameLastNameTable.Size = new System.Drawing.Size(219, 65);
             this.NameLastNameTable.TabIndex = 4;
             // 
             // NameLastNameLabel
@@ -1212,7 +1213,7 @@
             this.NameLastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLastNameLabel.Location = new System.Drawing.Point(3, 13);
             this.NameLastNameLabel.Name = "NameLastNameLabel";
-            this.NameLastNameLabel.Size = new System.Drawing.Size(29, 39);
+            this.NameLastNameLabel.Size = new System.Drawing.Size(213, 39);
             this.NameLastNameLabel.TabIndex = 0;
             this.NameLastNameLabel.Text = "NL";
             this.NameLastNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1220,10 +1221,10 @@
             // ProfilImageMainPictureBox
             // 
             this.ProfilImageMainPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProfilImageMainPictureBox.Location = new System.Drawing.Point(192, 5);
+            this.ProfilImageMainPictureBox.Location = new System.Drawing.Point(1033, 5);
             this.ProfilImageMainPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ProfilImageMainPictureBox.Name = "ProfilImageMainPictureBox";
-            this.ProfilImageMainPictureBox.Size = new System.Drawing.Size(9, 61);
+            this.ProfilImageMainPictureBox.Size = new System.Drawing.Size(87, 61);
             this.ProfilImageMainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ProfilImageMainPictureBox.TabIndex = 3;
             this.ProfilImageMainPictureBox.TabStop = false;
@@ -1236,13 +1237,14 @@
             this.PpalTPanel.Controls.Add(this.Interface, 0, 1);
             this.PpalTPanel.Controls.Add(this.DownPlayerTable, 0, 2);
             this.PpalTPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PpalTPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.PpalTPanel.Location = new System.Drawing.Point(0, 0);
             this.PpalTPanel.Name = "PpalTPanel";
             this.PpalTPanel.RowCount = 3;
             this.PpalTPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.PpalTPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.92063F));
             this.PpalTPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.07936F));
-            this.PpalTPanel.Size = new System.Drawing.Size(268, 168);
+            this.PpalTPanel.Size = new System.Drawing.Size(1438, 630);
             this.PpalTPanel.TabIndex = 6;
             // 
             // Interface
@@ -1256,13 +1258,13 @@
             this.Interface.Controls.Add(this.PlayListLayOutPanel, 2, 0);
             this.Interface.Controls.Add(this.CentralPlayerPanel, 1, 0);
             this.Interface.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Interface.Location = new System.Drawing.Point(4, 21);
+            this.Interface.Location = new System.Drawing.Point(4, 68);
             this.Interface.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Interface.Name = "Interface";
             this.Interface.RowCount = 1;
             this.Interface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Interface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 115F));
-            this.Interface.Size = new System.Drawing.Size(260, 115);
+            this.Interface.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 462F));
+            this.Interface.Size = new System.Drawing.Size(1430, 462);
             this.Interface.TabIndex = 0;
             // 
             // OptionsPanelPlayer
@@ -1280,7 +1282,7 @@
             this.OptionsPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.000362F));
             this.OptionsPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.94577F));
             this.OptionsPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.05387F));
-            this.OptionsPanelPlayer.Size = new System.Drawing.Size(44, 105);
+            this.OptionsPanelPlayer.Size = new System.Drawing.Size(278, 452);
             this.OptionsPanelPlayer.TabIndex = 1;
             // 
             // PanelLibrary
@@ -1295,7 +1297,7 @@
             this.PanelLibrary.Controls.Add(this.LibraryLabel, 0, 0);
             this.PanelLibrary.Controls.Add(this.ForYouButtom, 0, 3);
             this.PanelLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelLibrary.Location = new System.Drawing.Point(4, 42);
+            this.PanelLibrary.Location = new System.Drawing.Point(4, 167);
             this.PanelLibrary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PanelLibrary.Name = "PanelLibrary";
             this.PanelLibrary.RowCount = 7;
@@ -1307,7 +1309,7 @@
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.PanelLibrary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.PanelLibrary.Size = new System.Drawing.Size(36, 58);
+            this.PanelLibrary.Size = new System.Drawing.Size(270, 280);
             this.PanelLibrary.TabIndex = 2;
             // 
             // ForYouButton
@@ -1318,9 +1320,9 @@
             this.ForYouButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ForYouButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForYouButton.ForeColor = System.Drawing.Color.White;
-            this.ForYouButton.Location = new System.Drawing.Point(3, 12);
+            this.ForYouButton.Location = new System.Drawing.Point(3, 47);
             this.ForYouButton.Name = "ForYouButton";
-            this.ForYouButton.Size = new System.Drawing.Size(30, 2);
+            this.ForYouButton.Size = new System.Drawing.Size(264, 33);
             this.ForYouButton.TabIndex = 6;
             this.ForYouButton.Tag = "no";
             this.ForYouButton.Text = "For you";
@@ -1335,9 +1337,9 @@
             this.ArtistsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ArtistsButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArtistsButtom.ForeColor = System.Drawing.Color.White;
-            this.ArtistsButtom.Location = new System.Drawing.Point(3, 52);
+            this.ArtistsButtom.Location = new System.Drawing.Point(3, 242);
             this.ArtistsButtom.Name = "ArtistsButtom";
-            this.ArtistsButtom.Size = new System.Drawing.Size(30, 3);
+            this.ArtistsButtom.Size = new System.Drawing.Size(264, 35);
             this.ArtistsButtom.TabIndex = 8;
             this.ArtistsButtom.Tag = "no";
             this.ArtistsButtom.Text = "Artist";
@@ -1352,9 +1354,9 @@
             this.AlbumsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AlbumsButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlbumsButtom.ForeColor = System.Drawing.Color.White;
-            this.AlbumsButtom.Location = new System.Drawing.Point(3, 44);
+            this.AlbumsButtom.Location = new System.Drawing.Point(3, 203);
             this.AlbumsButtom.Name = "AlbumsButtom";
-            this.AlbumsButtom.Size = new System.Drawing.Size(30, 2);
+            this.AlbumsButtom.Size = new System.Drawing.Size(264, 33);
             this.AlbumsButtom.TabIndex = 7;
             this.AlbumsButtom.Tag = "no";
             this.AlbumsButtom.Text = "Albums";
@@ -1369,9 +1371,9 @@
             this.LikesButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LikesButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LikesButtom.ForeColor = System.Drawing.Color.White;
-            this.LikesButtom.Location = new System.Drawing.Point(3, 20);
+            this.LikesButtom.Location = new System.Drawing.Point(3, 86);
             this.LikesButtom.Name = "LikesButtom";
-            this.LikesButtom.Size = new System.Drawing.Size(30, 2);
+            this.LikesButtom.Size = new System.Drawing.Size(264, 33);
             this.LikesButtom.TabIndex = 5;
             this.LikesButtom.Tag = "no";
             this.LikesButtom.Text = "Favorites";
@@ -1386,9 +1388,9 @@
             this.FollowsButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FollowsButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FollowsButtom.ForeColor = System.Drawing.Color.White;
-            this.FollowsButtom.Location = new System.Drawing.Point(3, 36);
+            this.FollowsButtom.Location = new System.Drawing.Point(3, 164);
             this.FollowsButtom.Name = "FollowsButtom";
-            this.FollowsButtom.Size = new System.Drawing.Size(30, 2);
+            this.FollowsButtom.Size = new System.Drawing.Size(264, 33);
             this.FollowsButtom.TabIndex = 6;
             this.FollowsButtom.Tag = "no";
             this.FollowsButtom.Text = "Users";
@@ -1403,7 +1405,7 @@
             this.LibraryLabel.ForeColor = System.Drawing.Color.White;
             this.LibraryLabel.Location = new System.Drawing.Point(3, 0);
             this.LibraryLabel.Name = "LibraryLabel";
-            this.LibraryLabel.Size = new System.Drawing.Size(30, 9);
+            this.LibraryLabel.Size = new System.Drawing.Size(264, 44);
             this.LibraryLabel.TabIndex = 3;
             this.LibraryLabel.Text = "Library";
             this.LibraryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1416,9 +1418,9 @@
             this.ForYouButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ForYouButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForYouButtom.ForeColor = System.Drawing.Color.White;
-            this.ForYouButtom.Location = new System.Drawing.Point(3, 28);
+            this.ForYouButtom.Location = new System.Drawing.Point(3, 125);
             this.ForYouButtom.Name = "ForYouButtom";
-            this.ForYouButtom.Size = new System.Drawing.Size(30, 2);
+            this.ForYouButtom.Size = new System.Drawing.Size(264, 33);
             this.ForYouButtom.TabIndex = 4;
             this.ForYouButtom.Tag = "no";
             this.ForYouButtom.Text = "Playlist/Series";
@@ -1433,12 +1435,12 @@
             this.HometableLayoutPanel.Controls.Add(this.ExploreButtom, 0, 1);
             this.HometableLayoutPanel.Controls.Add(this.HomeButtom, 0, 0);
             this.HometableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HometableLayoutPanel.Location = new System.Drawing.Point(3, 9);
+            this.HometableLayoutPanel.Location = new System.Drawing.Point(3, 30);
             this.HometableLayoutPanel.Name = "HometableLayoutPanel";
             this.HometableLayoutPanel.RowCount = 2;
             this.HometableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.HometableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HometableLayoutPanel.Size = new System.Drawing.Size(38, 25);
+            this.HometableLayoutPanel.Size = new System.Drawing.Size(272, 129);
             this.HometableLayoutPanel.TabIndex = 5;
             // 
             // ExploreButtom
@@ -1449,9 +1451,9 @@
             this.ExploreButtom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExploreButtom.FlatAppearance.BorderSize = 0;
             this.ExploreButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExploreButtom.Location = new System.Drawing.Point(3, 15);
+            this.ExploreButtom.Location = new System.Drawing.Point(3, 67);
             this.ExploreButtom.Name = "ExploreButtom";
-            this.ExploreButtom.Size = new System.Drawing.Size(32, 7);
+            this.ExploreButtom.Size = new System.Drawing.Size(266, 59);
             this.ExploreButtom.TabIndex = 1;
             this.ExploreButtom.Tag = "no";
             this.ExploreButtom.UseVisualStyleBackColor = false;
@@ -1467,7 +1469,7 @@
             this.HomeButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButtom.Location = new System.Drawing.Point(3, 3);
             this.HomeButtom.Name = "HomeButtom";
-            this.HomeButtom.Size = new System.Drawing.Size(32, 6);
+            this.HomeButtom.Size = new System.Drawing.Size(266, 58);
             this.HomeButtom.TabIndex = 0;
             this.HomeButtom.Tag = "no";
             this.HomeButtom.UseVisualStyleBackColor = false;
@@ -1481,13 +1483,13 @@
             this.PlayListLayOutPanel.Controls.Add(this.MyPlaylistsPanel, 0, 2);
             this.PlayListLayOutPanel.Controls.Add(this.PlaylistTitleTable, 0, 1);
             this.PlayListLayOutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlayListLayOutPanel.Location = new System.Drawing.Point(211, 3);
+            this.PlayListLayOutPanel.Location = new System.Drawing.Point(1147, 3);
             this.PlayListLayOutPanel.Name = "PlayListLayOutPanel";
             this.PlayListLayOutPanel.RowCount = 3;
             this.PlayListLayOutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.PlayListLayOutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.447004F));
             this.PlayListLayOutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.71889F));
-            this.PlayListLayOutPanel.Size = new System.Drawing.Size(46, 109);
+            this.PlayListLayOutPanel.Size = new System.Drawing.Size(280, 456);
             this.PlayListLayOutPanel.TabIndex = 5;
             // 
             // MyPlaylistsPanel
@@ -1495,9 +1497,9 @@
             this.MyPlaylistsPanel.Controls.Add(this.NewPlaylistTable);
             this.MyPlaylistsPanel.Controls.Add(this.PlaylistsDataGrid);
             this.MyPlaylistsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MyPlaylistsPanel.Location = new System.Drawing.Point(3, 21);
+            this.MyPlaylistsPanel.Location = new System.Drawing.Point(3, 82);
             this.MyPlaylistsPanel.Name = "MyPlaylistsPanel";
-            this.MyPlaylistsPanel.Size = new System.Drawing.Size(40, 85);
+            this.MyPlaylistsPanel.Size = new System.Drawing.Size(274, 371);
             this.MyPlaylistsPanel.TabIndex = 4;
             // 
             // NewPlaylistTable
@@ -1527,7 +1529,7 @@
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.660053F));
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.80226F));
             this.NewPlaylistTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.039548F));
-            this.NewPlaylistTable.Size = new System.Drawing.Size(40, 85);
+            this.NewPlaylistTable.Size = new System.Drawing.Size(274, 371);
             this.NewPlaylistTable.TabIndex = 5;
             this.NewPlaylistTable.Visible = false;
             // 
@@ -1540,11 +1542,11 @@
             this.SearchSmartTable2.Controls.Add(this.SeerachSmartTextBox, 1, 0);
             this.SearchSmartTable2.Controls.Add(this.SearchSmartImage, 0, 0);
             this.SearchSmartTable2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchSmartTable2.Location = new System.Drawing.Point(3, 76);
+            this.SearchSmartTable2.Location = new System.Drawing.Point(3, 335);
             this.SearchSmartTable2.Name = "SearchSmartTable2";
             this.SearchSmartTable2.RowCount = 1;
             this.SearchSmartTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.SearchSmartTable2.Size = new System.Drawing.Size(34, 6);
+            this.SearchSmartTable2.Size = new System.Drawing.Size(268, 33);
             this.SearchSmartTable2.TabIndex = 2;
             this.SearchSmartTable2.Visible = false;
             // 
@@ -1552,9 +1554,9 @@
             // 
             this.SeerachSmartTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SeerachSmartTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SeerachSmartTextBox.Location = new System.Drawing.Point(8, 3);
+            this.SeerachSmartTextBox.Location = new System.Drawing.Point(42, 3);
             this.SeerachSmartTextBox.Name = "SeerachSmartTextBox";
-            this.SeerachSmartTextBox.Size = new System.Drawing.Size(23, 26);
+            this.SeerachSmartTextBox.Size = new System.Drawing.Size(223, 26);
             this.SeerachSmartTextBox.TabIndex = 3;
             this.SeerachSmartTextBox.Text = "Search";
             this.SeerachSmartTextBox.Click += new System.EventHandler(this.SeerachSmartTextBox_Click);
@@ -1566,7 +1568,7 @@
             this.SearchSmartImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchSmartImage.Location = new System.Drawing.Point(3, 3);
             this.SearchSmartImage.Name = "SearchSmartImage";
-            this.SearchSmartImage.Size = new System.Drawing.Size(1, 1);
+            this.SearchSmartImage.Size = new System.Drawing.Size(33, 27);
             this.SearchSmartImage.TabIndex = 0;
             // 
             // ChooseanameLabel
@@ -1574,9 +1576,9 @@
             this.ChooseanameLabel.AutoSize = true;
             this.ChooseanameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChooseanameLabel.ForeColor = System.Drawing.Color.Red;
-            this.ChooseanameLabel.Location = new System.Drawing.Point(3, 69);
+            this.ChooseanameLabel.Location = new System.Drawing.Point(3, 315);
             this.ChooseanameLabel.Name = "ChooseanameLabel";
-            this.ChooseanameLabel.Size = new System.Drawing.Size(34, 4);
+            this.ChooseanameLabel.Size = new System.Drawing.Size(268, 17);
             this.ChooseanameLabel.TabIndex = 16;
             this.ChooseanameLabel.Text = "Empty Field Name";
             this.ChooseanameLabel.Visible = false;
@@ -1586,9 +1588,9 @@
             this.ChoosePublic.AutoSize = true;
             this.ChoosePublic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChoosePublic.ForeColor = System.Drawing.Color.Red;
-            this.ChoosePublic.Location = new System.Drawing.Point(3, 65);
+            this.ChoosePublic.Location = new System.Drawing.Point(3, 295);
             this.ChoosePublic.Name = "ChoosePublic";
-            this.ChoosePublic.Size = new System.Drawing.Size(34, 4);
+            this.ChoosePublic.Size = new System.Drawing.Size(268, 20);
             this.ChoosePublic.TabIndex = 15;
             this.ChoosePublic.Text = "You have to choose Public or Private";
             this.ChoosePublic.Visible = false;
@@ -1599,10 +1601,10 @@
             this.PlaylistpictureBox.BackgroundImage = global::Spotflix.Properties.Resources.chooseImage;
             this.PlaylistpictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PlaylistpictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlaylistpictureBox.Location = new System.Drawing.Point(4, 12);
+            this.PlaylistpictureBox.Location = new System.Drawing.Point(4, 39);
             this.PlaylistpictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PlaylistpictureBox.Name = "PlaylistpictureBox";
-            this.PlaylistpictureBox.Size = new System.Drawing.Size(32, 15);
+            this.PlaylistpictureBox.Size = new System.Drawing.Size(266, 102);
             this.PlaylistpictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PlaylistpictureBox.TabIndex = 14;
             this.PlaylistpictureBox.TabStop = false;
@@ -1619,7 +1621,7 @@
             this.PlayListNameTable.Name = "PlayListNameTable";
             this.PlayListNameTable.RowCount = 1;
             this.PlayListNameTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PlayListNameTable.Size = new System.Drawing.Size(34, 1);
+            this.PlayListNameTable.Size = new System.Drawing.Size(268, 28);
             this.PlayListNameTable.TabIndex = 7;
             // 
             // PlayListNameLabel
@@ -1631,7 +1633,7 @@
             this.PlayListNameLabel.ForeColor = System.Drawing.Color.White;
             this.PlayListNameLabel.Location = new System.Drawing.Point(3, 0);
             this.PlayListNameLabel.Name = "PlayListNameLabel";
-            this.PlayListNameLabel.Size = new System.Drawing.Size(11, 1);
+            this.PlayListNameLabel.Size = new System.Drawing.Size(128, 28);
             this.PlayListNameLabel.TabIndex = 6;
             this.PlayListNameLabel.Text = "Playlist Name";
             this.PlayListNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1642,9 +1644,9 @@
             this.PlaylistNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlaylistNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlaylistNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaylistNameTextBox.Location = new System.Drawing.Point(20, 3);
+            this.PlaylistNameTextBox.Location = new System.Drawing.Point(137, 3);
             this.PlaylistNameTextBox.Name = "PlaylistNameTextBox";
-            this.PlaylistNameTextBox.Size = new System.Drawing.Size(11, 25);
+            this.PlaylistNameTextBox.Size = new System.Drawing.Size(128, 25);
             this.PlaylistNameTextBox.TabIndex = 7;
             this.PlaylistNameTextBox.Click += new System.EventHandler(this.TextBoxChanged);
             // 
@@ -1653,9 +1655,9 @@
             this.NameUseLabel.AutoSize = true;
             this.NameUseLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NameUseLabel.ForeColor = System.Drawing.Color.Red;
-            this.NameUseLabel.Location = new System.Drawing.Point(3, 61);
+            this.NameUseLabel.Location = new System.Drawing.Point(3, 277);
             this.NameUseLabel.Name = "NameUseLabel";
-            this.NameUseLabel.Size = new System.Drawing.Size(34, 4);
+            this.NameUseLabel.Size = new System.Drawing.Size(268, 18);
             this.NameUseLabel.TabIndex = 8;
             this.NameUseLabel.Text = "Playlist name already in use";
             this.NameUseLabel.Visible = false;
@@ -1670,11 +1672,11 @@
             this.LoadIMageTable.Controls.Add(this.PlayListImagePathTextBox, 0, 0);
             this.LoadIMageTable.Controls.Add(this.LoadImageButton, 1, 0);
             this.LoadIMageTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LoadIMageTable.Location = new System.Drawing.Point(3, 35);
+            this.LoadIMageTable.Location = new System.Drawing.Point(3, 149);
             this.LoadIMageTable.Name = "LoadIMageTable";
             this.LoadIMageTable.RowCount = 1;
             this.LoadIMageTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.LoadIMageTable.Size = new System.Drawing.Size(34, 3);
+            this.LoadIMageTable.Size = new System.Drawing.Size(268, 35);
             this.LoadIMageTable.TabIndex = 8;
             // 
             // PlayListImagePathTextBox
@@ -1684,7 +1686,7 @@
             this.PlayListImagePathTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PlayListImagePathTextBox.Name = "PlayListImagePathTextBox";
             this.PlayListImagePathTextBox.ReadOnly = true;
-            this.PlayListImagePathTextBox.Size = new System.Drawing.Size(3, 26);
+            this.PlayListImagePathTextBox.Size = new System.Drawing.Size(81, 26);
             this.PlayListImagePathTextBox.TabIndex = 13;
             this.PlayListImagePathTextBox.Visible = false;
             // 
@@ -1695,9 +1697,9 @@
             this.LoadImageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoadImageButton.FlatAppearance.BorderSize = 0;
             this.LoadImageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoadImageButton.Location = new System.Drawing.Point(14, 3);
+            this.LoadImageButton.Location = new System.Drawing.Point(92, 3);
             this.LoadImageButton.Name = "LoadImageButton";
-            this.LoadImageButton.Size = new System.Drawing.Size(5, 1);
+            this.LoadImageButton.Size = new System.Drawing.Size(83, 29);
             this.LoadImageButton.TabIndex = 0;
             this.LoadImageButton.UseVisualStyleBackColor = true;
             this.LoadImageButton.Click += new System.EventHandler(this.LoadImageButton_Click);
@@ -1711,11 +1713,11 @@
             this.UploadTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.UploadTable.Controls.Add(this.UploadButton, 1, 0);
             this.UploadTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UploadTable.Location = new System.Drawing.Point(3, 53);
+            this.UploadTable.Location = new System.Drawing.Point(3, 231);
             this.UploadTable.Name = "UploadTable";
             this.UploadTable.RowCount = 1;
             this.UploadTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.UploadTable.Size = new System.Drawing.Size(34, 5);
+            this.UploadTable.Size = new System.Drawing.Size(268, 43);
             this.UploadTable.TabIndex = 10;
             // 
             // UploadButton
@@ -1725,9 +1727,9 @@
             this.UploadButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UploadButton.FlatAppearance.BorderSize = 0;
             this.UploadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UploadButton.Location = new System.Drawing.Point(14, 3);
+            this.UploadButton.Location = new System.Drawing.Point(92, 3);
             this.UploadButton.Name = "UploadButton";
-            this.UploadButton.Size = new System.Drawing.Size(5, 1);
+            this.UploadButton.Size = new System.Drawing.Size(83, 37);
             this.UploadButton.TabIndex = 2;
             this.UploadButton.UseVisualStyleBackColor = true;
             this.UploadButton.Click += new System.EventHandler(this.UploadButton_Click);
@@ -1742,11 +1744,11 @@
             this.ChoosePrivacityTable.Controls.Add(this.PublicButton, 2, 0);
             this.ChoosePrivacityTable.Controls.Add(this.PrivateButton, 0, 0);
             this.ChoosePrivacityTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChoosePrivacityTable.Location = new System.Drawing.Point(3, 44);
+            this.ChoosePrivacityTable.Location = new System.Drawing.Point(3, 190);
             this.ChoosePrivacityTable.Name = "ChoosePrivacityTable";
             this.ChoosePrivacityTable.RowCount = 1;
             this.ChoosePrivacityTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ChoosePrivacityTable.Size = new System.Drawing.Size(34, 3);
+            this.ChoosePrivacityTable.Size = new System.Drawing.Size(268, 35);
             this.ChoosePrivacityTable.TabIndex = 9;
             // 
             // PublicButton
@@ -1756,9 +1758,9 @@
             this.PublicButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PublicButton.FlatAppearance.BorderSize = 0;
             this.PublicButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PublicButton.Location = new System.Drawing.Point(25, 3);
+            this.PublicButton.Location = new System.Drawing.Point(181, 3);
             this.PublicButton.Name = "PublicButton";
-            this.PublicButton.Size = new System.Drawing.Size(6, 1);
+            this.PublicButton.Size = new System.Drawing.Size(84, 29);
             this.PublicButton.TabIndex = 3;
             this.PublicButton.Tag = "off";
             this.PublicButton.UseVisualStyleBackColor = true;
@@ -1773,7 +1775,7 @@
             this.PrivateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrivateButton.Location = new System.Drawing.Point(3, 3);
             this.PrivateButton.Name = "PrivateButton";
-            this.PrivateButton.Size = new System.Drawing.Size(5, 1);
+            this.PrivateButton.Size = new System.Drawing.Size(83, 29);
             this.PrivateButton.TabIndex = 1;
             this.PrivateButton.Tag = "off";
             this.PrivateButton.UseVisualStyleBackColor = true;
@@ -1820,7 +1822,7 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.PlaylistsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.PlaylistsDataGrid.Size = new System.Drawing.Size(40, 85);
+            this.PlaylistsDataGrid.Size = new System.Drawing.Size(274, 371);
             this.PlaylistsDataGrid.TabIndex = 6;
             this.PlaylistsDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridClicked);
             this.PlaylistsDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridMouseClick);
@@ -1864,11 +1866,11 @@
             this.PlaylistTitleTable.Controls.Add(this.PlayListLabel, 0, 0);
             this.PlaylistTitleTable.Controls.Add(this.AddPlaylistButton, 1, 0);
             this.PlaylistTitleTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlaylistTitleTable.Location = new System.Drawing.Point(3, 11);
+            this.PlaylistTitleTable.Location = new System.Drawing.Point(3, 39);
             this.PlaylistTitleTable.Name = "PlaylistTitleTable";
             this.PlaylistTitleTable.RowCount = 1;
             this.PlaylistTitleTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.PlaylistTitleTable.Size = new System.Drawing.Size(40, 4);
+            this.PlaylistTitleTable.Size = new System.Drawing.Size(274, 37);
             this.PlaylistTitleTable.TabIndex = 3;
             // 
             // AddSmartListButton
@@ -1878,9 +1880,9 @@
             this.AddSmartListButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddSmartListButton.FlatAppearance.BorderSize = 0;
             this.AddSmartListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddSmartListButton.Location = new System.Drawing.Point(31, 3);
+            this.AddSmartListButton.Location = new System.Drawing.Point(194, 3);
             this.AddSmartListButton.Name = "AddSmartListButton";
-            this.AddSmartListButton.Size = new System.Drawing.Size(1, 1);
+            this.AddSmartListButton.Size = new System.Drawing.Size(35, 31);
             this.AddSmartListButton.TabIndex = 6;
             this.AddSmartListButton.UseVisualStyleBackColor = true;
             this.AddSmartListButton.Click += new System.EventHandler(this.AddSmartListButton_Click);
@@ -1894,7 +1896,7 @@
             this.PlayListLabel.ForeColor = System.Drawing.Color.White;
             this.PlayListLabel.Location = new System.Drawing.Point(3, 0);
             this.PlayListLabel.Name = "PlayListLabel";
-            this.PlayListLabel.Size = new System.Drawing.Size(22, 4);
+            this.PlayListLabel.Size = new System.Drawing.Size(185, 37);
             this.PlayListLabel.TabIndex = 4;
             this.PlayListLabel.Text = "My Playlists";
             this.PlayListLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1906,9 +1908,9 @@
             this.AddPlaylistButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddPlaylistButton.FlatAppearance.BorderSize = 0;
             this.AddPlaylistButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddPlaylistButton.Location = new System.Drawing.Point(37, 3);
+            this.AddPlaylistButton.Location = new System.Drawing.Point(235, 3);
             this.AddPlaylistButton.Name = "AddPlaylistButton";
-            this.AddPlaylistButton.Size = new System.Drawing.Size(1, 1);
+            this.AddPlaylistButton.Size = new System.Drawing.Size(36, 31);
             this.AddPlaylistButton.TabIndex = 5;
             this.AddPlaylistButton.UseVisualStyleBackColor = true;
             this.AddPlaylistButton.Click += new System.EventHandler(this.AddPlaylistButton_Click);
@@ -1919,10 +1921,10 @@
             this.CentralPlayerPanel.Controls.Add(this.ExtraTable);
             this.CentralPlayerPanel.Controls.Add(this.karaokeText);
             this.CentralPlayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CentralPlayerPanel.Location = new System.Drawing.Point(56, 5);
+            this.CentralPlayerPanel.Location = new System.Drawing.Point(290, 5);
             this.CentralPlayerPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CentralPlayerPanel.Name = "CentralPlayerPanel";
-            this.CentralPlayerPanel.Size = new System.Drawing.Size(148, 105);
+            this.CentralPlayerPanel.Size = new System.Drawing.Size(850, 452);
             this.CentralPlayerPanel.TabIndex = 0;
             // 
             // ExtraTable
@@ -1936,7 +1938,7 @@
             this.ExtraTable.RowCount = 2;
             this.ExtraTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.05917F));
             this.ExtraTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.94083F));
-            this.ExtraTable.Size = new System.Drawing.Size(148, 40);
+            this.ExtraTable.Size = new System.Drawing.Size(850, 387);
             this.ExtraTable.TabIndex = 4;
             // 
             // ExtraPanel
@@ -1945,21 +1947,10 @@
             this.ExtraPanel.Controls.Add(this.SearchPanel);
             this.ExtraPanel.Controls.Add(this.LikedPanel);
             this.ExtraPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExtraPanel.Location = new System.Drawing.Point(3, 7);
+            this.ExtraPanel.Location = new System.Drawing.Point(3, 41);
             this.ExtraPanel.Name = "ExtraPanel";
-            this.ExtraPanel.Size = new System.Drawing.Size(142, 30);
+            this.ExtraPanel.Size = new System.Drawing.Size(844, 343);
             this.ExtraPanel.TabIndex = 0;
-            // 
-            // Player
-            // 
-            this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(0, 150);
-            this.Player.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Player.Name = "Player";
-            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(526, 202);
-            this.Player.TabIndex = 0;
-            this.Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Player_PlayStateChange);
             // 
             // SearchPanel
             // 
@@ -2579,11 +2570,11 @@
             this.karaokeText.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.karaokeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.karaokeText.ForeColor = System.Drawing.Color.White;
-            this.karaokeText.Location = new System.Drawing.Point(0, 40);
+            this.karaokeText.Location = new System.Drawing.Point(0, 387);
             this.karaokeText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.karaokeText.Name = "karaokeText";
             this.karaokeText.ReadOnly = true;
-            this.karaokeText.Size = new System.Drawing.Size(148, 65);
+            this.karaokeText.Size = new System.Drawing.Size(850, 65);
             this.karaokeText.TabIndex = 3;
             this.karaokeText.Text = "";
             this.karaokeText.TextChanged += new System.EventHandler(this.karaokeText_TextChanged);
@@ -2595,17 +2586,17 @@
             this.DownPlayerTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.DownPlayerTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.DownPlayerTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.DownPlayerTable.Controls.Add(this.ButtonsPlayer, 1, 0);
             this.DownPlayerTable.Controls.Add(this.PictureHolderPanel, 0, 0);
             this.DownPlayerTable.Controls.Add(this.trackBar1, 2, 0);
-            this.DownPlayerTable.Controls.Add(this.ButtonsPlayer, 1, 0);
             this.DownPlayerTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DownPlayerTable.Location = new System.Drawing.Point(3, 144);
+            this.DownPlayerTable.Location = new System.Drawing.Point(3, 538);
             this.DownPlayerTable.Name = "DownPlayerTable";
             this.DownPlayerTable.RowCount = 1;
             this.DownPlayerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DownPlayerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.DownPlayerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.DownPlayerTable.Size = new System.Drawing.Size(262, 21);
+            this.DownPlayerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.DownPlayerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.DownPlayerTable.Size = new System.Drawing.Size(1432, 89);
             this.DownPlayerTable.TabIndex = 1;
             // 
             // PictureHolderPanel
@@ -2621,7 +2612,7 @@
             this.PictureHolderPanel.Name = "PictureHolderPanel";
             this.PictureHolderPanel.RowCount = 1;
             this.PictureHolderPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PictureHolderPanel.Size = new System.Drawing.Size(46, 15);
+            this.PictureHolderPanel.Size = new System.Drawing.Size(280, 83);
             this.PictureHolderPanel.TabIndex = 6;
             // 
             // ReproductorPictureBox
@@ -2631,7 +2622,7 @@
             this.ReproductorPictureBox.Location = new System.Drawing.Point(4, 5);
             this.ReproductorPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ReproductorPictureBox.Name = "ReproductorPictureBox";
-            this.ReproductorPictureBox.Size = new System.Drawing.Size(11, 5);
+            this.ReproductorPictureBox.Size = new System.Drawing.Size(109, 73);
             this.ReproductorPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ReproductorPictureBox.TabIndex = 0;
             this.ReproductorPictureBox.TabStop = false;
@@ -2648,14 +2639,14 @@
             this.InferiorButtonsTable.Controls.Add(this.ToAlbum, 0, 1);
             this.InferiorButtonsTable.Controls.Add(this.ToArtist, 0, 2);
             this.InferiorButtonsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InferiorButtonsTable.Location = new System.Drawing.Point(22, 3);
+            this.InferiorButtonsTable.Location = new System.Drawing.Point(120, 3);
             this.InferiorButtonsTable.Name = "InferiorButtonsTable";
             this.InferiorButtonsTable.RowCount = 3;
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.InferiorButtonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.InferiorButtonsTable.Size = new System.Drawing.Size(21, 9);
+            this.InferiorButtonsTable.Size = new System.Drawing.Size(157, 77);
             this.InferiorButtonsTable.TabIndex = 1;
             // 
             // LikeSongorVideo
@@ -2665,9 +2656,9 @@
             this.LikeSongorVideo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LikeSongorVideo.FlatAppearance.BorderSize = 0;
             this.LikeSongorVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LikeSongorVideo.Location = new System.Drawing.Point(17, 3);
+            this.LikeSongorVideo.Location = new System.Drawing.Point(112, 3);
             this.LikeSongorVideo.Name = "LikeSongorVideo";
-            this.LikeSongorVideo.Size = new System.Drawing.Size(1, 1);
+            this.LikeSongorVideo.Size = new System.Drawing.Size(42, 19);
             this.LikeSongorVideo.TabIndex = 4;
             this.LikeSongorVideo.Tag = "no";
             this.LikeSongorVideo.UseVisualStyleBackColor = true;
@@ -2683,9 +2674,9 @@
             this.QuequeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuequeButton.ForeColor = System.Drawing.Color.Black;
             this.QuequeButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.QuequeButton.Location = new System.Drawing.Point(17, 9);
+            this.QuequeButton.Location = new System.Drawing.Point(112, 53);
             this.QuequeButton.Name = "QuequeButton";
-            this.QuequeButton.Size = new System.Drawing.Size(1, 1);
+            this.QuequeButton.Size = new System.Drawing.Size(42, 21);
             this.QuequeButton.TabIndex = 6;
             this.QuequeButton.Tag = "no";
             this.QuequeButton.Text = "                         QuequeButtom";
@@ -2704,7 +2695,7 @@
             this.ToName.Location = new System.Drawing.Point(4, 0);
             this.ToName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ToName.Name = "ToName";
-            this.ToName.Size = new System.Drawing.Size(6, 3);
+            this.ToName.Size = new System.Drawing.Size(101, 25);
             this.ToName.TabIndex = 7;
             this.ToName.TabStop = true;
             this.ToName.Text = "a";
@@ -2719,10 +2710,10 @@
             this.ToAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToAlbum.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ToAlbum.LinkColor = System.Drawing.Color.Gray;
-            this.ToAlbum.Location = new System.Drawing.Point(4, 3);
+            this.ToAlbum.Location = new System.Drawing.Point(4, 25);
             this.ToAlbum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ToAlbum.Name = "ToAlbum";
-            this.ToAlbum.Size = new System.Drawing.Size(6, 3);
+            this.ToAlbum.Size = new System.Drawing.Size(101, 25);
             this.ToAlbum.TabIndex = 8;
             this.ToAlbum.TabStop = true;
             this.ToAlbum.Text = "a";
@@ -2737,10 +2728,10 @@
             this.ToArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToArtist.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ToArtist.LinkColor = System.Drawing.Color.Gray;
-            this.ToArtist.Location = new System.Drawing.Point(4, 6);
+            this.ToArtist.Location = new System.Drawing.Point(4, 50);
             this.ToArtist.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ToArtist.Name = "ToArtist";
-            this.ToArtist.Size = new System.Drawing.Size(6, 3);
+            this.ToArtist.Size = new System.Drawing.Size(101, 27);
             this.ToArtist.TabIndex = 9;
             this.ToArtist.TabStop = true;
             this.ToArtist.Text = "a";
@@ -2751,11 +2742,11 @@
             // 
             this.trackBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.trackBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar1.Location = new System.Drawing.Point(213, 5);
+            this.trackBar1.Location = new System.Drawing.Point(1149, 5);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(45, 11);
+            this.trackBar1.Size = new System.Drawing.Size(279, 79);
             this.trackBar1.TabIndex = 4;
             this.trackBar1.Value = 20;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -2769,13 +2760,14 @@
             this.ButtonsPlayer.Controls.Add(this.ReproductionButtomstableLayoutPanel, 0, 0);
             this.ButtonsPlayer.Controls.Add(this.progressBar1, 0, 1);
             this.ButtonsPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsPlayer.Location = new System.Drawing.Point(56, 5);
+            this.ButtonsPlayer.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.ButtonsPlayer.Location = new System.Drawing.Point(290, 5);
             this.ButtonsPlayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonsPlayer.Name = "ButtonsPlayer";
             this.ButtonsPlayer.RowCount = 2;
             this.ButtonsPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.19149F));
             this.ButtonsPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.80851F));
-            this.ButtonsPlayer.Size = new System.Drawing.Size(149, 11);
+            this.ButtonsPlayer.Size = new System.Drawing.Size(851, 79);
             this.ButtonsPlayer.TabIndex = 2;
             // 
             // ReproductionButtomstableLayoutPanel
@@ -2809,7 +2801,7 @@
             this.ReproductionButtomstableLayoutPanel.Name = "ReproductionButtomstableLayoutPanel";
             this.ReproductionButtomstableLayoutPanel.RowCount = 1;
             this.ReproductionButtomstableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ReproductionButtomstableLayoutPanel.Size = new System.Drawing.Size(141, 1);
+            this.ReproductionButtomstableLayoutPanel.Size = new System.Drawing.Size(843, 32);
             this.ReproductionButtomstableLayoutPanel.TabIndex = 2;
             // 
             // Star4Button
@@ -2820,9 +2812,9 @@
             this.Star4Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star4Button.FlatAppearance.BorderSize = 0;
             this.Star4Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star4Button.Location = new System.Drawing.Point(24, 3);
+            this.Star4Button.Location = new System.Drawing.Point(129, 3);
             this.Star4Button.Name = "Star4Button";
-            this.Star4Button.Size = new System.Drawing.Size(1, 1);
+            this.Star4Button.Size = new System.Drawing.Size(36, 26);
             this.Star4Button.TabIndex = 15;
             this.Star4Button.Tag = "no";
             this.Star4Button.UseVisualStyleBackColor = false;
@@ -2836,9 +2828,9 @@
             this.Star5Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star5Button.FlatAppearance.BorderSize = 0;
             this.Star5Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star5Button.Location = new System.Drawing.Point(31, 3);
+            this.Star5Button.Location = new System.Drawing.Point(171, 3);
             this.Star5Button.Name = "Star5Button";
-            this.Star5Button.Size = new System.Drawing.Size(1, 1);
+            this.Star5Button.Size = new System.Drawing.Size(36, 26);
             this.Star5Button.TabIndex = 14;
             this.Star5Button.Tag = "no";
             this.Star5Button.UseVisualStyleBackColor = false;
@@ -2852,9 +2844,9 @@
             this.Star3Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star3Button.FlatAppearance.BorderSize = 0;
             this.Star3Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star3Button.Location = new System.Drawing.Point(17, 3);
+            this.Star3Button.Location = new System.Drawing.Point(87, 3);
             this.Star3Button.Name = "Star3Button";
-            this.Star3Button.Size = new System.Drawing.Size(1, 1);
+            this.Star3Button.Size = new System.Drawing.Size(36, 26);
             this.Star3Button.TabIndex = 13;
             this.Star3Button.Tag = "no";
             this.Star3Button.UseVisualStyleBackColor = false;
@@ -2870,7 +2862,7 @@
             this.Star1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Star1Button.Location = new System.Drawing.Point(3, 3);
             this.Star1Button.Name = "Star1Button";
-            this.Star1Button.Size = new System.Drawing.Size(1, 1);
+            this.Star1Button.Size = new System.Drawing.Size(36, 26);
             this.Star1Button.TabIndex = 12;
             this.Star1Button.Tag = "no";
             this.Star1Button.UseVisualStyleBackColor = false;
@@ -2884,9 +2876,9 @@
             this.Star2Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Star2Button.FlatAppearance.BorderSize = 0;
             this.Star2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Star2Button.Location = new System.Drawing.Point(10, 3);
+            this.Star2Button.Location = new System.Drawing.Point(45, 3);
             this.Star2Button.Name = "Star2Button";
-            this.Star2Button.Size = new System.Drawing.Size(1, 1);
+            this.Star2Button.Size = new System.Drawing.Size(36, 26);
             this.Star2Button.TabIndex = 11;
             this.Star2Button.Tag = "no";
             this.Star2Button.UseVisualStyleBackColor = false;
@@ -2900,9 +2892,9 @@
             this.FullandMinimizeScreenButtom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FullandMinimizeScreenButtom.FlatAppearance.BorderSize = 0;
             this.FullandMinimizeScreenButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FullandMinimizeScreenButtom.Location = new System.Drawing.Point(128, 3);
+            this.FullandMinimizeScreenButtom.Location = new System.Drawing.Point(759, 3);
             this.FullandMinimizeScreenButtom.Name = "FullandMinimizeScreenButtom";
-            this.FullandMinimizeScreenButtom.Size = new System.Drawing.Size(1, 1);
+            this.FullandMinimizeScreenButtom.Size = new System.Drawing.Size(36, 26);
             this.FullandMinimizeScreenButtom.TabIndex = 10;
             this.FullandMinimizeScreenButtom.Tag = "full";
             this.FullandMinimizeScreenButtom.UseVisualStyleBackColor = false;
@@ -2916,9 +2908,9 @@
             this.PlayPausaButtom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayPausaButtom.FlatAppearance.BorderSize = 0;
             this.PlayPausaButtom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayPausaButtom.Location = new System.Drawing.Point(69, 3);
+            this.PlayPausaButtom.Location = new System.Drawing.Point(402, 3);
             this.PlayPausaButtom.Name = "PlayPausaButtom";
-            this.PlayPausaButtom.Size = new System.Drawing.Size(1, 1);
+            this.PlayPausaButtom.Size = new System.Drawing.Size(36, 26);
             this.PlayPausaButtom.TabIndex = 9;
             this.PlayPausaButtom.Tag = "pause";
             this.PlayPausaButtom.UseVisualStyleBackColor = false;
@@ -2932,9 +2924,9 @@
             this.BackPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackPlayer.FlatAppearance.BorderSize = 0;
             this.BackPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackPlayer.Location = new System.Drawing.Point(62, 3);
+            this.BackPlayer.Location = new System.Drawing.Point(360, 3);
             this.BackPlayer.Name = "BackPlayer";
-            this.BackPlayer.Size = new System.Drawing.Size(1, 1);
+            this.BackPlayer.Size = new System.Drawing.Size(36, 26);
             this.BackPlayer.TabIndex = 7;
             this.BackPlayer.UseVisualStyleBackColor = false;
             this.BackPlayer.Click += new System.EventHandler(this.BackPlayer_Click);
@@ -2947,9 +2939,9 @@
             this.NextPlay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NextPlay.FlatAppearance.BorderSize = 0;
             this.NextPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextPlay.Location = new System.Drawing.Point(76, 3);
+            this.NextPlay.Location = new System.Drawing.Point(444, 3);
             this.NextPlay.Name = "NextPlay";
-            this.NextPlay.Size = new System.Drawing.Size(1, 1);
+            this.NextPlay.Size = new System.Drawing.Size(36, 26);
             this.NextPlay.TabIndex = 8;
             this.NextPlay.UseVisualStyleBackColor = false;
             this.NextPlay.Click += new System.EventHandler(this.NextPlay_Click);
@@ -2958,10 +2950,10 @@
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.ForeColor = System.Drawing.Color.DimGray;
-            this.progressBar1.Location = new System.Drawing.Point(4, 10);
+            this.progressBar1.Location = new System.Drawing.Point(4, 47);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(141, 1);
+            this.progressBar1.Size = new System.Drawing.Size(843, 1);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 1;
             // 
@@ -8633,11 +8625,10 @@
             this.StudentPanel.BackColor = System.Drawing.Color.Black;
             this.StudentPanel.Controls.Add(this.StudentPanelTable2);
             this.StudentPanel.Controls.Add(this.UpperStudentPanel);
-            this.StudentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StudentPanel.Location = new System.Drawing.Point(0, 0);
+            this.StudentPanel.Location = new System.Drawing.Point(886, 390);
             this.StudentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.StudentPanel.Name = "StudentPanel";
-            this.StudentPanel.Size = new System.Drawing.Size(1438, 630);
+            this.StudentPanel.Size = new System.Drawing.Size(268, 168);
             this.StudentPanel.TabIndex = 13;
             this.StudentPanel.Visible = false;
             // 
@@ -8654,7 +8645,7 @@
             this.StudentPanelTable2.RowCount = 2;
             this.StudentPanelTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.23077F));
             this.StudentPanelTable2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.76923F));
-            this.StudentPanelTable2.Size = new System.Drawing.Size(1438, 520);
+            this.StudentPanelTable2.Size = new System.Drawing.Size(268, 58);
             this.StudentPanelTable2.TabIndex = 4;
             // 
             // StudentppalTable
@@ -8673,8 +8664,8 @@
             this.StudentppalTable.Name = "StudentppalTable";
             this.StudentppalTable.RowCount = 1;
             this.StudentppalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.StudentppalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 401F));
-            this.StudentppalTable.Size = new System.Drawing.Size(1430, 401);
+            this.StudentppalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.StudentppalTable.Size = new System.Drawing.Size(260, 35);
             this.StudentppalTable.TabIndex = 0;
             // 
             // LeftStudentTable
@@ -8693,7 +8684,7 @@
             this.LeftStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.91542F));
             this.LeftStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.99005F));
             this.LeftStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.LeftStudentTable.Size = new System.Drawing.Size(278, 391);
+            this.LeftStudentTable.Size = new System.Drawing.Size(44, 25);
             this.LeftStudentTable.TabIndex = 1;
             // 
             // ButtonsStudenTable
@@ -8707,7 +8698,7 @@
             this.ButtonsStudenTable.Controls.Add(this.UploadHomeworkButton2, 0, 3);
             this.ButtonsStudenTable.Controls.Add(this.YourLessonsButton, 0, 0);
             this.ButtonsStudenTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsStudenTable.Location = new System.Drawing.Point(4, 125);
+            this.ButtonsStudenTable.Location = new System.Drawing.Point(4, 12);
             this.ButtonsStudenTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonsStudenTable.Name = "ButtonsStudenTable";
             this.ButtonsStudenTable.RowCount = 6;
@@ -8717,7 +8708,7 @@
             this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
             this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17F));
             this.ButtonsStudenTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.ButtonsStudenTable.Size = new System.Drawing.Size(270, 252);
+            this.ButtonsStudenTable.Size = new System.Drawing.Size(36, 6);
             this.ButtonsStudenTable.TabIndex = 2;
             // 
             // SuccessDownloadLael
@@ -8726,9 +8717,9 @@
             this.SuccessDownloadLael.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SuccessDownloadLael.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SuccessDownloadLael.ForeColor = System.Drawing.Color.Red;
-            this.SuccessDownloadLael.Location = new System.Drawing.Point(3, 210);
+            this.SuccessDownloadLael.Location = new System.Drawing.Point(3, 5);
             this.SuccessDownloadLael.Name = "SuccessDownloadLael";
-            this.SuccessDownloadLael.Size = new System.Drawing.Size(264, 42);
+            this.SuccessDownloadLael.Size = new System.Drawing.Size(30, 1);
             this.SuccessDownloadLael.TabIndex = 12;
             this.SuccessDownloadLael.Text = "Success Homework download!";
             this.SuccessDownloadLael.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -8742,9 +8733,9 @@
             this.DownloadHomeworkButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DownloadHomeworkButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DownloadHomeworkButton2.ForeColor = System.Drawing.Color.White;
-            this.DownloadHomeworkButton2.Location = new System.Drawing.Point(3, 171);
+            this.DownloadHomeworkButton2.Location = new System.Drawing.Point(3, 7);
             this.DownloadHomeworkButton2.Name = "DownloadHomeworkButton2";
-            this.DownloadHomeworkButton2.Size = new System.Drawing.Size(264, 36);
+            this.DownloadHomeworkButton2.Size = new System.Drawing.Size(30, 1);
             this.DownloadHomeworkButton2.TabIndex = 8;
             this.DownloadHomeworkButton2.Tag = "no";
             this.DownloadHomeworkButton2.Text = "Download Homework";
@@ -8760,9 +8751,9 @@
             this.StudentFavoritesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StudentFavoritesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StudentFavoritesButton.ForeColor = System.Drawing.Color.White;
-            this.StudentFavoritesButton.Location = new System.Drawing.Point(3, 45);
+            this.StudentFavoritesButton.Location = new System.Drawing.Point(3, 4);
             this.StudentFavoritesButton.Name = "StudentFavoritesButton";
-            this.StudentFavoritesButton.Size = new System.Drawing.Size(264, 36);
+            this.StudentFavoritesButton.Size = new System.Drawing.Size(30, 1);
             this.StudentFavoritesButton.TabIndex = 5;
             this.StudentFavoritesButton.Tag = "no";
             this.StudentFavoritesButton.Text = "Favorites";
@@ -8777,9 +8768,9 @@
             this.TeacherprofileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TeacherprofileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TeacherprofileButton.ForeColor = System.Drawing.Color.White;
-            this.TeacherprofileButton.Location = new System.Drawing.Point(3, 87);
+            this.TeacherprofileButton.Location = new System.Drawing.Point(3, 5);
             this.TeacherprofileButton.Name = "TeacherprofileButton";
-            this.TeacherprofileButton.Size = new System.Drawing.Size(264, 36);
+            this.TeacherprofileButton.Size = new System.Drawing.Size(30, 1);
             this.TeacherprofileButton.TabIndex = 7;
             this.TeacherprofileButton.Tag = "no";
             this.TeacherprofileButton.Text = "Teacher Profil";
@@ -8794,9 +8785,9 @@
             this.UploadHomeworkButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UploadHomeworkButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UploadHomeworkButton2.ForeColor = System.Drawing.Color.White;
-            this.UploadHomeworkButton2.Location = new System.Drawing.Point(3, 129);
+            this.UploadHomeworkButton2.Location = new System.Drawing.Point(3, 6);
             this.UploadHomeworkButton2.Name = "UploadHomeworkButton2";
-            this.UploadHomeworkButton2.Size = new System.Drawing.Size(264, 36);
+            this.UploadHomeworkButton2.Size = new System.Drawing.Size(30, 1);
             this.UploadHomeworkButton2.TabIndex = 6;
             this.UploadHomeworkButton2.Tag = "no";
             this.UploadHomeworkButton2.Text = "Upload Homework";
@@ -8814,7 +8805,7 @@
             this.YourLessonsButton.ForeColor = System.Drawing.Color.White;
             this.YourLessonsButton.Location = new System.Drawing.Point(3, 3);
             this.YourLessonsButton.Name = "YourLessonsButton";
-            this.YourLessonsButton.Size = new System.Drawing.Size(264, 36);
+            this.YourLessonsButton.Size = new System.Drawing.Size(30, 1);
             this.YourLessonsButton.TabIndex = 4;
             this.YourLessonsButton.Tag = "no";
             this.YourLessonsButton.Text = "Your Lessons";
@@ -8833,7 +8824,7 @@
             this.LeftUpStudentTable.RowCount = 2;
             this.LeftUpStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.LeftUpStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.LeftUpStudentTable.Size = new System.Drawing.Size(272, 114);
+            this.LeftUpStudentTable.Size = new System.Drawing.Size(38, 1);
             this.LeftUpStudentTable.TabIndex = 5;
             // 
             // ExploreStudentButton
@@ -8845,9 +8836,9 @@
             this.ExploreStudentButton.Enabled = false;
             this.ExploreStudentButton.FlatAppearance.BorderSize = 0;
             this.ExploreStudentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExploreStudentButton.Location = new System.Drawing.Point(3, 60);
+            this.ExploreStudentButton.Location = new System.Drawing.Point(3, 3);
             this.ExploreStudentButton.Name = "ExploreStudentButton";
-            this.ExploreStudentButton.Size = new System.Drawing.Size(266, 51);
+            this.ExploreStudentButton.Size = new System.Drawing.Size(32, 1);
             this.ExploreStudentButton.TabIndex = 1;
             this.ExploreStudentButton.UseVisualStyleBackColor = false;
             this.ExploreStudentButton.Click += new System.EventHandler(this.ExploreStudentButton_Click);
@@ -8862,7 +8853,7 @@
             this.HomeStudentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeStudentButton.Location = new System.Drawing.Point(3, 3);
             this.HomeStudentButton.Name = "HomeStudentButton";
-            this.HomeStudentButton.Size = new System.Drawing.Size(266, 51);
+            this.HomeStudentButton.Size = new System.Drawing.Size(32, 1);
             this.HomeStudentButton.TabIndex = 0;
             this.HomeStudentButton.UseVisualStyleBackColor = false;
             this.HomeStudentButton.Click += new System.EventHandler(this.HomeStudentButton_Click);
@@ -8875,22 +8866,11 @@
             this.CentralStudentPanel.Controls.Add(this.StudentPlayer);
             this.CentralStudentPanel.Controls.Add(this.DataStudentGrid);
             this.CentralStudentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CentralStudentPanel.Location = new System.Drawing.Point(290, 5);
+            this.CentralStudentPanel.Location = new System.Drawing.Point(56, 5);
             this.CentralStudentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CentralStudentPanel.Name = "CentralStudentPanel";
-            this.CentralStudentPanel.Size = new System.Drawing.Size(850, 391);
+            this.CentralStudentPanel.Size = new System.Drawing.Size(148, 25);
             this.CentralStudentPanel.TabIndex = 0;
-            // 
-            // SPlayer
-            // 
-            this.SPlayer.Enabled = true;
-            this.SPlayer.Location = new System.Drawing.Point(848, 254);
-            this.SPlayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.SPlayer.Name = "SPlayer";
-            this.SPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("SPlayer.OcxState")));
-            this.SPlayer.Size = new System.Drawing.Size(200, 100);
-            this.SPlayer.TabIndex = 5;
-            this.SPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.SPlayer_PlayStateChange);
             // 
             // StudentSearchPanel
             // 
@@ -9417,9 +9397,9 @@
             this.EditorsStudentPanel.Controls.Add(this.UploadHomeWorkPanel);
             this.EditorsStudentPanel.Controls.Add(this.TeacherProfilTable);
             this.EditorsStudentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditorsStudentPanel.Location = new System.Drawing.Point(1147, 3);
+            this.EditorsStudentPanel.Location = new System.Drawing.Point(211, 3);
             this.EditorsStudentPanel.Name = "EditorsStudentPanel";
-            this.EditorsStudentPanel.Size = new System.Drawing.Size(280, 395);
+            this.EditorsStudentPanel.Size = new System.Drawing.Size(46, 29);
             this.EditorsStudentPanel.TabIndex = 7;
             // 
             // UploadHomeWorkPanel
@@ -9850,14 +9830,14 @@
             this.StudentPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.StudentPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.StudentPanel2.Controls.Add(this.LeftDownDownTable, 0, 0);
-            this.StudentPanel2.Controls.Add(this.VolumeLesson, 2, 0);
             this.StudentPanel2.Controls.Add(this.ReproductorLessonTable, 1, 0);
+            this.StudentPanel2.Controls.Add(this.VolumeLesson, 2, 0);
             this.StudentPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StudentPanel2.Location = new System.Drawing.Point(3, 414);
+            this.StudentPanel2.Location = new System.Drawing.Point(3, 48);
             this.StudentPanel2.Name = "StudentPanel2";
             this.StudentPanel2.RowCount = 1;
             this.StudentPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.StudentPanel2.Size = new System.Drawing.Size(1432, 103);
+            this.StudentPanel2.Size = new System.Drawing.Size(262, 7);
             this.StudentPanel2.TabIndex = 1;
             // 
             // LeftDownDownTable
@@ -9872,7 +9852,7 @@
             this.LeftDownDownTable.Name = "LeftDownDownTable";
             this.LeftDownDownTable.RowCount = 1;
             this.LeftDownDownTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.LeftDownDownTable.Size = new System.Drawing.Size(280, 97);
+            this.LeftDownDownTable.Size = new System.Drawing.Size(46, 1);
             this.LeftDownDownTable.TabIndex = 6;
             // 
             // TeachetPictureBox
@@ -9882,7 +9862,7 @@
             this.TeachetPictureBox.Location = new System.Drawing.Point(4, 5);
             this.TeachetPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TeachetPictureBox.Name = "TeachetPictureBox";
-            this.TeachetPictureBox.Size = new System.Drawing.Size(109, 87);
+            this.TeachetPictureBox.Size = new System.Drawing.Size(11, 1);
             this.TeachetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TeachetPictureBox.TabIndex = 0;
             this.TeachetPictureBox.TabStop = false;
@@ -9900,13 +9880,13 @@
             this.ButtonsStudentTable.Controls.Add(this.FollowTeacherButton, 1, 1);
             this.ButtonsStudentTable.Controls.Add(this.AdLessonQuequeButton, 1, 2);
             this.ButtonsStudentTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsStudentTable.Location = new System.Drawing.Point(120, 3);
+            this.ButtonsStudentTable.Location = new System.Drawing.Point(22, 3);
             this.ButtonsStudentTable.Name = "ButtonsStudentTable";
             this.ButtonsStudentTable.RowCount = 3;
             this.ButtonsStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ButtonsStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.ButtonsStudentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ButtonsStudentTable.Size = new System.Drawing.Size(157, 91);
+            this.ButtonsStudentTable.Size = new System.Drawing.Size(21, 1);
             this.ButtonsStudentTable.TabIndex = 1;
             // 
             // Teachernamestudentlabel
@@ -9919,7 +9899,7 @@
             this.Teachernamestudentlabel.Location = new System.Drawing.Point(4, 0);
             this.Teachernamestudentlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Teachernamestudentlabel.Name = "Teachernamestudentlabel";
-            this.Teachernamestudentlabel.Size = new System.Drawing.Size(101, 30);
+            this.Teachernamestudentlabel.Size = new System.Drawing.Size(6, 1);
             this.Teachernamestudentlabel.TabIndex = 3;
             this.Teachernamestudentlabel.TabStop = true;
             this.Teachernamestudentlabel.Text = "a";
@@ -9931,10 +9911,10 @@
             this.VideoSubjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VideoSubjectLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.VideoSubjectLabel.LinkColor = System.Drawing.Color.DarkGray;
-            this.VideoSubjectLabel.Location = new System.Drawing.Point(4, 60);
+            this.VideoSubjectLabel.Location = new System.Drawing.Point(4, 0);
             this.VideoSubjectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.VideoSubjectLabel.Name = "VideoSubjectLabel";
-            this.VideoSubjectLabel.Size = new System.Drawing.Size(101, 31);
+            this.VideoSubjectLabel.Size = new System.Drawing.Size(6, 1);
             this.VideoSubjectLabel.TabIndex = 1;
             this.VideoSubjectLabel.TabStop = true;
             this.VideoSubjectLabel.Text = "a";
@@ -9948,10 +9928,10 @@
             this.VideoCurseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VideoCurseLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.VideoCurseLabel.LinkColor = System.Drawing.Color.DarkGray;
-            this.VideoCurseLabel.Location = new System.Drawing.Point(4, 30);
+            this.VideoCurseLabel.Location = new System.Drawing.Point(4, 0);
             this.VideoCurseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.VideoCurseLabel.Name = "VideoCurseLabel";
-            this.VideoCurseLabel.Size = new System.Drawing.Size(101, 30);
+            this.VideoCurseLabel.Size = new System.Drawing.Size(6, 1);
             this.VideoCurseLabel.TabIndex = 2;
             this.VideoCurseLabel.TabStop = true;
             this.VideoCurseLabel.Text = "a";
@@ -9963,9 +9943,9 @@
             this.LikeLessonButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LikeLessonButton.FlatAppearance.BorderSize = 0;
             this.LikeLessonButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LikeLessonButton.Location = new System.Drawing.Point(112, 3);
+            this.LikeLessonButton.Location = new System.Drawing.Point(17, 3);
             this.LikeLessonButton.Name = "LikeLessonButton";
-            this.LikeLessonButton.Size = new System.Drawing.Size(42, 24);
+            this.LikeLessonButton.Size = new System.Drawing.Size(1, 1);
             this.LikeLessonButton.TabIndex = 4;
             this.LikeLessonButton.Tag = "no";
             this.LikeLessonButton.UseVisualStyleBackColor = true;
@@ -9978,9 +9958,9 @@
             this.FollowTeacherButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FollowTeacherButton.FlatAppearance.BorderSize = 0;
             this.FollowTeacherButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FollowTeacherButton.Location = new System.Drawing.Point(112, 33);
+            this.FollowTeacherButton.Location = new System.Drawing.Point(17, 3);
             this.FollowTeacherButton.Name = "FollowTeacherButton";
-            this.FollowTeacherButton.Size = new System.Drawing.Size(42, 24);
+            this.FollowTeacherButton.Size = new System.Drawing.Size(1, 1);
             this.FollowTeacherButton.TabIndex = 5;
             this.FollowTeacherButton.Tag = "no";
             this.FollowTeacherButton.UseVisualStyleBackColor = true;
@@ -9993,9 +9973,9 @@
             this.AdLessonQuequeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AdLessonQuequeButton.FlatAppearance.BorderSize = 0;
             this.AdLessonQuequeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdLessonQuequeButton.Location = new System.Drawing.Point(112, 63);
+            this.AdLessonQuequeButton.Location = new System.Drawing.Point(17, 3);
             this.AdLessonQuequeButton.Name = "AdLessonQuequeButton";
-            this.AdLessonQuequeButton.Size = new System.Drawing.Size(42, 25);
+            this.AdLessonQuequeButton.Size = new System.Drawing.Size(1, 1);
             this.AdLessonQuequeButton.TabIndex = 6;
             this.AdLessonQuequeButton.Tag = "no";
             this.AdLessonQuequeButton.Text = "                         QuequeButtomS";
@@ -10006,33 +9986,31 @@
             // 
             this.VolumeLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.VolumeLesson.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VolumeLesson.Location = new System.Drawing.Point(1149, 5);
+            this.VolumeLesson.Location = new System.Drawing.Point(213, 5);
             this.VolumeLesson.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.VolumeLesson.Maximum = 100;
             this.VolumeLesson.Name = "VolumeLesson";
-            this.VolumeLesson.Size = new System.Drawing.Size(279, 93);
+            this.VolumeLesson.Size = new System.Drawing.Size(45, 1);
             this.VolumeLesson.TabIndex = 4;
             this.VolumeLesson.Value = 20;
             this.VolumeLesson.Scroll += new System.EventHandler(this.VolumeLesson_Scroll);
             // 
             // ReproductorLessonTable
             // 
-            this.ReproductorLessonTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReproductorLessonTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.ReproductorLessonTable.ColumnCount = 1;
             this.ReproductorLessonTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ReproductorLessonTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ReproductorLessonTable.Controls.Add(this.ReproductorLessonUpTable, 0, 0);
             this.ReproductorLessonTable.Controls.Add(this.progressBar2, 0, 1);
-            this.ReproductorLessonTable.Location = new System.Drawing.Point(290, 5);
+            this.ReproductorLessonTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReproductorLessonTable.Location = new System.Drawing.Point(56, 5);
             this.ReproductorLessonTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ReproductorLessonTable.Name = "ReproductorLessonTable";
             this.ReproductorLessonTable.RowCount = 2;
             this.ReproductorLessonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.19149F));
             this.ReproductorLessonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.80851F));
-            this.ReproductorLessonTable.Size = new System.Drawing.Size(851, 93);
+            this.ReproductorLessonTable.Size = new System.Drawing.Size(149, 1);
             this.ReproductorLessonTable.TabIndex = 2;
             // 
             // ReproductorLessonUpTable
@@ -10059,13 +10037,12 @@
             this.ReproductorLessonUpTable.Controls.Add(this.PlayLesson, 7, 0);
             this.ReproductorLessonUpTable.Controls.Add(this.PreviusLesson, 6, 0);
             this.ReproductorLessonUpTable.Controls.Add(this.NextLesson, 8, 0);
-            this.ReproductorLessonUpTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ReproductorLessonUpTable.Location = new System.Drawing.Point(4, 5);
             this.ReproductorLessonUpTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ReproductorLessonUpTable.Name = "ReproductorLessonUpTable";
             this.ReproductorLessonUpTable.RowCount = 1;
             this.ReproductorLessonUpTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ReproductorLessonUpTable.Size = new System.Drawing.Size(843, 39);
+            this.ReproductorLessonUpTable.Size = new System.Drawing.Size(141, 1);
             this.ReproductorLessonUpTable.TabIndex = 2;
             // 
             // SS4
@@ -10076,9 +10053,9 @@
             this.SS4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SS4.FlatAppearance.BorderSize = 0;
             this.SS4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SS4.Location = new System.Drawing.Point(129, 3);
+            this.SS4.Location = new System.Drawing.Point(24, 3);
             this.SS4.Name = "SS4";
-            this.SS4.Size = new System.Drawing.Size(36, 33);
+            this.SS4.Size = new System.Drawing.Size(1, 1);
             this.SS4.TabIndex = 15;
             this.SS4.Tag = "no";
             this.SS4.UseVisualStyleBackColor = false;
@@ -10091,9 +10068,9 @@
             this.SS5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SS5.FlatAppearance.BorderSize = 0;
             this.SS5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SS5.Location = new System.Drawing.Point(171, 3);
+            this.SS5.Location = new System.Drawing.Point(31, 3);
             this.SS5.Name = "SS5";
-            this.SS5.Size = new System.Drawing.Size(36, 33);
+            this.SS5.Size = new System.Drawing.Size(1, 1);
             this.SS5.TabIndex = 14;
             this.SS5.Tag = "no";
             this.SS5.UseVisualStyleBackColor = false;
@@ -10106,9 +10083,9 @@
             this.SS3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SS3.FlatAppearance.BorderSize = 0;
             this.SS3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SS3.Location = new System.Drawing.Point(87, 3);
+            this.SS3.Location = new System.Drawing.Point(17, 3);
             this.SS3.Name = "SS3";
-            this.SS3.Size = new System.Drawing.Size(36, 33);
+            this.SS3.Size = new System.Drawing.Size(1, 1);
             this.SS3.TabIndex = 13;
             this.SS3.Tag = "no";
             this.SS3.UseVisualStyleBackColor = false;
@@ -10123,7 +10100,7 @@
             this.SS1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SS1.Location = new System.Drawing.Point(3, 3);
             this.SS1.Name = "SS1";
-            this.SS1.Size = new System.Drawing.Size(36, 33);
+            this.SS1.Size = new System.Drawing.Size(1, 1);
             this.SS1.TabIndex = 12;
             this.SS1.Tag = "no";
             this.SS1.UseVisualStyleBackColor = false;
@@ -10136,9 +10113,9 @@
             this.SS2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SS2.FlatAppearance.BorderSize = 0;
             this.SS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SS2.Location = new System.Drawing.Point(45, 3);
+            this.SS2.Location = new System.Drawing.Point(10, 3);
             this.SS2.Name = "SS2";
-            this.SS2.Size = new System.Drawing.Size(36, 33);
+            this.SS2.Size = new System.Drawing.Size(1, 1);
             this.SS2.TabIndex = 11;
             this.SS2.Tag = "no";
             this.SS2.UseVisualStyleBackColor = false;
@@ -10151,9 +10128,9 @@
             this.FullScreenLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FullScreenLesson.FlatAppearance.BorderSize = 0;
             this.FullScreenLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FullScreenLesson.Location = new System.Drawing.Point(759, 3);
+            this.FullScreenLesson.Location = new System.Drawing.Point(128, 3);
             this.FullScreenLesson.Name = "FullScreenLesson";
-            this.FullScreenLesson.Size = new System.Drawing.Size(36, 33);
+            this.FullScreenLesson.Size = new System.Drawing.Size(1, 1);
             this.FullScreenLesson.TabIndex = 10;
             this.FullScreenLesson.Tag = "full";
             this.FullScreenLesson.UseVisualStyleBackColor = false;
@@ -10167,9 +10144,9 @@
             this.PlayLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayLesson.FlatAppearance.BorderSize = 0;
             this.PlayLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayLesson.Location = new System.Drawing.Point(402, 3);
+            this.PlayLesson.Location = new System.Drawing.Point(69, 3);
             this.PlayLesson.Name = "PlayLesson";
-            this.PlayLesson.Size = new System.Drawing.Size(36, 33);
+            this.PlayLesson.Size = new System.Drawing.Size(1, 1);
             this.PlayLesson.TabIndex = 9;
             this.PlayLesson.Tag = "pause";
             this.PlayLesson.UseVisualStyleBackColor = false;
@@ -10183,9 +10160,9 @@
             this.PreviusLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PreviusLesson.FlatAppearance.BorderSize = 0;
             this.PreviusLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PreviusLesson.Location = new System.Drawing.Point(360, 3);
+            this.PreviusLesson.Location = new System.Drawing.Point(62, 3);
             this.PreviusLesson.Name = "PreviusLesson";
-            this.PreviusLesson.Size = new System.Drawing.Size(36, 33);
+            this.PreviusLesson.Size = new System.Drawing.Size(1, 1);
             this.PreviusLesson.TabIndex = 7;
             this.PreviusLesson.UseVisualStyleBackColor = false;
             this.PreviusLesson.Click += new System.EventHandler(this.PreviusLesson_Click);
@@ -10198,9 +10175,9 @@
             this.NextLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NextLesson.FlatAppearance.BorderSize = 0;
             this.NextLesson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextLesson.Location = new System.Drawing.Point(444, 3);
+            this.NextLesson.Location = new System.Drawing.Point(76, 3);
             this.NextLesson.Name = "NextLesson";
-            this.NextLesson.Size = new System.Drawing.Size(36, 33);
+            this.NextLesson.Size = new System.Drawing.Size(1, 1);
             this.NextLesson.TabIndex = 8;
             this.NextLesson.UseVisualStyleBackColor = false;
             this.NextLesson.Click += new System.EventHandler(this.NextLesson_Click);
@@ -10209,10 +10186,10 @@
             // 
             this.progressBar2.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar2.ForeColor = System.Drawing.Color.DimGray;
-            this.progressBar2.Location = new System.Drawing.Point(4, 54);
+            this.progressBar2.Location = new System.Drawing.Point(4, 5);
             this.progressBar2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(843, 1);
+            this.progressBar2.Size = new System.Drawing.Size(141, 1);
             this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar2.TabIndex = 1;
             // 
@@ -10224,7 +10201,7 @@
             this.UpperStudentPanel.Location = new System.Drawing.Point(0, 0);
             this.UpperStudentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.UpperStudentPanel.Name = "UpperStudentPanel";
-            this.UpperStudentPanel.Size = new System.Drawing.Size(1438, 110);
+            this.UpperStudentPanel.Size = new System.Drawing.Size(268, 110);
             this.UpperStudentPanel.TabIndex = 3;
             // 
             // BackStudentButton
@@ -10738,14 +10715,36 @@
             this.TeacherBackButton.UseVisualStyleBackColor = false;
             this.TeacherBackButton.Click += new System.EventHandler(this.BackButtom_Click);
             // 
+            // Player
+            // 
+            this.Player.Enabled = true;
+            this.Player.Location = new System.Drawing.Point(0, 150);
+            this.Player.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Player.Name = "Player";
+            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
+            this.Player.Size = new System.Drawing.Size(526, 202);
+            this.Player.TabIndex = 0;
+            this.Player.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.Player_PlayStateChange);
+            // 
+            // SPlayer
+            // 
+            this.SPlayer.Enabled = true;
+            this.SPlayer.Location = new System.Drawing.Point(848, 254);
+            this.SPlayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SPlayer.Name = "SPlayer";
+            this.SPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("SPlayer.OcxState")));
+            this.SPlayer.Size = new System.Drawing.Size(200, 100);
+            this.SPlayer.TabIndex = 5;
+            this.SPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.SPlayer_PlayStateChange);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1438, 630);
-            this.Controls.Add(this.StudentPanel);
             this.Controls.Add(this.PlayerPanel);
+            this.Controls.Add(this.StudentPanel);
             this.Controls.Add(this.ClassRoomInitialPanel);
             this.Controls.Add(this.PreferencesPanel);
             this.Controls.Add(this.EditProfilePanel);
@@ -10798,7 +10797,6 @@
             this.CentralPlayerPanel.ResumeLayout(false);
             this.ExtraTable.ResumeLayout(false);
             this.ExtraPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.SearchPanel.ResumeLayout(false);
             this.SearchTablePanel.ResumeLayout(false);
             this.SearcherTablePanel.ResumeLayout(false);
@@ -10974,7 +10972,6 @@
             this.ButtonsStudenTable.PerformLayout();
             this.LeftUpStudentTable.ResumeLayout(false);
             this.CentralStudentPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SPlayer)).EndInit();
             this.StudentSearchPanel.ResumeLayout(false);
             this.tableLayoutPanel45.ResumeLayout(false);
             this.tableLayoutPanel46.ResumeLayout(false);
@@ -11036,6 +11033,8 @@
             this.UpperPanel.PerformLayout();
             this.MailTable.ResumeLayout(false);
             this.AddLessonTable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
