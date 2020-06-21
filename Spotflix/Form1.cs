@@ -3492,6 +3492,7 @@ namespace Spotflix
             }
         }
 
+
         //DataGrid
         private void DataGridClicked(object sender, DataGridViewCellEventArgs e)
         {
@@ -5081,14 +5082,16 @@ namespace Spotflix
                     LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
                     LikeLessonButton.Tag = "no";
                 }
-                if (currentStudent.FollowTeachers.Any(u => u.Gmail== currentlyLessonPlaying.Teacher.Gmail))
+                Teacher teacher = null;
+                teacher = currentStudent.FollowTeachers.Where(u => u.Gmail == currentlyLessonPlaying.Teacher.Gmail).FirstOrDefault();
+                if (teacher != null)
                 {
                     FollowTeacherButton.Tag = "si";
-                    FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
+                    FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow_verde;
                 }
                 else
                 {
-                    FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow_verde;
+                    FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
                     FollowTeacherButton.Tag = "no";
                 }
 
@@ -5131,8 +5134,6 @@ namespace Spotflix
             }
         }
 
-        //Pantalla completa
-
         //Mostrar paneles laterales
         private void ShowDataButton_Click(object sender, EventArgs e)
         {
@@ -5152,9 +5153,11 @@ namespace Spotflix
                         YourLessonsButton.Tag = "no";
                         YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
 
-                        LikesdataGrid.Columns[0].HeaderText = "Queue";
-                        LikesdataGrid.Columns[1].HeaderText = "Name";
-                        LikesdataGrid.Columns[2].HeaderText = "Duration";
+                        StudentDataGrid.Columns[0].HeaderText = "Queue";
+                        StudentDataGrid.Columns[1].HeaderText = "Name";
+                        StudentDataGrid.Columns[2].HeaderText = "Duration";
+                        StudentDataGrid.Columns[3].HeaderText = "Course";
+                        StudentDataGrid.Columns[4].HeaderText = "Subject";
                         foreach (Lesson lesson in mediaPlayer.Queuestudent)
                         {
                             string output = string.Format("{0}:{1:00}", (int)lesson.Lessons.Length.TotalMinutes, lesson.Lessons.Length.Seconds);
@@ -5162,10 +5165,11 @@ namespace Spotflix
                             {
                                 if (u.Gmail == lesson.Teacher.Gmail)
                                 {
-                                    LikesdataGrid.Rows.Add(u.Profileimage, lesson.Name, output);
+                                    StudentDataGrid.Rows.Add(u.Profileimage, lesson.Name, output, lesson.Course, lesson.Subject);
                                 }
                             }
                         }
+                        DataStudentGrid.BringToFront();
                         break;
                     }
                     else
@@ -5185,9 +5189,11 @@ namespace Spotflix
                         StudentFavoritesButton.BackColor = System.Drawing.Color.Silver;
                         YourLessonsButton.Tag = "no";
                         YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
-                        LikesdataGrid.Columns[0].HeaderText = "Liked lesson";
-                        LikesdataGrid.Columns[1].HeaderText = "Name";
-                        LikesdataGrid.Columns[2].HeaderText = "Duration";
+                        StudentDataGrid.Columns[0].HeaderText = "Liked lesson";
+                        StudentDataGrid.Columns[1].HeaderText = "Name";
+                        StudentDataGrid.Columns[2].HeaderText = "Duration";
+                        StudentDataGrid.Columns[3].HeaderText = "Course";
+                        StudentDataGrid.Columns[4].HeaderText = "Subject";
                         foreach (Lesson lesson in currentStudent.LikedLesson)
                         {
                             string output = string.Format("{0}:{1:00}", (int)lesson.Lessons.Length.TotalMinutes, lesson.Lessons.Length.Seconds);
@@ -5195,10 +5201,11 @@ namespace Spotflix
                             {
                                 if (u.Gmail == lesson.Teacher.Gmail)
                                 {
-                                    LikesdataGrid.Rows.Add(u.Profileimage, lesson.Name, output);
+                                    StudentDataGrid.Rows.Add(u.Profileimage, lesson.Name, output, lesson.Course, lesson.Subject);
                                 }
                             }
                         }
+                        DataStudentGrid.BringToFront();
                         break;
                     }
                     else
@@ -5221,26 +5228,28 @@ namespace Spotflix
                         StudentDataGrid.Columns[0].HeaderText = "Lessons for you";
                         StudentDataGrid.Columns[1].HeaderText = "Name";
                         StudentDataGrid.Columns[2].HeaderText = "Teacher";
-                        StudentDataGrid.Columns[0].HeaderText = "Course";
-                        StudentDataGrid.Columns[1].HeaderText = "Subject";
+                        StudentDataGrid.Columns[3].HeaderText = "Course";
+                        StudentDataGrid.Columns[4].HeaderText = "Subject";
                         foreach (Lesson lesson in currentStudent.Yourlesson)
                         {
                             string output = string.Format("{0}:{1:00}", (int)lesson.Lessons.Length.TotalMinutes, lesson.Lessons.Length.Seconds);
+                            string aux = lesson.Teacher.Name + " " + lesson.Teacher.Lastname;
                             foreach (User u in Gate.Users)
                             {
                                 if (u.Gmail == lesson.Teacher.Gmail)
                                 {
-                                    StudentDataGrid.Rows.Add(output, lesson.Name, lesson.Teacher,lesson.Course,lesson.Subject);
+                                    StudentDataGrid.Rows.Add(output, lesson.Name, aux,lesson.Course,lesson.Subject);
                                 }
                             }
                         }
+                        DataStudentGrid.BringToFront();
                         break;
                     }
                     else
                     {
                         YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                         YourLessonsButton.Tag = "no";
-                        DataStudentGrid.Visible = false;
+                        StudentDataGrid.Visible = false;
                         break;
                     }
 
@@ -5286,6 +5295,7 @@ namespace Spotflix
             }
 
         }
+        
         private void teacher_item_clicked(object sender, ToolStripItemClickedEventArgs e)
         {
             string name = e.ClickedItem.Name.ToString();
@@ -5303,6 +5313,7 @@ namespace Spotflix
             }
             SaveUser();
         }
+        
         //Clase anterior
         private void PreviusLesson_Click(object sender, EventArgs e)
         {
@@ -5436,15 +5447,6 @@ namespace Spotflix
             if (currentlyLessonPlaying != null)
             {
                 teacher = Gate.Teachers.Where(u => u.Gmail == currentlyLessonPlaying.Teacher.Gmail).FirstOrDefault();
-
-            }
-            else
-            {
-                FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
-                FollowTeacherButton.Tag = "no";
-            }
-            if (currentlyLessonPlaying != null)
-            {
                 if (currentStudent.FollowTeachers.Any(u => u.Gmail.SequenceEqual(currentlyLessonPlaying.Teacher.Gmail)))
                 {
                     if (teacher is null)
@@ -5459,6 +5461,12 @@ namespace Spotflix
                         currentStudent.FollowTeachers.Add(teacher);
                     }
                 }
+
+            }
+            else
+            {
+                FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
+                FollowTeacherButton.Tag = "no";
             }
             
             SaveStudent();
@@ -5474,8 +5482,13 @@ namespace Spotflix
             }
             else
             {
+                LessonSearcherData.Rows.Clear();
+                TeacherSearcherData.Rows.Clear();
+                StudentSearcherData.Rows.Clear();
                 StudentSearchPanel.BringToFront();
-                Searchstextbox.Text = "";
+                Searchstextbox.Text = "Search";
+                StudentSearcherTableResult.Visible = false;
+
             }
         }
 
@@ -5483,7 +5496,6 @@ namespace Spotflix
         {
             if (Searchstextbox.Text != "")
             {
-                SPlayer.SendToBack();
                 LessonSearcherData.Visible = true;
                 TeacherSearcherData.Visible = true;
                 StudentSearcherData.Visible = true;
@@ -5493,7 +5505,6 @@ namespace Spotflix
                 StudentSearcherData.Rows.Clear();
 
                 StudentSearcher.Brain(Searchstextbox.Text);
-                HashSet<Lesson> lessons = mediaPlayer.Foundlessons;
                 foreach (Lesson lesson in mediaPlayer.Foundlessons)
                 {
                     string aux=  lesson.Teacher.Name + " " + lesson.Teacher.Lastname;
@@ -5597,6 +5608,14 @@ namespace Spotflix
             }
         }
 
+        private void Searchstextbox_Click(object sender, EventArgs e)
+        {
+            if (Searchstextbox.Text == "Search")
+            {
+                StudentSearcherTableResult.Visible = true;
+                Searchstextbox.Text = "";
+            }
+        }
         //Botón home
         private void HomeStudentButton_Click(object sender, EventArgs e)
         {
@@ -5626,10 +5645,6 @@ namespace Spotflix
                     SuccessDownloadLael.Visible = true;
                     SuccessDownloadLael.Text = "You have to reproduce a lesson!";
                 }
-                else if (currentStudent.Curse == currentlyLessonPlaying.Course)
-                {
-                    count1++;
-                }
                 else if (currentlyLessonPlaying != null)
                 {
                     foreach (string subject in currentStudent.Subjects)
@@ -5638,6 +5653,10 @@ namespace Spotflix
                         {
                             count2++;
                         }
+                    }
+                    if (currentStudent.Curse == currentlyLessonPlaying.Course)
+                    {
+                        count1++;
                     }
                 }
                 if (count1 != 0 && count2 != 0)
@@ -5665,9 +5684,10 @@ namespace Spotflix
                         SuccessDownloadLael.Visible = true;
                     }
                 }
-                else if (currentlyLessonPlaying != null)
+                else if (currentlyLessonPlaying != null && (count1 == 0 || count2 == 0))
                 {
                     SuccessDownloadLael.Text = "You cannot download this homework because they are not for you!";
+                    SuccessDownloadLael.Visible = true;
                 }
             }
             else
@@ -5984,11 +6004,6 @@ namespace Spotflix
                 SuccessDownloadEmailLabel.Visible = true;
             }
             SaveHomework();
-        }
-
-        private void CentralStudentPanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void LessonTimer_Tick(object sender, EventArgs e)
