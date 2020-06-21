@@ -56,7 +56,8 @@ namespace Spotflix.User_Related
             var ffProbe = new NReco.VideoInfo.FFProbe();
             ffProbe.IncludeFormat = true;
             var videoinfo = ffProbe.GetMediaInfo(path);
-            Video video = new Video(subject, course, media.Lesson.Count() + 1);
+            TimeSpan duration = videoinfo.Duration;
+            Video video = new Video(subject, course, media.Lesson.Count() + 1,bytes,duration);
             media.Lesson.Add(video);
             return video;
 

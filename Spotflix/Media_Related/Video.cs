@@ -56,12 +56,14 @@ namespace Spotflix.Media_Related
             this.code = code;
             this.Letter = "SV";
         }
-        public Video(string subject, string course, int code)
+        public Video(string subject, string course, int code,byte[] bytes,TimeSpan length)
         {
             this.subject = subject;
             this.course = course;
             this.code = code;
+            this.bytes = bytes;
             this.Letter = "SV";
+            this.length = length;
         }
         public List<string> Actors { get => actors; set => actors = value; }
         public int AgeFilter { get => ageFilter; set => ageFilter = value; }
