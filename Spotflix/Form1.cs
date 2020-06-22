@@ -612,7 +612,7 @@ namespace Spotflix
             {
                 if (StudentPanel.Visible == true)
                 {
-                    if (mediaPlayer.Queuestudent.Count() > 0)
+                    if (mediaPlayer.Queuestudent.Count() > 0&&index > mediaPlayer.Queuestudent.Count())
                     {
                         currentStudent.Lastlesson = mediaPlayer.Queuestudent[index];
                     }
@@ -3707,6 +3707,7 @@ namespace Spotflix
                     string name = dgw.Rows[e.RowIndex].Cells[1].Value.ToString();
                     Teacher teacher = null;
                     teacher = Gate.Teachers.Where(u => u.Name == name).FirstOrDefault();
+                    StudentDataGrid.Rows.Clear();
                     if (teacher != null)
                     {
                         StudentDataGrid.Columns[0].HeaderText = "Lesson";
@@ -3739,6 +3740,7 @@ namespace Spotflix
                 {
                     string name = dgw.Rows[e.RowIndex].Cells[1].Value.ToString();
                     Student student = null;
+                    StudentDataGrid.Rows.Clear();
                     student = Gate.Students.Where(u => u.Name+" "+u.Lastname == name).FirstOrDefault();
                     if (student != null)
                     {
@@ -3930,7 +3932,7 @@ namespace Spotflix
                 else if (dgw.Columns[0].HeaderText == "Found teacher")
                 {
                     string name = dgw.Rows[position].Cells[1].Value.ToString();
-                    Teacher teacher = Gate.Teachers.Where(u => u.Nickname == name).FirstOrDefault();
+                    Teacher teacher = Gate.Teachers.Where(u => u.Name == name).FirstOrDefault();
                     ContextMenuStrip mediamenu = new System.Windows.Forms.ContextMenuStrip();
                     if (currentStudent.FollowTeachers.Any(u => u.Equals(teacher)))
                     {
@@ -5022,6 +5024,7 @@ namespace Spotflix
         public void initializeStudentPlayer()
         {
             CurrentLesson.Stop();
+            NextLessonTimer.Stop();
             index = 0;
             SPlayer.BringToFront();
             Teachernamestudentlabel.Text = "";
@@ -5150,6 +5153,7 @@ namespace Spotflix
                 case "                         QuequeButtomS":
                     if (AdLessonQuequeButton.Tag.ToString() == "no")
                     {
+                        StudentDataGrid.Rows.Clear();
                         AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_azul;
                         AdLessonQuequeButton.Tag = "si";
                         StudentFavoritesButton.Tag = "no";
@@ -5184,6 +5188,7 @@ namespace Spotflix
                 case "Favorites":
                     if (StudentFavoritesButton.Tag.ToString() == "no")
                     {
+                        StudentDataGrid.Rows.Clear();
                         AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         AdLessonQuequeButton.Tag = "no";
                         StudentFavoritesButton.Tag = "si";
@@ -5216,6 +5221,7 @@ namespace Spotflix
                 case "Your Lessons":
                     if (YourLessonsButton.Tag.ToString() == "no")
                     {
+                        StudentDataGrid.Rows.Clear();
                         AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                         AdLessonQuequeButton.Tag = "no";
                         StudentFavoritesButton.Tag = "no";
@@ -5232,9 +5238,6 @@ namespace Spotflix
                         {
                             if (lesson.Course.ToLower()==currentStudent.Curse.ToLower()&&currentStudent.Subjects.Contains(lesson.Subject))
                             { 
-                                string output = string.Format("{0}:{1:00}", (int)lesson.Lessons.Length.TotalMinutes, lesson.Lessons.Length.Seconds);
-                                string aux = lesson.Teacher.Name + " " + lesson.Teacher.Lastname;
-                                StudentDataGrid.Rows.Add(output, lesson.Name, aux, lesson.Course, lesson.Subject);
                                 les.Add(lesson);
                             }
                         }
@@ -5242,13 +5245,18 @@ namespace Spotflix
                         {
                             foreach (Lesson lesson in teacher.Lessons)
                             {
-                                if (les.Any(u=>u.Equals(lesson)))
+                                if (!les.Any(u=>u.Name==lesson.Name))
                                 {
-                                    string output = string.Format("{0}:{1:00}", (int)lesson.Lessons.Length.TotalMinutes, lesson.Lessons.Length.Seconds);
-                                    string aux = lesson.Teacher.Name + " " + lesson.Teacher.Lastname;
-                                    StudentDataGrid.Rows.Add(output, lesson.Name, aux, lesson.Course, lesson.Subject);
+                                    les.Add(lesson);
                                 }
+                                
                             }
+                        }
+                        foreach (Lesson lesson in les)
+                        {
+                            string output = string.Format("{0}:{1:00}", (int)lesson.Lessons.Length.TotalMinutes, lesson.Lessons.Length.Seconds);
+                            string aux = lesson.Teacher.Name + " " + lesson.Teacher.Lastname;
+                            StudentDataGrid.Rows.Add(output, lesson.Name, aux, lesson.Course, lesson.Subject);
                         }
                         DataStudentGrid.Visible = true;
                         StudentDataGrid.Visible = true;
@@ -5294,7 +5302,7 @@ namespace Spotflix
                 case "Add to queue":
                     string name = e.ClickedItem.Name.ToString();
                     Lesson lesson = null;
-                    lesson = mediaPlayer.Lessons.Where(u => u.Lessons.Code.ToString() == name).FirstOrDefault();
+                    lesson = mediaPlayer.Lessons.Where(u => u.Name == name).FirstOrDefault();
                     if (lesson != null)
                     {
                         mediaPlayer.Queuestudent.Add(lesson);
@@ -5309,7 +5317,7 @@ namespace Spotflix
         private void teacher_item_clicked(object sender, ToolStripItemClickedEventArgs e)
         {
             string name = e.ClickedItem.Name.ToString();
-            Teacher teacher = Gate.Teachers.Where(u => u.Nickname == name).FirstOrDefault();
+            Teacher teacher = Gate.Teachers.Where(u => u.Name == name).FirstOrDefault();
             switch (e.ClickedItem.ToString())
             {
                 case "Follow teacher":
@@ -5322,6 +5330,7 @@ namespace Spotflix
                     break;
             }
             SaveUser();
+            SaveTeacher();
         }
         
         //Clase anterior
@@ -5550,14 +5559,14 @@ namespace Spotflix
 
 
                     }
-                    TeacherSearcherData.Rows.Add(n, nickname, teacher.Gmail, aux, aux2);
+                    TeacherSearcherData.Rows.Add(n, teacher.Name, teacher.Gmail, aux, aux2);
                 }
                 foreach (DataGridViewRow row in TeacherSearcherData.Rows)
                 {
                     row.MinimumHeight = 50;
                 }
                 TeacherSearcherData.Columns[0].HeaderText = "Found teacher";
-                TeacherSearcherData.Columns[1].HeaderText = "Nickname";
+                TeacherSearcherData.Columns[1].HeaderText = "Name";
                 TeacherSearcherData.Columns[2].HeaderText = "Gmail";
                 TeacherSearcherData.Columns[3].HeaderText = "Subjects";
                 TeacherSearcherData.Columns[4].HeaderText = "Course";

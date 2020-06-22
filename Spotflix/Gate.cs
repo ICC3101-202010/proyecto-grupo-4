@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Spotflix
 {
-    public class Gate
+    public static class Gate
     {
         private static List<User> users = new List<User>();
         
