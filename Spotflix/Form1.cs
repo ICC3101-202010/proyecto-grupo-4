@@ -561,7 +561,7 @@ namespace Spotflix
             {
                 if (PlayerPanel.Visible == true)
                 {
-                    if (mediaPlayer.Queue.Count()>0)
+                    if (mediaPlayer.Queue.Count()>0 && index>mediaPlayer.Queue.Count())
                     {
                         currentUser.Lastsong = mediaPlayer.Queue[index];
                     }
@@ -3204,7 +3204,7 @@ namespace Spotflix
         //Poner me gusta
         private void LikeSongorVideo_Click(object sender, EventArgs e)
         {
-            if (currentlyPlaying!=null)
+            if (currentlyPlaying != null)
             {
                 if (LikeSongorVideo.Tag.ToString() == "si")
                 {
@@ -3222,54 +3222,52 @@ namespace Spotflix
                 karaoke = mediaPlayer.Karaokes.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
                 song = mediaPlayer.Songs.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
                 video = mediaPlayer.Videos.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
-                if (currentlyPlaying is null)
+                if (video is null)
                 {
-                    LikeSongorVideo.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
-                    LikeSongorVideo.Tag = "no";
+                    video = mediaPlayer.VideoChapters.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
                 }
-                else
+                if (currentUser.LikedSongs.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedVideos.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedKarokes.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)))
                 {
-                    if (video is null)
+                    if (song is null && karaoke is null)
                     {
-                        video = mediaPlayer.VideoChapters.Where(u => u.Name == currentlyPlaying.Name).FirstOrDefault();
+                        currentUser.LikedVideos.Remove(video);
+                        video.Likes--;
                     }
-                    if (currentUser.LikedSongs.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedVideos.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)) || currentUser.LikedKarokes.Any(u => u.Bytes.SequenceEqual(currentlyPlaying.Bytes)))
+                    else if (karaoke is null)
                     {
-                        if (song is null && karaoke is null)
-                        {
-                            currentUser.LikedVideos.Remove(video);
-                            video.Likes--;
-                        }
-                        else if (karaoke is null)
-                        {
-                            song.Likes--;
-                            currentUser.LikedSongs.Remove(song);
-                        }
-                        else
-                        {
-                            karaoke.Likes--;
-                            currentUser.LikedKarokes.Remove(karaoke);
-                        }
+                        song.Likes--;
+                        currentUser.LikedSongs.Remove(song);
                     }
                     else
                     {
-                        if (song is null && karaoke is null)
-                        {
-                            currentUser.LikedVideos.Add(video);
-                            video.Likes++;
-                        }
-                        else if (karaoke is null)
-                        {
-                            song.Likes++;
-                            currentUser.LikedSongs.Add(song);
-                        }
-                        else
-                        {
-                            karaoke.Likes++;
-                            currentUser.LikedKarokes.Add(karaoke);
-                        }
+                        karaoke.Likes--;
+                        currentUser.LikedKarokes.Remove(karaoke);
                     }
                 }
+                else
+                {
+                    if (song is null && karaoke is null)
+                    {
+                        currentUser.LikedVideos.Add(video);
+                        video.Likes++;
+                    }
+                    else if (karaoke is null)
+                    {
+                        song.Likes++;
+                        currentUser.LikedSongs.Add(song);
+                    }
+                    else
+                    {
+                        karaoke.Likes++;
+                        currentUser.LikedKarokes.Add(karaoke);
+                    }
+                }
+            }
+            else
+            {
+
+                LikeSongorVideo.Tag = "no";
+                LikeSongorVideo.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
             }
 
             SaveUser();
@@ -4988,6 +4986,8 @@ namespace Spotflix
                 Teachernamestudentlabel.Text = "";
                 VideoCurseLabel.Text = "";
                 VideoSubjectLabel.Text = "";
+                TeachetPictureBox.Image = null;
+                TeachetPictureBox.Image = null;
                 UploadHomeWorkPanel.Visible = false;
                 TeacherProfilTable.Visible = false;
                 SuccessDownloadLael.Visible = false;
@@ -5004,6 +5004,8 @@ namespace Spotflix
                 StudentFavoritesButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 YourLessonsButton.Tag = "no";
                 YourLessonsButton.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
+                UploadHomeworkButton2.Tag = "no";
+                UploadHomeworkButton2.BackColor = System.Drawing.Color.FromArgb(21, 21, 21);
                 UploadHomeWorkButton.Tag = "no";
                 UploadHomeWorkButton.BackColor = System.Drawing.Color.FromArgb(45, 45, 45);
                 initializeStudentPlayer();
@@ -5025,6 +5027,7 @@ namespace Spotflix
             Teachernamestudentlabel.Text = "";
             VideoCurseLabel.Text = "";
             VideoSubjectLabel.Text = "";
+            TeachetPictureBox.Image = null;
             DataStudentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             StudentSearchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             CentralStudentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -5074,7 +5077,7 @@ namespace Spotflix
                 AdLessonQuequeButton.BackgroundImage = Spotflix.Properties.Resources.queque_blanco;
                 SuccessDownloadLael.Visible = false;
 
-                if (currentStudent.LikedLesson.Any(u => u.Lessons.Bytes.SequenceEqual(currentlyPlaying.Bytes)))
+                if (currentStudent.LikedLesson.Any(u => u.Bytes.SequenceEqual(currentlyLessonPlaying.Bytes)))
                 {
                     LikeLessonButton.Tag = "si";
                     LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_rojo;
@@ -5084,9 +5087,8 @@ namespace Spotflix
                     LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
                     LikeLessonButton.Tag = "no";
                 }
-                Teacher teacher = null;
-                teacher = currentStudent.FollowTeachers.Where(u => u.Gmail == currentlyLessonPlaying.Teacher.Gmail).FirstOrDefault();
-                if (teacher != null)
+
+                if (currentStudent.FollowTeachers.Any(u => u.Gmail.SequenceEqual(currentlyLessonPlaying.Teacher.Gmail)))
                 {
                     FollowTeacherButton.Tag = "si";
                     FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow_verde;
@@ -5401,38 +5403,37 @@ namespace Spotflix
         //Ponerle me gusta a la clase
         private void LikeLessonButton_Click(object sender, EventArgs e)
         {
-            if (LikeLessonButton.Tag.ToString() == "si")
-            {
-                LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
-                LikeLessonButton.Tag = "no";
-            }
-            else
-            {
-                LikeLessonButton.Tag = "si";
-                LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_rojo;
-            }
-            Lesson lesson = null;
             if (currentlyLessonPlaying != null)
             {
-                lesson = mediaPlayer.Lessons.Where(u => u.Name == currentlyLessonPlaying.Name).FirstOrDefault();
-
-            }
-            if (currentStudent.LikedLesson.Any(u => u.Bytes.SequenceEqual(currentlyLessonPlaying.Bytes)))
-            {
-                if (lesson != null)
+                if (LikeLessonButton.Tag.ToString() == "si")
                 {
-                    currentStudent.LikedLesson.Remove(lesson);
-                    lesson.Lessons.Likes--;
+                    LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
+                    LikeLessonButton.Tag = "no";
+                }
+                else
+                {
+                    LikeLessonButton.Tag = "si";
+                    LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_rojo;
+                }
+               
+                if (currentStudent.LikedLesson.Any(u => u.Bytes.SequenceEqual(currentlyLessonPlaying.Bytes)))
+                {
+                    currentStudent.LikedLesson.Remove(currentlyLessonPlaying);
+                    currentlyLessonPlaying.Lessons.Likes--;
+                }
+                else
+                {
+                    currentStudent.LikedLesson.Add(currentlyLessonPlaying);
+                    currentlyLessonPlaying.Lessons.Likes++;
                 }
             }
             else
             {
-                if (lesson != null)
-                {
-                    currentStudent.LikedLesson.Add(lesson);
-                    lesson.Lessons.Likes++;
-                }
+
+                LikeLessonButton.Tag = "no";
+                LikeLessonButton.BackgroundImage = Spotflix.Properties.Resources.corazon_blanco;
             }
+
             SaveStudent();
             SaveLesson();
             SaveVideoT();
@@ -5441,42 +5442,38 @@ namespace Spotflix
         //Seguir al profesor
         private void FollowTeacherButton_Click(object sender, EventArgs e)
         {
-            if (FollowTeacherButton.Tag.ToString() == "no")
-            {
-                FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow_verde;
-                FollowTeacherButton.Tag = "si";
-            }
-            else
-            {
-                FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
-                FollowTeacherButton.Tag = "no";
-            }
-            Teacher teacher = null;
             if (currentlyLessonPlaying != null)
             {
-                teacher = Gate.Teachers.Where(u => u.Gmail == currentlyLessonPlaying.Teacher.Gmail).FirstOrDefault();
-                if (currentStudent.FollowTeachers.Any(u => u.Gmail.SequenceEqual(currentlyLessonPlaying.Teacher.Gmail)))
+                if (FollowTeacherButton.Tag.ToString() == "si")
                 {
-                    if (teacher is null)
-                    {
-                        currentStudent.FollowTeachers.Remove(teacher);
-                    }
+                    FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
+                    FollowTeacherButton.Tag = "no";
                 }
                 else
                 {
-                    if (teacher is null)
-                    {
-                        currentStudent.FollowTeachers.Add(teacher);
-                    }
+                    FollowTeacherButton.Tag = "si";
+                    FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow_verde;
                 }
 
+                if (currentStudent.FollowTeachers.Any(u => u.Gmail.SequenceEqual(currentlyLessonPlaying.Teacher.Gmail)))
+                {
+                    currentStudent.FollowTeachers.Remove(currentlyLessonPlaying.Teacher);
+                }
+                else
+                {
+                    currentStudent.FollowTeachers.Add(currentlyLessonPlaying.Teacher);
+                }
             }
             else
             {
-                FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
+
                 FollowTeacherButton.Tag = "no";
+                FollowTeacherButton.BackgroundImage = Spotflix.Properties.Resources.follow;
             }
-            
+
+            SaveStudent();
+            SaveLesson();
+            SaveVideoT();
             SaveStudent();
         }
 
@@ -5807,6 +5804,7 @@ namespace Spotflix
             {
                 string path = dialog.FileName;
                 PdfSecretLabel.Text = path;
+                PDFSuccessStudentLabel.Visible = true;
             }
         }
 
@@ -6010,7 +6008,7 @@ namespace Spotflix
             }
             if (count != 0)
             {
-                SuccessDownloadEmailLabel.Text = "Your entire mailbox has been downloaded";
+                SuccessDownloadEmailLabel.Text = "Your mailbox has been downloaded";
                 SuccessDownloadEmailLabel.Visible = true;
             }
             else

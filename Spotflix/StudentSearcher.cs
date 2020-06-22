@@ -184,7 +184,7 @@ namespace Spotflix
                             }
                         }
                         break;
-                    case "curse":
+                    case "course":
                         
                         foreach (Teacher teacher in Gate.Teachers)
                         {
@@ -241,7 +241,7 @@ namespace Spotflix
                             }
                         }
                         break;
-                    case "curse":
+                    case "course":
 
                         foreach (Student student in Gate.Students)
                         {
@@ -316,7 +316,7 @@ namespace Spotflix
                             }
                         }
                         break;
-                    case "curse":
+                    case "course":
                         foreach (Lesson lesson in MediaPlayer.Lessons)
                         {
                             if (lesson.Course.ToLower().Contains(caser[1]))
